@@ -2,12 +2,60 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <link href="/favicon.ico" rel="icon" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Venn</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+    <main>
+      <div class="circle-container">
+        <span class="circle circle-a"></span>
+        <span class="circle circle-b"></span>
+        <span class="circle circle-c"></span>
+        <span class="circle circle-b"></span>
+        <span class="circle circle-c"></span>
+        <span class="circle circle-a"></span>
+        <span class="circle circle-c"></span>
+        <span class="circle circle-b"></span>
+        <span class="circle circle-a"></span>
+        <span class="circle circle-b"></span>
+        <span class="circle circle-a"></span>
+        <span class="circle circle-c"></span>
+      </div>
+      <div class="how-to-play">
+        <p><strong>How to Play</strong></p>
+        <p>
+          Drag and drop all seven items into the puzzle. Each circle will
+          represent a category, and each item in that circle must fit into that
+          category. This means that the item in the center will be the only one
+          which fits into all three categories, the items in the intersections
+          of two circles will each fit into two of the three, and the items in
+          only one circle will fit into one.
+        </p>
+        <p>Here is an example:</p>
+        <img src="/example.png" />
+        <p>
+          Canada is in the center because it alone is a constitutional monarchy
+          which touches the arctic circle and has English as an official
+          language. The United States is not a monarchy, Sweden does not have
+          English as an official language, and Australia does not touch the
+          arctic circle. The other three countries each only fit in one
+          category.
+        </p>
+        <p>
+          It doesn't matter which color you use to represent each category. In
+          the example above, yellow is English, blue is monarchy, and red is the
+          arctic, but the specific colors are arbitrary. All that matters is
+          that one circle contains the four countries which are monarchies,
+          another contains all four which touch the arctic circle, and the final
+          one contains all four where English is officially spoken.
+        </p>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; Max Monis 2025. All Rights Reserved.</p>
+      <p>Proudly Canadian 🍁</p>
+    </footer>
+    <script src="/src/main.ts" type="module"></script>
   </body>
 </html>
