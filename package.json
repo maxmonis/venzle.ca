@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "typescript": "~5.8.3",
+    "vite": "^7.1.2"
+  },
+  "name": "venn",
+  "private": true,
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "vite",
+    "prod": "vite preview"
+  },
+  "type": "module",
+  "version": "0.0.0"
+}
