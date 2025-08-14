@@ -6,6 +6,7 @@
 
 :root {
   --bg: #fefefe;
+  --blue: #1d4ed8;
   --circle-a: #eab308;
   --circle-b: #3b82f6;
   --circle-c: #ef4444;
@@ -16,6 +17,7 @@
 
 :root:has(body.dark) {
   --bg: #121212;
+  --blue: #60a5fa;
   --fg: #fefefe;
 }
 
@@ -71,7 +73,9 @@ h2 {
 button {
   border: none;
   background: inherit;
+  color: inherit;
   cursor: pointer;
+  font-size: inherit;
 }
 
 .circle-container {
@@ -207,6 +211,18 @@ button {
   left: 8.25rem;
 }
 
+.hints-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.hints-container button {
+  color: var(--blue);
+}
+
 .submit-button {
   background-color: #1d4ed8;
   border-radius: 0.5rem;
@@ -215,6 +231,10 @@ button {
   font-weight: 600;
   letter-spacing: 0.5px;
   padding: 0.75rem 1rem;
+}
+
+.game-summary {
+  margin-block-start: 2rem;
 }
 
 .how-to-play {

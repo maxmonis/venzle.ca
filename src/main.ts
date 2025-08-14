@@ -10,6 +10,7 @@ let title = document.createElement("h1")
 title.innerHTML = `Today's Puzzle: ${game.title}`
 main.insertBefore(title, circleContainer)
 
+let hints = { a: false, b: false }
 let positions = {
   a: "",
   ab: "",
@@ -32,9 +33,8 @@ draggableContainer.classList.add("draggable-container")
 main.insertBefore(draggableContainer, howToPlay)
 
 let entries = Object.entries(game.groups)
-shuffle(Array.from(new Set(entries.flatMap(([, value]) => value)))).forEach(
-  createDraggable
-)
+let allValues = entries.flatMap(([, value]) => value)
+shuffle(Array.from(new Set(allValues))).forEach(createDraggable)
 
 function createDraggable(value: string) {
   let draggable = document.createElement("div")
@@ -107,8 +107,10 @@ document.querySelectorAll(".dropzone").forEach(dropzone => {
       positions[dropzone.id.split("-")[1] as keyof typeof positions] =
         dropzone.innerHTML
     })
-    if (Object.entries(positions).every(([, value]) => value))
-      main.insertBefore(submitButton, howToPlay)
+    if (Object.entries(positions).every(([, value]) => value)) {
+      draggableContainer.remove()
+      main.insertBefore(submitButton, hintsContainer)
+    }
   })
 })
 
@@ -145,12 +147,46 @@ submitButton.addEventListener("click", () => {
       title.classList.add(`title-${["a", "b", "c"][i]}`)
       circleContainer.appendChild(title)
     })
+    let gameSummary = document.createElement("div")
+    gameSummary.classList.add("game-summary")
+    main.insertBefore(gameSummary, howToPlay)
+    let hintsText = document.createElement("p")
+    let hintCount = Object.values(hints).filter(Boolean).length
+    hintsText.textContent = `${hintCount} hint${hintCount == 1 ? "" : "s"} used`
+    gameSummary.appendChild(hintsText)
     document.querySelectorAll(".dropzone").forEach(dropzone => {
       dropzone.classList.remove("draggable")
       dropzone.setAttribute("draggable", "false")
     })
+    hintsContainer.remove()
     submitButton.remove()
   }
+})
+
+let hintsContainer = document.createElement("div")
+hintsContainer.classList.add("hints-container")
+main.insertBefore(hintsContainer, howToPlay)
+Object.keys(hints).forEach(k => {
+  let key = k as keyof typeof hints
+  let hint = document.createElement("div")
+  hintsContainer.appendChild(hint)
+  let hintButton = document.createElement("button")
+  hintButton.classList.add("hint-button")
+  hintButton.textContent =
+    key == "a" ? "Hint A: who's in the center" : "Hint B: category clues"
+  hintButton.addEventListener("click", () => {
+    hints[key] = true
+    let hintText = document.createElement("p")
+    hintText.textContent =
+      key == "a"
+        ? `Hint A: ${allValues.find(value =>
+            entries.every(([, v]) => v.includes(value))
+          )} is in the center`
+        : `Hint B: ${game.hint}`
+    hintButton.remove()
+    hint.appendChild(hintText)
+  })
+  hint.appendChild(hintButton)
 })
 
 let theme = localTheme.get()
