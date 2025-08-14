@@ -17,27 +17,26 @@ let title = document.createElement("h1")
 title.innerHTML = `Today's Puzzle: ${game.title}`
 main.insertBefore(title, circleContainer)
 
-let storageGame = localGame.get()
-if (storageGame && storageGame.index != gameIndex) {
-  storageGame = null
-  localGame.remove()
+let currentGame = localGame.get()
+if (!currentGame || currentGame.index != gameIndex) {
+  currentGame = {
+    ...game,
+    currentGuess: {
+      a: "",
+      ab: "",
+      abc: "",
+      ac: "",
+      b: "",
+      bc: "",
+      c: ""
+    },
+    hints: { a: false, b: false },
+    guesses: [],
+    index: gameIndex
+  }
+  localGame.set(currentGame)
 }
-
-let currentGame: NonNullable<typeof storageGame> = storageGame ?? {
-  ...game,
-  currentGuess: {
-    a: "",
-    ab: "",
-    abc: "",
-    ac: "",
-    b: "",
-    bc: "",
-    c: ""
-  },
-  hints: { a: false, b: false },
-  guesses: [],
-  index: gameIndex
-}
+let groupEntries = Object.entries(currentGame.groups)
 let { currentGuess, guesses, hints } = currentGame
 
 Object.entries(currentGuess).forEach(([key, value]) => {
@@ -62,7 +61,7 @@ let draggableContainer = document.createElement("div")
 draggableContainer.classList.add("draggable-container")
 main.insertBefore(draggableContainer, howToPlay)
 
-let allValues = Object.entries(game.groups).flatMap(([, value]) => value)
+let allValues = groupEntries.flatMap(([, v]) => v)
 let values = allValues.filter(
   v => !Object.values(currentGuess).some(value => v == value)
 )
@@ -168,7 +167,7 @@ Object.keys(hints).forEach(k => {
   hintText.textContent =
     key == "a"
       ? `Hint A: ${allValues.find(value =>
-          Object.values(game.groups).every(v => v.includes(value))
+          groupEntries.every(([, v]) => v.includes(value))
         )} is in the center`
       : `Hint B: ${game.hint}`
   let hintButton = document.createElement("button")
@@ -203,7 +202,6 @@ function appendSubmitButton() {
 
 evaluateGuess()
 function evaluateGuess(clicked = false) {
-  let groupEntries = Object.entries(game.groups)
   let [titleA] =
     groupEntries.find(([, value]) =>
       [
@@ -282,10 +280,9 @@ function evaluateGuess(clicked = false) {
     guessesText.remove()
     submitButton.remove()
     hintsContainer.remove()
-    let entries = Object.entries(currentGame.groups)
-    let [titleA, playersA] = entries[0]!
-    let [titleB, playersB] = entries[1]!
-    let [titleC, playersC] = entries[2]!
+    let [titleA, playersA] = groupEntries[0]!
+    let [titleB, playersB] = groupEntries[1]!
+    let [titleC, playersC] = groupEntries[2]!
     let solution = {
       a: playersA.find(p => !playersB.includes(p) && !playersC.includes(p))!,
       b: playersB.find(p => !playersA.includes(p) && !playersC.includes(p))!,
