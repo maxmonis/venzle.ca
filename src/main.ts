@@ -101,6 +101,26 @@ let values = allValues.filter(
 )
 shuffle(Array.from(new Set(values))).forEach(createDraggable)
 
+document.addEventListener("dragover", e => {
+  e.preventDefault()
+})
+
+document.addEventListener("drop", e => {
+  e.preventDefault()
+  let dragEvent = e as DragEvent
+  let textContent = dragEvent.dataTransfer?.getData("textContent")
+  if (!textContent) return
+  let sourceDropzone = Array.from(document.querySelectorAll(".dropzone")).find(
+    el => el.textContent == textContent
+  )
+  if (!sourceDropzone) return
+  sourceDropzone.textContent = ""
+  sourceDropzone.classList.remove("draggable")
+  guessesText.remove()
+  submitButton.remove()
+  createDraggable(textContent)
+})
+
 function createDraggable(value: string) {
   let draggable = document.createElement("div")
   draggable.textContent = value
@@ -139,6 +159,7 @@ document.querySelectorAll(".dropzone").forEach(dropzone => {
   })
   dropzone.addEventListener("drop", e => {
     e.preventDefault()
+    e.stopPropagation()
     dropzone.classList.remove("dragover")
     let dragEvent = e as DragEvent
     if (!dragEvent.dataTransfer) return
@@ -228,7 +249,6 @@ guessesText.textContent = `${remainingGuesses} guess${
 appendSubmitButton()
 function appendSubmitButton() {
   if (Object.values(currentGuess).every(v => v)) {
-    draggableContainer.remove()
     main.insertBefore(submitButton, hintsContainer)
     main.insertBefore(guessesText, submitButton)
   }
