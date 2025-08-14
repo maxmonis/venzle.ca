@@ -20,3 +20,15 @@ export interface LocalGame extends Game {
   hints: { a: boolean; b: boolean }
   index: number
 }
+
+interface StatValues {
+  first: number
+  last: number
+  streakStart: number
+  total: number
+}
+
+export interface Stats {
+  played: StatValues
+  solved: StatValues
+}

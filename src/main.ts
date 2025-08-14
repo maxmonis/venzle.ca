@@ -1,6 +1,6 @@
 import { gameList } from "./games"
 import "./style.css"
-import { localGame, localTheme, shuffle } from "./utils"
+import { localGame, localStats, localTheme, shuffle } from "./utils"
 
 let main = document.querySelector("main")!
 let circleContainer = document.querySelector(".circle-container")!
@@ -12,6 +12,40 @@ let gameIndex =
       (1000 * 3600 * 24)
   ) % gameList.length
 let game = gameList[gameIndex]!
+
+let currentStats = localStats.get()
+if (!currentStats)
+  currentStats = {
+    played: {
+      first: -1,
+      last: -1,
+      streakStart: -1,
+      total: 0
+    },
+    solved: {
+      first: -1,
+      last: -1,
+      streakStart: -1,
+      total: 0
+    }
+  }
+let { played, solved } = currentStats
+if (played.last < gameIndex - 1) played.streakStart = -1
+if (solved.last < gameIndex - 1) solved.streakStart = -1
+localStats.set(currentStats)
+
+let statsText = document.createElement("p")
+statsText.classList.add("stats-text")
+main.append(statsText)
+displayCurrentStats()
+
+function displayCurrentStats() {
+  statsText.innerHTML = `Current Streak: ${
+    played.streakStart == -1 ? 0 : gameIndex - played.streakStart + 1
+  } played and ${
+    solved.streakStart == -1 ? 0 : gameIndex - solved.streakStart + 1
+  } won.<br />Total Games: ${played.total} played and ${solved.total} won.`
+}
 
 let title = document.createElement("h1")
 title.innerHTML = `Today's Puzzle: ${game.title}`
@@ -259,6 +293,7 @@ function evaluateGuess(clicked = false) {
     hintsContainer.remove()
     submitButton.remove()
     howToPlay.remove()
+    if (clicked) updateCurrentStats(true)
     return
   }
   let remainingGuesses = 3 - guesses.length
@@ -312,7 +347,23 @@ function evaluateGuess(clicked = false) {
       "This was a tough one and you're out of guesses 😔" +
       "<br />Come back tomorrow for a new puzzle!"
     main.insertBefore(gameSummary, howToPlay)
+    if (clicked) updateCurrentStats(false)
   }
+}
+
+function updateCurrentStats(won: boolean) {
+  if (played.last < gameIndex) played.total++
+  if (played.streakStart == -1) played.streakStart = gameIndex
+  if (played.first == -1) played.first = gameIndex
+  played.last = gameIndex
+  if (won) {
+    if (solved.last < gameIndex) solved.total++
+    if (solved.streakStart == -1) solved.streakStart = gameIndex
+    if (solved.first == -1) solved.first = gameIndex
+    solved.last = gameIndex
+  }
+  localStats.set({ played, solved })
+  displayCurrentStats()
 }
 
 let theme = localTheme.get()
