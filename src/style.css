@@ -254,9 +254,22 @@ button {
   font-size: 1.25rem;
 }
 
-.how-to-play img {
+.example-dark,
+.example-light {
   object-fit: contain;
-  width: 20rem;
+  width: 30rem;
+}
+
+.example-dark {
+  display: none;
+}
+
+.dark .example-dark {
+  display: block;
+}
+
+.dark .example-light {
+  display: none;
 }
 
 .theme-toggle {
