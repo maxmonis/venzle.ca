@@ -5,6 +5,7 @@ import { localGame, localStats, localTheme, shuffle } from "./utils"
 let main = document.querySelector("main")!
 let circleContainer = document.querySelector(".circle-container")!
 let howToPlay = document.querySelector(".how-to-play")!
+let instructionText = document.querySelector(".instruction-text")!
 
 let gameIndex =
   Math.floor(
@@ -116,6 +117,8 @@ document.addEventListener("drop", e => {
   if (!sourceDropzone) return
   sourceDropzone.textContent = ""
   sourceDropzone.classList.remove("draggable")
+  if (!main.contains(instructionText))
+    main.insertBefore(instructionText, draggableContainer)
   guessesText.remove()
   submitButton.remove()
   createDraggable(textContent)
@@ -249,6 +252,7 @@ guessesText.textContent = `${remainingGuesses} guess${
 appendSubmitButton()
 function appendSubmitButton() {
   if (Object.values(currentGuess).every(v => v)) {
+    instructionText.remove()
     main.insertBefore(submitButton, hintsContainer)
     main.insertBefore(guessesText, submitButton)
   }
