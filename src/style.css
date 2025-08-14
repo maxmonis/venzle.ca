@@ -220,6 +220,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-block-start: 0.5rem;
 }
 
 .hints-container button {

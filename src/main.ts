@@ -260,6 +260,7 @@ function evaluateGuess(clicked = false) {
     guessesText.remove()
     hintsContainer.remove()
     submitButton.remove()
+    howToPlay.remove()
     return
   }
   let remainingGuesses = 3 - guesses.length
