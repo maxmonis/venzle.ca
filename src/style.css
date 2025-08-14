@@ -270,7 +270,7 @@ button {
 .example-dark,
 .example-light {
   object-fit: contain;
-  width: 30rem;
+  width: 20rem;
 }
 
 .example-dark {
