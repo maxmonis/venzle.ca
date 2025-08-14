@@ -32,6 +32,7 @@ body {
     Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   margin: 0;
   padding: 1.25rem;
+  text-align: center;
 }
 
 main {
@@ -58,7 +59,6 @@ h1,
 h2 {
   font-weight: bold;
   letter-spacing: 1px;
-  text-align: center;
 }
 
 h1 {
@@ -118,7 +118,6 @@ button {
   line-height: 1.25;
   padding: 0.5rem;
   position: absolute;
-  text-align: center;
   width: 9rem;
 }
 
@@ -157,7 +156,6 @@ button {
   height: 4rem;
   justify-content: center;
   padding-inline: 0.25rem;
-  text-align: center;
   width: 5.5rem;
 }
 
@@ -216,7 +214,6 @@ button {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  text-align: center;
 }
 
 .hints-container button {
@@ -244,6 +241,7 @@ button {
   gap: 1rem;
   margin-block-start: 4rem;
   max-width: 65ch;
+  text-align: left;
 }
 
 .how-to-play strong {

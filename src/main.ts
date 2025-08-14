@@ -1,30 +1,60 @@
-import { game } from "./games"
+import { gameList } from "./games"
 import "./style.css"
-import { localTheme, shuffle } from "./utils"
+import { localGame, localTheme, shuffle } from "./utils"
 
 let main = document.querySelector("main")!
 let circleContainer = document.querySelector(".circle-container")!
 let howToPlay = document.querySelector(".how-to-play")!
 
+let gameIndex =
+  Math.floor(
+    (new Date().getTime() - new Date("2025-08-14").getTime()) /
+      (1000 * 3600 * 24)
+  ) % gameList.length
+let game = gameList[gameIndex]!
+
 let title = document.createElement("h1")
 title.innerHTML = `Today's Puzzle: ${game.title}`
 main.insertBefore(title, circleContainer)
 
-let hints = { a: false, b: false }
-let positions = {
-  a: "",
-  ab: "",
-  abc: "",
-  ac: "",
-  b: "",
-  bc: "",
-  c: ""
+let storageGame = localGame.get()
+if (storageGame && storageGame.index != gameIndex) {
+  storageGame = null
+  localGame.remove()
 }
 
-Object.keys(positions).forEach(key => {
+let currentGame: NonNullable<typeof storageGame> = storageGame ?? {
+  ...game,
+  currentGuess: {
+    a: "",
+    ab: "",
+    abc: "",
+    ac: "",
+    b: "",
+    bc: "",
+    c: ""
+  },
+  hints: { a: false, b: false },
+  guesses: [],
+  index: gameIndex
+}
+let { currentGuess, guesses, hints } = currentGame
+
+Object.entries(currentGuess).forEach(([key, value]) => {
   let dropzone = document.createElement("div")
   dropzone.classList.add("dropzone")
   dropzone.id = `dropzone-${key}`
+  if (value) {
+    dropzone.textContent = value
+    dropzone.classList.add("draggable")
+    dropzone.setAttribute("draggable", "true")
+    dropzone.addEventListener("dragstart", e => {
+      let dragEvent = e as DragEvent
+      if (!dragEvent.dataTransfer || !dropzone.textContent) return
+      dragEvent.dataTransfer.setData("textContent", dropzone.textContent)
+      createDragImage(dropzone, dragEvent.dataTransfer)
+    })
+  }
   circleContainer.appendChild(dropzone)
 })
 
@@ -32,9 +62,11 @@ let draggableContainer = document.createElement("div")
 draggableContainer.classList.add("draggable-container")
 main.insertBefore(draggableContainer, howToPlay)
 
-let entries = Object.entries(game.groups)
-let allValues = entries.flatMap(([, value]) => value)
-shuffle(Array.from(new Set(allValues))).forEach(createDraggable)
+let allValues = Object.entries(game.groups).flatMap(([, value]) => value)
+let values = allValues.filter(
+  v => !Object.values(currentGuess).some(value => v == value)
+)
+shuffle(Array.from(new Set(values))).forEach(createDraggable)
 
 function createDraggable(value: string) {
   let draggable = document.createElement("div")
@@ -104,13 +136,11 @@ document.querySelectorAll(".dropzone").forEach(dropzone => {
       createDragImage(dropzone, dragEvent.dataTransfer)
     })
     document.querySelectorAll(".dropzone").forEach(dropzone => {
-      positions[dropzone.id.split("-")[1] as keyof typeof positions] =
+      currentGuess[dropzone.id.split("-")[1] as keyof typeof currentGuess] =
         dropzone.innerHTML
     })
-    if (Object.entries(positions).every(([, value]) => value)) {
-      draggableContainer.remove()
-      main.insertBefore(submitButton, hintsContainer)
-    }
+    localGame.set(currentGame)
+    appendSubmitButton()
   })
 })
 
@@ -118,23 +148,79 @@ let submitButton = document.createElement("button")
 submitButton.textContent = "Submit Solution"
 submitButton.classList.add("submit-button")
 submitButton.addEventListener("click", () => {
+  if (guesses.some(g => JSON.stringify(g) == JSON.stringify(currentGuess))) {
+    alert("You already guessed that! Please try again")
+    return
+  }
+  guesses.push({ ...currentGuess })
+  localGame.set(currentGame)
+  evaluateGuess()
+})
+
+let hintsContainer = document.createElement("div")
+hintsContainer.classList.add("hints-container")
+main.insertBefore(hintsContainer, howToPlay)
+Object.keys(hints).forEach(k => {
+  let key = k as keyof typeof hints
+  let hint = document.createElement("div")
+  hintsContainer.appendChild(hint)
+  let hintText = document.createElement("p")
+  hintText.textContent =
+    key == "a"
+      ? `Hint A: ${allValues.find(value =>
+          Object.values(game.groups).every(v => v.includes(value))
+        )} is in the center`
+      : `Hint B: ${game.hint}`
+  let hintButton = document.createElement("button")
+  hintButton.classList.add("hint-button")
+  hintButton.textContent =
+    key == "a" ? "Hint A: who's in the center" : "Hint B: category clues"
+  hintButton.addEventListener("click", () => {
+    hints[key] = true
+    localGame.set(currentGame)
+    hintButton.remove()
+    hint.appendChild(hintText)
+  })
+  hints[key] ? hint.appendChild(hintText) : hint.appendChild(hintButton)
+})
+
+appendSubmitButton()
+function appendSubmitButton() {
+  if (Object.values(currentGuess).every(v => v)) {
+    draggableContainer.remove()
+    main.insertBefore(submitButton, hintsContainer)
+  }
+}
+
+evaluateGuess()
+function evaluateGuess() {
+  let groupEntries = Object.entries(game.groups)
   let [a] =
-    entries.find(([, value]) =>
-      [positions.a, positions.ab, positions.ac, positions.abc].every(p =>
-        value.includes(p)
-      )
+    groupEntries.find(([, value]) =>
+      [
+        currentGuess.a,
+        currentGuess.ab,
+        currentGuess.ac,
+        currentGuess.abc
+      ].every(p => value.includes(p))
     ) ?? []
   let [b] =
-    entries.find(([, value]) =>
-      [positions.b, positions.ab, positions.bc, positions.abc].every(p =>
-        value.includes(p)
-      )
+    groupEntries.find(([, value]) =>
+      [
+        currentGuess.b,
+        currentGuess.ab,
+        currentGuess.bc,
+        currentGuess.abc
+      ].every(p => value.includes(p))
     ) ?? []
   let [c] =
-    entries.find(([, value]) =>
-      [positions.c, positions.ac, positions.bc, positions.abc].every(p =>
-        value.includes(p)
-      )
+    groupEntries.find(([, value]) =>
+      [
+        currentGuess.c,
+        currentGuess.ac,
+        currentGuess.bc,
+        currentGuess.abc
+      ].every(p => value.includes(p))
     ) ?? []
   if (a && b && c) {
     let successMessage = document.createElement("h2")
@@ -147,13 +233,17 @@ submitButton.addEventListener("click", () => {
       title.classList.add(`title-${["a", "b", "c"][i]}`)
       circleContainer.appendChild(title)
     })
-    let gameSummary = document.createElement("div")
+    let gameSummary = document.createElement("p")
     gameSummary.classList.add("game-summary")
-    main.insertBefore(gameSummary, howToPlay)
-    let hintsText = document.createElement("p")
     let hintCount = Object.values(hints).filter(Boolean).length
-    hintsText.textContent = `${hintCount} hint${hintCount == 1 ? "" : "s"} used`
-    gameSummary.appendChild(hintsText)
+    let guessCount = guesses.length
+    let summaryHTML =
+      guessCount == 1 && hintCount == 0
+        ? "Wow, you got it on the first try without using any hints 😎"
+        : `You used ${hintCount} hint${hintCount == 1 ? "" : "s"} and ${guessCount} guess${guessCount == 1 ? "" : "es"}`
+    summaryHTML += "<br />Come back tomorrow for a new puzzle!"
+    gameSummary.innerHTML = summaryHTML
+    main.insertBefore(gameSummary, howToPlay)
     document.querySelectorAll(".dropzone").forEach(dropzone => {
       dropzone.classList.remove("draggable")
       dropzone.setAttribute("draggable", "false")
@@ -161,33 +251,7 @@ submitButton.addEventListener("click", () => {
     hintsContainer.remove()
     submitButton.remove()
   }
-})
-
-let hintsContainer = document.createElement("div")
-hintsContainer.classList.add("hints-container")
-main.insertBefore(hintsContainer, howToPlay)
-Object.keys(hints).forEach(k => {
-  let key = k as keyof typeof hints
-  let hint = document.createElement("div")
-  hintsContainer.appendChild(hint)
-  let hintButton = document.createElement("button")
-  hintButton.classList.add("hint-button")
-  hintButton.textContent =
-    key == "a" ? "Hint A: who's in the center" : "Hint B: category clues"
-  hintButton.addEventListener("click", () => {
-    hints[key] = true
-    let hintText = document.createElement("p")
-    hintText.textContent =
-      key == "a"
-        ? `Hint A: ${allValues.find(value =>
-            entries.every(([, v]) => v.includes(value))
-          )} is in the center`
-        : `Hint B: ${game.hint}`
-    hintButton.remove()
-    hint.appendChild(hintText)
-  })
-  hint.appendChild(hintButton)
-})
+}
 
 let theme = localTheme.get()
 if (!theme)
