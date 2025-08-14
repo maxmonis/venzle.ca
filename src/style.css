@@ -59,6 +59,7 @@ h1,
 h2 {
   font-weight: bold;
   letter-spacing: 1px;
+  text-wrap: balance;
 }
 
 h1 {
@@ -70,12 +71,17 @@ h2 {
   margin-block-end: 2rem;
 }
 
+p {
+  text-wrap: pretty;
+}
+
 button {
   border: none;
   background: inherit;
   color: inherit;
   cursor: pointer;
   font-size: inherit;
+  min-height: 2rem;
 }
 
 .circle-container {

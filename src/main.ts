@@ -154,7 +154,7 @@ submitButton.addEventListener("click", () => {
   }
   guesses.push({ ...currentGuess })
   localGame.set(currentGame)
-  evaluateGuess()
+  evaluateGuess(true)
 })
 
 let hintsContainer = document.createElement("div")
@@ -174,7 +174,9 @@ Object.keys(hints).forEach(k => {
   let hintButton = document.createElement("button")
   hintButton.classList.add("hint-button")
   hintButton.textContent =
-    key == "a" ? "Hint A: who's in the center" : "Hint B: category clues"
+    key == "a"
+      ? "Hint A: Click here to reveal who's in the center"
+      : "Hint B: Click here to reveal clues about the categories"
   hintButton.addEventListener("click", () => {
     hints[key] = true
     localGame.set(currentGame)
@@ -184,18 +186,25 @@ Object.keys(hints).forEach(k => {
   hints[key] ? hint.appendChild(hintText) : hint.appendChild(hintButton)
 })
 
+let guessesText = document.createElement("p")
+let remainingGuesses = 3 - guesses.length
+guessesText.textContent = `${remainingGuesses} guess${
+  remainingGuesses == 1 ? "" : "es"
+} remaining`
+
 appendSubmitButton()
 function appendSubmitButton() {
   if (Object.values(currentGuess).every(v => v)) {
     draggableContainer.remove()
     main.insertBefore(submitButton, hintsContainer)
+    main.insertBefore(guessesText, submitButton)
   }
 }
 
 evaluateGuess()
-function evaluateGuess() {
+function evaluateGuess(clicked = false) {
   let groupEntries = Object.entries(game.groups)
-  let [a] =
+  let [titleA] =
     groupEntries.find(([, value]) =>
       [
         currentGuess.a,
@@ -204,7 +213,7 @@ function evaluateGuess() {
         currentGuess.abc
       ].every(p => value.includes(p))
     ) ?? []
-  let [b] =
+  let [titleB] =
     groupEntries.find(([, value]) =>
       [
         currentGuess.b,
@@ -213,7 +222,7 @@ function evaluateGuess() {
         currentGuess.abc
       ].every(p => value.includes(p))
     ) ?? []
-  let [c] =
+  let [titleC] =
     groupEntries.find(([, value]) =>
       [
         currentGuess.c,
@@ -222,11 +231,11 @@ function evaluateGuess() {
         currentGuess.abc
       ].every(p => value.includes(p))
     ) ?? []
-  if (a && b && c) {
+  if (titleA && titleB && titleC) {
     let successMessage = document.createElement("h2")
     successMessage.textContent = "You got it! Congratulations 🥳"
     main.insertBefore(successMessage, circleContainer)
-    ;[a, b, c].forEach((text, i) => {
+    ;[titleA, titleB, titleC].forEach((text, i) => {
       let title = document.createElement("div")
       title.textContent = text
       title.classList.add("title")
@@ -239,17 +248,72 @@ function evaluateGuess() {
     let guessCount = guesses.length
     let summaryHTML =
       guessCount == 1 && hintCount == 0
-        ? "Wow, you got it on the first try without using any hints 😎"
+        ? "Great job, you got it on the first try without using any hints"
         : `You used ${hintCount} hint${hintCount == 1 ? "" : "s"} and ${guessCount} guess${guessCount == 1 ? "" : "es"}`
-    summaryHTML += "<br />Come back tomorrow for a new puzzle!"
+    summaryHTML += " 😎<br />Come back tomorrow for a new puzzle!"
     gameSummary.innerHTML = summaryHTML
     main.insertBefore(gameSummary, howToPlay)
     document.querySelectorAll(".dropzone").forEach(dropzone => {
       dropzone.classList.remove("draggable")
       dropzone.setAttribute("draggable", "false")
     })
+    guessesText.remove()
     hintsContainer.remove()
     submitButton.remove()
+    return
+  }
+  let remainingGuesses = 3 - guesses.length
+  if (remainingGuesses) {
+    guessesText.textContent = `${remainingGuesses} guess${
+      remainingGuesses == 1 ? "" : "es"
+    } remaining`
+    if (clicked)
+      alert(
+        "That's not quite it but keep trying! " +
+          `You have ${remainingGuesses} guess${
+            remainingGuesses == 1 ? "" : "es"
+          } remaining`
+      )
+  } else {
+    let failureMessage = document.createElement("h2")
+    failureMessage.textContent = "Better luck next time!"
+    main.insertBefore(failureMessage, circleContainer)
+    guessesText.remove()
+    submitButton.remove()
+    hintsContainer.remove()
+    let entries = Object.entries(currentGame.groups)
+    let [titleA, playersA] = entries[0]!
+    let [titleB, playersB] = entries[1]!
+    let [titleC, playersC] = entries[2]!
+    let solution = {
+      a: playersA.find(p => !playersB.includes(p) && !playersC.includes(p))!,
+      b: playersB.find(p => !playersA.includes(p) && !playersC.includes(p))!,
+      c: playersC.find(p => !playersA.includes(p) && !playersB.includes(p))!,
+      ab: playersA.find(p => playersB.includes(p) && !playersC.includes(p))!,
+      ac: playersA.find(p => !playersB.includes(p) && playersC.includes(p))!,
+      bc: playersB.find(p => !playersA.includes(p) && playersC.includes(p))!,
+      abc: playersA.find(p => playersB.includes(p) && playersC.includes(p))!
+    }
+    Object.entries(solution).forEach(([k, value]) => {
+      let key = k as keyof typeof solution
+      let dropzone = main.querySelector(`#dropzone-${key}`)
+      if (!dropzone) return
+      dropzone.textContent = value
+      dropzone.classList.remove("draggable")
+    })
+    ;[titleA, titleB, titleC].forEach((text, i) => {
+      let title = document.createElement("div")
+      title.textContent = text
+      title.classList.add("title")
+      title.classList.add(`title-${["a", "b", "c"][i]}`)
+      circleContainer.appendChild(title)
+    })
+    let gameSummary = document.createElement("p")
+    gameSummary.classList.add("game-summary")
+    gameSummary.innerHTML =
+      "This was a tough one and you're out of guesses 😔" +
+      "<br />Come back tomorrow for a new puzzle!"
+    main.insertBefore(gameSummary, howToPlay)
   }
 }
 
