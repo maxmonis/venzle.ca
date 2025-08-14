@@ -43,6 +43,7 @@ main {
 }
 
 footer {
+  align-items: center;
   display: flex;
   flex-wrap: wrap-reverse;
   gap: 0.25rem;
@@ -75,13 +76,24 @@ p {
   text-wrap: pretty;
 }
 
+a,
+button {
+  align-items: center;
+  color: inherit;
+  display: inline-flex;
+  justify-content: center;
+  min-height: 2rem;
+}
+
+a {
+  color: var(--blue);
+}
+
 button {
   border: none;
   background: inherit;
-  color: inherit;
   cursor: pointer;
   font-size: inherit;
-  min-height: 2rem;
 }
 
 .circle-container {
