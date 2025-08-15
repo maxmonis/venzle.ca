@@ -17,7 +17,7 @@ interface Guess {
 export interface LocalGame extends Game {
   currentGuess: Guess
   guesses: Array<Guess>
-  hints: { a: boolean; b: boolean }
+  hints: { a: boolean; b: boolean; c: boolean }
   index: number
 }
 

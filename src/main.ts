@@ -65,7 +65,7 @@ if (!currentGame || currentGame.index != gameIndex) {
       bc: "",
       c: ""
     },
-    hints: { a: false, b: false },
+    hints: { a: false, b: false, c: false },
     guesses: [],
     index: gameIndex
   }
@@ -217,8 +217,7 @@ submitButton.addEventListener("click", () => {
 let hintsContainer = document.createElement("div")
 hintsContainer.classList.add("hints-container")
 main.insertBefore(hintsContainer, howToPlay)
-Object.keys(hints).forEach(k => {
-  let key = k as keyof typeof hints
+;(["a", "b"] as const).forEach(key => {
   let hint = document.createElement("div")
   hintsContainer.appendChild(hint)
   let hintText = document.createElement("p")
@@ -239,9 +238,38 @@ Object.keys(hints).forEach(k => {
     localGame.set(currentGame)
     hintButton.remove()
     hint.appendChild(hintText)
+    appendCategoryHint()
   })
-  hints[key] ? hint.appendChild(hintText) : hint.appendChild(hintButton)
+  hint.appendChild(hints[key] ? hintText : hintButton)
 })
+
+let categoryHint = document.createElement("div")
+let categoryHintText = document.createElement("p")
+categoryHintText.textContent = `Categories: ${groupEntries.reduce(
+  (acc, [key], i) => {
+    acc +=
+      i == groupEntries.length - 1 ? `, and ${key}` : acc ? `, ${key}` : key
+    return acc
+  },
+  ""
+)}`
+let categoryHintButton = document.createElement("button")
+categoryHintButton.classList.add("hint-button")
+categoryHintButton.textContent =
+  "Still stuck? Click here to reveal the categories"
+categoryHintButton.addEventListener("click", () => {
+  hints.c = true
+  localGame.set(currentGame)
+  categoryHintButton.remove()
+  categoryHint.appendChild(categoryHintText)
+})
+
+appendCategoryHint()
+function appendCategoryHint() {
+  if (!hints.a || !hints.b) return
+  categoryHint.appendChild(hints.c ? categoryHintText : categoryHintButton)
+  hintsContainer.appendChild(categoryHint)
+}
 
 let guessesText = document.createElement("p")
 let remainingGuesses = 3 - guesses.length

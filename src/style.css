@@ -244,6 +244,7 @@ button {
   flex-direction: column;
   gap: 0.5rem;
   margin-block-start: 0.5rem;
+  max-width: 65ch;
 }
 
 .hints-container button {
