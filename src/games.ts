@@ -26,13 +26,13 @@ export let gameList: Array<Game> = [
         "Abraham Lincoln",
         "Winston Churchill",
         "Czar Nicholas II",
-        "Adolf Hitler"
+        "Joseph Stalin"
       ],
       "Killed with a Firearm": [
         "Abraham Lincoln",
         "Mahatma Gandhi",
         "Czar Nicholas II",
-        "Shinzo Abe"
+        "Franz Ferdinand"
       ],
       "Appears on Modern Currency": [
         "Abraham Lincoln",
@@ -42,7 +42,26 @@ export let gameList: Array<Game> = [
       ]
     },
     hint: "Conflict, Death, Money",
-    title: "World Leaders"
+    title: "Historical Figures"
+  },
+  {
+    groups: {
+      Book: [
+        "The Handmaid's Tale",
+        "No Country For Old Men",
+        "Big Little Lies",
+        "A Confederacy of Dunces"
+      ],
+      Movie: [
+        "The Handmaid's Tale",
+        "No Country For Old Men",
+        "Fargo",
+        "The Big Lebowski"
+      ],
+      "TV Show": ["The Handmaid's Tale", "Fargo", "Big Little Lies", "Lost"]
+    },
+    hint: "Read, Premiere, Series",
+    title: "Media"
   },
   {
     groups: {
@@ -50,7 +69,7 @@ export let gameList: Array<Game> = [
         "Daniel Day-Lewis",
         "Rachel Weisz",
         "Tom Hanks",
-        "Meryl Streep"
+        "Emma Stone"
       ],
       British: [
         "Daniel Day-Lewis",
@@ -65,7 +84,7 @@ export let gameList: Array<Game> = [
         "Bruce Willis"
       ]
     },
-    hint: "Award, Country, Decade",
+    hint: "Award, Country, DOB",
     title: "Actors"
   }
 ]
