@@ -1,6 +1,10 @@
 export interface Game {
+  currentGuess: Guess
   groups: Record<string, Array<string>>
+  guesses: Array<Guess>
   hint: string
+  hintsUsed: { a: boolean; b: boolean; c: boolean }
+  index: number
   title: string
 }
 
@@ -12,13 +16,6 @@ interface Guess {
   b: string
   bc: string
   c: string
-}
-
-export interface LocalGame extends Game {
-  currentGuess: Guess
-  guesses: Array<Guess>
-  hintsUsed: { a: boolean; b: boolean; c: boolean }
-  index: number
 }
 
 interface StatValues {

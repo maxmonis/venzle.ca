@@ -1,6 +1,6 @@
 import type { Game } from "./types"
 
-export let gameList: Array<Game> = [
+export let gameList: Array<Pick<Game, "groups" | "hint" | "title">> = [
   {
     groups: {
       "Constitutional Monarchy": ["Canada", "Sweden", "Australia", "Japan"],

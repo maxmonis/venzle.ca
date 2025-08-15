@@ -1,9 +1,9 @@
-import type { LocalGame, Stats } from "./types"
+import type { Game, Stats } from "./types"
 
 class LocalStorage<
   K extends "game" | "stats" | "theme",
   T extends K extends "game"
-    ? LocalGame
+    ? Game
     : K extends "stats"
       ? Stats
       : K extends "theme"
