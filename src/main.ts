@@ -4,36 +4,29 @@ import { localGame, localStats, localTheme, shuffle } from "./utils"
 
 let main = document.querySelector("main")!
 let circleContainer = document.querySelector(".circle-container")!
-let howToPlay = document.querySelector(".how-to-play")!
 let instructionText = document.querySelector(".instruction-text")!
+let howToPlay = document.querySelector(".how-to-play")!
 
 let gameIndex =
-  Math.floor(
-    (new Date().getTime() - new Date("2025-08-14").getTime()) /
-      (1000 * 3600 * 24)
-  ) % gameList.length
-let game = gameList[gameIndex]!
+  Math.floor((Date.now() - Date.UTC(2025, 7, 12)) / 86400000) % gameList.length
 
-let currentStats = localStats.get()
-if (!currentStats)
-  currentStats = {
-    played: {
-      first: -1,
-      last: -1,
-      streakStart: -1,
-      total: 0
-    },
-    solved: {
-      first: -1,
-      last: -1,
-      streakStart: -1,
-      total: 0
-    }
+let currentStats = localStats.get() ?? {
+  played: {
+    first: -1,
+    last: -1,
+    streakStart: -1,
+    total: 0
+  },
+  solved: {
+    first: -1,
+    last: -1,
+    streakStart: -1,
+    total: 0
   }
+}
 let { played, solved } = currentStats
 if (played.last < gameIndex - 1) played.streakStart = -1
 if (solved.last < gameIndex - 1) solved.streakStart = -1
-localStats.set(currentStats)
 
 let statsText = document.createElement("p")
 statsText.classList.add("stats-text")
@@ -48,31 +41,31 @@ function displayCurrentStats() {
   } won.<br />Total Games: ${played.total} played and ${solved.total} won.`
 }
 
-let title = document.createElement("h1")
-title.innerHTML = `Today's Puzzle: ${game.title}`
-main.insertBefore(title, circleContainer)
-
-let currentGame = localGame.get()
-if (!currentGame || currentGame.index != gameIndex) {
-  currentGame = {
-    ...game,
-    currentGuess: {
-      a: "",
-      ab: "",
-      abc: "",
-      ac: "",
-      b: "",
-      bc: "",
-      c: ""
-    },
-    hints: { a: false, b: false, c: false },
-    guesses: [],
-    index: gameIndex
-  }
-  localGame.set(currentGame)
-}
+let storageGame = localGame.get()
+let currentGame =
+  storageGame && storageGame.index == gameIndex
+    ? storageGame
+    : {
+        ...gameList[gameIndex]!,
+        currentGuess: {
+          a: "",
+          ab: "",
+          abc: "",
+          ac: "",
+          b: "",
+          bc: "",
+          c: ""
+        },
+        hintsUsed: { a: false, b: false, c: false },
+        guesses: [],
+        index: gameIndex
+      }
 let groupEntries = Object.entries(currentGame.groups)
-let { currentGuess, guesses, hints } = currentGame
+let { currentGuess, guesses, hintsUsed } = currentGame
+
+let puzzleTitle = document.createElement("h1")
+puzzleTitle.innerHTML = `Today's Puzzle: ${currentGame.title}`
+main.insertBefore(puzzleTitle, circleContainer)
 
 Object.entries(currentGuess).forEach(([key, value]) => {
   let dropzone = document.createElement("div")
@@ -122,6 +115,7 @@ document.addEventListener("drop", e => {
   guessesText.remove()
   submitButton.remove()
   createDraggable(textContent)
+  updateCurrentGuess()
 })
 
 function createDraggable(value: string) {
@@ -135,6 +129,15 @@ function createDraggable(value: string) {
     createDragImage(draggable, e.dataTransfer)
   })
   draggableContainer.appendChild(draggable)
+}
+
+function updateCurrentGuess() {
+  document.querySelectorAll(".dropzone").forEach(dropzone => {
+    currentGuess[dropzone.id.split("-")[1] as keyof typeof currentGuess] =
+      dropzone.innerHTML
+  })
+  localGame.set(currentGame)
+  appendSubmitButton()
 }
 
 function createDragImage(element: Element, dataTransfer: DataTransfer) {
@@ -192,12 +195,7 @@ document.querySelectorAll(".dropzone").forEach(dropzone => {
       dragEvent.dataTransfer.setData("textContent", dropzone.textContent)
       createDragImage(dropzone, dragEvent.dataTransfer)
     })
-    document.querySelectorAll(".dropzone").forEach(dropzone => {
-      currentGuess[dropzone.id.split("-")[1] as keyof typeof currentGuess] =
-        dropzone.innerHTML
-    })
-    localGame.set(currentGame)
-    appendSubmitButton()
+    updateCurrentGuess()
   })
 })
 
@@ -226,7 +224,7 @@ main.insertBefore(hintsContainer, howToPlay)
       ? `Hint A: ${allValues.find(value =>
           groupEntries.every(([, v]) => v.includes(value))
         )} is in the center`
-      : `Hint B: ${game.hint}`
+      : `Hint B: ${currentGame.hint}`
   let hintButton = document.createElement("button")
   hintButton.classList.add("hint-button")
   hintButton.textContent =
@@ -234,13 +232,13 @@ main.insertBefore(hintsContainer, howToPlay)
       ? "Hint A: Click here to reveal who's in the center"
       : "Hint B: Click here to reveal clues about the categories"
   hintButton.addEventListener("click", () => {
-    hints[key] = true
+    hintsUsed[key] = true
     localGame.set(currentGame)
     hintButton.remove()
     hint.appendChild(hintText)
     appendCategoryHint()
   })
-  hint.appendChild(hints[key] ? hintText : hintButton)
+  hint.appendChild(hintsUsed[key] ? hintText : hintButton)
 })
 
 let categoryHint = document.createElement("div")
@@ -258,7 +256,7 @@ categoryHintButton.classList.add("hint-button")
 categoryHintButton.textContent =
   "Still stuck? Click here to reveal the categories"
 categoryHintButton.addEventListener("click", () => {
-  hints.c = true
+  hintsUsed.c = true
   localGame.set(currentGame)
   categoryHintButton.remove()
   categoryHint.appendChild(categoryHintText)
@@ -266,8 +264,8 @@ categoryHintButton.addEventListener("click", () => {
 
 appendCategoryHint()
 function appendCategoryHint() {
-  if (!hints.a || !hints.b) return
-  categoryHint.appendChild(hints.c ? categoryHintText : categoryHintButton)
+  if (!hintsUsed.a || !hintsUsed.b) return
+  categoryHint.appendChild(hintsUsed.c ? categoryHintText : categoryHintButton)
   hintsContainer.appendChild(categoryHint)
 }
 
@@ -288,6 +286,7 @@ function appendSubmitButton() {
 
 evaluateGuess()
 function evaluateGuess(clicked = false) {
+  if (!clicked && played.last != gameIndex) return
   let [titleA] =
     groupEntries.find(([, value]) =>
       [
@@ -328,7 +327,7 @@ function evaluateGuess(clicked = false) {
     })
     let gameSummary = document.createElement("p")
     gameSummary.classList.add("game-summary")
-    let hintCount = Object.values(hints).filter(Boolean).length
+    let hintCount = Object.values(hintsUsed).filter(Boolean).length
     let guessCount = guesses.length
     let summaryHTML =
       guessCount == 1 && hintCount == 0
@@ -414,7 +413,7 @@ function updateCurrentStats(won: boolean) {
     if (solved.first == -1) solved.first = gameIndex
     solved.last = gameIndex
   }
-  localStats.set({ played, solved })
+  localStats.set(currentStats)
   displayCurrentStats()
 }
 
