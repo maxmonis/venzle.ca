@@ -84,7 +84,7 @@ export let gameList: Array<Game> = [
         "Bruce Willis"
       ]
     },
-    hint: "Award, Country, DOB",
+    hint: "Award, Nationality, DOB",
     title: "Actors"
   }
 ]

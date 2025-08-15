@@ -245,7 +245,7 @@ main.insertBefore(hintsContainer, howToPlay)
 
 let categoryHint = document.createElement("div")
 let categoryHintText = document.createElement("p")
-categoryHintText.textContent = `Categories: ${groupEntries.reduce(
+categoryHintText.textContent = `Bonus Hint: the categories are ${groupEntries.reduce(
   (acc, [key], i) => {
     acc +=
       i == groupEntries.length - 1 ? `, and ${key}` : acc ? `, ${key}` : key
@@ -272,6 +272,7 @@ function appendCategoryHint() {
 }
 
 let guessesText = document.createElement("p")
+guessesText.classList.add("guesses-text")
 let remainingGuesses = 3 - guesses.length
 guessesText.textContent = `${remainingGuesses} guess${
   remainingGuesses == 1 ? "" : "es"
@@ -279,11 +280,10 @@ guessesText.textContent = `${remainingGuesses} guess${
 
 appendSubmitButton()
 function appendSubmitButton() {
-  if (Object.values(currentGuess).every(v => v)) {
-    instructionText.remove()
-    main.insertBefore(submitButton, hintsContainer)
-    main.insertBefore(guessesText, submitButton)
-  }
+  if (!Object.values(currentGuess).every(v => v)) return
+  instructionText.remove()
+  main.insertBefore(submitButton, hintsContainer)
+  main.insertBefore(guessesText, submitButton)
 }
 
 evaluateGuess()

@@ -49,10 +49,12 @@ main {
 footer {
   align-items: center;
   display: flex;
-  flex-wrap: wrap-reverse;
-  gap: 0.25rem;
+  flex-direction: column;
+  gap: 1.25rem;
   justify-content: center;
-  margin-block: auto 0;
+  margin: auto auto 0;
+  max-width: 65ch;
+  padding-block-start: 1.25rem;
 }
 
 h1,
@@ -192,6 +194,7 @@ button {
   background-color: white;
   border: 1px solid var(--dark);
   cursor: grab;
+  font-size: 0.875rem;
 }
 
 .dropzone {
@@ -236,6 +239,10 @@ button {
 #dropzone-c {
   bottom: 2.5rem;
   left: 8.25rem;
+}
+
+.guesses-text {
+  margin-block-start: -1.25rem;
 }
 
 .hints-container {
@@ -300,4 +307,12 @@ button {
 .theme-toggle {
   font-size: 1.5rem;
   margin-block: 5rem 0.5rem;
+}
+
+.copyright {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  gap: 0.25rem;
+  justify-content: center;
 }
