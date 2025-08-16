@@ -1,4 +1,4 @@
-import { getGameDateFromIndex, todayIndex } from "./game"
+import { getGameText, todayIndex } from "./game"
 import { gameList } from "./gameList"
 
 export let circleContainer = document.querySelector(".circle-container")!
@@ -30,7 +30,7 @@ let options: Array<HTMLOptionElement> = []
 allGames.forEach((game, index) => {
   let option = document.createElement("option")
   option.value = index.toString()
-  option.textContent = `${getGameDateFromIndex(index)}: ${game.title}`
+  option.textContent = getGameText(game.title, index)
   options.unshift(option)
 })
 options.forEach(option => {

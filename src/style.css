@@ -20,6 +20,7 @@
   --bg: #121212;
   --blue: #60a5fa;
   --fg: #fefefe;
+  --slate: #cbd5e1;
 }
 
 html {
@@ -125,6 +126,9 @@ select {
   font-size: 1rem;
   padding: 0.5rem;
   max-width: 20rem;
+}
+.dark select {
+  border-width: 2px;
 }
 
 .circle-container {

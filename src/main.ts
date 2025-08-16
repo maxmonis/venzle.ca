@@ -14,7 +14,7 @@ import {
 import {
   checkGame,
   getGame,
-  getGameDateFromIndex,
+  getGameText,
   resetGame,
   saveGame,
   todayIndex,
@@ -34,11 +34,7 @@ initGame()
 
 function initGame() {
   window.scrollTo({ behavior: "smooth", top: 0 })
-  pageTitle.innerHTML = `${
-    game.index == todayIndex
-      ? "Today's Puzzle"
-      : getGameDateFromIndex(game.index)
-  }: ${game.title}`
+  pageTitle.innerHTML = getGameText(game.title, game.index)
   initDropzones(game)
   initHints(game)
   updateGameState(game)

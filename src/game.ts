@@ -159,11 +159,10 @@ export function getGame(index: number) {
       }
 }
 
-export function getGameDateFromIndex(index: number) {
-  return new Date(Date.UTC(2025, 7, 12) + index * 86400000)
-    .toISOString()
-    .split("T")[0]!
-    .replaceAll("-", "/")
+export function getGameText(title: string, index: number) {
+  return `${
+    index == todayIndex ? "Today's Puzzle" : `Puzzle ${index + 1}`
+  }: ${title}`
 }
 
 export function resetGame() {
