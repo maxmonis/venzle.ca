@@ -205,7 +205,7 @@ select {
   max-width: 30rem;
 }
 
-.draggable,
+[draggable="true"],
 .dropzone {
   align-items: center;
   border-radius: 2rem;
@@ -217,7 +217,7 @@ select {
   width: 5.5rem;
 }
 
-.draggable {
+[draggable="true"] {
   background-color: white;
   border: 1px solid var(--dark);
   cursor: grab;

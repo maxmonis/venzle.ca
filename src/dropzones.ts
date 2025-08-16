@@ -11,13 +11,12 @@ export function initDropzones(game: Game) {
     dropzone.classList.add("dropzone", id)
     if (value) {
       dropzone.textContent = value
-      dropzone.setAttribute("data-value", value)
+      dropzone.setAttribute("data-dnd-value", value)
       dropzone.setAttribute("draggable", "true")
-      dropzone.classList.add("draggable")
       dropzone.addEventListener("dragstart", e => {
         let dragEvent = e as DragEvent
         let dropzoneText = dropzone.textContent
-        let dropzoneValue = dropzone.getAttribute("data-value")
+        let dropzoneValue = dropzone.getAttribute("data-dnd-value")
         if (!dragEvent.dataTransfer || !dropzoneText || !dropzoneValue) return
         dragEvent.dataTransfer.setData("text", dropzoneText)
         dragEvent.dataTransfer.setData("value", dropzoneValue)
@@ -45,32 +44,33 @@ export function initDropzones(game: Game) {
       let dragEventValue = dragEvent.dataTransfer?.getData("value")
       if (!dragEventText || !dragEventValue) return
       let dropzoneText = dropzone.textContent
-      let dropzoneValue = dropzone.getAttribute("data-value")
-      dropzone.classList.add("draggable")
+      let dropzoneValue = dropzone.getAttribute("data-dnd-value")
       dropzone.setAttribute("draggable", "true")
       let sourceDropzone = Array.from(
         document.querySelectorAll(".dropzone")
-      ).find(el => el.getAttribute("data-value") == dragEventValue)
+      ).find(el => el.getAttribute("data-dnd-value") == dragEventValue)
       if (sourceDropzone) {
         sourceDropzone.textContent = dropzoneText
-        sourceDropzone.classList.toggle("draggable", Boolean(dropzoneValue))
         if (dropzoneValue)
-          sourceDropzone.setAttribute("data-value", dropzoneValue)
-        else sourceDropzone.removeAttribute("data-value")
+          sourceDropzone.setAttribute("data-dnd-value", dropzoneValue)
+        else {
+          sourceDropzone.removeAttribute("data-dnd-value")
+          sourceDropzone.removeAttribute("draggable")
+        }
       } else {
         let draggedElement = Array.from(
-          document.querySelectorAll(".draggable")
-        ).find(el => el.getAttribute("data-value") == dragEventValue)
+          document.querySelectorAll("[draggable=true]")
+        ).find(el => el.getAttribute("data-dnd-value") == dragEventValue)
         if (draggedElement) draggedElement.remove()
         if (dropzoneText && dropzoneValue)
           createDraggable(dropzoneText, dropzoneValue)
       }
       dropzone.textContent = dragEventText
-      dropzone.setAttribute("data-value", dragEventValue)
+      dropzone.setAttribute("data-dnd-value", dragEventValue)
       dropzone.addEventListener("dragstart", e => {
         let dragEvent = e as DragEvent
         let dropzoneText = dropzone.textContent
-        let dropzoneValue = dropzone.getAttribute("data-value")
+        let dropzoneValue = dropzone.getAttribute("data-dnd-value")
         if (!dragEvent.dataTransfer || !dropzoneText || !dropzoneValue) return
         dragEvent.dataTransfer.setData("text", dropzoneText)
         dragEvent.dataTransfer.setData("value", dropzoneValue)

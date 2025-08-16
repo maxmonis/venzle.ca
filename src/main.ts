@@ -73,12 +73,12 @@ document.addEventListener("drop", e => {
   let dragEventValue = dragEvent.dataTransfer?.getData("value")
   if (!dragEventText || !dragEventValue) return
   let sourceDropzone = Array.from(document.querySelectorAll(".dropzone")).find(
-    el => el.getAttribute("data-value") == dragEventValue
+    el => el.getAttribute("data-dnd-value") == dragEventValue
   )
   if (!sourceDropzone) return
   sourceDropzone.textContent = ""
-  sourceDropzone.removeAttribute("data-value")
-  sourceDropzone.classList.remove("draggable")
+  sourceDropzone.removeAttribute("data-dnd-value")
+  sourceDropzone.removeAttribute("draggable")
   if (!main.contains(instructionText))
     main.insertBefore(instructionText, draggableContainer)
   guessesText.remove()

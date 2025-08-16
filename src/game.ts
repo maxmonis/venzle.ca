@@ -70,8 +70,7 @@ export function checkGame(game: Game, clicked: boolean) {
     summaryHTML += " 😎<br />Come back tomorrow for a new puzzle!"
     gameSummary.innerHTML = summaryHTML
     document.querySelectorAll(".dropzone").forEach(dropzone => {
-      dropzone.classList.remove("draggable")
-      dropzone.setAttribute("draggable", "false")
+      dropzone.removeAttribute("draggable")
     })
     circleContainer.after(gameSummary)
     previousGameLabel.remove()
@@ -119,7 +118,7 @@ export function checkGame(game: Game, clicked: boolean) {
       let dropzone = main.querySelector(`#dropzone-${key}`)
       if (!dropzone) return
       dropzone.textContent = value
-      dropzone.classList.remove("draggable")
+      dropzone.removeAttribute("draggable")
     })
     ;[titleA, titleB, titleC].forEach((text, i) => {
       let title = document.createElement("div")
@@ -170,7 +169,7 @@ export function resetGame() {
   gameSummary.remove()
   previousGameLabel.remove()
   document
-    .querySelectorAll(".draggable,.dropzone,.circle-title")
+    .querySelectorAll("[draggable=true],.dropzone,.circle-title")
     .forEach(el => {
       if (!el.closest(".how-to-play")) el.remove()
     })
@@ -190,7 +189,7 @@ export function updateGameState(game: Game) {
   document.querySelectorAll(".dropzone").forEach(dropzone => {
     let id = dropzone.id.split("-")[1] as keyof typeof game.currentGuess
     if (id in game.currentGuess)
-      game.currentGuess[id] = dropzone.getAttribute("data-value") ?? ""
+      game.currentGuess[id] = dropzone.getAttribute("data-dnd-value") ?? ""
   })
   saveGame(game)
   if (!Object.values(game.currentGuess).every(Boolean)) return
