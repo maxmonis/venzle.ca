@@ -233,37 +233,37 @@ select {
   opacity: 70%;
 }
 
-#dropzone-a {
+.dropzone-a {
   left: 0.5rem;
   top: 4.25rem;
 }
 
-#dropzone-ab {
+.dropzone-ab {
   left: 8.25rem;
   top: 2.5rem;
 }
 
-#dropzone-abc {
+.dropzone-abc {
   left: 8.25rem;
   top: 8.25rem;
 }
 
-#dropzone-ac {
+.dropzone-ac {
   left: 3rem;
   top: 11.25rem;
 }
 
-#dropzone-b {
+.dropzone-b {
   right: 0.5rem;
   top: 4.25rem;
 }
 
-#dropzone-bc {
+.dropzone-bc {
   right: 3rem;
   top: 11.25rem;
 }
 
-#dropzone-c {
+.dropzone-c {
   bottom: 2.5rem;
   left: 8.25rem;
 }
@@ -313,22 +313,9 @@ select {
   font-size: 1.25rem;
 }
 
-.example-dark,
-.example-light {
-  object-fit: contain;
-  width: 20rem;
-}
-
-.example-dark {
-  display: none;
-}
-
-.dark .example-dark {
-  display: block;
-}
-
-.dark .example-light {
-  display: none;
+.how-to-play .circle-container {
+  margin-block: 1rem 2rem;
+  text-align: center;
 }
 
 .theme-toggle {

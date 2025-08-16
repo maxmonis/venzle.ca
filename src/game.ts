@@ -171,7 +171,9 @@ export function resetGame() {
   previousGameLabel.remove()
   document
     .querySelectorAll(".draggable,.dropzone,.circle-title")
-    .forEach(el => el.remove())
+    .forEach(el => {
+      if (!el.closest(".how-to-play")) el.remove()
+    })
   hintsContainer.innerHTML = ""
   if (!main.contains(howToPlay)) main.insertBefore(howToPlay, statsText)
   if (!main.contains(instructionText))
@@ -186,9 +188,9 @@ export function saveGame(game: ReturnType<typeof getGame>) {
 
 export function updateGameState(game: Game) {
   document.querySelectorAll(".dropzone").forEach(dropzone => {
-    game.currentGuess[
-      dropzone.id.split("-")[1] as keyof typeof game.currentGuess
-    ] = dropzone.getAttribute("data-value") ?? ""
+    let id = dropzone.id.split("-")[1] as keyof typeof game.currentGuess
+    if (id in game.currentGuess)
+      game.currentGuess[id] = dropzone.getAttribute("data-value") ?? ""
   })
   saveGame(game)
   if (!Object.values(game.currentGuess).every(Boolean)) return

@@ -6,8 +6,9 @@ import type { Game } from "./types"
 export function initDropzones(game: Game) {
   Object.entries(game.currentGuess).forEach(([key, value]) => {
     let dropzone = document.createElement("div")
-    dropzone.classList.add("dropzone")
-    dropzone.id = `dropzone-${key}`
+    let id = `dropzone-${key}`
+    dropzone.id = id
+    dropzone.classList.add("dropzone", id)
     if (value) {
       dropzone.textContent = value
       dropzone.setAttribute("data-value", value)
