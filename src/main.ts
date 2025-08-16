@@ -24,6 +24,7 @@ import { initHints } from "./hints"
 import { displayStats, stats, updateStats } from "./stats"
 import "./style.css"
 import { applyTheme } from "./theme"
+import { showToast } from "./toast"
 
 let game = getGame(todayIndex)
 
@@ -57,7 +58,7 @@ submitButton.addEventListener("click", () => {
       g => JSON.stringify(g) == JSON.stringify(game.currentGuess)
     )
   ) {
-    alert("You already guessed that! Please try again")
+    showToast("You already guessed that!<br />Please try again")
     return
   }
   game.guesses.push({ ...game.currentGuess })

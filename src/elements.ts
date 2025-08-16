@@ -45,6 +45,10 @@ export let submitButton = document.createElement("button")
 submitButton.classList.add("submit-button")
 submitButton.textContent = "Submit Solution"
 
+export let toast = document.createElement("div")
+toast.classList.add("toast")
+toast.role = "alert"
+
 main.prepend(pageTitle)
 instructionText.after(draggableContainer)
 draggableContainer.after(hintsContainer)

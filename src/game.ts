@@ -14,6 +14,7 @@ import {
   submitButton
 } from "./elements"
 import { gameList } from "./gameList"
+import { showToast } from "./toast"
 import type { Game } from "./types"
 import { localGame } from "./utils"
 
@@ -88,8 +89,8 @@ export function checkGame(game: Game, clicked: boolean) {
       remainingGuesses == 1 ? "" : "es"
     } remaining`
     if (clicked)
-      alert(
-        "That's not quite it but keep trying! " +
+      showToast(
+        "That's not quite it but keep trying!<br />" +
           `You have ${remainingGuesses} guess${
             remainingGuesses == 1 ? "" : "es"
           } remaining`
