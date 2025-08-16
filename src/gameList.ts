@@ -61,7 +61,7 @@ export let gameList: Array<Pick<Game, "groups" | "hint" | "title">> = [
       "TV Show": ["The Handmaid's Tale", "Fargo", "Big Little Lies", "Lost"]
     },
     hint: "Read, Premiere, Series",
-    title: "Media"
+    title: "Entertainment"
   },
   {
     groups: {
