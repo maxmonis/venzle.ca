@@ -7,7 +7,7 @@ export function createDraggable(value: string) {
   draggable.setAttribute("draggable", "true")
   draggable.addEventListener("dragstart", e => {
     if (!e.dataTransfer || !draggable.textContent) return
-    e.dataTransfer.setData("textContent", draggable.textContent)
+    e.dataTransfer.setData("text", draggable.textContent)
     createDragImage(draggable, e.dataTransfer)
   })
   draggableContainer.appendChild(draggable)

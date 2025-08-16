@@ -15,7 +15,7 @@ export function initDropzones(game: Game) {
       dropzone.addEventListener("dragstart", e => {
         let dragEvent = e as DragEvent
         if (!dragEvent.dataTransfer || !dropzone.textContent) return
-        dragEvent.dataTransfer.setData("textContent", dropzone.textContent)
+        dragEvent.dataTransfer.setData("text", dropzone.textContent)
         createDragImage(dropzone, dragEvent.dataTransfer)
       })
     }
@@ -39,10 +39,10 @@ export function initDropzones(game: Game) {
       if (!dragEvent.dataTransfer) return
       dropzone.classList.add("draggable")
       dropzone.setAttribute("draggable", "true")
-      let textContent = dragEvent.dataTransfer.getData("textContent")
+      let dragEventText = dragEvent.dataTransfer.getData("text")
       let sourceDropzone = Array.from(
         document.querySelectorAll(".dropzone")
-      ).find(el => el.textContent == textContent)
+      ).find(el => el.textContent == dragEventText)
       if (sourceDropzone) {
         sourceDropzone.textContent = dropzone.textContent
         sourceDropzone.classList.toggle(
@@ -52,15 +52,15 @@ export function initDropzones(game: Game) {
       } else {
         let draggedElement = Array.from(
           document.querySelectorAll(".draggable")
-        ).find(el => el.textContent == textContent)
+        ).find(el => el.textContent == dragEventText)
         if (draggedElement) draggedElement.remove()
         if (dropzone.textContent) createDraggable(dropzone.textContent)
       }
-      dropzone.textContent = textContent
+      dropzone.textContent = dragEventText
       dropzone.addEventListener("dragstart", e => {
         let dragEvent = e as DragEvent
         if (!dragEvent.dataTransfer || !dropzone.textContent) return
-        dragEvent.dataTransfer.setData("textContent", dropzone.textContent)
+        dragEvent.dataTransfer.setData("text", dropzone.textContent)
         createDragImage(dropzone, dragEvent.dataTransfer)
       })
       updateGameState(game)
