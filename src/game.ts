@@ -188,7 +188,7 @@ export function updateGameState(game: Game) {
   document.querySelectorAll(".dropzone").forEach(dropzone => {
     game.currentGuess[
       dropzone.id.split("-")[1] as keyof typeof game.currentGuess
-    ] = dropzone.innerHTML
+    ] = dropzone.getAttribute("data-value") ?? ""
   })
   saveGame(game)
   if (!Object.values(game.currentGuess).every(Boolean)) return

@@ -9,7 +9,9 @@ export function initHints(game: Game) {
   let values = allValues.filter(
     value => !Object.values(game.currentGuess).some(v => v == value)
   )
-  shuffle(Array.from(new Set(values))).forEach(createDraggable)
+  shuffle(Array.from(new Set(values))).forEach(value => {
+    createDraggable(value, value)
+  })
 
   let categoryHint = document.createElement("div")
   let categoryHintText = document.createElement("p")

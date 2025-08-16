@@ -70,17 +70,19 @@ document.addEventListener("drop", e => {
   e.preventDefault()
   let dragEvent = e as DragEvent
   let dragEventText = dragEvent.dataTransfer?.getData("text")
-  if (!dragEventText) return
+  let dragEventValue = dragEvent.dataTransfer?.getData("value")
+  if (!dragEventText || !dragEventValue) return
   let sourceDropzone = Array.from(document.querySelectorAll(".dropzone")).find(
-    el => el.textContent == dragEventText
+    el => el.getAttribute("data-value") == dragEventValue
   )
   if (!sourceDropzone) return
   sourceDropzone.textContent = ""
+  sourceDropzone.removeAttribute("data-value")
   sourceDropzone.classList.remove("draggable")
   if (!main.contains(instructionText))
     main.insertBefore(instructionText, draggableContainer)
   guessesText.remove()
   submitButton.remove()
-  createDraggable(dragEventText)
+  createDraggable(dragEventText, dragEventValue)
   updateGameState(game)
 })
