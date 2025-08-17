@@ -63,3 +63,7 @@ main.prepend(pageTitle)
 instructionText.after(draggableContainer)
 draggableContainer.after(hintsContainer)
 main.append(statsText)
+
+setTimeout(() => {
+  document.body.classList.add("loaded")
+}, 2000)
