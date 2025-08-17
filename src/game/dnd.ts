@@ -82,27 +82,38 @@ function handleEnd(clientX: number, clientY: number) {
   if (!draggedElementText || !draggedElementValue) return
   let newDropzoneText = newDropzone?.textContent
   let newDropzoneValue = newDropzone?.getAttribute("data-dnd-value")
-  if (oldDropzone) {
-    oldDropzone.textContent = newDropzoneText ?? null
-    if (newDropzoneValue)
-      oldDropzone.setAttribute("data-dnd-value", newDropzoneValue)
-    else {
-      oldDropzone.removeAttribute("data-dnd-value")
-      oldDropzone.removeAttribute("draggable")
-    }
-  } else {
-    let draggedElement = Array.from(
-      document.querySelectorAll("[draggable=true]")
-    ).find(el => el.getAttribute("data-dnd-value") == draggedElementValue)
-    if (draggedElement) draggedElement.remove()
-    if (newDropzoneText && newDropzoneValue)
-      createDraggable(newDropzoneText, newDropzoneValue)
-  }
   if (newDropzone) {
     newDropzone.textContent = draggedElementText
     newDropzone.setAttribute("data-dnd-value", draggedElementValue)
     makeElementDraggable(newDropzone)
-  } else createDraggable(draggedElementText, draggedElementValue)
+  }
+  if (oldDropzone && newDropzone) {
+    if (newDropzoneText && newDropzoneValue) {
+      oldDropzone.textContent = newDropzoneText
+      oldDropzone.setAttribute("data-dnd-value", newDropzoneValue)
+    } else {
+      oldDropzone.textContent = null
+      oldDropzone.removeAttribute("data-dnd-value")
+      oldDropzone.removeAttribute("draggable")
+    }
+  } else if (oldDropzone) {
+    let rect = circleContainer.getBoundingClientRect()
+    if (
+      clientX < rect.left ||
+      clientX > rect.right ||
+      clientY < rect.top ||
+      clientY > rect.bottom
+    ) {
+      oldDropzone.textContent = null
+      oldDropzone.removeAttribute("data-dnd-value")
+      oldDropzone.removeAttribute("draggable")
+      createDraggable(draggedElementText, draggedElementValue)
+    }
+  } else if (newDropzone) {
+    draggedElement.remove()
+    if (newDropzoneText && newDropzoneValue)
+      createDraggable(newDropzoneText, newDropzoneValue)
+  }
   draggedElement.style.cssText = ""
   draggedElement = null
   new BroadcastChannel("game").postMessage("update")

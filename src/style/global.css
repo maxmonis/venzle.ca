@@ -210,13 +210,11 @@ select {
 }
 
 .draggable-container {
-  animation: slideIn 0.6s ease-out 0.8s forwards;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.5rem;
   max-width: 30rem;
-  transform: translate(0, 100vmax);
 }
 
 [draggable="true"],
