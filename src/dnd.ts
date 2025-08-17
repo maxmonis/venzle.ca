@@ -1,7 +1,85 @@
-import { createDragImage, createDraggable } from "./draggable"
-import { circleContainer } from "./elements"
-import { updateGameState } from "./game"
+import {
+  circleContainer,
+  draggableContainer,
+  guessesText,
+  instructionText,
+  main,
+  submitButton
+} from "./elements"
 import type { Game } from "./types"
+import { shuffle } from "./utils"
+
+document.addEventListener("dragover", e => {
+  e.preventDefault()
+})
+
+document.addEventListener("drop", e => {
+  e.preventDefault()
+  let dragEvent = e as DragEvent
+  let dragEventText = dragEvent.dataTransfer?.getData("text")
+  let dragEventValue = dragEvent.dataTransfer?.getData("value")
+  if (!dragEventText || !dragEventValue) return
+  let sourceDropzone = Array.from(document.querySelectorAll(".dropzone")).find(
+    el => el.getAttribute("data-dnd-value") == dragEventValue
+  )
+  if (!sourceDropzone) return
+  sourceDropzone.textContent = ""
+  sourceDropzone.removeAttribute("data-dnd-value")
+  sourceDropzone.removeAttribute("draggable")
+  if (!main.contains(instructionText))
+    main.insertBefore(instructionText, draggableContainer)
+  guessesText.remove()
+  submitButton.remove()
+  createDraggable(dragEventText, dragEventValue)
+  new BroadcastChannel("game").postMessage("update")
+})
+
+export function createDraggable(text: string, value: string) {
+  let draggable = document.createElement("div")
+  draggable.textContent = text
+  draggable.setAttribute("data-dnd-value", value)
+  draggable.setAttribute("draggable", "true")
+  draggable.addEventListener("dragstart", e => {
+    let draggableText = draggable.textContent
+    let draggableValue = draggable.getAttribute("data-dnd-value")
+    if (!e.dataTransfer || !draggableText || !draggableValue) return
+    e.dataTransfer.setData("text", draggableText)
+    e.dataTransfer.setData("value", draggableValue)
+    createDragImage(draggableText, draggableValue, e.dataTransfer)
+  })
+  draggableContainer.appendChild(draggable)
+}
+
+export function createDragImage(
+  text: string,
+  value: string,
+  dataTransfer: DataTransfer
+) {
+  let dragImage = document.createElement("div")
+  dragImage.textContent = text
+  dragImage.setAttribute("data-dnd-value", value)
+  dragImage.setAttribute("draggable", "true")
+  document.body.appendChild(dragImage)
+  dataTransfer.setDragImage(dragImage, 40, 40)
+  setTimeout(() => {
+    dragImage.remove()
+  }, 0)
+}
+
+export function initDraggables(game: Game) {
+  for (let text of shuffle(
+    Array.from(
+      new Set(
+        Object.values(game.groups)
+          .flatMap(v => v)
+          .filter(
+            value => !Object.values(game.currentGuess).some(v => v == value)
+          )
+      )
+    )
+  ))
+    createDraggable(text, text)
+}
 
 export function initDropzones(game: Game) {
   Object.entries(game.currentGuess).forEach(([key, value]) => {
@@ -76,7 +154,7 @@ export function initDropzones(game: Game) {
         dragEvent.dataTransfer.setData("value", dropzoneValue)
         createDragImage(dropzoneText, dropzoneValue, dragEvent.dataTransfer)
       })
-      updateGameState(game)
+      new BroadcastChannel("game").postMessage("update")
     })
   })
 }

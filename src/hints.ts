@@ -1,18 +1,8 @@
-import { createDraggable } from "./draggable"
 import { hintsContainer } from "./elements"
 import { saveGame } from "./game"
 import type { Game } from "./types"
-import { shuffle } from "./utils"
 
 export function initHints(game: Game) {
-  let allValues = Object.values(game.groups).flatMap(v => v)
-  let values = allValues.filter(
-    value => !Object.values(game.currentGuess).some(v => v == value)
-  )
-  shuffle(Array.from(new Set(values))).forEach(value => {
-    createDraggable(value, value)
-  })
-
   let categoryHint = document.createElement("div")
   let categoryHintText = document.createElement("p")
   let groupKeys = Object.keys(game.groups)
@@ -34,6 +24,7 @@ export function initHints(game: Game) {
     categoryHint.appendChild(categoryHintText)
   })
 
+  let allValues = Object.values(game.groups).flatMap(v => v)
   for (let k in game.hintsUsed) {
     if (k == "c") continue
     let key = k as keyof typeof game.hintsUsed

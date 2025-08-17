@@ -6,7 +6,7 @@ if (!theme)
   theme = window.matchMedia("(prefers-color-scheme: dark)").matches
     ? "dark"
     : "light"
-export let themeToggle = document.createElement("button")
+let themeToggle = document.createElement("button")
 themeToggle.classList.add("theme-toggle")
 themeToggle.setAttribute("aria-label", "toggle dark mode")
 themeToggle.addEventListener("click", () => {

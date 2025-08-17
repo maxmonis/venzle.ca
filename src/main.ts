@@ -1,16 +1,5 @@
-import { createDraggable } from "./draggable"
-import { initDropzones } from "./dropzones"
-import {
-  draggableContainer,
-  guessesText,
-  howToPlay,
-  instructionText,
-  main,
-  pageTitle,
-  previousGameLabel,
-  previousGameSelect,
-  submitButton
-} from "./elements"
+import { initDraggables, initDropzones } from "./dnd"
+import { howToPlay, main, pageTitle, previousGameLabel } from "./elements"
 import {
   checkGame,
   getGame,
@@ -30,59 +19,36 @@ let game = getGame(todayIndex)
 
 applyTheme()
 displayStats()
-initGame()
+init()
 
-function initGame() {
+function init() {
   window.scrollTo({ behavior: "smooth", top: 0 })
   pageTitle.innerHTML = getGameText(game.title, game.index)
   initDropzones(game)
+  initDraggables(game)
   initHints(game)
   updateGameState(game)
   if (stats.played.last == todayIndex) checkGame(game, false)
   if (game.index != todayIndex) main.insertBefore(previousGameLabel, howToPlay)
 }
 
-previousGameSelect.addEventListener("change", () => {
-  resetGame()
-  game = getGame(Number(previousGameSelect.value))
-  initGame()
-})
-
-submitButton.addEventListener("click", () => {
-  if (
-    game.guesses.some(
-      g => JSON.stringify(g) == JSON.stringify(game.currentGuess)
-    )
-  ) {
-    showToast("You already guessed that!<br />Please try again")
-    return
+new BroadcastChannel("game").onmessage = e => {
+  if (e.data == "update") updateGameState(game)
+  else if (e.data == "submit") {
+    if (
+      game.guesses.some(
+        g => JSON.stringify(g) == JSON.stringify(game.currentGuess)
+      )
+    ) {
+      showToast("You already guessed that!<br />Please try again")
+      return
+    }
+    game.guesses.push({ ...game.currentGuess })
+    saveGame(game)
+    updateStats(checkGame(game, true), game.index)
+  } else if (typeof e.data == "number") {
+    resetGame()
+    game = getGame(e.data)
+    init()
   }
-  game.guesses.push({ ...game.currentGuess })
-  saveGame(game)
-  updateStats(checkGame(game, true), game.index)
-})
-
-document.addEventListener("dragover", e => {
-  e.preventDefault()
-})
-
-document.addEventListener("drop", e => {
-  e.preventDefault()
-  let dragEvent = e as DragEvent
-  let dragEventText = dragEvent.dataTransfer?.getData("text")
-  let dragEventValue = dragEvent.dataTransfer?.getData("value")
-  if (!dragEventText || !dragEventValue) return
-  let sourceDropzone = Array.from(document.querySelectorAll(".dropzone")).find(
-    el => el.getAttribute("data-dnd-value") == dragEventValue
-  )
-  if (!sourceDropzone) return
-  sourceDropzone.textContent = ""
-  sourceDropzone.removeAttribute("data-dnd-value")
-  sourceDropzone.removeAttribute("draggable")
-  if (!main.contains(instructionText))
-    main.insertBefore(instructionText, draggableContainer)
-  guessesText.remove()
-  submitButton.remove()
-  createDraggable(dragEventText, dragEventValue)
-  updateGameState(game)
-})
+}

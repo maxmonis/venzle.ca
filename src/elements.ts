@@ -25,9 +25,8 @@ export let pageTitle = document.createElement("h1")
 export let previousGameLabel = document.createElement("label")
 previousGameLabel.textContent = "Available Puzzles:"
 export let previousGameSelect = document.createElement("select")
-let allGames = gameList.slice(0, todayIndex + 1)
 let options: Array<HTMLOptionElement> = []
-allGames.forEach((game, index) => {
+gameList.slice(0, todayIndex + 1).forEach((game, index) => {
   let option = document.createElement("option")
   option.value = index.toString()
   option.textContent = getGameText(game.title, index)
@@ -35,6 +34,9 @@ allGames.forEach((game, index) => {
 })
 options.forEach(option => {
   previousGameSelect.appendChild(option)
+})
+previousGameSelect.addEventListener("change", () => {
+  new BroadcastChannel("game").postMessage(Number(previousGameSelect.value))
 })
 previousGameLabel.appendChild(previousGameSelect)
 
@@ -44,6 +46,9 @@ statsText.classList.add("stats-text")
 export let submitButton = document.createElement("button")
 submitButton.classList.add("submit-button")
 submitButton.textContent = "Submit Solution"
+submitButton.addEventListener("click", () => {
+  new BroadcastChannel("game").postMessage("submit")
+})
 
 export let toast = document.createElement("div")
 toast.classList.add("toast")
