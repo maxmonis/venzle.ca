@@ -9,30 +9,111 @@ import {
 import type { Game } from "./types"
 import { shuffle } from "./utils"
 
-document.addEventListener("dragover", e => {
-  e.preventDefault()
-})
+let isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0
+let touchDraggable: HTMLElement | null = null
 
-document.addEventListener("drop", e => {
-  e.preventDefault()
-  let dragEvent = e as DragEvent
-  let dragEventText = dragEvent.dataTransfer?.getData("text")
-  let dragEventValue = dragEvent.dataTransfer?.getData("value")
-  if (!dragEventText || !dragEventValue) return
-  let sourceDropzone = Array.from(document.querySelectorAll(".dropzone")).find(
-    el => el.getAttribute("data-dnd-value") == dragEventValue
+if (!isTouch) {
+  document.addEventListener("dragover", e => {
+    e.preventDefault()
+  })
+  document.addEventListener("drop", e => {
+    e.preventDefault()
+    let dragEvent = e as DragEvent
+    let dragEventText = dragEvent.dataTransfer?.getData("text")
+    let dragEventValue = dragEvent.dataTransfer?.getData("value")
+    if (!dragEventText || !dragEventValue) return
+    let sourceDropzone = Array.from(
+      document.querySelectorAll(".dropzone")
+    ).find(el => el.getAttribute("data-dnd-value") == dragEventValue)
+    if (!sourceDropzone) return
+    sourceDropzone.textContent = ""
+    sourceDropzone.removeAttribute("data-dnd-value")
+    sourceDropzone.removeAttribute("draggable")
+    if (!main.contains(instructionText))
+      main.insertBefore(instructionText, draggableContainer)
+    guessesText.remove()
+    submitButton.remove()
+    createDraggable(dragEventText, dragEventValue)
+    new BroadcastChannel("game").postMessage("update")
+  })
+} else {
+  document.addEventListener(
+    "touchmove",
+    e => {
+      let touch = e.touches[0]
+      if (!touchDraggable || !touch) return
+      e.preventDefault()
+      touchDraggable.style.position = "fixed"
+      touchDraggable.style.left = `${touch.clientX - 40}px`
+      touchDraggable.style.top = `${touch.clientY - 40}px`
+      for (let zone of document.querySelectorAll(".dropzone")) {
+        let rect = (zone as HTMLElement).getBoundingClientRect()
+        zone.classList.toggle(
+          "dragover",
+          touch.clientX >= rect.left &&
+            touch.clientX <= rect.right &&
+            touch.clientY >= rect.top &&
+            touch.clientY <= rect.bottom
+        )
+      }
+    },
+    { passive: false }
   )
-  if (!sourceDropzone) return
-  sourceDropzone.textContent = ""
-  sourceDropzone.removeAttribute("data-dnd-value")
-  sourceDropzone.removeAttribute("draggable")
-  if (!main.contains(instructionText))
-    main.insertBefore(instructionText, draggableContainer)
-  guessesText.remove()
-  submitButton.remove()
-  createDraggable(dragEventText, dragEventValue)
-  new BroadcastChannel("game").postMessage("update")
-})
+  document.addEventListener("touchend", e => {
+    let touch = e.changedTouches[0]
+    if (!touchDraggable || !touch) return
+    e.preventDefault()
+    touchDraggable.classList.remove("dragover")
+    let dropzone: HTMLElement | null = null
+    for (let zone of document.querySelectorAll(".dropzone")) {
+      zone.classList.remove("dragover")
+      let rect = (zone as HTMLElement).getBoundingClientRect()
+      if (
+        touch.clientX >= rect.left &&
+        touch.clientX <= rect.right &&
+        touch.clientY >= rect.top &&
+        touch.clientY <= rect.bottom &&
+        zone.textContent != touchDraggable.textContent
+      )
+        dropzone = zone as HTMLElement
+    }
+    let text = touchDraggable.textContent
+    let value = touchDraggable.getAttribute("data-dnd-value")
+    if (!text || !value) return
+    let sourceDropzone = Array.from(
+      document.querySelectorAll(".dropzone")
+    ).find(el => el.getAttribute("data-dnd-value") == value)
+    let dropzoneText = dropzone?.textContent
+    let dropzoneValue = dropzone?.getAttribute("data-dnd-value")
+    if (sourceDropzone) {
+      sourceDropzone.textContent = dropzoneText ?? null
+      if (dropzoneValue)
+        sourceDropzone.setAttribute("data-dnd-value", dropzoneValue)
+      else {
+        sourceDropzone.removeAttribute("data-dnd-value")
+        sourceDropzone.removeAttribute("draggable")
+      }
+    } else {
+      let draggedElement = Array.from(
+        document.querySelectorAll("[draggable=true]")
+      ).find(el => el.getAttribute("data-dnd-value") == value)
+      if (draggedElement) draggedElement.remove()
+      if (dropzoneText && dropzoneValue)
+        createDraggable(dropzoneText, dropzoneValue)
+    }
+    if (dropzone) {
+      dropzone.textContent = text
+      dropzone.setAttribute("data-dnd-value", value)
+      makeElementDraggable(dropzone)
+    } else createDraggable(text, value)
+    touchDraggable.style.position = ""
+    touchDraggable.style.left = ""
+    touchDraggable.style.top = ""
+    touchDraggable.style.opacity = ""
+    touchDraggable = null
+    new BroadcastChannel("game").postMessage("update")
+  })
+}
 
 export function createDraggable(text: string, value: string) {
   let draggable = document.createElement("div")
@@ -84,6 +165,7 @@ export function initDropzones(game: Game) {
       makeElementDraggable(dropzone)
     }
     circleContainer.appendChild(dropzone)
+    if (isTouch) return
     dropzone.addEventListener("dragenter", e => {
       e.preventDefault()
       dropzone.classList.add("dragover")
@@ -135,12 +217,28 @@ export function initDropzones(game: Game) {
 
 function makeElementDraggable(element: HTMLElement) {
   element.setAttribute("draggable", "true")
-  element.addEventListener("dragstart", e => {
-    let draggableText = element.textContent
-    let draggableValue = element.getAttribute("data-dnd-value")
-    if (!e.dataTransfer || !draggableText || !draggableValue) return
-    e.dataTransfer.setData("text", draggableText)
-    e.dataTransfer.setData("value", draggableValue)
-    createDragImage(e.dataTransfer)
-  })
+  if (!isTouch)
+    element.addEventListener("dragstart", e => {
+      let draggableText = element.textContent
+      let draggableValue = element.getAttribute("data-dnd-value")
+      if (!e.dataTransfer || !draggableText || !draggableValue) return
+      e.dataTransfer.setData("text", draggableText)
+      e.dataTransfer.setData("value", draggableValue)
+      createDragImage(e.dataTransfer)
+    })
+  else
+    element.addEventListener(
+      "touchstart",
+      e => {
+        let touch = e.touches[0]
+        if (!touch || !element.getAttribute("draggable")) return
+        e.preventDefault()
+        touchDraggable = element
+        element.style.position = "fixed"
+        element.style.opacity = "100%"
+        element.style.left = `${touch.clientX - 40}px`
+        element.style.top = `${touch.clientY - 40}px`
+      },
+      { passive: false }
+    )
 }
