@@ -1,33 +1,12 @@
-import { hintsContainer } from "./elements"
+import { categoryHint, hintsContainer } from "./elements"
 import { saveGame } from "./game"
 import type { Game } from "./types"
 
 export function initHints(game: Game) {
-  let categoryHint = document.createElement("div")
-  let categoryHintText = document.createElement("p")
-  let groupKeys = Object.keys(game.groups)
-  categoryHintText.textContent = `Bonus Hint: the categories are ${groupKeys.reduce(
-    (acc, key, i) => {
-      acc += i == groupKeys.length - 1 ? `, and ${key}` : acc ? `, ${key}` : key
-      return acc
-    },
-    ""
-  )}`
-  let categoryHintButton = document.createElement("button")
-  categoryHintButton.classList.add("hint-button")
-  categoryHintButton.textContent =
-    "Still stuck? Click here to reveal the categories"
-  categoryHintButton.addEventListener("click", () => {
-    game.hintsUsed.c = true
-    saveGame(game)
-    categoryHintButton.remove()
-    categoryHint.appendChild(categoryHintText)
-  })
-
   let allValues = Object.values(game.groups).flatMap(v => v)
   for (let k in game.hintsUsed) {
-    if (k == "c") continue
     let key = k as keyof typeof game.hintsUsed
+    if (key == "c") continue
     let hint = document.createElement("div")
     hintsContainer.appendChild(hint)
     let hintText = document.createElement("p")
@@ -48,18 +27,36 @@ export function initHints(game: Game) {
       saveGame(game)
       hintButton.remove()
       hint.appendChild(hintText)
-      appendCategoryHint()
+      appendCategoryHint(game)
     })
     hint.appendChild(game.hintsUsed[key] ? hintText : hintButton)
   }
+  appendCategoryHint(game)
+}
 
-  appendCategoryHint()
-  function appendCategoryHint() {
-    let { hintsUsed } = game
-    if (!hintsUsed.a || !hintsUsed.b) return
-    categoryHint.appendChild(
-      hintsUsed.c ? categoryHintText : categoryHintButton
-    )
-    hintsContainer.appendChild(categoryHint)
-  }
+function appendCategoryHint(game: Game) {
+  if (!game.hintsUsed.a || !game.hintsUsed.b) return
+  let categoryHintText = document.createElement("p")
+  let groupKeys = Object.keys(game.groups)
+  categoryHintText.textContent = `Bonus Hint: the categories are ${groupKeys.reduce(
+    (acc, key, i) => {
+      acc += i == groupKeys.length - 1 ? `, and ${key}` : acc ? `, ${key}` : key
+      return acc
+    },
+    ""
+  )}`
+  let categoryHintButton = document.createElement("button")
+  categoryHintButton.classList.add("hint-button")
+  categoryHintButton.textContent =
+    "Still stuck? Click here to reveal the categories"
+  categoryHintButton.addEventListener("click", () => {
+    game.hintsUsed.c = true
+    saveGame(game)
+    categoryHintButton.remove()
+    categoryHint.appendChild(categoryHintText)
+  })
+  categoryHint.appendChild(
+    game.hintsUsed.c ? categoryHintText : categoryHintButton
+  )
+  hintsContainer.appendChild(categoryHint)
 }

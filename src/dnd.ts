@@ -45,16 +45,15 @@ export function createDraggable(text: string, value: string) {
     if (!e.dataTransfer || !draggableText || !draggableValue) return
     e.dataTransfer.setData("text", draggableText)
     e.dataTransfer.setData("value", draggableValue)
-    createDragImage(draggableText, draggableValue, e.dataTransfer)
+    createDragImage(e.dataTransfer)
   })
   draggableContainer.appendChild(draggable)
 }
 
-export function createDragImage(
-  text: string,
-  value: string,
-  dataTransfer: DataTransfer
-) {
+export function createDragImage(dataTransfer: DataTransfer) {
+  let text = dataTransfer.getData("text")
+  let value = dataTransfer.getData("value")
+  if (!text || !value) return
   let dragImage = document.createElement("div")
   dragImage.textContent = text
   dragImage.setAttribute("data-dnd-value", value)
@@ -98,7 +97,7 @@ export function initDropzones(game: Game) {
         if (!dragEvent.dataTransfer || !dropzoneText || !dropzoneValue) return
         dragEvent.dataTransfer.setData("text", dropzoneText)
         dragEvent.dataTransfer.setData("value", dropzoneValue)
-        createDragImage(dropzoneText, dropzoneValue, dragEvent.dataTransfer)
+        createDragImage(dragEvent.dataTransfer)
       })
     }
     circleContainer.appendChild(dropzone)
@@ -152,7 +151,7 @@ export function initDropzones(game: Game) {
         if (!dragEvent.dataTransfer || !dropzoneText || !dropzoneValue) return
         dragEvent.dataTransfer.setData("text", dropzoneText)
         dragEvent.dataTransfer.setData("value", dropzoneValue)
-        createDragImage(dropzoneText, dropzoneValue, dragEvent.dataTransfer)
+        createDragImage(dragEvent.dataTransfer)
       })
       new BroadcastChannel("game").postMessage("update")
     })

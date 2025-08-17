@@ -138,24 +138,25 @@ export function checkGame(game: Game, clicked: boolean) {
 }
 
 export function getGame(index: number) {
-  let storageGame = localGame.get()
-  return index == todayIndex && storageGame && storageGame.index == todayIndex
-    ? storageGame
-    : {
-        ...gameList[index]!,
-        currentGuess: {
-          a: "",
-          ab: "",
-          abc: "",
-          ac: "",
-          b: "",
-          bc: "",
-          c: ""
-        },
-        guesses: [],
-        hintsUsed: { a: false, b: false, c: false },
-        index
-      }
+  if (index == todayIndex) {
+    let storageGame = localGame.get()
+    if (storageGame && storageGame.index == todayIndex) return storageGame
+  }
+  return {
+    ...gameList[index]!,
+    currentGuess: {
+      a: "",
+      ab: "",
+      abc: "",
+      ac: "",
+      b: "",
+      bc: "",
+      c: ""
+    },
+    guesses: [],
+    hintsUsed: { a: false, b: false, c: false },
+    index
+  }
 }
 
 export function getGameText(title: string, index: number) {

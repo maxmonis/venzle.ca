@@ -6,6 +6,8 @@ export let howToPlay = document.querySelector(".how-to-play")!
 export let instructionText = document.querySelector(".instruction-text")!
 export let main = document.querySelector("main")!
 
+export let categoryHint = document.createElement("div")
+
 export let draggableContainer = document.createElement("div")
 draggableContainer.classList.add("draggable-container")
 
@@ -49,6 +51,10 @@ submitButton.textContent = "Submit Solution"
 submitButton.addEventListener("click", () => {
   new BroadcastChannel("game").postMessage("submit")
 })
+
+export let themeToggle = document.createElement("button")
+themeToggle.classList.add("theme-toggle")
+themeToggle.setAttribute("aria-label", "toggle dark mode")
 
 export let toast = document.createElement("div")
 toast.classList.add("toast")
