@@ -14,7 +14,7 @@ import {
   submitButton
 } from "./elements"
 import { gameList } from "./gameList"
-import { showToast } from "./toast"
+import { removeToast, showToast } from "./toast"
 import type { Game } from "./types"
 import { localGame } from "./utils"
 
@@ -22,6 +22,7 @@ export let todayIndex =
   Math.floor((Date.now() - Date.UTC(2025, 7, 16)) / 86400000) % gameList.length
 
 export function checkGame(game: Game, clicked: boolean) {
+  removeToast()
   let groupEntries = Object.entries(game.groups)
   let { currentGuess } = game
   let [titleA] =

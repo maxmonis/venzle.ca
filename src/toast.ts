@@ -2,7 +2,8 @@ import { toast } from "./elements"
 
 let timeout: ReturnType<typeof setTimeout>
 
-function removeToast() {
+export function removeToast() {
+  if (!document.body.contains(toast)) return
   return new Promise(resolve => {
     clearTimeout(timeout)
     toast.classList.add("exit")
@@ -15,7 +16,7 @@ function removeToast() {
 }
 
 export async function showToast(message: string) {
-  if (document.body.contains(toast)) await removeToast()
+  await removeToast()
   toast.innerHTML = message
   document.body.appendChild(toast)
   timeout = setTimeout(() => {
