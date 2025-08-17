@@ -6,8 +6,6 @@ export let howToPlay = document.querySelector(".how-to-play")!
 export let instructionText = document.querySelector(".instruction-text")!
 export let main = document.querySelector("main")!
 
-export let categoryHint = document.createElement("div")
-
 export let draggableContainer = document.createElement("div")
 draggableContainer.classList.add("draggable-container")
 
@@ -26,21 +24,22 @@ export let pageTitle = document.createElement("h1")
 
 export let previousGameLabel = document.createElement("label")
 previousGameLabel.textContent = "Available Puzzles:"
-export let previousGameSelect = document.createElement("select")
-let options: Array<HTMLOptionElement> = []
-gameList.slice(0, todayIndex + 1).forEach((game, index) => {
-  let option = document.createElement("option")
-  option.value = index.toString()
-  option.textContent = getGameText(game.title, index)
-  options.unshift(option)
-})
-options.forEach(option => {
-  previousGameSelect.appendChild(option)
-})
+let previousGameSelect = document.createElement("select")
+previousGameSelect.append(
+  ...gameList
+    .slice(0, todayIndex + 1)
+    .map((game, index) => {
+      let option = document.createElement("option")
+      option.textContent = getGameText(game.title, index)
+      option.value = index.toString()
+      return option
+    })
+    .reverse()
+)
 previousGameSelect.addEventListener("change", () => {
   new BroadcastChannel("game").postMessage(Number(previousGameSelect.value))
 })
-previousGameLabel.appendChild(previousGameSelect)
+previousGameLabel.append(previousGameSelect)
 
 export let statsText = document.createElement("p")
 statsText.classList.add("stats-text")

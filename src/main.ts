@@ -38,7 +38,7 @@ new BroadcastChannel("game").onmessage = e => {
   else if (e.data == "submit") {
     if (
       game.guesses.some(
-        g => JSON.stringify(g) == JSON.stringify(game.currentGuess)
+        guess => JSON.stringify(guess) == JSON.stringify(game.currentGuess)
       )
     ) {
       showToast("You already guessed that 😅<br />Please try again")

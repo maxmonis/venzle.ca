@@ -51,7 +51,7 @@ export function createDraggable(text: string, value: string) {
   draggable.textContent = text
   draggable.setAttribute("data-dnd-value", value)
   makeElementDraggable(draggable)
-  draggableContainer.appendChild(draggable)
+  draggableContainer.append(draggable)
 }
 
 function handleEnd(clientX: number, clientY: number) {
@@ -124,30 +124,33 @@ export function initDraggables(game: Game) {
 }
 
 export function initDropzones(game: Game) {
-  Object.entries(game.currentGuess).forEach(([key, value]) => {
-    let dropzone = document.createElement("div")
-    let id = `dropzone-${key}`
-    dropzone.id = id
-    dropzone.classList.add("dropzone", id)
-    if (value) {
-      dropzone.textContent = value
-      dropzone.setAttribute("data-dnd-value", value)
-      makeElementDraggable(dropzone)
-    }
-    circleContainer.appendChild(dropzone)
-    if (isTouchScreen) return
-    dropzone.addEventListener("dragenter", e => {
-      e.preventDefault()
-      dropzone.classList.add("dragover")
+  circleContainer.append(
+    ...Object.entries(game.currentGuess).map(([key, value]) => {
+      let dropzone = document.createElement("div")
+      let id = `dropzone-${key}`
+      dropzone.id = id
+      dropzone.classList.add("dropzone", id)
+      if (value) {
+        dropzone.textContent = value
+        dropzone.setAttribute("data-dnd-value", value)
+        makeElementDraggable(dropzone)
+      }
+      if (!isTouchScreen) {
+        dropzone.addEventListener("dragenter", e => {
+          e.preventDefault()
+          dropzone.classList.add("dragover")
+        })
+        dropzone.addEventListener("dragleave", e => {
+          e.preventDefault()
+          dropzone.classList.remove("dragover")
+        })
+        dropzone.addEventListener("dragover", e => {
+          e.preventDefault()
+        })
+      }
+      return dropzone
     })
-    dropzone.addEventListener("dragleave", e => {
-      e.preventDefault()
-      dropzone.classList.remove("dragover")
-    })
-    dropzone.addEventListener("dragover", e => {
-      e.preventDefault()
-    })
-  })
+  )
 }
 
 function makeElementDraggable(element: HTMLElement) {
@@ -158,7 +161,7 @@ function makeElementDraggable(element: HTMLElement) {
       let dragImage = document.createElement("div")
       dragImage.textContent = element.textContent
       dragImage.setAttribute("draggable", "true")
-      document.body.appendChild(dragImage)
+      document.body.append(dragImage)
       e.dataTransfer.setDragImage(dragImage, 40, 40)
       setTimeout(() => {
         dragImage.remove()

@@ -1,19 +1,18 @@
-import { localTheme } from "../lib/utils"
+import { localDark } from "../lib/utils"
 import { main, themeToggle } from "./elements"
 
-let theme = localTheme.get()
-if (!theme)
-  theme = window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light"
+let dark =
+  localDark.get() ?? window.matchMedia("(prefers-color-scheme: dark)").matches
+
 themeToggle.addEventListener("click", () => {
-  theme = theme == "light" ? "dark" : "light"
-  localTheme.set(theme)
+  dark = !dark
+  localDark.set(dark)
   applyTheme()
 })
-main.appendChild(themeToggle)
+
+main.append(themeToggle)
 
 export function applyTheme() {
-  document.body.classList.toggle("dark", theme == "dark")
-  themeToggle.innerText = theme == "dark" ? "🌛" : "🌞"
+  document.body.classList.toggle("dark", dark)
+  themeToggle.innerText = dark ? "🌛" : "🌞"
 }
