@@ -5,7 +5,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes("gameList")) return "games"
+          if (id.includes("game/list")) return "games"
         }
       }
     }

@@ -1,31 +1,33 @@
-@media not all and (min-width: 400px) {
-  html {
-    font-size: 14px;
-  }
-}
-
 :root {
-  --bg: #fefefe;
   --blue: #1d4ed8;
   --circle-a: #eab308;
   --circle-b: #3b82f6;
   --circle-c: #ef4444;
   --dark: #121212;
-  --fg: #121212;
   --light: #fefefe;
   --slate: #334155;
+
+  --bg: var(--light);
+  --fg: var(--dark);
 }
 
 :root:has(body.dark) {
-  --bg: #121212;
   --blue: #60a5fa;
-  --fg: #fefefe;
   --slate: #cbd5e1;
+
+  --bg: var(--dark);
+  --fg: var(--light);
 }
 
 html {
   background-color: var(--bg);
   color: var(--fg);
+}
+
+@media not all and (min-width: 400px) {
+  html {
+    font-size: 14px;
+  }
 }
 
 body {
@@ -128,6 +130,7 @@ select {
   padding: 0.5rem;
   max-width: 65ch;
 }
+
 .dark select {
   border-width: 2px;
 }
@@ -136,12 +139,6 @@ select {
   height: 22.5rem;
   position: relative;
   width: 22.5rem;
-}
-
-@keyframes slideIn {
-  to {
-    transform: translate(0);
-  }
 }
 
 .circle {
@@ -177,20 +174,8 @@ select {
   transform: translate(0, 100vmax);
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 .circle-title {
-  animation: fadeIn 1.5s forwards;
+  animation: fadeIn 2s forwards;
   border-radius: 1.5rem;
   color: var(--dark);
   font-size: 0.875rem;
@@ -225,8 +210,7 @@ select {
 }
 
 .draggable-container {
-  animation: slideIn 0.6s ease-out forwards;
-  animation-delay: 0.8s;
+  animation: slideIn 0.6s ease-out 0.8s forwards;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -255,7 +239,7 @@ select {
 }
 
 .dropzone {
-  animation: fadeIn 1.5s forwards;
+  animation: fadeIn 2s forwards;
   position: absolute;
 }
 
@@ -331,8 +315,8 @@ select {
 }
 
 .how-to-play {
-  animation: fadeIn 1.5s forwards;
   align-items: center;
+  animation: fadeIn 2s forwards;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -389,14 +373,36 @@ select {
   right: -20rem;
 }
 
-@keyframes fadeOut {
-  50% {
+.loader {
+  animation: fadeOut 2s ease-in-out 1s forwards;
+  background-color: var(--bg);
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
     opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  75% {
+    background-color: transparent;
+    opacity: 0;
   }
   99% {
     height: 100vh;
     margin: 0;
-    opacity: 0;
     width: 100vw;
   }
   100% {
@@ -413,12 +419,8 @@ select {
   }
 }
 
-.loader {
-  animation: fadeOut 3s ease-in-out forwards;
-  background-color: var(--bg);
-  height: 100vh;
-  left: 0;
-  position: fixed;
-  top: 0;
-  width: 100vw;
+@keyframes slideIn {
+  to {
+    transform: translate(0);
+  }
 }

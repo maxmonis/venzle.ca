@@ -1,6 +1,6 @@
-import { circleContainer, draggableContainer } from "./elements"
-import type { Game } from "./types"
-import { shuffle } from "./utils"
+import type { Game } from "../lib/types"
+import { shuffle } from "../lib/utils"
+import { circleContainer, draggableContainer } from "../ui/elements"
 
 let isTouchScreen = "ontouchstart" in window || navigator.maxTouchPoints > 0
 let draggedElement: HTMLElement | null = null
@@ -31,8 +31,8 @@ if (!isTouchScreen) {
       draggedElement.style.zIndex = "10"
       draggedElement.style.left = `${touch.clientX - 40}px`
       draggedElement.style.top = `${touch.clientY - 40}px`
-      for (let zone of document.querySelectorAll(".dropzone")) {
-        let rect = (zone as HTMLElement).getBoundingClientRect()
+      for (let zone of document.querySelectorAll<HTMLElement>(".dropzone")) {
+        let rect = zone.getBoundingClientRect()
         zone.classList.toggle(
           "dragover",
           touch.clientX >= rect.left &&

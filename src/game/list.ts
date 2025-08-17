@@ -1,4 +1,4 @@
-import type { Game } from "./types"
+import type { Game } from "../lib/types"
 
 export let gameList: Array<Pick<Game, "groups" | "hint" | "title">> = [
   {

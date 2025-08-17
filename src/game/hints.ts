@@ -1,6 +1,5 @@
-import { categoryHint, hintsContainer } from "./elements"
-import { saveGame } from "./game"
-import type { Game } from "./types"
+import type { Game } from "../lib/types"
+import { categoryHint, hintsContainer } from "../ui/elements"
 
 export function initHints(game: Game) {
   let allValues = Object.values(game.groups).flatMap(v => v)
@@ -24,7 +23,7 @@ export function initHints(game: Game) {
         : "Hint B: Click here to reveal clues about the categories"
     hintButton.addEventListener("click", () => {
       game.hintsUsed[key] = true
-      saveGame(game)
+      new BroadcastChannel("game").postMessage("save")
       hintButton.remove()
       hint.appendChild(hintText)
       appendCategoryHint(game)
@@ -51,7 +50,7 @@ function appendCategoryHint(game: Game) {
     "Still stuck? Click here to reveal the categories"
   categoryHintButton.addEventListener("click", () => {
     game.hintsUsed.c = true
-    saveGame(game)
+    new BroadcastChannel("game").postMessage("save")
     categoryHintButton.remove()
     categoryHint.appendChild(categoryHintText)
   })

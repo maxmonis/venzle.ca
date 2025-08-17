@@ -1,3 +1,5 @@
+import type { Game } from "../lib/types"
+import { localGame } from "../lib/utils"
 import {
   circleContainer,
   draggableContainer,
@@ -12,11 +14,9 @@ import {
   previousGameLabel,
   statsText,
   submitButton
-} from "./elements"
-import { gameList } from "./gameList"
-import { removeToast, showToast } from "./toast"
-import type { Game } from "./types"
-import { localGame } from "./utils"
+} from "../ui/elements"
+import { removeToast, showToast } from "../ui/toast"
+import { gameList } from "./list"
 
 export let todayIndex =
   Math.floor((Date.now() - Date.UTC(2025, 7, 16)) / 86400000) % gameList.length
@@ -183,7 +183,7 @@ export function resetGame() {
     main.insertBefore(hintsContainer, howToPlay)
 }
 
-export function saveGame(game: ReturnType<typeof getGame>) {
+export function saveGame(game: Game) {
   if (game.index == todayIndex) localGame.set(game)
 }
 
@@ -193,7 +193,6 @@ export function updateGameState(game: Game) {
     if (id in game.currentGuess)
       game.currentGuess[id] = dropzone.getAttribute("data-dnd-value") ?? ""
   })
-  saveGame(game)
   if (Object.values(game.currentGuess).every(Boolean)) {
     instructionText.remove()
     if (!main.contains(hintsContainer)) return
@@ -209,4 +208,5 @@ export function updateGameState(game: Game) {
     guessesText.remove()
     submitButton.remove()
   }
+  saveGame(game)
 }

@@ -1,6 +1,6 @@
+import { todayIndex } from "../game/state"
+import { localStats } from "../lib/utils"
 import { statsText } from "./elements"
-import { todayIndex } from "./game"
-import { localStats } from "./utils"
 
 export let stats = localStats.get() ?? {
   played: {

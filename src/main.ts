@@ -1,5 +1,5 @@
-import { initDraggables, initDropzones } from "./dnd"
-import { howToPlay, main, pageTitle, previousGameLabel } from "./elements"
+import { initDraggables, initDropzones } from "./game/dnd"
+import { initHints } from "./game/hints"
 import {
   checkGame,
   getGame,
@@ -8,12 +8,12 @@ import {
   saveGame,
   todayIndex,
   updateGameState
-} from "./game"
-import { initHints } from "./hints"
-import { displayStats, stats, updateStats } from "./stats"
-import "./style.css"
-import { applyTheme } from "./theme"
-import { showToast } from "./toast"
+} from "./game/state"
+import "./style/global.css"
+import { howToPlay, main, pageTitle, previousGameLabel } from "./ui/elements"
+import { displayStats, stats, updateStats } from "./ui/stats"
+import { applyTheme } from "./ui/theme"
+import { showToast } from "./ui/toast"
 
 let game = getGame(todayIndex)
 
@@ -34,13 +34,14 @@ function init() {
 
 new BroadcastChannel("game").onmessage = e => {
   if (e.data == "update") updateGameState(game)
+  else if (e.data == "save") saveGame(game)
   else if (e.data == "submit") {
     if (
       game.guesses.some(
         g => JSON.stringify(g) == JSON.stringify(game.currentGuess)
       )
     ) {
-      showToast("You already guessed that!<br />Please try again")
+      showToast("You already guessed that 😅<br />Please try again")
       return
     }
     game.guesses.push({ ...game.currentGuess })

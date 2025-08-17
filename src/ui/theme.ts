@@ -1,5 +1,5 @@
+import { localTheme } from "../lib/utils"
 import { main, themeToggle } from "./elements"
-import { localTheme } from "./utils"
 
 let theme = localTheme.get()
 if (!theme)
