@@ -38,15 +38,7 @@ export function createDraggable(text: string, value: string) {
   let draggable = document.createElement("div")
   draggable.textContent = text
   draggable.setAttribute("data-dnd-value", value)
-  draggable.setAttribute("draggable", "true")
-  draggable.addEventListener("dragstart", e => {
-    let draggableText = draggable.textContent
-    let draggableValue = draggable.getAttribute("data-dnd-value")
-    if (!e.dataTransfer || !draggableText || !draggableValue) return
-    e.dataTransfer.setData("text", draggableText)
-    e.dataTransfer.setData("value", draggableValue)
-    createDragImage(e.dataTransfer)
-  })
+  makeElementDraggable(draggable)
   draggableContainer.appendChild(draggable)
 }
 
@@ -89,16 +81,7 @@ export function initDropzones(game: Game) {
     if (value) {
       dropzone.textContent = value
       dropzone.setAttribute("data-dnd-value", value)
-      dropzone.setAttribute("draggable", "true")
-      dropzone.addEventListener("dragstart", e => {
-        let dragEvent = e as DragEvent
-        let dropzoneText = dropzone.textContent
-        let dropzoneValue = dropzone.getAttribute("data-dnd-value")
-        if (!dragEvent.dataTransfer || !dropzoneText || !dropzoneValue) return
-        dragEvent.dataTransfer.setData("text", dropzoneText)
-        dragEvent.dataTransfer.setData("value", dropzoneValue)
-        createDragImage(dragEvent.dataTransfer)
-      })
+      makeElementDraggable(dropzone)
     }
     circleContainer.appendChild(dropzone)
     dropzone.addEventListener("dragenter", e => {
@@ -144,16 +127,20 @@ export function initDropzones(game: Game) {
       }
       dropzone.textContent = dragEventText
       dropzone.setAttribute("data-dnd-value", dragEventValue)
-      dropzone.addEventListener("dragstart", e => {
-        let dragEvent = e as DragEvent
-        let dropzoneText = dropzone.textContent
-        let dropzoneValue = dropzone.getAttribute("data-dnd-value")
-        if (!dragEvent.dataTransfer || !dropzoneText || !dropzoneValue) return
-        dragEvent.dataTransfer.setData("text", dropzoneText)
-        dragEvent.dataTransfer.setData("value", dropzoneValue)
-        createDragImage(dragEvent.dataTransfer)
-      })
+      makeElementDraggable(dropzone)
       new BroadcastChannel("game").postMessage("update")
     })
+  })
+}
+
+function makeElementDraggable(element: HTMLElement) {
+  element.setAttribute("draggable", "true")
+  element.addEventListener("dragstart", e => {
+    let draggableText = element.textContent
+    let draggableValue = element.getAttribute("data-dnd-value")
+    if (!e.dataTransfer || !draggableText || !draggableValue) return
+    e.dataTransfer.setData("text", draggableText)
+    e.dataTransfer.setData("value", draggableValue)
+    createDragImage(e.dataTransfer)
   })
 }
