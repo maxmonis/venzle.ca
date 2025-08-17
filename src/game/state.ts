@@ -78,8 +78,10 @@ export function checkGame(game: Game, clicked: boolean) {
           } and ${guessCount} guess${guessCount == 1 ? "" : "es"} 😄`
     if (game.index == todayIndex)
       gameSummary.innerHTML += "<br />Come back tomorrow for a new puzzle!"
-    for (let dropzone of document.querySelectorAll(".dropzone"))
+    for (let dropzone of document.querySelectorAll(".dropzone")) {
+      dropzone.removeAttribute("data-dnd-value")
       dropzone.removeAttribute("draggable")
+    }
     circleContainer.after(gameSummary)
     previousGameLabel.remove()
     statsText.after(previousGameLabel)
@@ -123,6 +125,7 @@ export function checkGame(game: Game, clicked: boolean) {
       let dropzone = main.querySelector(`#dropzone-${key}`)
       if (!dropzone) continue
       dropzone.textContent = value
+      dropzone.removeAttribute("data-dnd-value")
       dropzone.removeAttribute("draggable")
     }
     appendCircleTitles([titleA, titleB, titleC])

@@ -48,9 +48,7 @@ if (!isTouchScreen) {
 
 export function createDraggable(text: string, value: string) {
   let draggable = document.createElement("div")
-  draggable.textContent = text
-  draggable.setAttribute("data-dnd-value", value)
-  makeElementDraggable(draggable)
+  makeElementDraggable(draggable, text, value)
   draggableContainer.append(draggable)
 }
 
@@ -82,11 +80,8 @@ function handleEnd(clientX: number, clientY: number) {
   if (!draggedElementText || !draggedElementValue) return
   let newDropzoneText = newDropzone?.textContent
   let newDropzoneValue = newDropzone?.getAttribute("data-dnd-value")
-  if (newDropzone) {
-    newDropzone.textContent = draggedElementText
-    newDropzone.setAttribute("data-dnd-value", draggedElementValue)
-    makeElementDraggable(newDropzone)
-  }
+  if (newDropzone)
+    makeElementDraggable(newDropzone, draggedElementText, draggedElementValue)
   if (oldDropzone && newDropzone) {
     if (newDropzoneText && newDropzoneValue) {
       oldDropzone.textContent = newDropzoneText
@@ -141,11 +136,7 @@ export function initDropzones(game: Game) {
       let id = `dropzone-${key}`
       dropzone.id = id
       dropzone.classList.add("dropzone", id)
-      if (value) {
-        dropzone.textContent = value
-        dropzone.setAttribute("data-dnd-value", value)
-        makeElementDraggable(dropzone)
-      }
+      if (value) makeElementDraggable(dropzone, value, value)
       if (!isTouchScreen) {
         dropzone.addEventListener("dragenter", e => {
           e.preventDefault()
@@ -164,7 +155,13 @@ export function initDropzones(game: Game) {
   )
 }
 
-function makeElementDraggable(element: HTMLElement) {
+function makeElementDraggable(
+  element: HTMLElement,
+  text: string,
+  value: string
+) {
+  element.textContent = text
+  element.setAttribute("data-dnd-value", value)
   element.setAttribute("draggable", "true")
   if (!isTouchScreen)
     element.addEventListener("dragstart", e => {
