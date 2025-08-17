@@ -193,13 +193,19 @@ export function updateGameState(game: Game) {
       game.currentGuess[id] = dropzone.getAttribute("data-dnd-value") ?? ""
   })
   saveGame(game)
-  if (!Object.values(game.currentGuess).every(Boolean)) return
-  instructionText.remove()
-  if (!main.contains(hintsContainer)) return
-  main.insertBefore(submitButton, hintsContainer)
-  let remainingGuesses = 3 - game.guesses.length
-  guessesText.textContent = `${remainingGuesses} guess${
-    remainingGuesses == 1 ? "" : "es"
-  } remaining`
-  main.insertBefore(guessesText, submitButton)
+  if (Object.values(game.currentGuess).every(Boolean)) {
+    instructionText.remove()
+    if (!main.contains(hintsContainer)) return
+    main.insertBefore(submitButton, hintsContainer)
+    let remainingGuesses = 3 - game.guesses.length
+    guessesText.textContent = `${remainingGuesses} guess${
+      remainingGuesses == 1 ? "" : "es"
+    } remaining`
+    main.insertBefore(guessesText, submitButton)
+  } else {
+    if (!main.contains(instructionText))
+      main.insertBefore(instructionText, draggableContainer)
+    guessesText.remove()
+    submitButton.remove()
+  }
 }
