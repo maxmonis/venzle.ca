@@ -92,7 +92,7 @@ export function checkGame(game: Game, clicked: boolean) {
     howToPlay.remove()
     return "success"
   }
-  let remainingGuesses = 3 - game.guesses.length
+  let remainingGuesses = 5 - game.guesses.length
   if (remainingGuesses) {
     let newText = `${remainingGuesses} guess${
       remainingGuesses == 1 ? "" : "es"
@@ -197,7 +197,7 @@ export function updateGameState(game: Game) {
     instructionText.remove()
     if (!main.contains(hintsContainer) || main.contains(submitButton)) return
     main.insertBefore(submitButton, hintsContainer)
-    let remainingGuesses = 3 - game.guesses.length
+    let remainingGuesses = 5 - game.guesses.length
     guessesText.textContent = `${remainingGuesses} guess${
       remainingGuesses == 1 ? "" : "es"
     } remaining`
