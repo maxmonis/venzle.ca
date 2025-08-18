@@ -15,12 +15,12 @@ export function removeToast() {
   })
 }
 
-export async function showToast(message: string) {
+export async function showToast(message: string, durationMS = 3000) {
   await removeToast()
   toast.innerHTML = message
   document.body.append(toast)
   timeout = setTimeout(() => {
     toast.classList.add("enter")
-    timeout = setTimeout(removeToast, 3000)
+    timeout = setTimeout(removeToast, durationMS)
   }, 50)
 }

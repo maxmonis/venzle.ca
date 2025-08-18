@@ -77,14 +77,40 @@ export function checkGame(game: Game, clicked: boolean) {
   }
   let remainingGuesses = 5 - game.guesses.length
   if (remainingGuesses) {
-    let newText = `${remainingGuesses} guess${
+    let guessesTextContent = `${remainingGuesses} guess${
       remainingGuesses == 1 ? "" : "es"
     } remaining`
-    guessesText.textContent = newText
-    if (clicked)
+    guessesText.textContent = guessesTextContent
+    if (clicked) {
+      let correctPart = ""
+      if (getCenter(game) == game.currentGuess.abc) {
+        let allItems = Object.values(game.groups).flatMap(v => v)
+        if (
+          titleA &&
+          allItems.filter(item => item == game.currentGuess.a).length == 1
+        )
+          correctPart = "The yellow circle"
+        else if (
+          titleB &&
+          allItems.filter(item => item == game.currentGuess.b).length == 1
+        )
+          correctPart = "The blue circle"
+        else if (
+          titleC &&
+          allItems.filter(item => item == game.currentGuess.c).length == 1
+        )
+          correctPart = "The red circle"
+        else correctPart = "The center"
+      }
       showToast(
-        "That's not quite it but keep trying!<br /> You have " + newText
+        (correctPart
+          ? `${correctPart} is correct ✅`
+          : "That's not the answer but keep trying!") +
+          "<br />You have " +
+          guessesTextContent,
+        correctPart ? 5000 : 3000
       )
+    }
     return "pending"
   } else {
     pageSubtitle.textContent = "Better luck next time!"
