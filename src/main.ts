@@ -28,7 +28,7 @@ function init() {
   initDraggables(game)
   initHints(game)
   updateGameState(game)
-  if (stats.played.last == todayIndex) checkGame(game, false)
+  if (stats.playedToday) checkGame(game, false)
   if (game.index != todayIndex) main.insertBefore(previousGameLabel, howToPlay)
 }
 
@@ -46,7 +46,7 @@ new BroadcastChannel("game").onmessage = e => {
     }
     game.guesses.push({ ...game.currentGuess })
     saveGame(game)
-    updateStats(checkGame(game, true), game.index)
+    updateStats(checkGame(game, true), game)
   } else if (typeof e.data == "number") {
     resetGame()
     game = getGame(e.data)

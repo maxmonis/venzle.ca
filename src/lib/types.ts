@@ -17,15 +17,3 @@ interface Guess {
   bc: string
   c: string
 }
-
-interface StatValues {
-  first: number
-  last: number
-  streakStart: number
-  total: number
-}
-
-export interface Stats {
-  played: StatValues
-  solved: StatValues
-}
