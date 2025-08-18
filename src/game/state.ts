@@ -1,3 +1,4 @@
+import { guessKeys, todayIndex } from "../lib/constants"
 import type { Game } from "../lib/types"
 import { localGame } from "../lib/utils"
 import {
@@ -18,9 +19,6 @@ import {
 import { removeToast, showToast } from "../ui/toast"
 import { gameList } from "./list"
 
-export let todayIndex =
-  Math.floor((Date.now() - Date.UTC(2025, 7, 16)) / 86400000) % gameList.length
-
 function appendCircleTitles(titles: [string, string, string]) {
   let keys = ["a", "b", "c"]
   circleContainer.append(
@@ -38,31 +36,16 @@ export function checkGame(game: Game, clicked: boolean) {
   let groupEntries = Object.entries(game.groups)
   let { currentGuess } = game
   let [titleA] =
-    groupEntries.find(([, value]) =>
-      [
-        currentGuess.a,
-        currentGuess.ab,
-        currentGuess.ac,
-        currentGuess.abc
-      ].every(p => value.includes(p))
+    groupEntries.find(([, values]) =>
+      guessKeys.a.every(key => values.includes(currentGuess[key]))
     ) ?? []
   let [titleB] =
-    groupEntries.find(([, value]) =>
-      [
-        currentGuess.b,
-        currentGuess.ab,
-        currentGuess.bc,
-        currentGuess.abc
-      ].every(p => value.includes(p))
+    groupEntries.find(([, values]) =>
+      guessKeys.b.every(key => values.includes(currentGuess[key]))
     ) ?? []
   let [titleC] =
-    groupEntries.find(([, value]) =>
-      [
-        currentGuess.c,
-        currentGuess.ac,
-        currentGuess.bc,
-        currentGuess.abc
-      ].every(p => value.includes(p))
+    groupEntries.find(([, values]) =>
+      guessKeys.c.every(key => values.includes(currentGuess[key]))
     ) ?? []
   if (titleA && titleB && titleC) {
     pageSubtitle.textContent = "You got it! Congratulations 🥳"
@@ -109,17 +92,17 @@ export function checkGame(game: Game, clicked: boolean) {
     guessesText.remove()
     submitButton.remove()
     hintsContainer.remove()
-    let [titleA, playersA] = groupEntries[0]!
-    let [titleB, playersB] = groupEntries[1]!
-    let [titleC, playersC] = groupEntries[2]!
+    let [titleA, valuesA] = groupEntries[0]!
+    let [titleB, valuesB] = groupEntries[1]!
+    let [titleC, valuesC] = groupEntries[2]!
     let solution: typeof game.currentGuess = {
-      a: playersA.find(p => !playersB.includes(p) && !playersC.includes(p))!,
-      b: playersB.find(p => !playersA.includes(p) && !playersC.includes(p))!,
-      c: playersC.find(p => !playersA.includes(p) && !playersB.includes(p))!,
-      ab: playersA.find(p => playersB.includes(p) && !playersC.includes(p))!,
-      ac: playersA.find(p => !playersB.includes(p) && playersC.includes(p))!,
-      bc: playersB.find(p => !playersA.includes(p) && playersC.includes(p))!,
-      abc: playersA.find(p => playersB.includes(p) && playersC.includes(p))!
+      a: valuesA.find(p => !valuesB.includes(p) && !valuesC.includes(p))!,
+      b: valuesB.find(p => !valuesA.includes(p) && !valuesC.includes(p))!,
+      c: valuesC.find(p => !valuesA.includes(p) && !valuesB.includes(p))!,
+      ab: valuesA.find(p => valuesB.includes(p) && !valuesC.includes(p))!,
+      ac: valuesA.find(p => !valuesB.includes(p) && valuesC.includes(p))!,
+      bc: valuesB.find(p => !valuesA.includes(p) && valuesC.includes(p))!,
+      abc: valuesA.find(p => valuesB.includes(p) && valuesC.includes(p))!
     }
     for (let [key, value] of Object.entries(solution)) {
       let dropzone = main.querySelector(`#dropzone-${key}`)
@@ -137,6 +120,13 @@ export function checkGame(game: Game, clicked: boolean) {
     gameSummary.after(previousGameLabel)
     return "failure"
   }
+}
+
+export function getCenter(game: Game) {
+  let values = Object.values(game.groups)
+  return values
+    .flatMap(v => v)
+    .find(value => values.every(v => v.includes(value)))!
 }
 
 export function getGame(index: number) {

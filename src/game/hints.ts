@@ -1,17 +1,15 @@
 import type { Game } from "../lib/types"
 import { hintsContainer } from "../ui/elements"
+import { getCenter } from "./state"
 
 export function initHints(game: Game) {
-  let allValues = Object.values(game.groups).flatMap(v => v)
   hintsContainer.append(
     ...(["a", "b"] as const).map(key => {
       let hint = document.createElement("div")
       let hintText = document.createElement("p")
       hintText.textContent =
         key == "a"
-          ? `Hint A: ${allValues.find(value =>
-              Object.values(game.groups).every(v => v.includes(value))
-            )} is in the center`
+          ? `Hint A: ${getCenter(game)} is in the center`
           : `Hint B: ${game.hint}`
       if (game.hintsUsed[key]) {
         hint.append(hintText)

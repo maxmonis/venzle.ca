@@ -1,4 +1,4 @@
-import { todayIndex } from "../game/state"
+import { todayIndex } from "../lib/constants"
 import { localStats } from "../lib/utils"
 import { statsText } from "./elements"
 import { showToast } from "./toast"

@@ -6,9 +6,9 @@ import {
   getGameText,
   resetGame,
   saveGame,
-  todayIndex,
   updateGameState
 } from "./game/state"
+import { todayIndex } from "./lib/constants"
 import "./style/global.css"
 import { howToPlay, main, pageTitle, previousGameLabel } from "./ui/elements"
 import { displayStats, stats, updateStats } from "./ui/stats"

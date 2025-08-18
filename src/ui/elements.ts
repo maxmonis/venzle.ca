@@ -1,5 +1,6 @@
 import { gameList } from "../game/list"
-import { getGameText, todayIndex } from "../game/state"
+import { getGameText } from "../game/state"
+import { todayIndex } from "../lib/constants"
 
 export let circleContainer = document.querySelector(".circle-container")!
 export let howToPlay = document.querySelector(".how-to-play")!
