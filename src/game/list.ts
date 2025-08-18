@@ -17,8 +17,51 @@ export let gameList: Array<Pick<Game, "groups" | "hint" | "title">> = [
         "South Africa"
       ]
     },
-    hint: "Geography, Government, Language",
+    hint: "Government, Latitude, Language",
     title: "Countries"
+  },
+  {
+    groups: {
+      Book: [
+        "The Handmaid's Tale",
+        "No Country For Old Men",
+        "Big Little Lies",
+        "A Confederacy of Dunces"
+      ],
+      Movie: [
+        "The Handmaid's Tale",
+        "No Country For Old Men",
+        "Fargo",
+        "The Big Lebowski"
+      ],
+      "TV Show": ["The Handmaid's Tale", "Fargo", "Big Little Lies", "Lost"]
+    },
+    hint: "Bestseller, Premiere, Series",
+    title: "Entertainment"
+  },
+  {
+    groups: {
+      "3000 Career Hits": [
+        "Miguel Cabrera",
+        "Albert Pujols",
+        "Ichiro Suzuki",
+        "Cal Ripken, Jr."
+      ],
+      "500 Career Homeruns": [
+        "Miguel Cabrera",
+        "Albert Pujols",
+        "Ted Williams",
+        "Mickey Mantle"
+      ],
+      ".300 Career Batting Average": [
+        "Miguel Cabrera",
+        "Ichiro Suzuki",
+        "Ted Williams",
+        "Vladimir Guerrero"
+      ]
+    },
+    hint: "Hits, Homers, Average",
+    title: "Baseball"
   },
   {
     groups: {
@@ -41,27 +84,8 @@ export let gameList: Array<Pick<Game, "groups" | "hint" | "title">> = [
         "Thomas Jefferson"
       ]
     },
-    hint: "Conflict, Death, Money",
+    hint: "War, Death, Currency",
     title: "Historical Figures"
-  },
-  {
-    groups: {
-      Book: [
-        "The Handmaid's Tale",
-        "No Country For Old Men",
-        "Big Little Lies",
-        "A Confederacy of Dunces"
-      ],
-      Movie: [
-        "The Handmaid's Tale",
-        "No Country For Old Men",
-        "Fargo",
-        "The Big Lebowski"
-      ],
-      "TV Show": ["The Handmaid's Tale", "Fargo", "Big Little Lies", "Lost"]
-    },
-    hint: "Read, Premiere, Series",
-    title: "Entertainment"
   },
   {
     groups: {
@@ -86,5 +110,24 @@ export let gameList: Array<Pick<Game, "groups" | "hint" | "title">> = [
     },
     hint: "Award, Nationality, DOB",
     title: "Actors"
+  },
+  {
+    groups: {
+      "Won MVP": ["Larry Bird", "Kevin Garnett", "Tim Duncan", "Derrick Rose"],
+      "Won Finals MVP": [
+        "Larry Bird",
+        "Paul Pierce",
+        "Tim Duncan",
+        "Andre Iguodala"
+      ],
+      "Played for Boston Celtics": [
+        "Larry Bird",
+        "Kevin Garnett",
+        "Paul Pierce",
+        "Ray Allen"
+      ]
+    },
+    hint: "Two Awards and a Franchise",
+    title: "Basketball"
   }
 ]
