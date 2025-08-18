@@ -19,6 +19,12 @@
   --fg: var(--light);
 }
 
+* {
+  border-color: var(--slate);
+  border-width: 1px;
+  box-sizing: border-box;
+}
+
 html {
   background-color: var(--bg);
   color: var(--fg);
@@ -30,7 +36,7 @@ html {
   }
 }
 
-@media (min-width: 1600px) {
+@media (min-width: 800px) and (min-height: 800px) {
   html {
     font-size: 18px;
   }
@@ -47,10 +53,21 @@ body {
   min-height: 100vh;
   padding: 1.25rem;
   text-align: center;
+  transition:
+    background-color 250ms ease-in-out,
+    color 500ms ease-in-out;
 }
 
 body.dark {
   color-scheme: dark;
+}
+
+body :not(:where(main, footer, .circle-container, .circle)) {
+  animation: fadeIn 2s forwards;
+}
+
+body.loaded :not(:where(main, footer, .circle-container, .circle)) {
+  animation-duration: 250ms;
 }
 
 main {
@@ -129,16 +146,11 @@ label {
 select {
   background-color: inherit;
   border-radius: 0.5rem;
-  border: 1px solid var(--slate);
   color: inherit;
   cursor: pointer;
   font-size: 1rem;
   padding: 0.5rem;
   max-width: 65ch;
-}
-
-.dark select {
-  border-width: 2px;
 }
 
 .circle-container {
@@ -148,7 +160,7 @@ select {
 }
 
 .circle {
-  animation: slideIn 0.6s forwards;
+  animation: slideIn 500ms forwards;
   border-radius: 100%;
   height: 16rem;
   opacity: 50%;
@@ -157,7 +169,7 @@ select {
 }
 
 .circle-a {
-  animation-delay: 0.2s;
+  animation-delay: 250ms;
   background-color: var(--circle-a);
   left: 0;
   top: 0;
@@ -165,7 +177,7 @@ select {
 }
 
 .circle-b {
-  animation-delay: 0.4s;
+  animation-delay: 500ms;
   background-color: var(--circle-b);
   right: 0;
   top: 0;
@@ -173,7 +185,7 @@ select {
 }
 
 .circle-c {
-  animation-delay: 0.6s;
+  animation-delay: 750ms;
   background-color: var(--circle-c);
   bottom: 0;
   left: 3.25rem;
@@ -185,10 +197,10 @@ select {
   color: var(--dark);
   font-size: 0.875rem;
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.2;
   padding: 0.5rem;
   position: absolute;
-  width: 9rem;
+  width: 10rem;
 }
 
 .circle-title-a {
@@ -218,8 +230,8 @@ select {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.5rem;
-  max-width: 30rem;
+  gap: 0.25rem;
+  max-width: 27rem;
 }
 
 [draggable="true"],
@@ -230,13 +242,14 @@ select {
   display: flex;
   height: 4rem;
   justify-content: center;
-  padding-inline: 0.25rem;
-  width: 5.5rem;
+  padding-inline: 0.5rem;
+  width: 6.5rem;
 }
 
 [draggable="true"] {
   background-color: white;
-  border: 1px solid var(--dark);
+  border-color: var(--dark);
+  border-style: solid;
   cursor: grab;
   font-size: 0.875rem;
 }
@@ -246,43 +259,42 @@ select {
 }
 
 .dropzone.dragover {
-  background-color: var(--light);
-  opacity: 70%;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .dropzone-a {
-  left: 0.5rem;
+  left: 0.25rem;
   top: 4.25rem;
 }
 
 .dropzone-ab {
-  left: 8.25rem;
+  left: 8rem;
   top: 2.5rem;
 }
 
 .dropzone-abc {
-  left: 8.25rem;
-  top: 8.25rem;
+  left: 8rem;
+  top: 8rem;
 }
 
 .dropzone-ac {
-  left: 3rem;
-  top: 11.25rem;
+  left: 2.5rem;
+  top: 11.5rem;
 }
 
 .dropzone-b {
-  right: 0.5rem;
+  right: 0.25rem;
   top: 4.25rem;
 }
 
 .dropzone-bc {
-  right: 3rem;
-  top: 11.25rem;
+  right: 2.5rem;
+  top: 11.5rem;
 }
 
 .dropzone-c {
   bottom: 2.5rem;
-  left: 8.25rem;
+  left: 8rem;
 }
 
 .guesses-text {
@@ -349,17 +361,10 @@ select {
   margin-block: 5rem 0.5rem;
 }
 
-.copyright {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap-reverse;
-  gap: 0.25rem;
-  justify-content: center;
-}
-
 .toast {
   background-color: var(--fg);
   border-radius: 0.5rem;
+  border-style: solid;
   bottom: -10rem;
   color: var(--bg);
   line-height: 1.3;
@@ -367,7 +372,9 @@ select {
   padding: 0.75rem 1.25rem;
   position: fixed;
   right: 1.25rem;
-  transition: all 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition-duration: 250ms;
+  transition-property: bottom, right;
+  transition-timing-function: cubic-bezier(0.75, -0.75, 0.25, 1.5);
   z-index: 10;
 }
 
@@ -379,19 +386,11 @@ select {
   right: -20rem;
 }
 
-body :not(:where(main, footer, .circle-container, .circle)) {
-  animation: fadeIn 2s forwards;
-}
-
-body.loaded :not(:where(main, footer, .circle-container, .circle)) {
-  animation-duration: 0.5s;
-}
-
 @keyframes fadeIn {
   0% {
     opacity: 0;
   }
-  50% {
+  60% {
     opacity: 0;
   }
   100% {

@@ -195,7 +195,7 @@ export function updateGameState(game: Game) {
   }
   if (Object.values(game.currentGuess).every(Boolean)) {
     instructionText.remove()
-    if (!main.contains(hintsContainer)) return
+    if (!main.contains(hintsContainer) || main.contains(submitButton)) return
     main.insertBefore(submitButton, hintsContainer)
     let remainingGuesses = 3 - game.guesses.length
     guessesText.textContent = `${remainingGuesses} guess${

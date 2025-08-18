@@ -1,6 +1,7 @@
 import { todayIndex } from "../game/state"
 import { localStats } from "../lib/utils"
 import { statsText } from "./elements"
+import { showToast } from "./toast"
 
 export let stats = localStats.get() ?? {
   played: {
@@ -19,6 +20,11 @@ export let stats = localStats.get() ?? {
 
 if (stats.played.last < todayIndex - 1) stats.played.streakStart = -1
 if (stats.solved.last < todayIndex - 1) stats.solved.streakStart = -1
+
+if (stats.solved.total == 0)
+  setTimeout(() => {
+    showToast("Welcome!<br />Scroll down to learn to play")
+  }, 2000)
 
 export function displayStats() {
   statsText.innerHTML = `Current Streak: ${

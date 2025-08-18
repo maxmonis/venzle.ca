@@ -11,7 +11,7 @@ export function removeToast() {
       toast.classList.remove("enter", "exit")
       toast.remove()
       resolve(true)
-    }, 300)
+    }, 250)
   })
 }
 
