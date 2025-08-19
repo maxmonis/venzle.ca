@@ -9,6 +9,9 @@ export let howToPlay = document.querySelector(".how-to-play")!
 export let instructionText = document.querySelector(".instruction-text")!
 export let main = document.querySelector("main")!
 
+export let audioToggle = document.createElement("button")
+audioToggle.title = "Toggle audio"
+
 export let certificateCanvasContainer = document.createElement("div")
 certificateCanvasContainer.classList.add("certificate-canvas-container")
 export let certificateCanvas = document.createElement("canvas")
@@ -82,6 +85,9 @@ certificateDownloadButton.addEventListener("click", () => {
   certificateDownloadDialog.showModal()
 })
 
+export let darkToggle = document.createElement("button")
+darkToggle.title = "Toggle dark mode"
+
 export let draggableContainer = document.createElement("div")
 draggableContainer.classList.add("draggable-container")
 
@@ -127,18 +133,24 @@ submitButton.addEventListener("click", () => {
   new BroadcastChannel("game").postMessage("submit")
 })
 
-export let themeToggle = document.createElement("button")
-themeToggle.classList.add("theme-toggle")
-themeToggle.setAttribute("aria-label", "toggle dark mode")
+export let themeToggleContainer = document.createElement("div")
+themeToggleContainer.classList.add("theme-toggle-container")
+themeToggleContainer.append(darkToggle, audioToggle)
 
 export let toast = document.createElement("div")
 toast.classList.add("toast")
 toast.role = "alert"
 
+export let winAudio = document.createElement("audio")
+winAudio.setAttribute("type", "audio/mpeg")
+winAudio.preload = "auto"
+winAudio.src = "/audio/win.mp3"
+
 main.prepend(pageTitle)
 instructionText.after(draggableContainer)
 draggableContainer.after(hintsContainer)
 main.append(statsText)
+main.append(themeToggleContainer)
 
 setTimeout(() => {
   document.body.classList.add("loaded")

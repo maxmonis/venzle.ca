@@ -1,8 +1,8 @@
 import type { Game, ImageFormat } from "./types"
 
 class LocalStorage<
-  K extends "dark" | "game" | "results" | "settings",
-  T extends K extends "dark"
+  K extends "audio" | "dark" | "game" | "results" | "settings",
+  T extends K extends "audio" | "dark"
     ? boolean
     : K extends "game"
       ? Game
@@ -28,6 +28,7 @@ class LocalStorage<
   }
 }
 
+export let localAudio = new LocalStorage("audio")
 export let localDark = new LocalStorage("dark")
 export let localGame = new LocalStorage("game")
 export let localResults = new LocalStorage("results")

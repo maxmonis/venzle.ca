@@ -1,5 +1,5 @@
 import type { Game } from "../lib/types"
-import { localGame } from "../lib/utils"
+import { localAudio, localGame } from "../lib/utils"
 import { startConfetti } from "../ui/confetti"
 import {
   certificateCanvasContainer,
@@ -16,7 +16,8 @@ import {
   pageTitle,
   previousGameLabel,
   statsText,
-  submitButton
+  submitButton,
+  winAudio
 } from "../ui/elements"
 import { removeToast, showToast } from "../ui/toast"
 import { appendCertificate } from "./certificate"
@@ -85,7 +86,16 @@ export function checkGame(game: Game, clicked: boolean) {
     submitButton.remove()
     howToPlay.remove()
     appendCertificate(game)
-    if (clicked) startConfetti()
+    if (clicked) {
+      startConfetti()
+      if (localAudio.get()) {
+        document.body.append(winAudio)
+        winAudio.play()
+        setTimeout(() => {
+          winAudio.remove()
+        }, 4000)
+      }
+    }
     return "success"
   }
   let remainingGuesses = 5 - game.guesses.length

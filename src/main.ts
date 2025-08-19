@@ -20,12 +20,12 @@ import {
   previousGameLabel
 } from "./ui/elements"
 import { displayStats, stats, updateStats } from "./ui/stats"
-import { applyTheme } from "./ui/theme"
+import { applyDark } from "./ui/theme"
 import { showToast } from "./ui/toast"
 
 let game = getGame(todayIndex)
 
-applyTheme()
+applyDark()
 displayStats()
 init()
 
