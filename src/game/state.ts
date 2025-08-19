@@ -1,5 +1,6 @@
 import type { Game } from "../lib/types"
 import { localGame } from "../lib/utils"
+import { startConfetti } from "../ui/confetti"
 import {
   certificateCanvasContainer,
   certificateDownloadButton,
@@ -84,6 +85,7 @@ export function checkGame(game: Game, clicked: boolean) {
     submitButton.remove()
     howToPlay.remove()
     appendCertificate(game)
+    if (clicked) startConfetti()
     return "success"
   }
   let remainingGuesses = 5 - game.guesses.length
