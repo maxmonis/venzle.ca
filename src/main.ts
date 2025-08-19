@@ -1,3 +1,4 @@
+import { appendCertificate } from "./game/certificate"
 import { initDraggables, initDropzones } from "./game/dnd"
 import { initHints } from "./game/hints"
 import {
@@ -9,8 +10,15 @@ import {
   todayIndex,
   updateGameState
 } from "./game/state"
+import { localSettings } from "./lib/utils"
 import "./style/global.css"
-import { howToPlay, main, pageTitle, previousGameLabel } from "./ui/elements"
+import {
+  certificateCanvas,
+  howToPlay,
+  main,
+  pageTitle,
+  previousGameLabel
+} from "./ui/elements"
 import { displayStats, stats, updateStats } from "./ui/stats"
 import { applyTheme } from "./ui/theme"
 import { showToast } from "./ui/toast"
@@ -51,5 +59,19 @@ new BroadcastChannel("game").onmessage = e => {
     resetGame()
     game = getGame(e.data)
     init()
+  }
+}
+
+new BroadcastChannel("certificate").onmessage = async e => {
+  if (e.data == "download") {
+    let a = document.createElement("a")
+    let format = localSettings.get()?.format
+    if (!format) return
+    await appendCertificate(game)
+    a.href = certificateCanvas.toDataURL(`image/${format}`)
+    a.download = `certificate.${format}`
+    a.click()
+    a.remove()
+    showToast("Certificate downloaded 😁")
   }
 }

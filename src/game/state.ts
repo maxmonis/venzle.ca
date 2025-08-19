@@ -1,6 +1,8 @@
 import type { Game } from "../lib/types"
 import { localGame } from "../lib/utils"
 import {
+  certificateCanvasContainer,
+  certificateDownloadButton,
   circleContainer,
   draggableContainer,
   gameSummary,
@@ -16,6 +18,7 @@ import {
   submitButton
 } from "../ui/elements"
 import { removeToast, showToast } from "../ui/toast"
+import { appendCertificate } from "./certificate"
 import { gameList } from "./list"
 
 export let todayIndex = gameList.length - 1
@@ -80,6 +83,7 @@ export function checkGame(game: Game, clicked: boolean) {
     hintsContainer.remove()
     submitButton.remove()
     howToPlay.remove()
+    appendCertificate(game)
     return "success"
   }
   let remainingGuesses = 5 - game.guesses.length
@@ -194,6 +198,8 @@ export function resetGame() {
   pageSubtitle.remove()
   gameSummary.remove()
   previousGameLabel.remove()
+  certificateCanvasContainer.remove()
+  certificateDownloadButton.remove()
   hintsContainer.innerHTML = ""
   for (let element of document.querySelectorAll(
     "[draggable=true],.dropzone,.circle-title"

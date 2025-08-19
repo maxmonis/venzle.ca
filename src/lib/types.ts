@@ -1,3 +1,5 @@
+import type { imageFormats } from "./constants"
+
 export interface Game {
   currentGuess: Guess
   groups: Record<string, Array<string>>
@@ -17,3 +19,5 @@ interface Guess {
   bc: string
   c: string
 }
+
+export type ImageFormat = (typeof imageFormats)[number]

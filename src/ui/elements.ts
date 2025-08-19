@@ -1,10 +1,86 @@
 import { gameList } from "../game/list"
 import { getGameText, todayIndex } from "../game/state"
+import { imageFormats } from "../lib/constants"
+import type { ImageFormat } from "../lib/types"
+import { localSettings } from "../lib/utils"
 
 export let circleContainer = document.querySelector(".circle-container")!
 export let howToPlay = document.querySelector(".how-to-play")!
 export let instructionText = document.querySelector(".instruction-text")!
 export let main = document.querySelector("main")!
+
+export let certificateCanvasContainer = document.createElement("div")
+certificateCanvasContainer.classList.add("certificate-canvas-container")
+export let certificateCanvas = document.createElement("canvas")
+certificateCanvasContainer.append(certificateCanvas)
+
+let certificateDownloadDialog = document.createElement("dialog")
+let certificateDialogTitle = document.createElement("h1")
+certificateDialogTitle.textContent = "Download Certificate"
+let certificateNameLabel = document.createElement("label")
+certificateNameLabel.textContent = "Your name:"
+let certificateNameInput = document.createElement("input")
+certificateNameInput.autofocus = true
+certificateNameInput.required = true
+certificateNameInput.maxLength = 27
+certificateNameInput.value = localSettings.get()?.name.trim() || ""
+certificateNameLabel.append(certificateNameInput)
+let certificateFormatLabel = document.createElement("label")
+certificateFormatLabel.textContent = "Format:"
+certificateDownloadDialog.append(certificateFormatLabel)
+let certificateFormatSelect = document.createElement("select")
+certificateFormatSelect.append(
+  ...imageFormats.map(format => {
+    let option = document.createElement("option")
+    option.value = format
+    option.selected = localSettings.get()?.format == format
+    option.textContent = format.toUpperCase()
+    return option
+  })
+)
+certificateFormatLabel.append(certificateFormatSelect)
+let certificateDialogButtons = document.createElement("div")
+certificateDialogButtons.classList.add("dialog-button-container")
+let certificateDialogCancel = document.createElement("button")
+certificateDialogCancel.type = "button"
+certificateDialogCancel.textContent = "Cancel"
+certificateDialogCancel.addEventListener("click", () => {
+  certificateDownloadDialog.close()
+})
+let certificateDialogSubmit = document.createElement("button")
+certificateDialogSubmit.type = "button"
+certificateDialogSubmit.textContent = "Download"
+certificateDialogSubmit.classList.add("btn")
+certificateDialogSubmit.addEventListener("click", () => {
+  let name = certificateNameInput.value.trim()
+  let format = certificateFormatSelect.value as ImageFormat
+  if (!name) {
+    certificateNameInput.focus()
+    return
+  }
+  localSettings.set({ format, name })
+  new BroadcastChannel("certificate").postMessage("download")
+  certificateDownloadDialog.close()
+  certificateDownloadDialog.remove()
+})
+certificateDialogButtons.append(
+  certificateDialogCancel,
+  certificateDialogSubmit
+)
+certificateDownloadDialog.append(
+  certificateDialogTitle,
+  certificateNameLabel,
+  certificateFormatLabel,
+  certificateDialogButtons
+)
+
+export let certificateDownloadButton = document.createElement("button")
+certificateDownloadButton.classList.add("download-certificate-button", "btn")
+certificateDownloadButton.textContent = "Download Certificate"
+certificateDownloadButton.addEventListener("click", () => {
+  document.body.append(certificateDownloadDialog)
+  certificateDownloadDialog.showModal()
+})
 
 export let draggableContainer = document.createElement("div")
 draggableContainer.classList.add("draggable-container")
@@ -45,7 +121,7 @@ export let statsText = document.createElement("p")
 statsText.classList.add("stats-text")
 
 export let submitButton = document.createElement("button")
-submitButton.classList.add("submit-button")
+submitButton.classList.add("submit-button", "btn")
 submitButton.textContent = "Submit Solution"
 submitButton.addEventListener("click", () => {
   new BroadcastChannel("game").postMessage("submit")

@@ -1,14 +1,16 @@
-import type { Game } from "./types"
+import type { Game, ImageFormat } from "./types"
 
 class LocalStorage<
-  K extends "dark" | "game" | "results",
+  K extends "dark" | "game" | "results" | "settings",
   T extends K extends "dark"
     ? boolean
     : K extends "game"
       ? Game
       : K extends "results"
         ? Array<{ guesses: number; hints: number; index: number }>
-        : never
+        : K extends "settings"
+          ? { format: ImageFormat; name: string }
+          : never
 > {
   private readonly key: K
   constructor(key: K) {
@@ -29,6 +31,7 @@ class LocalStorage<
 export let localDark = new LocalStorage("dark")
 export let localGame = new LocalStorage("game")
 export let localResults = new LocalStorage("results")
+export let localSettings = new LocalStorage("settings")
 
 export function shuffle<T>(items: Array<T>) {
   let res = [...items]

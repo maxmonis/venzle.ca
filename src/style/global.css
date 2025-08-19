@@ -34,6 +34,10 @@ html {
   html {
     font-size: 14px;
   }
+
+  dialog {
+    margin: 1.25rem auto;
+  }
 }
 
 @media (min-width: 800px) and (min-height: 800px) {
@@ -143,14 +147,39 @@ label {
   margin-block-start: 1.25rem;
 }
 
+input,
 select {
   background-color: inherit;
   border-radius: 0.5rem;
   color: inherit;
-  cursor: pointer;
   font-size: 1rem;
   padding: 0.5rem;
   max-width: 65ch;
+  width: 100%;
+}
+
+select {
+  cursor: pointer;
+}
+
+dialog {
+  border-radius: 2rem;
+  border-style: solid;
+  padding: 1.25rem;
+}
+
+dialog h1 {
+  font-size: 1.5rem;
+}
+
+.btn {
+  background-color: #1d4ed8;
+  border-radius: 0.5rem;
+  color: var(--light);
+  font-size: 1.0675rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 0.75rem 1rem;
 }
 
 .circle-container {
@@ -314,16 +343,6 @@ select {
   color: var(--blue);
 }
 
-.submit-button {
-  background-color: #1d4ed8;
-  border-radius: 0.5rem;
-  color: var(--light);
-  font-size: 1.0675rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  padding: 0.75rem 1rem;
-}
-
 .game-summary {
   margin-block-start: 2rem;
 }
@@ -354,6 +373,34 @@ select {
 .how-to-play .circle {
   animation-delay: 0ms;
   animation-duration: 0ms;
+}
+
+.certificate-canvas-container {
+  aspect-ratio: 3 / 4;
+  border-style: solid;
+  height: auto;
+  max-width: min(calc(100vw - 2.5rem), 30rem);
+  margin-block-start: 1.25rem;
+  width: 100%;
+}
+
+.certificate-canvas-container canvas {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.dark .certificate-canvas-container {
+  border-style: none;
+}
+
+.dialog-button-container {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin-block-start: 1.25rem;
 }
 
 .theme-toggle {
