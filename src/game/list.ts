@@ -129,5 +129,42 @@ export let gameList: Array<Pick<Game, "groups" | "hint" | "title">> = [
     },
     hint: "Two Awards and a Franchise",
     title: "Basketball"
+  },
+  {
+    groups: {
+      Color: ["Orange", "Grape", "Pine", "Purple"],
+      Fruit: ["Orange", "Grape", "Apple", "Watermelon"],
+      Tree: ["Orange", "Pine", "Apple", "Cedar"]
+    },
+    hint: "Palette, Food, Bark",
+    title: "Miscellaneous"
+  },
+  {
+    groups: {
+      "Animals We Eat": ["Shrimp", "Rabbit", "Lobster", "Cow"],
+      "Pet Animals": ["Shrimp", "Rabbit", "Newt", "Dog"],
+      "Aquatic Animals": ["Shrimp", "Lobster", "Newt", "Box Jellyfish"]
+    },
+    hint: "Food, Friend, Swim",
+    title: "Animals"
+  },
+  {
+    groups: {
+      "Contains Alcohol": [
+        "French Onion",
+        "Coq au Vin",
+        "Beer Cheese Soup",
+        "Chicken Marsala"
+      ],
+      French: ["French Onion", "Coq au Vin", "Vichyssoise", "Brioche"],
+      Soups: [
+        "French Onion",
+        "Beer Cheese Soup",
+        "Vichyssoise",
+        "Italian Wedding"
+      ]
+    },
+    hint: "Booze, France, Broth",
+    title: "Food"
   }
 ]
