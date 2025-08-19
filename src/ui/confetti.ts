@@ -51,13 +51,11 @@ class Particle {
 
 function animate() {
   ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height)
-  particles = particles.filter(
-    p => p.opacity > 0 && p.y < confettiCanvas.height
-  )
-  particles.forEach(p => {
-    p.update()
-    p.draw()
-  })
+  particles = particles.filter(p => p.opacity && p.y < confettiCanvas.height)
+  for (let particle of particles) {
+    particle.update()
+    particle.draw()
+  }
   if (particles.length) animationFrameId = requestAnimationFrame(animate)
   else {
     if (animationFrameId) cancelAnimationFrame(animationFrameId)

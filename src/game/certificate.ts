@@ -58,7 +58,7 @@ export async function appendCertificate(game: Game) {
       ? "has achieved a perfect game on"
       : `has used ${hintsCount} hint${hintsCount == 1 ? "" : "s"} and ${
           guessesUsed
-        } guess${guessesUsed == 1 ? "" : "es"} to solved`,
+        } guess${guessesUsed == 1 ? "" : "es"} to solve`,
     centerX,
     cursorY
   )
@@ -175,7 +175,7 @@ function drawBadge(
   ctx.restore()
 }
 
-// Utility: wait for fonts so text metrics are correct.
+// Utility: wait for fonts so text metrics are correct
 async function ensureFontsReady() {
   if (!document.fonts.ready) return
   try {
@@ -185,7 +185,7 @@ async function ensureFontsReady() {
   }
 }
 
-// Crisp drawing on HiDPI displays.
+// Crisp drawing on HiDPI displays
 function setupHiDPI(canvas: HTMLCanvasElement, height: number, width: number) {
   let dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 3))
   canvas.width = Math.round(width * dpr)
@@ -213,13 +213,11 @@ function wrapText(
     let test = line ? line + " " + word : word
     if (!test) return
     let { width } = ctx.measureText(test)
-    if (width > maxWidth && i > 0 && word) {
+    if (width > maxWidth && i && word) {
       ctx.fillText(line, x, y)
       y += lineHeight
       line = word
-    } else {
-      line = test
-    }
+    } else line = test
   }
   if (line) ctx.fillText(line, x, y)
   return y

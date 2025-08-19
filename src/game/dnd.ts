@@ -2,7 +2,7 @@ import type { Game } from "../lib/types"
 import { shuffle } from "../lib/utils"
 import { circleContainer, draggableContainer } from "../ui/elements"
 
-let isTouchScreen = "ontouchstart" in window || navigator.maxTouchPoints > 0
+let isTouchScreen = "ontouchstart" in window || navigator.maxTouchPoints
 let draggedElement: HTMLElement | null = null
 
 if (!isTouchScreen) {
