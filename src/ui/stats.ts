@@ -1,4 +1,4 @@
-import { todayIndex } from "../lib/constants"
+import { todayIndex } from "../game/state"
 import type { Game } from "../lib/types"
 import { localResults } from "../lib/utils"
 import { statsText } from "./elements"
@@ -76,9 +76,11 @@ function calculateStats() {
 }
 
 export function displayStats() {
-  statsText.innerHTML = `Total Puzzles: ${stats.totalPlayed} played, ${
-    stats.totalSolved
-  } solved.<br />Current Streaks: ${stats.currentPlayedStreak} played, ${
+  statsText.innerHTML = `<strong>Puzzles of the Day</strong><br />${
+    stats.totalPlayed
+  } played, ${stats.totalSolved} solved, ${stats.perfectGames} perfect game${
+    stats.perfectGames == 1 ? "" : "s"
+  }.<br />Current Streaks: ${stats.currentPlayedStreak} played, ${
     stats.currentSolvedStreak
   } solved.<br />Longest Streaks: ${stats.longestPlayedStreak} played, ${
     stats.longestSolvedStreak
@@ -86,7 +88,7 @@ export function displayStats() {
     Math.round(stats.averageGuesses * 10) / 10
   ).toFixed(1)} guesses,  ${(Math.round(stats.averageHints * 10) / 10).toFixed(
     1
-  )} hints.<br />${stats.perfectGames} perfect game${stats.perfectGames == 1 ? "" : "s"}.`
+  )} hints.`
 }
 
 export function updateStats(

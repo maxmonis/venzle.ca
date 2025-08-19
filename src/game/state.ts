@@ -1,4 +1,3 @@
-import { guessKeys, todayIndex } from "../lib/constants"
 import type { Game } from "../lib/types"
 import { localGame } from "../lib/utils"
 import {
@@ -19,6 +18,9 @@ import {
 import { removeToast, showToast } from "../ui/toast"
 import { gameList } from "./list"
 
+export let todayIndex = gameList.length - 1
+// Math.floor((Date.now() - Date.UTC(2025, 7, 14)) / 86400000) % gameList.length
+
 function appendCircleTitles(titles: [string, string, string]) {
   let keys = ["a", "b", "c"]
   circleContainer.append(
@@ -35,6 +37,11 @@ export function checkGame(game: Game, clicked: boolean) {
   removeToast()
   let groupEntries = Object.entries(game.groups)
   let { currentGuess } = game
+  let guessKeys: Record<"a" | "b" | "c", Array<keyof typeof currentGuess>> = {
+    a: ["a", "ab", "abc", "ac"],
+    b: ["ab", "abc", "b", "bc"],
+    c: ["abc", "ac", "bc", "c"]
+  }
   let [titleA] =
     groupEntries.find(([, values]) =>
       guessKeys.a.every(key => values.includes(currentGuess[key]))
@@ -55,7 +62,7 @@ export function checkGame(game: Game, clicked: boolean) {
     let guessCount = game.guesses.length
     gameSummary.innerHTML =
       guessCount == 1 && hintCount == 0
-        ? "Great job, you got it on the first try without using any hints 😎"
+        ? "First try with no hints, that's a perfect game 😎"
         : `You used ${hintCount} hint${
             hintCount == 1 ? "" : "s"
           } and ${guessCount} guess${guessCount == 1 ? "" : "es"} 😄`
