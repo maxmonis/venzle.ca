@@ -108,7 +108,7 @@ export let gameList: Array<Pick<Game, "groups" | "hint" | "title">> = [
         "Bruce Willis"
       ]
     },
-    hint: "Award, Nationality, DOB",
+    hint: "Academy, Nationality, DOB",
     title: "Actors"
   },
   {
@@ -127,7 +127,7 @@ export let gameList: Array<Pick<Game, "groups" | "hint" | "title">> = [
         "Ray Allen"
       ]
     },
-    hint: "Two Awards and a Franchise",
+    hint: "Russell Trophy, Jordan Trophy, Red Auerbach",
     title: "Basketball"
   },
   {
@@ -141,9 +141,9 @@ export let gameList: Array<Pick<Game, "groups" | "hint" | "title">> = [
   },
   {
     groups: {
-      "Animals We Eat": ["Shrimp", "Rabbit", "Lobster", "Cow"],
-      "Pet Animals": ["Shrimp", "Rabbit", "Newt", "Dog"],
-      "Aquatic Animals": ["Shrimp", "Lobster", "Newt", "Box Jellyfish"]
+      "Commonly Eaten": ["Shrimp", "Rabbit", "Lobster", "Cow"],
+      "Often Kept as Pet": ["Shrimp", "Rabbit", "Newt", "Dog"],
+      "Lives in Water": ["Shrimp", "Lobster", "Newt", "Box Jellyfish"]
     },
     hint: "Food, Friend, Swim",
     title: "Animals"
@@ -157,7 +157,7 @@ export let gameList: Array<Pick<Game, "groups" | "hint" | "title">> = [
         "Chicken Marsala"
       ],
       French: ["French Onion", "Coq au Vin", "Vichyssoise", "Brioche"],
-      Soups: [
+      Soup: [
         "French Onion",
         "Beer Cheese Soup",
         "Vichyssoise",
@@ -166,5 +166,23 @@ export let gameList: Array<Pick<Game, "groups" | "hint" | "title">> = [
     },
     hint: "Booze, France, Broth",
     title: "Food"
+  },
+  {
+    groups: {
+      Caribbean: ["Venezuela", "Suriname", "Cuba", "Jamaica"],
+      "Contains Amazon Rainforest": ["Venezuela", "Suriname", "Peru", "Brazil"],
+      "Spanish is Official Language": ["Venezuela", "Cuba", "Peru", "Spain"]
+    },
+    hint: "Beaches, Trees, Language",
+    title: "Countries 2"
   }
+  // ,{
+  //   groups: {
+  //     cat1: ["itemA", "itemB", "itemC", "itemE"],
+  //     cat2: ["itemA", "itemB", "itemD", "itemF"],
+  //     cat3: ["itemA", "itemC", "itemD", "itemG"]
+  //   },
+  //   hint: "",
+  //   title: ""
+  // }
 ]
