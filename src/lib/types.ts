@@ -1,6 +1,7 @@
 import type { imageFormats } from "./constants"
 
 export interface Game {
+  creator: string
   currentGuess: Guess
   groups: Record<string, Array<string>>
   guesses: Array<Guess>

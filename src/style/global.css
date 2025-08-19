@@ -4,6 +4,7 @@
   --circle-b: #3b82f6;
   --circle-c: #ef4444;
   --dark: #121212;
+  --gray: #374151;
   --light: #fefefe;
   --slate: #334155;
 
@@ -13,6 +14,7 @@
 
 :root:has(body.dark) {
   --blue: #60a5fa;
+  --gray: #d1d5db;
   --slate: #cbd5e1;
 
   --bg: var(--dark);
@@ -106,12 +108,12 @@ h2 {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 h2 {
-  font-size: 2rem;
-  margin-block-end: 2rem;
+  font-size: 1.75rem;
+  margin-block: -1.25rem 2rem;
 }
 
 p {
@@ -180,6 +182,12 @@ dialog h1 {
   font-weight: 600;
   letter-spacing: 0.5px;
   padding: 0.75rem 1rem;
+}
+
+.creator-text {
+  color: var(--gray);
+  font-size: 0.875rem;
+  margin-block-start: -1.25rem;
 }
 
 .circle-container {

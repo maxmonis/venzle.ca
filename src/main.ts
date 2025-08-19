@@ -14,6 +14,7 @@ import { localSettings } from "./lib/utils"
 import "./style/global.css"
 import {
   certificateCanvas,
+  creatorText,
   howToPlay,
   main,
   pageTitle,
@@ -32,6 +33,7 @@ init()
 function init() {
   window.scrollTo({ behavior: "smooth", top: 0 })
   pageTitle.innerHTML = getGameText(game.title, game.index)
+  creatorText.innerHTML = `Created by ${game.creator}`
   initDropzones(game)
   initDraggables(game)
   initHints(game)

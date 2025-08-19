@@ -5,6 +5,7 @@ import {
   certificateCanvasContainer,
   certificateDownloadButton,
   circleContainer,
+  creatorText,
   draggableContainer,
   gameSummary,
   guessesText,
@@ -13,7 +14,6 @@ import {
   instructionText,
   main,
   pageSubtitle,
-  pageTitle,
   previousGameLabel,
   statsText,
   submitButton,
@@ -61,7 +61,7 @@ export function checkGame(game: Game, clicked: boolean) {
     ) ?? []
   if (titleA && titleB && titleC) {
     pageSubtitle.textContent = "You got it! Congratulations 🥳"
-    pageTitle.after(pageSubtitle)
+    creatorText.after(pageSubtitle)
     appendCircleTitles([titleA, titleB, titleC])
     let hintCount = Object.values(game.hintsUsed).filter(Boolean).length
     let guessCount = game.guesses.length
@@ -137,7 +137,7 @@ export function checkGame(game: Game, clicked: boolean) {
     return "pending"
   } else {
     pageSubtitle.textContent = "Better luck next time!"
-    pageTitle.after(pageSubtitle)
+    creatorText.after(pageSubtitle)
     guessesText.remove()
     submitButton.remove()
     hintsContainer.remove()
@@ -183,8 +183,10 @@ export function getGame(index: number) {
     let storageGame = localGame.get()
     if (storageGame && storageGame.index == todayIndex) return storageGame
   }
+  let { creator = "Max Monis", ...game } = gameList[index]!
   return {
-    ...gameList[index]!,
+    ...game,
+    creator,
     currentGuess: {
       a: "",
       ab: "",

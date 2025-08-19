@@ -1,6 +1,10 @@
 import type { Game } from "../lib/types"
 
-export let gameList: Array<Pick<Game, "groups" | "hint" | "title">> = [
+interface GameListItem extends Pick<Game, "groups" | "hint" | "title"> {
+  creator?: string
+}
+
+export let gameList: Array<GameListItem> = [
   {
     groups: {
       "Constitutional Monarchy": ["Canada", "Sweden", "Australia", "Japan"],
@@ -140,6 +144,7 @@ export let gameList: Array<Pick<Game, "groups" | "hint" | "title">> = [
     title: "Miscellaneous"
   },
   {
+    creator: "Hannah Monis",
     groups: {
       "Commonly Eaten": ["Shrimp", "Rabbit", "Lobster", "Cow"],
       "Often Kept as Pet": ["Shrimp", "Rabbit", "Newt", "Dog"],
@@ -149,6 +154,7 @@ export let gameList: Array<Pick<Game, "groups" | "hint" | "title">> = [
     title: "Animals"
   },
   {
+    creator: "Hannah Monis",
     groups: {
       "Contains Alcohol": [
         "French Onion",

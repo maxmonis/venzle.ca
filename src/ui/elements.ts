@@ -19,7 +19,7 @@ certificateCanvasContainer.append(certificateCanvas)
 
 let certificateDownloadDialog = document.createElement("dialog")
 let certificateDialogTitle = document.createElement("h1")
-certificateDialogTitle.textContent = "Download Certificate"
+certificateDialogTitle.textContent = "Share Certificate"
 let certificateNameLabel = document.createElement("label")
 certificateNameLabel.textContent = "Your name:"
 let certificateNameInput = document.createElement("input")
@@ -48,6 +48,9 @@ let certificateDialogCancel = document.createElement("button")
 certificateDialogCancel.type = "button"
 certificateDialogCancel.textContent = "Cancel"
 certificateDialogCancel.addEventListener("click", () => {
+  let format = certificateFormatSelect.value as ImageFormat
+  let name = certificateNameInput.value.trim()
+  if (name && !localSettings.get()) localSettings.set({ format, name })
   certificateDownloadDialog.close()
 })
 let certificateDialogSubmit = document.createElement("button")
@@ -55,8 +58,8 @@ certificateDialogSubmit.type = "button"
 certificateDialogSubmit.textContent = "Download"
 certificateDialogSubmit.classList.add("btn")
 certificateDialogSubmit.addEventListener("click", () => {
-  let name = certificateNameInput.value.trim()
   let format = certificateFormatSelect.value as ImageFormat
+  let name = certificateNameInput.value.trim()
   if (!name) {
     certificateNameInput.focus()
     return
@@ -79,11 +82,14 @@ certificateDownloadDialog.append(
 
 export let certificateDownloadButton = document.createElement("button")
 certificateDownloadButton.classList.add("download-certificate-button", "btn")
-certificateDownloadButton.textContent = "Download Certificate"
+certificateDownloadButton.textContent = "Share Certificate"
 certificateDownloadButton.addEventListener("click", () => {
   document.body.append(certificateDownloadDialog)
   certificateDownloadDialog.showModal()
 })
+
+export let creatorText = document.createElement("p")
+creatorText.classList.add("creator-text")
 
 export let darkToggle = document.createElement("button")
 darkToggle.title = "Toggle dark mode"
@@ -146,7 +152,7 @@ winAudio.setAttribute("type", "audio/mpeg")
 winAudio.preload = "auto"
 winAudio.src = "/audio/win.mp3"
 
-main.prepend(pageTitle)
+main.prepend(pageTitle, creatorText)
 instructionText.after(draggableContainer)
 draggableContainer.after(hintsContainer)
 main.append(statsText)
