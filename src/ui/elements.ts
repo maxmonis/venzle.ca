@@ -18,6 +18,7 @@ export let certificateCanvas = document.createElement("canvas")
 certificateCanvasContainer.append(certificateCanvas)
 
 let certificateDownloadDialog = document.createElement("dialog")
+let certificateDownloadDialogContent = document.createElement("div")
 let certificateDialogTitle = document.createElement("h1")
 certificateDialogTitle.textContent = "Share Certificate"
 let certificateNameLabel = document.createElement("label")
@@ -30,7 +31,6 @@ certificateNameInput.value = localSettings.get()?.name.trim() || ""
 certificateNameLabel.append(certificateNameInput)
 let certificateFormatLabel = document.createElement("label")
 certificateFormatLabel.textContent = "Format:"
-certificateDownloadDialog.append(certificateFormatLabel)
 let certificateFormatSelect = document.createElement("select")
 certificateFormatSelect.append(
   ...imageFormats.map(format => {
@@ -73,12 +73,16 @@ certificateDialogButtons.append(
   certificateDialogCancel,
   certificateDialogSubmit
 )
-certificateDownloadDialog.append(
+certificateDownloadDialog.addEventListener("click", e => {
+  if (e.target == certificateDownloadDialog) certificateDownloadDialog.close()
+})
+certificateDownloadDialogContent.append(
   certificateDialogTitle,
   certificateNameLabel,
   certificateFormatLabel,
   certificateDialogButtons
 )
+certificateDownloadDialog.append(certificateDownloadDialogContent)
 
 export let certificateDownloadButton = document.createElement("button")
 certificateDownloadButton.classList.add("download-certificate-button", "btn")
