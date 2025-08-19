@@ -96,17 +96,17 @@ export function checkGame(game: Game, clicked: boolean) {
           titleA &&
           allItems.filter(item => item == game.currentGuess.a).length == 1
         )
-          correctPart = "The yellow circle"
+          correctPart = "🟡 yellow circle"
         else if (
           titleB &&
           allItems.filter(item => item == game.currentGuess.b).length == 1
         )
-          correctPart = "The blue circle"
+          correctPart = "🔵 blue circle"
         else if (
           titleC &&
           allItems.filter(item => item == game.currentGuess.c).length == 1
         )
-          correctPart = "The red circle"
+          correctPart = "🔴 red circle"
         else correctPart = "The center"
       }
       showToast(
