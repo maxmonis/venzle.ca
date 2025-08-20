@@ -17,10 +17,7 @@ import {
   creatorText,
   header,
   homeButton,
-  howToPlay,
-  main,
-  pageTitle,
-  previousGameLabel
+  pageTitle
 } from "./ui/elements"
 import { displayStats } from "./ui/stats"
 import { applyDark } from "./ui/theme"
@@ -40,14 +37,12 @@ function init() {
   initDraggables(game)
   initHints(game)
   updateGameState(game)
-  if (game.index != todayIndex) {
+  if (game.index == todayIndex) sessionCurrentIndex.remove()
+  else {
     header.prepend(homeButton)
     sessionCurrentIndex.set(game.index)
-    if (!main.contains(previousGameLabel)) howToPlay.before(previousGameLabel)
-  } else sessionCurrentIndex.remove()
-  if (!game.submitted) return
-  checkGame(game, false)
-  if (!main.contains(previousGameLabel)) howToPlay.before(previousGameLabel)
+  }
+  if (game.submitted) checkGame(game, false)
 }
 
 new BroadcastChannel("game").onmessage = e => {

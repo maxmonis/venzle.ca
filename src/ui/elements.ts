@@ -5,7 +5,6 @@ import type { ImageFormat } from "../lib/types"
 import { localSettings, sessionCurrentIndex } from "../lib/utils"
 
 export let circleContainer = document.querySelector(".circle-container")!
-export let howToPlay = document.querySelector(".how-to-play")!
 export let instructionText = document.querySelector(".instruction-text")!
 export let main = document.querySelector("main")!
 
@@ -18,6 +17,7 @@ export let certificateCanvas = document.createElement("canvas")
 certificateCanvasContainer.append(certificateCanvas)
 
 let certificateDownloadDialog = document.createElement("dialog")
+certificateDownloadDialog.classList.add("certificate-dialog")
 let certificateDownloadDialogContent = document.createElement("div")
 let certificateDialogTitle = document.createElement("h1")
 certificateDialogTitle.textContent = "Share Certificate"
@@ -67,7 +67,6 @@ certificateDialogSubmit.addEventListener("click", () => {
   localSettings.set({ format, name })
   new BroadcastChannel("certificate").postMessage("download")
   certificateDownloadDialog.close()
-  certificateDownloadDialog.remove()
 })
 certificateDialogButtons.append(
   certificateDialogCancel,
@@ -124,7 +123,13 @@ export let pageSubtitle = document.createElement("h2")
 
 export let pageTitle = document.createElement("h1")
 
-export let previousGameLabel = document.createElement("label")
+export let previousGameContainer = document.createElement("div")
+previousGameContainer.classList.add("previous-game-container")
+let previousGameText = document.createElement("p")
+previousGameText.textContent =
+  "You can practice for the daily puzzle by playing any previous puzzle." +
+  " These practice rounds do not impact your stats."
+let previousGameLabel = document.createElement("label")
 previousGameLabel.textContent = "Available Puzzles:"
 let previousGameSelect = document.createElement("select")
 let selectedGameIndex = sessionCurrentIndex.get() ?? todayIndex
@@ -144,6 +149,7 @@ previousGameSelect.addEventListener("change", () => {
   new BroadcastChannel("game").postMessage(Number(previousGameSelect.value))
 })
 previousGameLabel.append(previousGameSelect)
+previousGameContainer.append(previousGameText, previousGameLabel)
 
 export let statsText = document.createElement("p")
 statsText.classList.add("stats-text")
@@ -171,9 +177,12 @@ winAudio.src = "/audio/win.mp3"
 
 main.before(header)
 main.prepend(pageTitle, creatorText)
-instructionText.after(draggableContainer)
-draggableContainer.after(hintsContainer)
-main.append(statsText)
+instructionText.after(
+  draggableContainer,
+  hintsContainer,
+  previousGameContainer,
+  statsText
+)
 main.append(themeToggleContainer)
 
 setTimeout(() => {

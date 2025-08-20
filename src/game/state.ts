@@ -10,12 +10,9 @@ import {
   gameSummary,
   guessesText,
   hintsContainer,
-  howToPlay,
   instructionText,
   main,
   pageSubtitle,
-  previousGameLabel,
-  statsText,
   submitButton,
   winAudio
 } from "../ui/elements"
@@ -76,13 +73,10 @@ export function checkGame(game: Game, clicked: boolean) {
       dropzone.removeAttribute("draggable")
     }
     circleContainer.after(gameSummary)
-    previousGameLabel.remove()
-    statsText.after(previousGameLabel)
     instructionText.remove()
     guessesText.remove()
     hintsContainer.remove()
     submitButton.remove()
-    howToPlay.remove()
     appendCertificate(game)
     if (clicked) {
       game.submitted = true
@@ -165,8 +159,6 @@ export function checkGame(game: Game, clicked: boolean) {
     if (game.index == todayIndex)
       gameSummary.innerHTML += "<br />Come back tomorrow for a new puzzle!"
     circleContainer.after(gameSummary)
-    previousGameLabel.remove()
-    gameSummary.after(previousGameLabel)
     if (clicked) {
       game.submitted = true
       saveGame(game)
@@ -218,7 +210,6 @@ export function getGameText(title: string, index: number) {
 export function resetGame() {
   pageSubtitle.remove()
   gameSummary.remove()
-  previousGameLabel.remove()
   certificateCanvasContainer.remove()
   certificateDownloadButton.remove()
   hintsContainer.innerHTML = ""
@@ -227,7 +218,6 @@ export function resetGame() {
   ))
     if (!element.closest(".how-to-play")) element.remove()
   draggableContainer.before(instructionText)
-  statsText.before(hintsContainer, howToPlay)
 }
 
 export function saveGame(game: Game) {
