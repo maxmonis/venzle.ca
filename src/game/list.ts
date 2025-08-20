@@ -231,6 +231,46 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Nationality, Gender, Era",
     title: "Authors"
+  },
+  {
+    creator: "Andrea Alcalá Vásquez",
+    groups: {
+      British: [
+        "Elton John",
+        "Jeremy Irons",
+        "Andrew Lloyd Webber",
+        "Hugh Grant"
+      ],
+      "Contributed to Disney Soundtrack": [
+        "Elton John",
+        "Jeremy Irons",
+        "Alan Menken",
+        "Josh Gad"
+      ],
+      "EGOT Winner": [
+        "Elton John",
+        "Andrew Lloyd Webber",
+        "Alan Menken",
+        "John Legend"
+      ]
+    },
+    hint: "Nationality, Mickey, Awards",
+    title: "Entertainment 2"
+  },
+  {
+    creator: "Andrea Alcalá Vásquez",
+    groups: {
+      "100 Million Physical Records Sold": [
+        "Michael Jackson",
+        "Eagles",
+        "Celine Dion",
+        "Led Zeppelin"
+      ],
+      American: ["Michael Jackson", "Eagles", "Lady Gaga", "Kings of Leon"],
+      "Pop Singer": ["Michael Jackson", "Celine Dion", "Lady Gaga", "Dua Lipa"]
+    },
+    hint: "Sales, Nationality, Genre",
+    title: "Musicians"
   }
   // ,{
   //   groups: {
