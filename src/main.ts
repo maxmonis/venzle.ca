@@ -16,7 +16,6 @@ import {
   certificateCanvas,
   creatorText,
   howToPlay,
-  main,
   pageTitle,
   previousGameLabel
 } from "./ui/elements"
@@ -39,7 +38,7 @@ function init() {
   initHints(game)
   updateGameState(game)
   if (stats.playedToday) checkGame(game, false)
-  if (game.index != todayIndex) main.insertBefore(previousGameLabel, howToPlay)
+  if (game.index != todayIndex) howToPlay.before(previousGameLabel)
 }
 
 new BroadcastChannel("game").onmessage = e => {

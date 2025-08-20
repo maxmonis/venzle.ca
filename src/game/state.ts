@@ -95,6 +95,7 @@ export function checkGame(game: Game, clicked: boolean) {
         }, 4000)
       }
     }
+    return
   }
   let remainingGuesses = 5 - game.guesses.length
   if (remainingGuesses) {
@@ -216,11 +217,8 @@ export function resetGame() {
     "[draggable=true],.dropzone,.circle-title"
   ))
     if (!element.closest(".how-to-play")) element.remove()
-  if (!main.contains(howToPlay)) main.insertBefore(howToPlay, statsText)
-  if (!main.contains(instructionText))
-    main.insertBefore(instructionText, draggableContainer)
-  if (!main.contains(hintsContainer))
-    main.insertBefore(hintsContainer, howToPlay)
+  draggableContainer.before(instructionText)
+  statsText.before(hintsContainer, howToPlay)
 }
 
 export function saveGame(game: Game) {
@@ -236,15 +234,14 @@ export function updateGameState(game: Game) {
   if (Object.values(game.currentGuess).every(Boolean)) {
     instructionText.remove()
     if (!main.contains(hintsContainer) || main.contains(submitButton)) return
-    main.insertBefore(submitButton, hintsContainer)
     let remainingGuesses = 5 - game.guesses.length
     guessesText.textContent = `${remainingGuesses} guess${
       remainingGuesses == 1 ? "" : "es"
     } remaining`
-    main.insertBefore(guessesText, submitButton)
+    hintsContainer.before(guessesText, submitButton)
   } else {
     if (!main.contains(instructionText))
-      main.insertBefore(instructionText, draggableContainer)
+      draggableContainer.before(instructionText)
     guessesText.remove()
     submitButton.remove()
   }
