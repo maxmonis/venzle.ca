@@ -181,12 +181,71 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Beaches, Trees, Language",
     title: "Countries 2"
+  },
+  {
+    creator: "Margaret Monis",
+    groups: {
+      "Police Show": [
+        "Cagney and Lacey",
+        "Blue Bloods",
+        "Rizzoli and Isles",
+        "Miami Vice"
+      ],
+      "Set in New York City": [
+        "Cagney and Lacey",
+        "Blue Bloods",
+        "Sex and the City",
+        "Friends"
+      ],
+      "Female Leads": [
+        "Cagney and Lacey",
+        "Rizzoli and Isles",
+        "Sex and the City",
+        "Designing Women"
+      ]
+    },
+    hint: "Justice, Metropolis, Heroines",
+    title: "Television"
+  },
+  {
+    creator: "Margaret Monis",
+    groups: {
+      British: [
+        "Jane Austen",
+        "J. K. Rowling",
+        "Charles Dickens",
+        "Ian McEwan"
+      ],
+      Female: [
+        "Jane Austen",
+        "J. K. Rowling",
+        "Louisa May Alcott",
+        "Margaret Atwood"
+      ],
+      Victorian: [
+        "Jane Austen",
+        "Charles Dickens",
+        "Louisa May Alcott",
+        "Jules Verne"
+      ]
+    },
+    hint: "Nationality, Gender, Era",
+    title: "Authors"
   }
   // ,{
   //   groups: {
-  //     cat1: ["itemA", "itemB", "itemC", "itemE"],
-  //     cat2: ["itemA", "itemB", "itemD", "itemF"],
-  //     cat3: ["itemA", "itemC", "itemD", "itemG"]
+  //     "Category 1": ["itemA", "itemB", "itemC", "itemE"],
+  //     "Category 2": ["itemA", "itemB", "itemD", "itemF"],
+  //     "Category 3": ["itemA", "itemC", "itemD", "itemG"]
+  //   },
+  //   hint: "",
+  //   title: ""
+  // }
+  // ,{
+  //   groups: {
+  //     "Yellow Circle": ["Brown", "Green", "Orange", "Yellow"],
+  //     "Blue Circle": ["Brown", "Green", "Purple", "Blue"],
+  //     "Red Circle": ["Brown", "Orange", "Purple", "Red"]
   //   },
   //   hint: "",
   //   title: ""
