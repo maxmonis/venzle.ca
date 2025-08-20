@@ -19,12 +19,10 @@ import {
   submitButton,
   winAudio
 } from "../ui/elements"
+import { updateStats } from "../ui/stats"
 import { removeToast, showToast } from "../ui/toast"
 import { appendCertificate } from "./certificate"
-import { gameList } from "./list"
-
-export let todayIndex = gameList.length - 1
-// Math.floor((Date.now() - Date.UTC(2025, 7, 14)) / 86400000) % gameList.length
+import { gameList, todayIndex } from "./list"
 
 function appendCircleTitles(titles: [string, string, string]) {
   let keys = ["a", "b", "c"]
@@ -87,6 +85,7 @@ export function checkGame(game: Game, clicked: boolean) {
     howToPlay.remove()
     appendCertificate(game)
     if (clicked) {
+      updateStats(game)
       startConfetti()
       if (localAudio.get()) {
         document.body.append(winAudio)
@@ -96,7 +95,6 @@ export function checkGame(game: Game, clicked: boolean) {
         }, 4000)
       }
     }
-    return "success"
   }
   let remainingGuesses = 5 - game.guesses.length
   if (remainingGuesses) {
@@ -134,7 +132,6 @@ export function checkGame(game: Game, clicked: boolean) {
         correctPart ? 5000 : 3000
       )
     }
-    return "pending"
   } else {
     pageSubtitle.textContent = "Better luck next time!"
     creatorText.after(pageSubtitle)
@@ -167,7 +164,7 @@ export function checkGame(game: Game, clicked: boolean) {
     circleContainer.after(gameSummary)
     previousGameLabel.remove()
     gameSummary.after(previousGameLabel)
-    return "failure"
+    if (clicked) updateStats(game)
   }
 }
 

@@ -1,4 +1,4 @@
-import { todayIndex } from "../game/state"
+import { todayIndex } from "../game/list"
 import type { Game } from "../lib/types"
 import { localResults } from "../lib/utils"
 import { statsText } from "./elements"
@@ -91,11 +91,8 @@ export function displayStats() {
   )} hints.`
 }
 
-export function updateStats(
-  status: "failure" | "pending" | "success",
-  game: Game
-) {
-  if (status == "pending" || game.index != todayIndex) return
+export function updateStats(game: Game) {
+  if (game.index != todayIndex) return
   results.push({
     hints: Object.values(game.hintsUsed).filter(Boolean).length,
     guesses: game.guesses.length,

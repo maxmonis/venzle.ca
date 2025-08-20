@@ -1,5 +1,5 @@
-import { gameList } from "../game/list"
-import { getGameText, todayIndex } from "../game/state"
+import { gameList, todayIndex } from "../game/list"
+import { getGameText } from "../game/state"
 import { imageFormats } from "../lib/constants"
 import type { ImageFormat } from "../lib/types"
 import { localSettings } from "../lib/utils"

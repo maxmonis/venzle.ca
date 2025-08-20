@@ -1,13 +1,13 @@
 import { appendCertificate } from "./game/certificate"
 import { initDraggables, initDropzones } from "./game/dnd"
 import { initHints } from "./game/hints"
+import { todayIndex } from "./game/list"
 import {
   checkGame,
   getGame,
   getGameText,
   resetGame,
   saveGame,
-  todayIndex,
   updateGameState
 } from "./game/state"
 import { localSettings } from "./lib/utils"
@@ -20,7 +20,7 @@ import {
   pageTitle,
   previousGameLabel
 } from "./ui/elements"
-import { displayStats, stats, updateStats } from "./ui/stats"
+import { displayStats, stats } from "./ui/stats"
 import { applyDark } from "./ui/theme"
 import { showToast } from "./ui/toast"
 
@@ -56,7 +56,7 @@ new BroadcastChannel("game").onmessage = e => {
     }
     game.guesses.push({ ...game.currentGuess })
     saveGame(game)
-    updateStats(checkGame(game, true), game)
+    checkGame(game, true)
   } else if (typeof e.data == "number") {
     resetGame()
     game = getGame(e.data)

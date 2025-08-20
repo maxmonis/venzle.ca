@@ -192,3 +192,6 @@ export let gameList: Array<GameListItem> = [
   //   title: ""
   // }
 ]
+
+export let todayIndex = gameList.length - 1
+// Math.floor((Date.now() - Date.UTC(2025, 7, 14)) / 86400000) % gameList.length
