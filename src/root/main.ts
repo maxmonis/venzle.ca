@@ -12,7 +12,7 @@ import {
 } from "../game/state"
 import { localFormat, sessionIndex } from "../lib/utils"
 import "../style/global.css"
-import { creatorText, header, homeButton, pageTitle } from "../ui/elements"
+import { creatorText, pageTitle } from "../ui/elements"
 import { displayStats } from "../ui/stats"
 import { applyDark } from "../ui/theme"
 import { showToast } from "../ui/toast"
@@ -32,10 +32,7 @@ function init() {
   initHints(game)
   updateGameState(game)
   if (game.index == todayIndex) sessionIndex.remove()
-  else {
-    header.prepend(homeButton)
-    sessionIndex.set(game.index)
-  }
+  else sessionIndex.set(game.index)
   if (game.submitted) checkGame(game, false)
 }
 

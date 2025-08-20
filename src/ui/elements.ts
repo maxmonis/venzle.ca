@@ -20,18 +20,8 @@ gameSummary.classList.add("game-summary")
 export let guessesText = document.createElement("p")
 guessesText.classList.add("guesses-text")
 
-export let header = document.createElement("header")
-
 export let hintsContainer = document.createElement("div")
 hintsContainer.classList.add("hints-container")
-
-export let homeButton = document.createElement("button")
-homeButton.classList.add("home-button")
-homeButton.textContent = "< Back to Today's Puzzle"
-homeButton.addEventListener("click", () => {
-  new BroadcastChannel("game").postMessage(todayIndex)
-  homeButton.remove()
-})
 
 export let pageSubtitle = document.createElement("h2")
 
@@ -78,7 +68,6 @@ winAudio.volume = 0.1
 winAudio.preload = "auto"
 winAudio.src = "/audio/win.mp3"
 
-main.before(header)
 main.prepend(pageTitle, creatorText)
 instructionText.after(
   draggableContainer,
