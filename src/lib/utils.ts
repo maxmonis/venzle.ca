@@ -23,8 +23,29 @@ class LocalStorage<
   set(item: T) {
     localStorage.setItem(this.key, JSON.stringify(item))
   }
+}
+
+class SessionStorage<
+  K extends "current" | "games",
+  T extends K extends "current"
+    ? number
+    : K extends "games"
+      ? Array<Game>
+      : never
+> {
+  private readonly key: K
+  constructor(key: K) {
+    this.key = key
+  }
+  get(): T | null {
+    let item = sessionStorage.getItem(this.key)
+    return item ? JSON.parse(item) : null
+  }
+  set(item: T) {
+    sessionStorage.setItem(this.key, JSON.stringify(item))
+  }
   remove() {
-    localStorage.removeItem(this.key)
+    sessionStorage.removeItem(this.key)
   }
 }
 
@@ -33,6 +54,9 @@ export let localDark = new LocalStorage("dark")
 export let localGame = new LocalStorage("game")
 export let localResults = new LocalStorage("results")
 export let localSettings = new LocalStorage("settings")
+
+export let sessionCurrentIndex = new SessionStorage("current")
+export let sessionGames = new SessionStorage("games")
 
 export function shuffle<T>(items: Array<T>) {
   let res = [...items]

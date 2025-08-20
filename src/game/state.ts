@@ -1,5 +1,5 @@
 import type { Game } from "../lib/types"
-import { localAudio, localGame } from "../lib/utils"
+import { localAudio, localGame, sessionGames } from "../lib/utils"
 import { startConfetti } from "../ui/confetti"
 import {
   certificateCanvasContainer,
@@ -85,6 +85,8 @@ export function checkGame(game: Game, clicked: boolean) {
     howToPlay.remove()
     appendCertificate(game)
     if (clicked) {
+      game.submitted = true
+      saveGame(game)
       updateStats(game)
       startConfetti()
       if (localAudio.get()) {
@@ -165,7 +167,11 @@ export function checkGame(game: Game, clicked: boolean) {
     circleContainer.after(gameSummary)
     previousGameLabel.remove()
     gameSummary.after(previousGameLabel)
-    if (clicked) updateStats(game)
+    if (clicked) {
+      game.submitted = true
+      saveGame(game)
+      updateStats(game)
+    }
   }
 }
 
@@ -178,12 +184,14 @@ export function getCenter(game: Game) {
 
 export function getGame(index: number) {
   if (index == todayIndex) {
-    let storageGame = localGame.get()
-    if (storageGame && storageGame.index == todayIndex) return storageGame
+    let game = localGame.get()
+    if (game && game.index == todayIndex) return game
   }
-  let { creator = "Max Monis", ...game } = gameList[index]!
+  let game = sessionGames.get()?.find(g => g.index == index)
+  if (game) return game
+  let { creator = "Max Monis", ...newGame } = gameList[index]!
   return {
-    ...game,
+    ...newGame,
     creator,
     currentGuess: {
       a: "",
@@ -196,7 +204,8 @@ export function getGame(index: number) {
     },
     guesses: [],
     hintsUsed: { a: false, b: false, c: false },
-    index
+    index,
+    submitted: false
   }
 }
 
@@ -222,7 +231,21 @@ export function resetGame() {
 }
 
 export function saveGame(game: Game) {
-  if (game.index == todayIndex) localGame.set(game)
+  if (game.index == todayIndex) {
+    localGame.set(game)
+    return
+  }
+  let games = sessionGames.get() ?? []
+  let mapped = false
+  games = games.map(g => {
+    if (g.index == game.index) {
+      mapped = true
+      return game
+    }
+    return g
+  })
+  if (!mapped) games.push(game)
+  sessionGames.set(games)
 }
 
 export function updateGameState(game: Game) {

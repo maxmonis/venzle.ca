@@ -64,6 +64,11 @@ body.loaded :not(:where(main, footer, .circle-container, .circle)) {
   animation-duration: 250ms;
 }
 
+header {
+  align-items: center;
+  display: flex;
+}
+
 main {
   align-items: center;
   display: flex;
@@ -358,6 +363,10 @@ dialog h1 {
 
 .game-summary {
   margin-block-start: 2rem;
+}
+
+.home-button {
+  color: var(--blue);
 }
 
 .how-to-play {

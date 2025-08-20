@@ -10,20 +10,23 @@ import {
   saveGame,
   updateGameState
 } from "./game/state"
-import { localSettings } from "./lib/utils"
+import { localSettings, sessionCurrentIndex } from "./lib/utils"
 import "./style/global.css"
 import {
   certificateCanvas,
   creatorText,
+  header,
+  homeButton,
   howToPlay,
+  main,
   pageTitle,
   previousGameLabel
 } from "./ui/elements"
-import { displayStats, stats } from "./ui/stats"
+import { displayStats } from "./ui/stats"
 import { applyDark } from "./ui/theme"
 import { showToast } from "./ui/toast"
 
-let game = getGame(todayIndex)
+let game = getGame(sessionCurrentIndex.get() ?? todayIndex)
 
 applyDark()
 displayStats()
@@ -37,8 +40,14 @@ function init() {
   initDraggables(game)
   initHints(game)
   updateGameState(game)
-  if (stats.playedToday) checkGame(game, false)
-  if (game.index != todayIndex) howToPlay.before(previousGameLabel)
+  if (game.index != todayIndex) {
+    header.prepend(homeButton)
+    sessionCurrentIndex.set(game.index)
+    if (!main.contains(previousGameLabel)) howToPlay.before(previousGameLabel)
+  } else sessionCurrentIndex.remove()
+  if (!game.submitted) return
+  checkGame(game, false)
+  if (!main.contains(previousGameLabel)) howToPlay.before(previousGameLabel)
 }
 
 new BroadcastChannel("game").onmessage = e => {

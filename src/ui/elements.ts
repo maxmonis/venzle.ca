@@ -2,7 +2,7 @@ import { gameList, todayIndex } from "../game/list"
 import { getGameText } from "../game/state"
 import { imageFormats } from "../lib/constants"
 import type { ImageFormat } from "../lib/types"
-import { localSettings } from "../lib/utils"
+import { localSettings, sessionCurrentIndex } from "../lib/utils"
 
 export let circleContainer = document.querySelector(".circle-container")!
 export let howToPlay = document.querySelector(".how-to-play")!
@@ -107,8 +107,18 @@ gameSummary.classList.add("game-summary")
 export let guessesText = document.createElement("p")
 guessesText.classList.add("guesses-text")
 
+export let header = document.createElement("header")
+
 export let hintsContainer = document.createElement("div")
 hintsContainer.classList.add("hints-container")
+
+export let homeButton = document.createElement("button")
+homeButton.classList.add("home-button")
+homeButton.textContent = "< Back to Today's Puzzle"
+homeButton.addEventListener("click", () => {
+  new BroadcastChannel("game").postMessage(todayIndex)
+  homeButton.remove()
+})
 
 export let pageSubtitle = document.createElement("h2")
 
@@ -117,11 +127,13 @@ export let pageTitle = document.createElement("h1")
 export let previousGameLabel = document.createElement("label")
 previousGameLabel.textContent = "Available Puzzles:"
 let previousGameSelect = document.createElement("select")
+let selectedGameIndex = sessionCurrentIndex.get() ?? todayIndex
 previousGameSelect.append(
   ...gameList
     .slice(0, todayIndex + 1)
     .map((game, index) => {
       let option = document.createElement("option")
+      option.selected = index == selectedGameIndex
       option.textContent = getGameText(game.title, index)
       option.value = index.toString()
       return option
@@ -157,6 +169,7 @@ winAudio.volume = 0.1
 winAudio.preload = "auto"
 winAudio.src = "/audio/win.mp3"
 
+main.before(header)
 main.prepend(pageTitle, creatorText)
 instructionText.after(draggableContainer)
 draggableContainer.after(hintsContainer)
