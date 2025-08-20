@@ -1,11 +1,74 @@
-import type { Game } from "../lib/types"
-import { localSettings } from "../lib/utils"
-import {
-  certificateCanvas,
+import { imageFormats } from "../lib/constants"
+import type { Game, ImageFormat } from "../lib/types"
+import { localFormat, localName } from "../lib/utils"
+import { gameSummary } from "../ui/elements"
+
+export let certificateContainer = document.createElement("div")
+
+let certificateCanvasContainer = document.createElement("div")
+certificateCanvasContainer.classList.add("certificate-canvas-container")
+
+let certificateCanvas = document.createElement("canvas")
+certificateCanvasContainer.append(certificateCanvas)
+
+let certificateNameForm = document.createElement("form")
+certificateNameForm.classList.add("certificate-form")
+let certificateNameLabel = document.createElement("label")
+certificateNameLabel.innerHTML = "Your name:"
+let certificateNameInput = document.createElement("input")
+certificateNameInput.value = localName.get() ?? ""
+certificateNameInput.autofocus = !localName.get()
+certificateNameInput.required = true
+certificateNameInput.maxLength = 27
+let certificateNameButton = document.createElement("button")
+certificateNameButton.textContent = "Update"
+certificateNameButton.classList.add("btn")
+certificateNameForm.addEventListener("submit", e => {
+  e.preventDefault()
+  let name = certificateNameInput.value.trim()
+  if (!name) {
+    certificateNameInput.focus()
+    return
+  }
+  if (name == localName.get()) return
+  localName.set(name)
+  new BroadcastChannel("certificate").postMessage("update")
+})
+certificateNameLabel.append(certificateNameInput)
+certificateNameForm.append(certificateNameLabel, certificateNameButton)
+
+let downloadForm = document.createElement("form")
+downloadForm.classList.add("certificate-form")
+let downloadFormatLabel = document.createElement("label")
+downloadFormatLabel.textContent = "Format:"
+let downloadFormatSelect = document.createElement("select")
+downloadFormatSelect.append(
+  ...imageFormats.map(format => {
+    let option = document.createElement("option")
+    option.value = format
+    option.selected = localFormat.get() == format
+    option.textContent = format.toUpperCase()
+    return option
+  })
+)
+downloadFormatLabel.append(downloadFormatSelect)
+let downloadButton = document.createElement("button")
+downloadButton.type = "button"
+downloadButton.textContent = "Download"
+downloadButton.classList.add("btn")
+downloadForm.addEventListener("submit", e => {
+  e.preventDefault()
+  let format = downloadFormatSelect.value as ImageFormat
+  localFormat.set(format)
+  new BroadcastChannel("certificate").postMessage("download")
+})
+downloadForm.append(downloadFormatLabel, downloadButton)
+
+certificateContainer.append(
+  certificateNameForm,
   certificateCanvasContainer,
-  certificateDownloadButton,
-  gameSummary
-} from "../ui/elements"
+  downloadForm
+)
 
 export async function appendCertificate(game: Game) {
   await ensureFontsReady()
@@ -40,33 +103,29 @@ export async function appendCertificate(game: Game) {
   let cursorY = padding + 180
 
   ctx.textAlign = "center"
+  ctx.font = `italic 700 64px "Georgia", "Times New Roman", serif`
+  ctx.fillText(localName.get()?.trim() || "Anonymous", centerX, cursorY)
+  cursorY += 96
+
   ctx.font = `400 40px "Georgia", "Times New Roman", serif`
-  ctx.fillText("This officially certifies that the honorable", centerX, cursorY)
+  ctx.fillText("solved today's puzzle", centerX, cursorY)
   cursorY += 72
 
-  ctx.font = `italic 700 64px "Georgia", "Times New Roman", serif`
-  ctx.fillText(
-    localSettings.get()?.name.trim() || "Your Name Here",
-    centerX,
-    cursorY
-  )
+  ctx.font = `italic 700 72px "Georgia", "Times New Roman", serif`
+  cursorY = wrapText(ctx, game.title, centerX, cursorY, 800, 80)
   cursorY += 96
 
   ctx.font = `400 40px "Georgia", "Times New Roman", serif`
   ctx.fillText(
     perfect
-      ? "has achieved a perfect game on"
-      : `has used ${hintsCount} hint${hintsCount == 1 ? "" : "s"} and ${
+      ? "with a perfect game"
+      : `using ${hintsCount} hint${hintsCount == 1 ? "" : "s"} and ${
           guessesUsed
-        } guess${guessesUsed == 1 ? "" : "es"} to solve`,
+        } guess${guessesUsed == 1 ? "" : "es"}`,
     centerX,
     cursorY
   )
-  cursorY += 72
-
-  ctx.font = `italic 700 72px "Georgia", "Times New Roman", serif`
-  wrapText(ctx, game.title, centerX, cursorY, 800, 72)
-  cursorY += 360
+  cursorY += 300
 
   drawBadge(ctx, centerX, cursorY, 110, perfect)
   ctx.save()
@@ -76,15 +135,9 @@ export async function appendCertificate(game: Game) {
   ctx.fillStyle = "#111827"
   ctx.fillText("VENN", width / 2, cursorY + 40)
   ctx.restore()
-  cursorY += 320
+  cursorY += 300
 
-  ctx.font = `400 32px "Georgia", "Times New Roman", serif`
-  ctx.fillText(
-    "Issued by the authority of Maxwell Monis, Supreme Puzzle Master",
-    centerX,
-    cursorY
-  )
-  cursorY += 64
+  ctx.font = `400 72px "Georgia", "Times New Roman", serif`
   ctx.fillText("venn.maxmonis.com", centerX, cursorY)
 
   let footerY = height - padding - 40
@@ -100,7 +153,7 @@ export async function appendCertificate(game: Game) {
   ctx.textAlign = "center"
   ctx.font = `500 20px "Georgia", "Times New Roman", serif`
   ctx.fillStyle = "#44403c"
-  ctx.fillText("Puzzle Master", width * 0.325, footerY + 10)
+  ctx.fillText("Puzzle Creator", width * 0.325, footerY + 10)
   ctx.fillText("Date", width * 0.675, footerY + 10)
 
   ctx.font = `500 32px "Brush Script", "Bradley Hand", "Freestyle Script", serif`
@@ -114,7 +167,9 @@ export async function appendCertificate(game: Game) {
   )
 
   certificateCanvas.style.cssText = ""
-  gameSummary.after(certificateCanvasContainer, certificateDownloadButton)
+  gameSummary.after(certificateContainer)
+
+  return certificateCanvas
 }
 
 // Draws a green or gold badge with a check mark
@@ -208,17 +263,18 @@ function wrapText(
 ) {
   let words = text.split(/\s+/)
   let line = ""
+  let newY = y
   for (let i = 0; i < words.length; i++) {
     let word = words[i]
     let test = line ? line + " " + word : word
-    if (!test) return
+    if (!test) return newY
     let { width } = ctx.measureText(test)
     if (width > maxWidth && i && word) {
       ctx.fillText(line, x, y)
-      y += lineHeight
+      newY += lineHeight
       line = word
     } else line = test
   }
   if (line) ctx.fillText(line, x, y)
-  return y
+  return newY
 }

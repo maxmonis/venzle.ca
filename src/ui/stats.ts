@@ -1,8 +1,10 @@
 import { todayIndex } from "../game/list"
 import type { Game } from "../lib/types"
 import { localResults } from "../lib/utils"
-import { statsText } from "./elements"
 import { showToast } from "./toast"
+
+export let statsText = document.createElement("p")
+statsText.classList.add("stats-text")
 
 let results = localResults.get() ?? []
 

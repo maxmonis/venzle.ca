@@ -1,16 +1,18 @@
 import type { Game, ImageFormat } from "./types"
 
 class LocalStorage<
-  K extends "audio" | "dark" | "game" | "results" | "settings",
+  K extends "audio" | "dark" | "format" | "game" | "name" | "results",
   T extends K extends "audio" | "dark"
     ? boolean
-    : K extends "game"
-      ? Game
-      : K extends "results"
-        ? Array<{ guesses: number; hints: number; index: number }>
-        : K extends "settings"
-          ? { format: ImageFormat; name: string }
-          : never
+    : K extends "format"
+      ? ImageFormat
+      : K extends "game"
+        ? Game
+        : K extends "name"
+          ? string
+          : K extends "results"
+            ? Array<{ guesses: number; hints: number; index: number }>
+            : never
 > {
   private readonly key: K
   constructor(key: K) {
@@ -26,12 +28,8 @@ class LocalStorage<
 }
 
 class SessionStorage<
-  K extends "current" | "games",
-  T extends K extends "current"
-    ? number
-    : K extends "games"
-      ? Array<Game>
-      : never
+  K extends "games" | "index",
+  T extends K extends "games" ? Array<Game> : K extends "index" ? number : never
 > {
   private readonly key: K
   constructor(key: K) {
@@ -51,12 +49,13 @@ class SessionStorage<
 
 export let localAudio = new LocalStorage("audio")
 export let localDark = new LocalStorage("dark")
+export let localFormat = new LocalStorage("format")
 export let localGame = new LocalStorage("game")
+export let localName = new LocalStorage("name")
 export let localResults = new LocalStorage("results")
-export let localSettings = new LocalStorage("settings")
 
-export let sessionCurrentIndex = new SessionStorage("current")
 export let sessionGames = new SessionStorage("games")
+export let sessionIndex = new SessionStorage("index")
 
 export function shuffle<T>(items: Array<T>) {
   let res = [...items]

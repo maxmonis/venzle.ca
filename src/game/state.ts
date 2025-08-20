@@ -2,8 +2,6 @@ import type { Game } from "../lib/types"
 import { localAudio, localGame, sessionGames } from "../lib/utils"
 import { startConfetti } from "../ui/confetti"
 import {
-  certificateCanvasContainer,
-  certificateDownloadButton,
   circleContainer,
   creatorText,
   draggableContainer,
@@ -18,7 +16,7 @@ import {
 } from "../ui/elements"
 import { updateStats } from "../ui/stats"
 import { removeToast, showToast } from "../ui/toast"
-import { appendCertificate } from "./certificate"
+import { appendCertificate, certificateContainer } from "./certificate"
 import { gameList, todayIndex } from "./list"
 
 function appendCircleTitles(titles: [string, string, string]) {
@@ -77,7 +75,7 @@ export function checkGame(game: Game, clicked: boolean) {
     guessesText.remove()
     hintsContainer.remove()
     submitButton.remove()
-    appendCertificate(game)
+    if (game.index == todayIndex) appendCertificate(game)
     if (clicked) {
       game.submitted = true
       saveGame(game)
@@ -210,8 +208,7 @@ export function getGameText(title: string, index: number) {
 export function resetGame() {
   pageSubtitle.remove()
   gameSummary.remove()
-  certificateCanvasContainer.remove()
-  certificateDownloadButton.remove()
+  certificateContainer.remove()
   hintsContainer.innerHTML = ""
   for (let element of document.querySelectorAll(
     "[draggable=true],.dropzone,.circle-title"

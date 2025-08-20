@@ -1,4 +1,6 @@
-import { toast } from "./elements"
+let toast = document.createElement("div")
+toast.classList.add("toast")
+toast.role = "alert"
 
 let timeout: ReturnType<typeof setTimeout>
 

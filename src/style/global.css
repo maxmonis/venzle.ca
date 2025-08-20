@@ -170,15 +170,6 @@ dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-dialog > div {
-  padding: 1.25rem;
-}
-
-dialog h1 {
-  font-size: 1.125rem;
-  text-align: left;
-}
-
 .btn {
   background-color: #1d4ed8;
   border-radius: 0.5rem;
@@ -186,7 +177,7 @@ dialog h1 {
   font-size: 1.0675rem;
   font-weight: 600;
   letter-spacing: 0.5px;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 1.5rem;
 }
 
 .creator-text {
@@ -414,7 +405,7 @@ dialog h1 {
   border-style: solid;
   height: auto;
   max-width: min(calc(100vw - 2.5rem), 30rem);
-  margin-block-start: 1.25rem;
+  margin-block: 1.25rem;
   width: 100%;
 }
 
@@ -429,18 +420,14 @@ dialog h1 {
   border-style: none;
 }
 
-.certificate-dialog > div {
+.certificate-form {
+  align-items: flex-end;
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.dialog-button-container {
-  align-items: center;
-  display: flex;
+  flex-wrap: nowrap;
   gap: 0.5rem;
-  justify-content: flex-end;
-  margin-block-start: 0.5rem;
+  justify-content: center;
+  max-width: 30rem;
+  width: 100%;
 }
 
 .theme-toggle-container {

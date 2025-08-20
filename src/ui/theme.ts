@@ -1,10 +1,14 @@
 import { localAudio, localDark } from "../lib/utils"
-import { audioToggle, darkToggle } from "./elements"
 
 let audio = localAudio.get()
 
 let defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches
 let dark = localDark.get() ?? defaultDark
+
+let audioToggle = document.createElement("button")
+audioToggle.title = "Toggle audio"
+let darkToggle = document.createElement("button")
+darkToggle.title = "Toggle dark mode"
 
 audioToggle.addEventListener("click", () => {
   localAudio.set(!audio)
@@ -36,3 +40,7 @@ new BroadcastChannel("theme").onmessage = e => {
     applyDark()
   }
 }
+
+export let themeToggleContainer = document.createElement("div")
+themeToggleContainer.classList.add("theme-toggle-container")
+themeToggleContainer.append(darkToggle, audioToggle)

@@ -10,20 +10,14 @@ import {
   saveGame,
   updateGameState
 } from "../game/state"
-import { localSettings, sessionCurrentIndex } from "../lib/utils"
+import { localFormat, sessionIndex } from "../lib/utils"
 import "../style/global.css"
-import {
-  certificateCanvas,
-  creatorText,
-  header,
-  homeButton,
-  pageTitle
-} from "../ui/elements"
+import { creatorText, header, homeButton, pageTitle } from "../ui/elements"
 import { displayStats } from "../ui/stats"
 import { applyDark } from "../ui/theme"
 import { showToast } from "../ui/toast"
 
-let game = getGame(sessionCurrentIndex.get() ?? todayIndex)
+let game = getGame(sessionIndex.get() ?? todayIndex)
 
 applyDark()
 displayStats()
@@ -37,10 +31,10 @@ function init() {
   initDraggables(game)
   initHints(game)
   updateGameState(game)
-  if (game.index == todayIndex) sessionCurrentIndex.remove()
+  if (game.index == todayIndex) sessionIndex.remove()
   else {
     header.prepend(homeButton)
-    sessionCurrentIndex.set(game.index)
+    sessionIndex.set(game.index)
   }
   if (game.submitted) checkGame(game, false)
 }
@@ -70,13 +64,14 @@ new BroadcastChannel("game").onmessage = e => {
 new BroadcastChannel("certificate").onmessage = async e => {
   if (e.data == "download") {
     let a = document.createElement("a")
-    let format = localSettings.get()?.format
+    let format = localFormat.get()
     if (!format) return
-    await appendCertificate(game)
+    let certificateCanvas = await appendCertificate(game)
     a.href = certificateCanvas.toDataURL(`image/${format}`)
     a.download = `certificate.${format}`
     a.click()
     a.remove()
     showToast("Certificate downloaded 😁")
   }
+  if (e.data == "update") appendCertificate(game)
 }
