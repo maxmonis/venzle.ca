@@ -4,6 +4,7 @@ import { localFormat, localName } from "../lib/utils"
 import { gameSummary } from "../ui/elements"
 
 export let certificateContainer = document.createElement("div")
+certificateContainer.classList.add("certificate-container")
 
 let certificateCanvasContainer = document.createElement("div")
 certificateCanvasContainer.classList.add("certificate-canvas-container")

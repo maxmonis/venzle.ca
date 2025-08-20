@@ -4,13 +4,13 @@ import { startConfetti } from "../ui/confetti"
 import {
   circleContainer,
   creatorText,
-  draggableContainer,
+  gameControls,
   gameSummary,
   guessesText,
   hintsContainer,
   main,
   pageSubtitle,
-  submitButton,
+  submitButtonContainer,
   winAudio
 } from "../ui/elements"
 import { updateStats } from "../ui/stats"
@@ -70,10 +70,8 @@ export function checkGame(game: Game, clicked: boolean) {
       dropzone.removeAttribute("draggable")
     }
     circleContainer.after(gameSummary)
-    draggableContainer.remove()
-    guessesText.remove()
-    hintsContainer.remove()
-    submitButton.remove()
+    gameControls.remove()
+    submitButtonContainer.remove()
     if (game.index == todayIndex) appendCertificate(game)
     if (clicked) {
       game.submitted = true
@@ -129,9 +127,7 @@ export function checkGame(game: Game, clicked: boolean) {
   } else {
     pageSubtitle.textContent = "Better luck next time!"
     creatorText.after(pageSubtitle)
-    guessesText.remove()
-    submitButton.remove()
-    hintsContainer.remove()
+    submitButtonContainer.remove()
     let [titleA, valuesA] = groupEntries[0]!
     let [titleB, valuesB] = groupEntries[1]!
     let [titleC, valuesC] = groupEntries[2]!
@@ -213,7 +209,7 @@ export function resetGame() {
     "[draggable=true],.dropzone,.circle-title"
   ))
     if (!element.closest(".how-to-play")) element.remove()
-  circleContainer.after(draggableContainer, hintsContainer)
+  circleContainer.after(gameControls)
 }
 
 export function saveGame(game: Game) {
@@ -241,17 +237,15 @@ export function updateGameState(game: Game) {
       game.currentGuess[id] = dropzone.getAttribute("data-dnd-value") ?? ""
   }
   if (Object.values(game.currentGuess).every(Boolean)) {
-    draggableContainer.remove()
+    gameControls.remove()
     let remainingGuesses = 5 - game.guesses.length
     guessesText.textContent = `${remainingGuesses} guess${
       remainingGuesses == 1 ? "" : "es"
     } remaining`
-    circleContainer.after(guessesText, submitButton)
+    circleContainer.after(submitButtonContainer)
   } else {
-    if (!main.contains(draggableContainer))
-      circleContainer.after(draggableContainer)
-    guessesText.remove()
-    submitButton.remove()
+    if (!main.contains(gameControls)) circleContainer.after(gameControls)
+    submitButtonContainer.remove()
   }
   saveGame(game)
 }

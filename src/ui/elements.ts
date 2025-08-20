@@ -5,7 +5,7 @@ import { statsText } from "./stats"
 import { themeToggleContainer } from "./theme"
 
 export let circleContainer = document.querySelector(".circle-container")!
-export let draggableContainer = document.querySelector(".draggable-container")!
+export let gameControls = document.querySelector(".game-controls")!
 export let main = document.querySelector("main")!
 
 export let creatorText = document.createElement("p")
@@ -55,12 +55,15 @@ previousGameSelect.addEventListener("change", () => {
 previousGameLabel.append(previousGameSelect)
 previousGameContainer.append(previousGameText, previousGameLabel)
 
-export let submitButton = document.createElement("button")
+let submitButton = document.createElement("button")
 submitButton.classList.add("submit-button", "btn")
 submitButton.textContent = "Submit Solution"
 submitButton.addEventListener("click", () => {
   new BroadcastChannel("game").postMessage("submit")
 })
+
+export let submitButtonContainer = document.createElement("div")
+submitButtonContainer.append(guessesText, submitButton)
 
 export let winAudio = document.createElement("audio")
 winAudio.setAttribute("type", "audio/mpeg")
@@ -69,8 +72,8 @@ winAudio.preload = "auto"
 winAudio.src = "/audio/win.mp3"
 
 main.prepend(pageTitle, creatorText)
-draggableContainer.append(draggables)
-draggableContainer.after(hintsContainer, previousGameContainer, statsText)
+gameControls.append(draggables, hintsContainer)
+gameControls.after(previousGameContainer, statsText)
 main.append(themeToggleContainer)
 
 setTimeout(() => {
