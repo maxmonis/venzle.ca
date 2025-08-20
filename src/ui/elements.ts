@@ -153,6 +153,7 @@ toast.role = "alert"
 
 export let winAudio = document.createElement("audio")
 winAudio.setAttribute("type", "audio/mpeg")
+winAudio.volume = 0.1
 winAudio.preload = "auto"
 winAudio.src = "/audio/win.mp3"
 

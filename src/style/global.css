@@ -36,22 +36,6 @@ html:has(dialog[open]) {
   overflow: hidden;
 }
 
-@media not all and (min-width: 400px) {
-  html {
-    font-size: 14px;
-  }
-
-  dialog {
-    margin: 1.25rem auto;
-  }
-}
-
-@media (min-width: 800px) and (min-height: 800px) {
-  html {
-    font-size: 18px;
-  }
-}
-
 body {
   display: flex;
   flex-direction: column;
@@ -112,11 +96,11 @@ h2 {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 6.25vmin, 3rem);
 }
 
 h2 {
-  font-size: 1.75rem;
+  font-size: clamp(1.25rem, 5vmin, 2.5rem);
   margin-block: -1.25rem 2rem;
 }
 
@@ -132,6 +116,7 @@ button {
   display: inline-flex;
   justify-content: center;
   min-height: 2rem;
+  min-width: 2rem;
 }
 
 a {
@@ -151,6 +136,7 @@ label {
   flex-direction: column;
   font-size: 0.875rem;
   margin-block-start: 1.25rem;
+  width: min(100%, 30rem);
 }
 
 input,
@@ -169,10 +155,15 @@ select {
 }
 
 dialog {
-  border-radius: 2rem;
+  border-radius: 1rem;
   border-style: solid;
+  margin: 20vh auto;
   padding: 0;
   width: min(calc(100vw - 2.5rem), 20rem);
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 dialog > div {
@@ -180,7 +171,8 @@ dialog > div {
 }
 
 dialog h1 {
-  font-size: 1.5rem;
+  font-size: 1.125rem;
+  text-align: left;
 }
 
 .btn {
@@ -246,6 +238,7 @@ dialog h1 {
   line-height: 1.2;
   padding: 0.5rem;
   position: absolute;
+  text-align: center;
   width: 10rem;
 }
 
@@ -270,6 +263,7 @@ dialog h1 {
 .instruction-text {
   font-size: 0.875rem;
   margin-block: -1rem;
+  text-align: center;
 }
 
 .draggable-container {
@@ -289,6 +283,7 @@ dialog h1 {
   height: 4rem;
   justify-content: center;
   padding-inline: 0.5rem;
+  text-align: center;
   width: 6.5rem;
 }
 
@@ -345,6 +340,7 @@ dialog h1 {
 
 .guesses-text {
   margin-block-start: -1.25rem;
+  text-align: center;
 }
 
 .hints-container {
@@ -467,5 +463,31 @@ dialog h1 {
 @keyframes slideIn {
   to {
     transform: translate(0);
+  }
+}
+
+@media not all and (min-width: 400px) {
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    text-align: left;
+  }
+
+  h1,
+  h2,
+  p {
+    width: 100%;
+  }
+
+  dialog {
+    margin: 1.25rem auto;
+  }
+}
+
+@media (min-width: 800px) and (min-height: 800px) {
+  html {
+    font-size: 18px;
   }
 }

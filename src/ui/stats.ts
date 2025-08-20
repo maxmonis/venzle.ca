@@ -10,7 +10,8 @@ export let stats = calculateStats()
 
 if (stats.totalSolved == 0)
   setTimeout(() => {
-    showToast("Welcome!<br />Scroll down to learn to play")
+    if (window.screenY == 0)
+      showToast("Welcome!<br />Scroll down to learn to play")
   }, 2000)
 
 function calculateStats() {
