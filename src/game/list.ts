@@ -271,6 +271,16 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Sales, Nationality, Genre",
     title: "Musicians"
+  },
+  {
+    creator: "Andrea Alcalá Vásquez",
+    groups: {
+      Aquatic: ["Penguin", "Seal", "Duck", "Flying Fish"],
+      "Does Not Fly": ["Penguin", "Seal", "Ostrich", "Elephant"],
+      Feathered: ["Penguin", "Duck", "Ostrich", "Eagle"]
+    },
+    hint: "Water, Ground, Nest",
+    title: "Animals 2"
   }
   // ,{
   //   groups: {
