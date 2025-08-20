@@ -1,7 +1,7 @@
-import { appendCertificate } from "./game/certificate"
-import { initDraggables, initDropzones } from "./game/dnd"
-import { initHints } from "./game/hints"
-import { todayIndex } from "./game/list"
+import { appendCertificate } from "../game/certificate"
+import { initDraggables, initDropzones } from "../game/dnd"
+import { initHints } from "../game/hints"
+import { todayIndex } from "../game/list"
 import {
   checkGame,
   getGame,
@@ -9,19 +9,19 @@ import {
   resetGame,
   saveGame,
   updateGameState
-} from "./game/state"
-import { localSettings, sessionCurrentIndex } from "./lib/utils"
-import "./style/global.css"
+} from "../game/state"
+import { localSettings, sessionCurrentIndex } from "../lib/utils"
+import "../style/global.css"
 import {
   certificateCanvas,
   creatorText,
   header,
   homeButton,
   pageTitle
-} from "./ui/elements"
-import { displayStats } from "./ui/stats"
-import { applyDark } from "./ui/theme"
-import { showToast } from "./ui/toast"
+} from "../ui/elements"
+import { displayStats } from "../ui/stats"
+import { applyDark } from "../ui/theme"
+import { showToast } from "../ui/toast"
 
 let game = getGame(sessionCurrentIndex.get() ?? todayIndex)
 

@@ -2,6 +2,7 @@ import { defineConfig } from "vite"
 
 export default defineConfig({
   build: {
+    outDir: "../../dist",
     rollupOptions: {
       output: {
         manualChunks(id) {
@@ -10,5 +11,6 @@ export default defineConfig({
       }
     }
   },
+  root: "src/root",
   server: { open: true }
 })
