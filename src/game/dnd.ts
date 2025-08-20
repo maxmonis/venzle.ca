@@ -1,6 +1,6 @@
 import type { Game } from "../lib/types"
 import { shuffle } from "../lib/utils"
-import { circleContainer, draggableContainer } from "../ui/elements"
+import { circleContainer, draggables } from "../ui/elements"
 
 let isTouchScreen = "ontouchstart" in window || navigator.maxTouchPoints
 let draggedElement: HTMLElement | null = null
@@ -49,7 +49,7 @@ if (!isTouchScreen) {
 export function createDraggable(text: string, value: string) {
   let draggable = document.createElement("div")
   makeElementDraggable(draggable, text, value)
-  draggableContainer.append(draggable)
+  draggables.append(draggable)
 }
 
 function handleEnd(clientX: number, clientY: number) {

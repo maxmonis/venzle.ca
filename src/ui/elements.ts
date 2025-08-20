@@ -5,14 +5,14 @@ import { statsText } from "./stats"
 import { themeToggleContainer } from "./theme"
 
 export let circleContainer = document.querySelector(".circle-container")!
-export let instructionText = document.querySelector(".instruction-text")!
+export let draggableContainer = document.querySelector(".draggable-container")!
 export let main = document.querySelector("main")!
 
 export let creatorText = document.createElement("p")
 creatorText.classList.add("creator-text")
 
-export let draggableContainer = document.createElement("div")
-draggableContainer.classList.add("draggable-container")
+export let draggables = document.createElement("div")
+draggables.classList.add("draggables")
 
 export let gameSummary = document.createElement("p")
 gameSummary.classList.add("game-summary")
@@ -69,12 +69,8 @@ winAudio.preload = "auto"
 winAudio.src = "/audio/win.mp3"
 
 main.prepend(pageTitle, creatorText)
-instructionText.after(
-  draggableContainer,
-  hintsContainer,
-  previousGameContainer,
-  statsText
-)
+draggableContainer.append(draggables)
+draggableContainer.after(hintsContainer, previousGameContainer, statsText)
 main.append(themeToggleContainer)
 
 setTimeout(() => {

@@ -73,7 +73,6 @@ main {
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
 }
 
 footer {
@@ -106,7 +105,7 @@ h1 {
 
 h2 {
   font-size: clamp(1.25rem, 5vmin, 2.5rem);
-  margin-block: -1.25rem 2rem;
+  margin-block: 0 2rem;
 }
 
 p {
@@ -183,11 +182,11 @@ dialog::backdrop {
 .creator-text {
   color: var(--gray);
   font-size: 0.875rem;
-  margin-block-start: -1.25rem;
 }
 
 .circle-container {
   height: 22.5rem;
+  margin-block-start: 1.25rem;
   position: relative;
   width: 22.5rem;
 }
@@ -257,11 +256,18 @@ dialog::backdrop {
 
 .instruction-text {
   font-size: 0.875rem;
-  margin-block: -1rem;
+  margin-block: 0.25rem;
   text-align: center;
 }
 
 .draggable-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-block-end: 1.25rem;
+}
+
+.draggables {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -334,8 +340,12 @@ dialog::backdrop {
 }
 
 .guesses-text {
-  margin-block-start: -1.25rem;
+  margin-block: 0.5rem;
   text-align: center;
+}
+
+.submit-button {
+  margin-block-end: 1.25rem;
 }
 
 .hints-container {
@@ -365,7 +375,7 @@ dialog::backdrop {
 }
 
 .game-summary {
-  margin-block-start: 2rem;
+  margin-block: 3rem 1.25rem;
 }
 
 .home-button {

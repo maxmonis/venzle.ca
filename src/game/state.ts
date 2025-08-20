@@ -8,7 +8,6 @@ import {
   gameSummary,
   guessesText,
   hintsContainer,
-  instructionText,
   main,
   pageSubtitle,
   submitButton,
@@ -71,7 +70,7 @@ export function checkGame(game: Game, clicked: boolean) {
       dropzone.removeAttribute("draggable")
     }
     circleContainer.after(gameSummary)
-    instructionText.remove()
+    draggableContainer.remove()
     guessesText.remove()
     hintsContainer.remove()
     submitButton.remove()
@@ -214,7 +213,7 @@ export function resetGame() {
     "[draggable=true],.dropzone,.circle-title"
   ))
     if (!element.closest(".how-to-play")) element.remove()
-  draggableContainer.before(instructionText)
+  circleContainer.after(draggableContainer, hintsContainer)
 }
 
 export function saveGame(game: Game) {
@@ -242,16 +241,15 @@ export function updateGameState(game: Game) {
       game.currentGuess[id] = dropzone.getAttribute("data-dnd-value") ?? ""
   }
   if (Object.values(game.currentGuess).every(Boolean)) {
-    instructionText.remove()
-    if (!main.contains(hintsContainer) || main.contains(submitButton)) return
+    draggableContainer.remove()
     let remainingGuesses = 5 - game.guesses.length
     guessesText.textContent = `${remainingGuesses} guess${
       remainingGuesses == 1 ? "" : "es"
     } remaining`
-    hintsContainer.before(guessesText, submitButton)
+    circleContainer.after(guessesText, submitButton)
   } else {
-    if (!main.contains(instructionText))
-      draggableContainer.before(instructionText)
+    if (!main.contains(draggableContainer))
+      circleContainer.after(draggableContainer)
     guessesText.remove()
     submitButton.remove()
   }
