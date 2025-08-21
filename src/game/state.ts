@@ -79,6 +79,7 @@ export function checkGame(game: Game, clicked: boolean) {
     circleContainer.after(gameSummary)
     gameControls.remove()
     submitButtonContainer.remove()
+    hintsContainer.remove()
     if (clicked) {
       game.submitted = true
       saveGame(game)
@@ -134,6 +135,7 @@ export function checkGame(game: Game, clicked: boolean) {
     pageSubtitle.textContent = "Better luck next time!"
     creatorText.after(pageSubtitle)
     submitButtonContainer.remove()
+    hintsContainer.remove()
     let [titleA, valuesA] = groupEntries[0]!
     let [titleB, valuesB] = groupEntries[1]!
     let [titleC, valuesC] = groupEntries[2]!
@@ -231,7 +233,7 @@ export function resetGame() {
     "[draggable=true],.dropzone,.circle-title"
   ))
     element.remove()
-  circleContainer.after(gameControls)
+  circleContainer.after(gameControls, hintsContainer)
 }
 
 export function saveGame(game: Game) {

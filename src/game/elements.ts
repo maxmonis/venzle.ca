@@ -65,5 +65,5 @@ winAudio.preload = "auto"
 winAudio.src = "/audio/win.mp3"
 
 main.prepend(pageTitle, creatorText)
-gameControls.append(draggables, hintsContainer)
-gameControls.after(previousGameContainer)
+gameControls.append(draggables)
+gameControls.after(hintsContainer, previousGameContainer)
