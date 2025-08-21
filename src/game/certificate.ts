@@ -12,8 +12,6 @@ certificateCanvasContainer.classList.add("certificate-canvas-container")
 let certificateCanvas = document.createElement("canvas")
 certificateCanvasContainer.append(certificateCanvas)
 
-let certificateNameForm = document.createElement("form")
-certificateNameForm.classList.add("certificate-form")
 let certificateNameLabel = document.createElement("label")
 certificateNameLabel.innerHTML = "Your name:"
 let certificateNameInput = document.createElement("input")
@@ -21,22 +19,20 @@ certificateNameInput.value = localName.get() ?? ""
 certificateNameInput.autofocus = !localName.get()
 certificateNameInput.required = true
 certificateNameInput.maxLength = 27
+let nameInputTimeout: null | ReturnType<typeof setTimeout> = null
+certificateNameInput.addEventListener("input", () => {
+  if (nameInputTimeout) clearTimeout(nameInputTimeout)
+  nameInputTimeout = setTimeout(() => {
+    let name = certificateNameInput.value.trim()
+    if (!name || name == localName.get()) return
+    localName.set(name)
+    new BroadcastChannel("certificate").postMessage("update")
+  }, 1000)
+})
 let certificateNameButton = document.createElement("button")
 certificateNameButton.textContent = "Update"
 certificateNameButton.classList.add("btn")
-certificateNameForm.addEventListener("submit", e => {
-  e.preventDefault()
-  let name = certificateNameInput.value.trim()
-  if (!name) {
-    certificateNameInput.focus()
-    return
-  }
-  if (name == localName.get()) return
-  localName.set(name)
-  new BroadcastChannel("certificate").postMessage("update")
-})
 certificateNameLabel.append(certificateNameInput)
-certificateNameForm.append(certificateNameLabel, certificateNameButton)
 
 let downloadForm = document.createElement("form")
 downloadForm.classList.add("certificate-form")
@@ -54,7 +50,6 @@ downloadFormatSelect.append(
 )
 downloadFormatLabel.append(downloadFormatSelect)
 let downloadButton = document.createElement("button")
-downloadButton.type = "button"
 downloadButton.textContent = "Download"
 downloadButton.classList.add("btn")
 downloadForm.addEventListener("submit", e => {
@@ -66,7 +61,7 @@ downloadForm.addEventListener("submit", e => {
 downloadForm.append(downloadFormatLabel, downloadButton)
 
 certificateContainer.append(
-  certificateNameForm,
+  certificateNameLabel,
   certificateCanvasContainer,
   downloadForm
 )
