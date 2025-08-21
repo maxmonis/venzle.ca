@@ -1,4 +1,4 @@
-import type { Game } from "../lib/types"
+import type { Game } from "lib/types"
 import { circleContainer, draggables } from "./elements"
 
 let isTouchScreen = "ontouchstart" in window || navigator.maxTouchPoints

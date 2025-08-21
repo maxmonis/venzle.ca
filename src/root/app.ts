@@ -1,8 +1,7 @@
+import { initDraggables, initDropzones } from "game/dnd"
+import { creatorText, homeButton, main, pageTitle } from "game/elements"
+import { initHints } from "game/hints"
 import { getTodayIndex } from "game/list"
-import { initUI } from "lib/ui"
-import { initDraggables, initDropzones } from "../game/dnd"
-import { creatorText, homeButton, main, pageTitle } from "../game/elements"
-import { initHints } from "../game/hints"
 import {
   checkGame,
   getGame,
@@ -11,9 +10,9 @@ import {
   resetGame,
   saveGame,
   updateGameState
-} from "../game/state"
-import { showToast } from "../lib/ui"
-import { sessionIndex } from "../lib/utils"
+} from "game/state"
+import { initUI, showToast } from "lib/ui"
+import { sessionIndex } from "lib/utils"
 import "./style.css"
 
 let game = getGame(sessionIndex.get() ?? getTodayIndex())

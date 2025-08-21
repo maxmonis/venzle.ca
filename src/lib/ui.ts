@@ -1,4 +1,4 @@
-import "../style/global.css"
+import "style/global.css"
 import { localAudio, localDark } from "./utils"
 
 let audio = localAudio.get()

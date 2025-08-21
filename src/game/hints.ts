@@ -1,4 +1,4 @@
-import type { Game } from "../lib/types"
+import type { Game } from "lib/types"
 import { hintsContainer } from "./elements"
 import { getCenter } from "./state"
 

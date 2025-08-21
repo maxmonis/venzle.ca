@@ -1,4 +1,4 @@
-import type { Game } from "../lib/types"
+import type { Game } from "lib/types"
 
 interface GameListItem extends Pick<Game, "groups" | "hint" | "title"> {
   creator?: string

@@ -1,12 +1,12 @@
-import type { Game } from "../lib/types"
-import { removeToast, showToast } from "../lib/ui"
+import type { Game } from "lib/types"
+import { removeToast, showToast } from "lib/ui"
 import {
   localAudio,
   localGame,
   localResults,
   sessionGames,
   sessionIndex
-} from "../lib/utils"
+} from "lib/utils"
 import { startConfetti } from "./confetti"
 import {
   circleContainer,
