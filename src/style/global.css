@@ -69,6 +69,10 @@ header {
   display: flex;
 }
 
+header:not(:empty) {
+  padding-block-end: 1.25rem;
+}
+
 main {
   align-items: center;
   display: flex;
@@ -379,6 +383,11 @@ dialog::backdrop {
 
 .home-button {
   color: var(--blue);
+}
+
+.home-button span {
+  font-size: 1.5rem;
+  margin-inline-end: 0.5rem;
 }
 
 .how-to-play {

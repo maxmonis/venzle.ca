@@ -1,5 +1,5 @@
 import type { Game } from "../lib/types"
-import { localAudio, localGame, sessionGames } from "../lib/utils"
+import { localAudio, localGame, sessionGames, sessionIndex } from "../lib/utils"
 import { startConfetti } from "../ui/confetti"
 import {
   circleContainer,
@@ -10,6 +10,7 @@ import {
   hintsContainer,
   main,
   pageSubtitle,
+  previousGameSelect,
   submitButtonContainer,
   winAudio
 } from "../ui/elements"
@@ -198,6 +199,23 @@ export function getGameText(title: string, index: number) {
   return `${
     index == todayIndex ? "Today's Puzzle" : `Puzzle ${index + 1}`
   }: ${title}`
+}
+
+export function initPreviousGameSelect() {
+  let selectedGameIndex = sessionIndex.get() ?? todayIndex
+  previousGameSelect.innerHTML = ""
+  previousGameSelect.append(
+    ...gameList
+      .slice(0, todayIndex + 1)
+      .map((game, index) => {
+        let option = document.createElement("option")
+        option.selected = index == selectedGameIndex
+        option.textContent = getGameText(game.title, index)
+        option.value = index.toString()
+        return option
+      })
+      .reverse()
+  )
 }
 
 export function resetGame() {

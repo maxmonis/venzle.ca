@@ -6,13 +6,14 @@ import {
   checkGame,
   getGame,
   getGameText,
+  initPreviousGameSelect,
   resetGame,
   saveGame,
   updateGameState
 } from "../game/state"
 import { localFormat, sessionIndex } from "../lib/utils"
 import "../style/global.css"
-import { creatorText, pageTitle } from "../ui/elements"
+import { creatorText, header, homeButton, pageTitle } from "../ui/elements"
 import { displayStats } from "../ui/stats"
 import { applyDark } from "../ui/theme"
 import { showToast } from "../ui/toast"
@@ -32,7 +33,11 @@ function init() {
   initHints(game)
   updateGameState(game)
   if (game.index == todayIndex) sessionIndex.remove()
-  else sessionIndex.set(game.index)
+  else {
+    header.prepend(homeButton)
+    sessionIndex.set(game.index)
+  }
+  initPreviousGameSelect()
   if (game.submitted) checkGame(game, false)
 }
 

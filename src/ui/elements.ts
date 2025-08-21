@@ -1,6 +1,4 @@
-import { gameList, todayIndex } from "../game/list"
-import { getGameText } from "../game/state"
-import { sessionIndex } from "../lib/utils"
+import { todayIndex } from "../game/list"
 import { statsText } from "./stats"
 import { themeToggleContainer } from "./theme"
 
@@ -20,8 +18,18 @@ gameSummary.classList.add("game-summary")
 export let guessesText = document.createElement("p")
 guessesText.classList.add("guesses-text")
 
+export let header = document.createElement("header")
+
 export let hintsContainer = document.createElement("div")
 hintsContainer.classList.add("hints-container")
+
+export let homeButton = document.createElement("button")
+homeButton.classList.add("home-button")
+homeButton.innerHTML = "<span><</span> Back to Today's Puzzle"
+homeButton.addEventListener("click", () => {
+  new BroadcastChannel("game").postMessage(todayIndex)
+  homeButton.remove()
+})
 
 export let pageSubtitle = document.createElement("h2")
 
@@ -35,20 +43,7 @@ previousGameText.textContent =
   " These practice rounds do not impact your stats."
 let previousGameLabel = document.createElement("label")
 previousGameLabel.textContent = "Available Puzzles:"
-let previousGameSelect = document.createElement("select")
-let selectedGameIndex = sessionIndex.get() ?? todayIndex
-previousGameSelect.append(
-  ...gameList
-    .slice(0, todayIndex + 1)
-    .map((game, index) => {
-      let option = document.createElement("option")
-      option.selected = index == selectedGameIndex
-      option.textContent = getGameText(game.title, index)
-      option.value = index.toString()
-      return option
-    })
-    .reverse()
-)
+export let previousGameSelect = document.createElement("select")
 previousGameSelect.addEventListener("change", () => {
   new BroadcastChannel("game").postMessage(Number(previousGameSelect.value))
 })
@@ -71,6 +66,7 @@ winAudio.volume = 0.1
 winAudio.preload = "auto"
 winAudio.src = "/audio/win.mp3"
 
+main.before(header)
 main.prepend(pageTitle, creatorText)
 gameControls.append(draggables, hintsContainer)
 gameControls.after(previousGameContainer, statsText)
