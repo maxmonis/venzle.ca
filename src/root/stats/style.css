@@ -12,7 +12,7 @@ section {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem 2.5rem;
+  gap: 2rem;
   margin-block-start: 2rem;
   width: 100%;
 }
@@ -22,7 +22,7 @@ section {
   flex-wrap: wrap;
   gap: 0.5rem;
   justify-content: center;
-  max-width: 19rem;
+  max-width: 20rem;
 }
 
 .stats-summary li {
@@ -33,7 +33,7 @@ section {
   gap: 0.25rem;
   padding: 0.75rem 0.5rem;
   text-align: center;
-  width: 6rem;
+  width: 6.25rem;
 }
 
 .stats-summary li strong {
@@ -47,7 +47,7 @@ section {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  max-width: 19rem;
+  max-width: 20rem;
   width: 100%;
 }
 

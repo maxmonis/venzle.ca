@@ -41,10 +41,6 @@
   text-align: center;
 }
 
-.submit-button {
-  margin-block-end: 1.25rem;
-}
-
 .hints-container {
   align-items: center;
   display: flex;

@@ -49,7 +49,7 @@ previousGameLabel.append(previousGameSelect)
 previousGameContainer.append(previousGameText, previousGameLabel)
 
 let submitButton = document.createElement("button")
-submitButton.classList.add("submit-button", "btn")
+submitButton.classList.add("btn")
 submitButton.textContent = "Submit Solution"
 submitButton.addEventListener("click", () => {
   new BroadcastChannel("game").postMessage("submit")

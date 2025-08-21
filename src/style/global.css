@@ -14,7 +14,7 @@
 
   --h1: clamp(1.5rem, 6.25vmin, 3rem);
   --h2: clamp(1.25rem, 5vmin, 2.5rem);
-  --h3: clamp(1.125rem, 4vmin, 2rem);
+  --h3: clamp(1.125rem, 4vmin, 1.75rem);
 }
 
 :root:has(body.dark) {
