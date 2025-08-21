@@ -88,6 +88,7 @@ if (map.has(todayIndex - 1)) {
 if (todayResult) {
   activePlayedStreak++
   if (todayResult.guesses < 5) activeSolvedStreak++
+  if (todayResult.guesses == 1 && todayResult.hints == 0) activePerfectStreak++
 }
 let stats = {
   averageGuesses: totalPlayed ? totalGuesses / totalPlayed : 0,
