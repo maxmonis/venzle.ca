@@ -1,4 +1,4 @@
 import { initTheme } from "ui/theme"
-import "./index.css"
+import "./style.css"
 
 initTheme()

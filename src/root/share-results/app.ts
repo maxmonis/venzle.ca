@@ -4,7 +4,7 @@ import type { Game, ImageFormat } from "lib/types"
 import { localFormat, localGame, localName } from "lib/utils"
 import { initTheme } from "ui/theme"
 import { showToast } from "ui/toast"
-import "./index.css"
+import "./style.css"
 
 initTheme()
 

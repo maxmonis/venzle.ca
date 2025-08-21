@@ -15,7 +15,7 @@ import { sessionIndex } from "../lib/utils"
 import { creatorText, homeButton, main, pageTitle } from "../ui/elements"
 import { displayStats } from "../ui/stats"
 import { showToast } from "../ui/toast"
-import "./index.css"
+import "./style.css"
 
 let game = getGame(sessionIndex.get() ?? todayIndex)
 

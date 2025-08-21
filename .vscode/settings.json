@@ -3,8 +3,8 @@
   "editor.formatOnSave": true,
   "editor.linkedEditing": true,
   "workbench.editor.customLabels.patterns": {
-    "**/index.css": "${dirname} styles",
+    "**/app.ts": "${dirname} app",
     "**/index.html": "${dirname} page",
-    "**/index.ts": "${dirname} script"
+    "**/style.css": "${dirname} style"
   }
 }
