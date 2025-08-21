@@ -21,7 +21,7 @@ import {
   submitButtonContainer,
   winAudio
 } from "./elements"
-import { gameList, todayIndex } from "./list"
+import { gameList, getTodayIndex } from "./list"
 
 function appendCircleTitles(titles: [string, string, string]) {
   let keys = ["a", "b", "c"]
@@ -37,6 +37,7 @@ function appendCircleTitles(titles: [string, string, string]) {
 
 export function checkGame(game: Game, clicked: boolean) {
   removeToast()
+  let todayIndex = getTodayIndex()
   let groupEntries = Object.entries(game.groups)
   let { currentGuess } = game
   let guessKeys: Record<"a" | "b" | "c", Array<keyof typeof currentGuess>> = {
@@ -176,12 +177,17 @@ export function getCenter(game: Game) {
 }
 
 export function getGame(index: number) {
+  let todayIndex = getTodayIndex()
   if (index == todayIndex) {
     let game = localGame.get()
     if (game && game.index == todayIndex) return game
   }
   let game = sessionGames.get()?.find(g => g.index == index)
   if (game) return game
+  if (index >= gameList.length) {
+    window.location.reload()
+    throw "Caching issue"
+  }
   let { creator = "Max Monis", ...newGame } = gameList[index]!
   return {
     ...newGame,
@@ -204,11 +210,12 @@ export function getGame(index: number) {
 
 export function getGameText(title: string, index: number) {
   return `${
-    index == todayIndex ? "Today's Puzzle" : `Puzzle ${index + 1}`
+    index == getTodayIndex() ? "Today's Puzzle" : `Puzzle ${index + 1}`
   }: ${title}`
 }
 
 export function initPreviousGameSelect() {
+  let todayIndex = getTodayIndex()
   let selectedGameIndex = sessionIndex.get() ?? todayIndex
   previousGameSelect.innerHTML = ""
   previousGameSelect.append(
@@ -237,7 +244,7 @@ export function resetGame() {
 }
 
 export function saveGame(game: Game) {
-  if (game.index == todayIndex) {
+  if (game.index == getTodayIndex()) {
     localGame.set(game)
     return
   }
@@ -275,7 +282,7 @@ export function updateGameState(game: Game) {
 }
 
 function updateResults(game: Game) {
-  if (game.index != todayIndex) return
+  if (game.index != getTodayIndex()) return
   let results = localResults.get() ?? []
   results.push({
     hints: Object.values(game.hintsUsed).filter(Boolean).length,

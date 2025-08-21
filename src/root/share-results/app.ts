@@ -1,4 +1,4 @@
-import { todayIndex } from "game/list"
+import { getTodayIndex } from "game/list"
 import type { Game, ImageFormat } from "lib/types"
 import { initUI, showToast } from "lib/ui"
 import { imageFormats, localFormat, localGame, localName } from "lib/utils"
@@ -12,7 +12,7 @@ let storageGame = localGame.get()
 if (
   !storageGame ||
   storageGame.guesses.length > 4 ||
-  storageGame.index != todayIndex
+  storageGame.index != getTodayIndex()
 )
   window.location.replace("../")
 let game = storageGame!

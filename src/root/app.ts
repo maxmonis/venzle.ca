@@ -1,8 +1,8 @@
+import { getTodayIndex } from "game/list"
 import { initUI } from "lib/ui"
 import { initDraggables, initDropzones } from "../game/dnd"
 import { creatorText, homeButton, main, pageTitle } from "../game/elements"
 import { initHints } from "../game/hints"
-import { todayIndex } from "../game/list"
 import {
   checkGame,
   getGame,
@@ -16,7 +16,7 @@ import { showToast } from "../lib/ui"
 import { sessionIndex } from "../lib/utils"
 import "./style.css"
 
-let game = getGame(sessionIndex.get() ?? todayIndex)
+let game = getGame(sessionIndex.get() ?? getTodayIndex())
 
 initUI()
 initGame()
@@ -29,7 +29,7 @@ function initGame() {
   initDraggables(game)
   initHints(game)
   updateGameState(game)
-  if (game.index == todayIndex) {
+  if (game.index == getTodayIndex()) {
     sessionIndex.remove()
     homeButton.remove()
   } else {

@@ -1,5 +1,5 @@
 import { chevronLeft } from "lib/svg"
-import { todayIndex } from "./list"
+import { getTodayIndex } from "./list"
 
 export let header = document.querySelector("header")!
 export let circleContainer = document.querySelector(".circle-container")!
@@ -25,7 +25,7 @@ export let homeButton = document.createElement("button")
 homeButton.classList.add("home-button")
 homeButton.append(chevronLeft, "Back to Today's Puzzle")
 homeButton.addEventListener("click", () => {
-  new BroadcastChannel("game").postMessage(todayIndex)
+  new BroadcastChannel("game").postMessage(getTodayIndex())
 })
 
 export let pageSubtitle = document.createElement("h2")
