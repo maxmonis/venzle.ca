@@ -8,9 +8,10 @@
   --light: #fefefe;
   --slate: #334155;
 
+  --bg-blue: #1d4ed8;
+  --bg-gray: rgba(0, 0, 0, 0.1);
   --bg: var(--light);
   --fg: var(--dark);
-  --bg-gray: rgba(0, 0, 0, 0.1);
 
   --h1: clamp(1.5rem, 6.25vmin, 3rem);
   --h2: clamp(1.25rem, 5vmin, 2.5rem);
@@ -22,9 +23,9 @@
   --gray: #d1d5db;
   --slate: #cbd5e1;
 
+  --bg-gray: rgba(255, 255, 255, 0.2);
   --bg: var(--dark);
   --fg: var(--light);
-  --bg-gray: rgba(255, 255, 255, 0.2);
 }
 
 * {
@@ -62,7 +63,7 @@ header {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 1.25rem 1.25rem;
 }
 
 header :last-child {
@@ -90,6 +91,11 @@ footer {
   padding: 5rem 1.25rem 0.75rem;
 }
 
+footer div {
+  display: inline-flex;
+  gap: 1.25rem;
+}
+
 h1,
 h2,
 p {
@@ -115,6 +121,10 @@ h2 {
 p {
   line-height: 1.6;
   text-wrap: pretty;
+}
+
+small {
+  font-size: 75%;
 }
 
 a,
@@ -182,7 +192,7 @@ dialog::backdrop {
 }
 
 .btn {
-  background-color: #1d4ed8;
+  background-color: var(--bg-blue);
   border-radius: 0.5rem;
   color: var(--light);
   font-size: 1.0675rem;

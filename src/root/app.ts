@@ -23,8 +23,8 @@ initGame()
 
 function initGame() {
   window.scrollTo({ behavior: "smooth", top: 0 })
-  pageTitle.innerHTML = getGameText(game.title, game.index)
-  creatorText.innerHTML = `Created by ${game.creator}`
+  pageTitle.textContent = getGameText(game.title, game.index)
+  creatorText.textContent = `Created by ${game.creator}`
   initDropzones(game)
   initDraggables(game)
   initHints(game)

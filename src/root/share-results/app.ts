@@ -27,7 +27,7 @@ let certificateCanvas = document.createElement("canvas")
 certificateCanvasContainer.append(certificateCanvas)
 
 let certificateNameLabel = document.createElement("label")
-certificateNameLabel.innerHTML = "Your name:"
+certificateNameLabel.textContent = "Your name:"
 let certificateNameInput = document.createElement("input")
 certificateNameInput.value = localName.get() ?? ""
 certificateNameInput.autofocus = !localName.get()

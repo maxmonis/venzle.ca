@@ -23,8 +23,7 @@ hintsContainer.classList.add("hints-container")
 
 export let homeButton = document.createElement("button")
 homeButton.classList.add("home-button")
-homeButton.innerHTML = "Back to Today's Puzzle"
-homeButton.prepend(chevronLeft)
+homeButton.append(chevronLeft, "Back to Today's Puzzle")
 homeButton.addEventListener("click", () => {
   new BroadcastChannel("game").postMessage(todayIndex)
 })

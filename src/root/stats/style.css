@@ -39,9 +39,6 @@ section {
 .stats-summary li strong {
   font-size: 1.25rem;
 }
-.stats-summary li span {
-  font-size: 0.75rem;
-}
 
 .distribution {
   display: flex;
@@ -73,12 +70,12 @@ section {
 }
 
 .bar-fill {
-  background: #1d4ed8;
+  background: var(--bg-blue);
   border-radius: 0.25rem;
   color: var(--light);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   min-width: 1.5rem;
-  padding: 0.2rem 0.4rem;
+  padding: 0.25rem 0.5rem;
   text-align: right;
   transition: width 1s ease-out;
 }

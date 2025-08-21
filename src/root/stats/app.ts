@@ -139,9 +139,9 @@ totalsUl.append(
     let li = document.createElement("li")
     let strong = document.createElement("strong")
     strong.textContent = "0"
-    let span = document.createElement("span")
-    span.textContent = text
-    li.append(strong, span)
+    let small = document.createElement("small")
+    small.textContent = text
+    li.append(strong, small)
     return li
   })
 )
@@ -159,9 +159,9 @@ streaksUl.append(
     let li = document.createElement("li")
     let strong = document.createElement("strong")
     strong.textContent = "0"
-    let span = document.createElement("span")
-    span.textContent = text
-    li.append(strong, span)
+    let small = document.createElement("small")
+    small.textContent = text
+    li.append(strong, small)
     return li
   })
 )
