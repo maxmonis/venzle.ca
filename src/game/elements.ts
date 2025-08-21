@@ -1,3 +1,4 @@
+import { chevronLeft } from "lib/svg"
 import { todayIndex } from "./list"
 import { statsText } from "./stats"
 
@@ -23,7 +24,8 @@ hintsContainer.classList.add("hints-container")
 
 export let homeButton = document.createElement("button")
 homeButton.classList.add("home-button")
-homeButton.textContent = "Back to Today's Puzzle"
+homeButton.innerHTML = "Back to Today's Puzzle"
+homeButton.prepend(chevronLeft)
 homeButton.addEventListener("click", () => {
   new BroadcastChannel("game").postMessage(todayIndex)
 })

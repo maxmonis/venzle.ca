@@ -82,5 +82,5 @@
 
 .home-button {
   color: var(--blue);
-  margin: 0 auto 1.25rem 0;
+  margin: 0 auto 1.25rem -0.25rem;
 }

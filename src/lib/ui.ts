@@ -79,3 +79,9 @@ export async function showToast(message: string, durationMS = 3000) {
     toastTimeout = setTimeout(removeToast, durationMS)
   }, 50)
 }
+
+export let rem = parseInt(getComputedStyle(document.documentElement).fontSize)
+
+window.addEventListener("resize", () => {
+  rem = parseInt(getComputedStyle(document.documentElement).fontSize)
+})
