@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+      name="viewport"
+    />
+    <link href="/favicon.ico" rel="icon" type="image/x-icon" />
+    <link
+      href="/apple-icon.png"
+      type="image/png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    <link href="/icon32.png" type="image/png" rel="icon" sizes="32x32" />
+    <link href="/icon16.png" type="image/png" rel="icon" sizes="16x16" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>Venn</title>
+  </head>
+  <body>
+    <header>
+      <a href="../"><img height="40" src="/icon192.png" width="40" /></a>
+      <a href="../">Return Home</a>
+    </header>
+    <main>
+      <h1>How to Play</h1>
+      <div>
+        <p>
+          The puzzle is made up of overlapping yellow, blue, and red circles.
+          Your job is to place all seven items in the puzzle so that the four
+          items in each circle have something in common which no other items do.
+        </p>
+        <p>Here is an example:</p>
+        <div class="circle-container">
+          <span class="circle circle-a"></span>
+          <span class="circle circle-b"></span>
+          <span class="circle circle-c"></span>
+          <span class="circle circle-b"></span>
+          <span class="circle circle-c"></span>
+          <span class="circle circle-a"></span>
+          <span class="circle circle-c"></span>
+          <span class="circle circle-b"></span>
+          <span class="circle circle-a"></span>
+          <span class="circle circle-b"></span>
+          <span class="circle circle-a"></span>
+          <span class="circle circle-c"></span>
+          <div class="dropzone dropzone-a">Watermelon</div>
+          <div class="dropzone dropzone-ab">Grape</div>
+          <div class="dropzone dropzone-abc">Orange</div>
+          <div class="dropzone dropzone-ac">Apple</div>
+          <div class="dropzone dropzone-b">Purple</div>
+          <div class="dropzone dropzone-bc">Pine</div>
+          <div class="dropzone dropzone-c">Cedar</div>
+          <div class="circle-title circle-title-a">Fruit</div>
+          <div class="circle-title circle-title-b">Color</div>
+          <div class="circle-title circle-title-c">Tree</div>
+        </div>
+        <p>
+          Orange is in the center because it alone is a fruit, color, and tree.
+          Grape is a fruit and a color but not a tree, apple is a fruit and a
+          tree but not a color, and pine is a tree and a color but not a fruit.
+          The remaining three items each only fit in one category.
+        </p>
+        <p>
+          In the example above, yellow is Fruit, blue is Color, and red is Tree,
+          but the specific colors are arbitrary. All that matters is that one
+          circle contains all four fruits, another contains all four colors, and
+          the final one contains all four trees.
+        </p>
+        <p>
+          You can make up to five guesses, and have two hints available in case
+          you get stuck (plus a bonus hint once you've used the other two). Try
+          to solve each puzzle using the fewest guesses and hints possible, a
+          perfect game uses no hints and only one guess. Good luck and have fun!
+        </p>
+      </div>
+    </main>
+    <footer>
+      <p>
+        Send new puzzle submissions to
+        <a href="mailto:maxmonis.com@gmail.com">maxmonis.com@gmail.com</a
+        >&nbsp;along with the name you'd like me to use when crediting you 🙏
+      </p>
+      <p>
+        &copy;
+        <a href="https://maxmonis.com" rel="noopener" target="_blank"
+          >Max Monis</a
+        >
+        2025. All Rights Reserved.
+      </p>
+    </footer>
+    <script src="./index.ts" type="module"></script>
+  </body>
+</html>

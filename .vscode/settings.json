@@ -1,5 +1,10 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "editor.linkedEditing": true
+  "editor.linkedEditing": true,
+  "workbench.editor.customLabels.patterns": {
+    "**/index.css": "${dirname} styles",
+    "**/index.html": "${dirname} page",
+    "**/index.ts": "${dirname} script"
+  }
 }

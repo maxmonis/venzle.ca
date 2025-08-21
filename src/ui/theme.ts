@@ -1,4 +1,5 @@
 import { localAudio, localDark } from "../lib/utils"
+import "../style/global.css"
 
 let audio = localAudio.get()
 
@@ -18,14 +19,13 @@ audioToggle.addEventListener("click", () => {
 function applyAudio() {
   audioToggle.innerText = audio ? "🔊" : "🔇"
 }
-applyAudio()
 
 darkToggle.addEventListener("click", () => {
   localDark.set(!dark)
   new BroadcastChannel("theme").postMessage("dark")
 })
 
-export function applyDark() {
+function applyDark() {
   document.body.classList.toggle("dark", dark)
   darkToggle.innerText = dark ? "🌛" : "🌞"
 }
@@ -41,6 +41,18 @@ new BroadcastChannel("theme").onmessage = e => {
   }
 }
 
-export let themeToggleContainer = document.createElement("div")
+let themeToggleContainer = document.createElement("div")
 themeToggleContainer.classList.add("theme-toggle-container")
 themeToggleContainer.append(darkToggle, audioToggle)
+
+document.querySelector("footer")!.prepend(themeToggleContainer)
+
+export function initTheme() {
+  applyAudio()
+  applyDark()
+  for (let link of document.querySelectorAll("a"))
+    if (link.getAttribute("href")?.startsWith("."))
+      link.addEventListener("click", () => {
+        sessionStorage.setItem("redirect", "internal")
+      })
+}

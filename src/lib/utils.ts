@@ -56,15 +56,3 @@ export let localResults = new LocalStorage("results")
 
 export let sessionGames = new SessionStorage("games")
 export let sessionIndex = new SessionStorage("index")
-
-export function shuffle<T>(items: Array<T>) {
-  let res = [...items]
-  let len = res.length
-  for (let i = 0; i < len; i++) {
-    let item = res[i]!
-    let randomIndex = Math.floor(Math.random() * len)
-    res[i] = res[randomIndex]!
-    res[randomIndex] = item
-  }
-  return res
-}

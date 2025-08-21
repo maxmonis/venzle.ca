@@ -1,0 +1,62 @@
+@import "../../style/puzzle.css";
+
+main > div {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-block-start: 1.25rem;
+  max-width: 65ch;
+}
+
+main > div p {
+  text-align: left;
+  width: min(calc(100vw - 2.5rem), 100%);
+}
+
+.circle-container {
+  margin-block: 1rem 2rem;
+  text-align: center;
+}
+
+.circle {
+  animation: slideIn 500ms forwards;
+}
+
+.circle-a {
+  animation-delay: 250ms;
+  transform: translate(-100vw, 0);
+}
+
+.circle-b {
+  animation-delay: 500ms;
+  transform: translate(100vw, 0);
+}
+
+.circle-c {
+  animation-delay: 750ms;
+  transform: translate(0, 100vh);
+}
+
+.circle-title,
+.dropzone {
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  to {
+    transform: translate(0);
+  }
+}

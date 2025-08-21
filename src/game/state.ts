@@ -16,7 +16,6 @@ import {
 } from "../ui/elements"
 import { updateStats } from "../ui/stats"
 import { removeToast, showToast } from "../ui/toast"
-import { appendCertificate, certificateContainer } from "./certificate"
 import { gameList, todayIndex } from "./list"
 
 function appendCircleTitles(titles: [string, string, string]) {
@@ -65,7 +64,8 @@ export function checkGame(game: Game, clicked: boolean) {
             hintCount == 1 ? "" : "s"
           } and ${guessCount} guess${guessCount == 1 ? "" : "es"} 😄`
     if (game.index == todayIndex)
-      gameSummary.innerHTML += "<br />Come back tomorrow for a new puzzle!"
+      gameSummary.innerHTML +=
+        "<br />Come back tomorrow for a new puzzle!<br /><a href='./share-results/'>Share Results</a>"
     for (let dropzone of document.querySelectorAll(".dropzone")) {
       dropzone.removeAttribute("data-dnd-value")
       dropzone.removeAttribute("draggable")
@@ -73,7 +73,6 @@ export function checkGame(game: Game, clicked: boolean) {
     circleContainer.after(gameSummary)
     gameControls.remove()
     submitButtonContainer.remove()
-    if (game.index == todayIndex) appendCertificate(game)
     if (clicked) {
       game.submitted = true
       saveGame(game)
@@ -221,12 +220,11 @@ export function initPreviousGameSelect() {
 export function resetGame() {
   pageSubtitle.remove()
   gameSummary.remove()
-  certificateContainer.remove()
   hintsContainer.innerHTML = ""
   for (let element of document.querySelectorAll(
     "[draggable=true],.dropzone,.circle-title"
   ))
-    if (!element.closest(".how-to-play")) element.remove()
+    element.remove()
   circleContainer.after(gameControls)
 }
 

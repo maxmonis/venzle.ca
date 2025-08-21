@@ -1,4 +1,4 @@
-import { appendCertificate } from "../game/certificate"
+import { initTheme } from "ui/theme"
 import { initDraggables, initDropzones } from "../game/dnd"
 import { initHints } from "../game/hints"
 import { todayIndex } from "../game/list"
@@ -11,16 +11,15 @@ import {
   saveGame,
   updateGameState
 } from "../game/state"
-import { localFormat, sessionIndex } from "../lib/utils"
-import "../style/global.css"
-import { creatorText, header, homeButton, pageTitle } from "../ui/elements"
+import { sessionIndex } from "../lib/utils"
+import { creatorText, homeButton, main, pageTitle } from "../ui/elements"
 import { displayStats } from "../ui/stats"
-import { applyDark } from "../ui/theme"
 import { showToast } from "../ui/toast"
+import "./index.css"
 
 let game = getGame(sessionIndex.get() ?? todayIndex)
 
-applyDark()
+initTheme()
 displayStats()
 init()
 
@@ -32,9 +31,11 @@ function init() {
   initDraggables(game)
   initHints(game)
   updateGameState(game)
-  if (game.index == todayIndex) sessionIndex.remove()
-  else {
-    header.prepend(homeButton)
+  if (game.index == todayIndex) {
+    sessionIndex.remove()
+    homeButton.remove()
+  } else {
+    main.prepend(homeButton)
     sessionIndex.set(game.index)
   }
   initPreviousGameSelect()
@@ -61,19 +62,4 @@ new BroadcastChannel("game").onmessage = e => {
     game = getGame(e.data)
     init()
   }
-}
-
-new BroadcastChannel("certificate").onmessage = async e => {
-  if (e.data == "download") {
-    let a = document.createElement("a")
-    let format = localFormat.get()
-    if (!format) return
-    let certificateCanvas = await appendCertificate(game)
-    a.href = certificateCanvas.toDataURL(`image/${format}`)
-    a.download = `certificate.${format}`
-    a.click()
-    a.remove()
-    showToast("Certificate downloaded 😁")
-  }
-  if (e.data == "update") appendCertificate(game)
 }

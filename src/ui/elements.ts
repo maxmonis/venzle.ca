@@ -1,7 +1,7 @@
 import { todayIndex } from "../game/list"
 import { statsText } from "./stats"
-import { themeToggleContainer } from "./theme"
 
+export let header = document.querySelector("header")!
 export let circleContainer = document.querySelector(".circle-container")!
 export let gameControls = document.querySelector(".game-controls")!
 export let main = document.querySelector("main")!
@@ -18,17 +18,14 @@ gameSummary.classList.add("game-summary")
 export let guessesText = document.createElement("p")
 guessesText.classList.add("guesses-text")
 
-export let header = document.createElement("header")
-
 export let hintsContainer = document.createElement("div")
 hintsContainer.classList.add("hints-container")
 
 export let homeButton = document.createElement("button")
 homeButton.classList.add("home-button")
-homeButton.innerHTML = "<span><</span> Back to Today's Puzzle"
+homeButton.textContent = "Back to Today's Puzzle"
 homeButton.addEventListener("click", () => {
   new BroadcastChannel("game").postMessage(todayIndex)
-  homeButton.remove()
 })
 
 export let pageSubtitle = document.createElement("h2")
@@ -70,8 +67,3 @@ main.before(header)
 main.prepend(pageTitle, creatorText)
 gameControls.append(draggables, hintsContainer)
 gameControls.after(previousGameContainer, statsText)
-main.append(themeToggleContainer)
-
-setTimeout(() => {
-  document.body.classList.add("loaded")
-}, 2000)

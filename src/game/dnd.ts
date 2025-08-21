@@ -1,5 +1,4 @@
 import type { Game } from "../lib/types"
-import { shuffle } from "../lib/utils"
 import { circleContainer, draggables } from "../ui/elements"
 
 let isTouchScreen = "ontouchstart" in window || navigator.maxTouchPoints
@@ -187,4 +186,16 @@ function makeElementDraggable(
       },
       { passive: false }
     )
+}
+
+function shuffle<T>(items: Array<T>) {
+  let res = [...items]
+  let len = res.length
+  for (let i = 0; i < len; i++) {
+    let item = res[i]!
+    let randomIndex = Math.floor(Math.random() * len)
+    res[i] = res[randomIndex]!
+    res[randomIndex] = item
+  }
+  return res
 }

@@ -1,0 +1,81 @@
+@import "../style/puzzle.css";
+
+.creator-text {
+  color: var(--gray);
+  font-size: 0.875rem;
+}
+
+.game-controls {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-controls > p {
+  font-size: 0.875rem;
+  margin-block: 0.25rem;
+  text-align: center;
+}
+
+.draggables {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem;
+  max-width: 27rem;
+}
+
+[draggable="true"] {
+  background-color: white;
+  border-color: var(--dark);
+  border-style: solid;
+  cursor: grab;
+  font-size: 0.875rem;
+}
+.dropzone.dragover {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.guesses-text {
+  margin-block: 0.5rem;
+  text-align: center;
+}
+
+.submit-button {
+  margin-block-end: 1.25rem;
+}
+
+.hints-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-block-start: 2rem;
+  max-width: 65ch;
+}
+
+.hints-container button {
+  color: var(--blue);
+}
+
+.previous-game-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-block: 5rem;
+  max-width: 30rem;
+}
+
+.previous-game-container p {
+  color: var(--gray);
+  font-size: 0.875rem;
+}
+
+.game-summary {
+  margin-block-start: 3rem;
+}
+
+.home-button {
+  color: var(--blue);
+  margin: 0 auto 1.25rem 0;
+}

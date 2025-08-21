@@ -1,0 +1,33 @@
+.certificate-container {
+  margin-block-start: 1.25rem;
+}
+
+.certificate-canvas-container {
+  aspect-ratio: 3 / 4;
+  border-style: solid;
+  height: auto;
+  max-width: min(calc(100vw - 2.5rem), 30rem);
+  margin-block: 1.25rem;
+  width: 100%;
+}
+
+.certificate-canvas-container canvas {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.dark .certificate-canvas-container {
+  border-style: none;
+}
+
+.certificate-form {
+  align-items: flex-end;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  justify-content: center;
+  max-width: 30rem;
+  width: 100%;
+}

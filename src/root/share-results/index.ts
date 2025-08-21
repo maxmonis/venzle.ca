@@ -1,7 +1,23 @@
-import { imageFormats } from "../lib/constants"
-import type { Game, ImageFormat } from "../lib/types"
-import { localFormat, localName } from "../lib/utils"
-import { gameSummary } from "../ui/elements"
+import { todayIndex } from "game/list"
+import { imageFormats } from "lib/constants"
+import type { Game, ImageFormat } from "lib/types"
+import { localFormat, localGame, localName } from "lib/utils"
+import { initTheme } from "ui/theme"
+import { showToast } from "ui/toast"
+import "./index.css"
+
+initTheme()
+
+let main = document.querySelector("main")!
+
+let storageGame = localGame.get()
+if (
+  !storageGame ||
+  storageGame.guesses.length > 4 ||
+  storageGame.index != todayIndex
+)
+  window.location.replace("../")
+let game = storageGame!
 
 export let certificateContainer = document.createElement("div")
 certificateContainer.classList.add("certificate-container")
@@ -26,7 +42,7 @@ certificateNameInput.addEventListener("input", () => {
     let name = certificateNameInput.value.trim()
     if (!name || name == localName.get()) return
     localName.set(name)
-    new BroadcastChannel("certificate").postMessage("update")
+    appendCertificate(game)
   }, 1000)
 })
 let certificateNameButton = document.createElement("button")
@@ -56,7 +72,13 @@ downloadForm.addEventListener("submit", e => {
   e.preventDefault()
   let format = downloadFormatSelect.value as ImageFormat
   localFormat.set(format)
-  new BroadcastChannel("certificate").postMessage("download")
+  let a = document.createElement("a")
+  if (!format) return
+  a.href = certificateCanvas.toDataURL(`image/${format}`)
+  a.download = `certificate.${format}`
+  a.click()
+  a.remove()
+  showToast("Certificate downloaded 😁")
 })
 downloadForm.append(downloadFormatLabel, downloadButton)
 
@@ -163,9 +185,7 @@ export async function appendCertificate(game: Game) {
   )
 
   certificateCanvas.style.cssText = ""
-  gameSummary.after(certificateContainer)
-
-  return certificateCanvas
+  main.append(certificateContainer)
 }
 
 // Draws a green or gold badge with a check mark
@@ -274,3 +294,6 @@ function wrapText(
   if (line) ctx.fillText(line, x, y)
   return newY
 }
+
+main.append(certificateContainer)
+appendCertificate(game)
