@@ -102,6 +102,7 @@ let stats = {
   longestSolvedStreak,
   perfectGames,
   playedToday: Boolean(todayResult),
+  successRate: totalPlayed ? (totalSolved / totalPlayed) * 100 : 0,
   totalPlayed,
   totalSolved
 }
@@ -119,6 +120,7 @@ totalsUl.append(
     { value: stats.totalPlayed, text: "Played" },
     { value: stats.totalSolved, text: "Solved" },
     { value: stats.perfectGames, text: "Perfect" },
+    { value: stats.successRate.toFixed(0) + "%", text: "Win Rate" },
     { value: stats.averageGuesses.toFixed(1), text: "Avg Guesses" },
     { value: stats.averageHints.toFixed(1), text: "Avg Hints" }
   ].map(item => {
@@ -145,9 +147,9 @@ streaksUl.append(
     { value: stats.activePlayedStreak, text: "Active Played" },
     { value: stats.activeSolvedStreak, text: "Active Solved" },
     { value: stats.activePerfectStreak, text: "Active Perfect" },
-    { value: stats.longestPlayedStreak, text: "Longest Played" },
-    { value: stats.longestSolvedStreak, text: "Longest Solved" },
-    { value: stats.longestPerfectStreak, text: "Longest Perfect" }
+    { value: stats.longestPlayedStreak, text: "Best Played" },
+    { value: stats.longestSolvedStreak, text: "Best Solved" },
+    { value: stats.longestPerfectStreak, text: "Best Perfect" }
   ].map(item => {
     let li = document.createElement("li")
     let strong = document.createElement("strong")
