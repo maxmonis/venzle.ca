@@ -37,7 +37,7 @@ let totalGuesses = 0
 let totalHints = 0
 let totalPlayed = results.length
 let totalSolved = 0
-for (let { guesses, hints, index } of [...results].sort(
+for (let { guesses, hints, index, status } of [...results].sort(
   (a, b) => a.index - b.index
 )) {
   totalGuesses += guesses
@@ -53,16 +53,16 @@ for (let { guesses, hints, index } of [...results].sort(
   }
   activePlayedStreak++
   longestPlayedStreak = Math.max(longestPlayedStreak, activePlayedStreak)
-  if (guesses < 5) {
+  if (status == "solved") {
     activeSolvedStreak++
     totalSolved++
     longestSolvedStreak = Math.max(longestSolvedStreak, activeSolvedStreak)
+    if (guesses == 1 && hints == 0) {
+      perfectGames++
+      activePerfectStreak++
+      longestPerfectStreak = Math.max(activePerfectStreak, longestPerfectStreak)
+    } else activePerfectStreak = 0
   } else activeSolvedStreak = 0
-  if (guesses == 1 && hints == 0) {
-    perfectGames++
-    activePerfectStreak++
-    longestPerfectStreak = Math.max(activePerfectStreak, longestPerfectStreak)
-  } else activePerfectStreak = 0
   lastIndex = index
 }
 activePerfectStreak = 0
@@ -72,7 +72,7 @@ if (map.has(todayIndex - 1)) {
   let i = todayIndex - 1
   while (map.has(i)) {
     activePlayedStreak++
-    if (map.get(i)!.guesses < 5) activeSolvedStreak++
+    if (map.get(i)!.status == "solved") activeSolvedStreak++
     else break
     i--
   }
@@ -88,7 +88,7 @@ if (map.has(todayIndex - 1)) {
 }
 if (todayResult) {
   activePlayedStreak++
-  if (todayResult.guesses < 5) activeSolvedStreak++
+  if (todayResult.status == "solved") activeSolvedStreak++
   if (todayResult.guesses == 1 && todayResult.hints == 0) activePerfectStreak++
 }
 let stats = {

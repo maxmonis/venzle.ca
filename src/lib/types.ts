@@ -8,7 +8,7 @@ export interface Game {
   hint: string
   hintsUsed: { a: boolean; b: boolean; c: boolean }
   index: number
-  submitted: boolean
+  status: "failed" | "pending" | "solved"
   title: string
 }
 

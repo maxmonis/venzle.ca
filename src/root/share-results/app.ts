@@ -11,7 +11,7 @@ let main = document.querySelector("main")!
 let storageGame = localGame.get()
 if (
   !storageGame ||
-  storageGame.guesses.length > 4 ||
+  storageGame.status != "solved" ||
   storageGame.index != getTodayIndex()
 )
   window.location.replace("../")

@@ -82,7 +82,7 @@ export function checkGame(game: Game, clicked: boolean) {
     submitButtonContainer.remove()
     hintsContainer.remove()
     if (clicked) {
-      game.submitted = true
+      game.status = "solved"
       saveGame(game)
       updateResults(game)
       startConfetti()
@@ -162,7 +162,7 @@ export function checkGame(game: Game, clicked: boolean) {
       gameSummary.innerHTML += "<br />Come back tomorrow for a new puzzle!"
     circleContainer.after(gameSummary)
     if (clicked) {
-      game.submitted = true
+      game.status = "failed"
       saveGame(game)
       updateResults(game)
     }
@@ -176,7 +176,7 @@ export function getCenter(game: Game) {
     .find(value => values.every(v => v.includes(value)))!
 }
 
-export function getGame(index: number) {
+export function getGame(index: number): Game {
   let todayIndex = getTodayIndex()
   if (index == todayIndex) {
     let game = localGame.get()
@@ -204,7 +204,7 @@ export function getGame(index: number) {
     guesses: [],
     hintsUsed: { a: false, b: false, c: false },
     index,
-    submitted: false
+    status: "pending"
   }
 }
 
@@ -287,7 +287,8 @@ function updateResults(game: Game) {
   results.push({
     hints: Object.values(game.hintsUsed).filter(Boolean).length,
     guesses: game.guesses.length,
-    index: game.index
+    index: game.index,
+    status: game.status
   })
   localResults.set(results)
 }

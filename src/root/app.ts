@@ -36,7 +36,7 @@ function initGame() {
     sessionIndex.set(game.index)
   }
   initPreviousGameSelect()
-  if (game.submitted) checkGame(game, false)
+  if (game.status != "pending") checkGame(game, false)
 }
 
 new BroadcastChannel("game").onmessage = e => {

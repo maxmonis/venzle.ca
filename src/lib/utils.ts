@@ -13,7 +13,12 @@ class LocalStorage<
         : K extends "name"
           ? string
           : K extends "results"
-            ? Array<{ guesses: number; hints: number; index: number }>
+            ? Array<{
+                guesses: number
+                hints: number
+                index: number
+                status: Game["status"]
+              }>
             : never
 > {
   private readonly key: K
