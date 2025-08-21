@@ -10,6 +10,11 @@
 
   --bg: var(--light);
   --fg: var(--dark);
+  --bg-gray: rgba(0, 0, 0, 0.1);
+
+  --h1: clamp(1.5rem, 6.25vmin, 3rem);
+  --h2: clamp(1.25rem, 5vmin, 2.5rem);
+  --h3: clamp(1.125rem, 4vmin, 2rem);
 }
 
 :root:has(body.dark) {
@@ -19,6 +24,7 @@
 
   --bg: var(--dark);
   --fg: var(--light);
+  --bg-gray: rgba(255, 255, 255, 0.2);
 }
 
 * {
@@ -60,6 +66,9 @@ header {
 }
 
 header :last-child {
+  align-items: center;
+  display: flex;
+  gap: 1.25rem;
   margin-inline: auto 0;
 }
 
@@ -95,11 +104,11 @@ h2 {
 }
 
 h1 {
-  font-size: clamp(1.5rem, 6.25vmin, 3rem);
+  font-size: var(--h1);
 }
 
 h2 {
-  font-size: clamp(1.25rem, 5vmin, 2.5rem);
+  font-size: var(--h2);
   margin-block: 0.5rem 2rem;
 }
 
@@ -127,6 +136,13 @@ button {
   background: inherit;
   cursor: pointer;
   font-size: inherit;
+  padding: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
   padding: 0;
 }
 

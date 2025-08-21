@@ -1,6 +1,12 @@
 import type { Game } from "../lib/types"
 import { removeToast, showToast } from "../lib/ui"
-import { localAudio, localGame, sessionGames, sessionIndex } from "../lib/utils"
+import {
+  localAudio,
+  localGame,
+  localResults,
+  sessionGames,
+  sessionIndex
+} from "../lib/utils"
 import { startConfetti } from "./confetti"
 import {
   circleContainer,
@@ -16,7 +22,6 @@ import {
   winAudio
 } from "./elements"
 import { gameList, todayIndex } from "./list"
-import { updateStats } from "./stats"
 
 function appendCircleTitles(titles: [string, string, string]) {
   let keys = ["a", "b", "c"]
@@ -77,7 +82,7 @@ export function checkGame(game: Game, clicked: boolean) {
     if (clicked) {
       game.submitted = true
       saveGame(game)
-      updateStats(game)
+      updateResults(game)
       startConfetti()
       if (localAudio.get()) {
         document.body.append(winAudio)
@@ -156,7 +161,7 @@ export function checkGame(game: Game, clicked: boolean) {
     if (clicked) {
       game.submitted = true
       saveGame(game)
-      updateStats(game)
+      updateResults(game)
     }
   }
 }
@@ -265,4 +270,15 @@ export function updateGameState(game: Game) {
     submitButtonContainer.remove()
   }
   saveGame(game)
+}
+
+function updateResults(game: Game) {
+  if (game.index != todayIndex) return
+  let results = localResults.get() ?? []
+  results.push({
+    hints: Object.values(game.hintsUsed).filter(Boolean).length,
+    guesses: game.guesses.length,
+    index: game.index
+  })
+  localResults.set(results)
 }

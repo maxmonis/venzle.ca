@@ -12,7 +12,6 @@ import {
   saveGame,
   updateGameState
 } from "../game/state"
-import { displayStats } from "../game/stats"
 import { showToast } from "../lib/ui"
 import { sessionIndex } from "../lib/utils"
 import "./style.css"
@@ -20,7 +19,6 @@ import "./style.css"
 let game = getGame(sessionIndex.get() ?? todayIndex)
 
 initUI()
-displayStats()
 initGame()
 
 function initGame() {

@@ -1,6 +1,5 @@
 import { chevronLeft } from "lib/svg"
 import { todayIndex } from "./list"
-import { statsText } from "./stats"
 
 export let header = document.querySelector("header")!
 export let circleContainer = document.querySelector(".circle-container")!
@@ -67,4 +66,4 @@ winAudio.src = "/audio/win.mp3"
 
 main.prepend(pageTitle, creatorText)
 gameControls.append(draggables, hintsContainer)
-gameControls.after(previousGameContainer, statsText)
+gameControls.after(previousGameContainer)
