@@ -108,6 +108,24 @@ let stats = {
   totalSolved
 }
 
+let totalsList = [
+  { value: stats.totalPlayed, text: "Played" },
+  { value: stats.totalSolved, text: "Solved" },
+  { value: stats.perfectGames, text: "Perfect" },
+  { value: stats.successRate, text: "Win Rate", isPercentage: true },
+  { value: stats.averageGuesses, text: "Avg Guesses", decimalPlaces: 1 },
+  { value: stats.averageHints, text: "Avg Hints", decimalPlaces: 1 }
+]
+
+let streaksList = [
+  { value: stats.activePlayedStreak, text: "Active Played" },
+  { value: stats.activeSolvedStreak, text: "Active Solved" },
+  { value: stats.activePerfectStreak, text: "Active Perfect" },
+  { value: stats.longestPlayedStreak, text: "Best Played" },
+  { value: stats.longestSolvedStreak, text: "Best Solved" },
+  { value: stats.longestPerfectStreak, text: "Best Perfect" }
+]
+
 let countsSection = document.createElement("section")
 let totalsContainer = document.createElement("div")
 
@@ -117,19 +135,12 @@ let totalsHeading = document.createElement("h3")
 totalsHeading.textContent = "Summary"
 
 totalsUl.append(
-  ...[
-    { value: stats.totalPlayed, text: "Played" },
-    { value: stats.totalSolved, text: "Solved" },
-    { value: stats.perfectGames, text: "Perfect" },
-    { value: stats.successRate.toFixed(0) + "%", text: "Win Rate" },
-    { value: stats.averageGuesses.toFixed(1), text: "Avg Guesses" },
-    { value: stats.averageHints.toFixed(1), text: "Avg Hints" }
-  ].map(item => {
+  ...totalsList.map(({ text }) => {
     let li = document.createElement("li")
     let strong = document.createElement("strong")
-    strong.textContent = item.value.toString()
+    strong.textContent = "0"
     let span = document.createElement("span")
-    span.textContent = item.text
+    span.textContent = text
     li.append(strong, span)
     return li
   })
@@ -144,19 +155,12 @@ let streaksUl = document.createElement("ul")
 streaksUl.className = "stats-summary"
 
 streaksUl.append(
-  ...[
-    { value: stats.activePlayedStreak, text: "Active Played" },
-    { value: stats.activeSolvedStreak, text: "Active Solved" },
-    { value: stats.activePerfectStreak, text: "Active Perfect" },
-    { value: stats.longestPlayedStreak, text: "Best Played" },
-    { value: stats.longestSolvedStreak, text: "Best Solved" },
-    { value: stats.longestPerfectStreak, text: "Best Perfect" }
-  ].map(item => {
+  ...streaksList.map(({ text }) => {
     let li = document.createElement("li")
     let strong = document.createElement("strong")
-    strong.textContent = item.value.toString()
+    strong.textContent = "0"
     let span = document.createElement("span")
-    span.textContent = item.text
+    span.textContent = text
     li.append(strong, span)
     return li
   })
@@ -182,7 +186,6 @@ guessHeading.textContent = "Guess Distribution"
 guessDistributionGraph.append(guessHeading)
 
 for (let i = 1; i <= 5; i++) {
-  let count = stats.guessDistribution[i] ?? 0
   let bar = document.createElement("div")
   bar.className = "bar"
 
@@ -191,8 +194,8 @@ for (let i = 1; i <= 5; i++) {
 
   let barFill = document.createElement("div")
   barFill.className = "bar-fill"
-  barFill.style.width = `calc(${(count / maxCount) * 100}% - ${(count / maxCount) * 1.25}rem)`
-  barFill.textContent = count.toString()
+  barFill.style.width = "0%"
+  barFill.textContent = "0"
 
   bar.append(label, barFill)
   guessDistributionGraph.append(bar)
@@ -206,7 +209,6 @@ hintHeading.textContent = "Hint Distribution"
 hintDistributionGraph.append(hintHeading)
 
 for (let i = 0; i <= 3; i++) {
-  let count = stats.hintDistribution[i] ?? 0
   let bar = document.createElement("div")
   bar.className = "bar"
 
@@ -216,8 +218,8 @@ for (let i = 0; i <= 3; i++) {
 
   let barFill = document.createElement("div")
   barFill.className = "bar-fill"
-  barFill.style.width = `calc(${(count / maxCount) * 100}% - ${(count / maxCount) * 1.25}rem)`
-  barFill.textContent = count.toString()
+  barFill.style.width = "0%"
+  barFill.textContent = "0"
 
   bar.append(label, barFill)
   hintDistributionGraph.append(bar)
@@ -225,3 +227,65 @@ for (let i = 0; i <= 3; i++) {
 graphContainer.append(hintDistributionGraph)
 
 main.append(countsSection, graphContainer)
+
+function animateNumber(
+  element: HTMLElement,
+  endValue: number,
+  duration: number,
+  isPercentage = false,
+  decimalPlaces = 0
+) {
+  let startTime = -1
+  function step(timestamp: number) {
+    if (startTime == -1) startTime = timestamp
+    let progress = Math.min((timestamp - startTime) / duration, 1)
+    let currentValue = progress * endValue
+    element.textContent =
+      (decimalPlaces
+        ? currentValue.toFixed(decimalPlaces)
+        : Math.floor(currentValue)) + (isPercentage ? "%" : "")
+    if (progress < 1) requestAnimationFrame(step)
+  }
+  requestAnimationFrame(step)
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  totalsUl.querySelectorAll("li").forEach((li, index) => {
+    let strong = li.querySelector("strong")!
+    let { decimalPlaces, isPercentage, value } = totalsList[index]!
+    animateNumber(strong, value, 1000, isPercentage, decimalPlaces)
+  })
+
+  streaksUl.querySelectorAll("li").forEach((li, index) => {
+    let strong = li.querySelector("strong")!
+    let { value } = streaksList[index]!
+    animateNumber(strong, value, 1000)
+  })
+
+  guessDistributionGraph
+    .querySelectorAll<HTMLElement>(".bar")
+    .forEach((bar, i) => {
+      let barFill = bar.querySelector(".bar-fill") as HTMLElement
+      let count = stats.guessDistribution[i + 1] ?? 0
+      setTimeout(() => {
+        barFill.style.width = `calc(${(count / maxCount) * 100}% - ${(count / maxCount) * 1.25}rem)`
+        animateNumber(barFill, count, 1000)
+      }, 300)
+    })
+
+  hintDistributionGraph
+    .querySelectorAll<HTMLElement>(".bar")
+    .forEach((bar, i) => {
+      let barFill = bar.querySelector(".bar-fill") as HTMLElement
+      let count = stats.hintDistribution[i] ?? 0
+      setTimeout(() => {
+        barFill.style.width = `calc(${(count / maxCount) * 100}% - ${(count / maxCount) * 1.25}rem)`
+        animateNumber(barFill, count, 1000)
+      }, 300)
+    })
+
+  setTimeout(() => {
+    guessDistributionGraph.classList.add("visible")
+    hintDistributionGraph.classList.add("visible")
+  }, 100)
+})
