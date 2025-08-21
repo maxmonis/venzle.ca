@@ -1,4 +1,4 @@
-import type { imageFormats } from "./constants"
+import type { imageFormats } from "./utils"
 
 export interface Game {
   creator: string

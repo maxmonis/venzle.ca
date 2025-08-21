@@ -1,7 +1,6 @@
-import { todayIndex } from "../game/list"
 import type { Game } from "../lib/types"
 import { localResults } from "../lib/utils"
-import { showToast } from "./toast"
+import { todayIndex } from "./list"
 
 export let statsText = document.createElement("p")
 statsText.classList.add("stats-text")
@@ -9,12 +8,6 @@ statsText.classList.add("stats-text")
 let results = localResults.get() ?? []
 
 export let stats = calculateStats()
-
-if (stats.totalSolved == 0)
-  setTimeout(() => {
-    if (window.screenY == 0)
-      showToast("Welcome!<br />Scroll down to learn to play")
-  }, 2000)
 
 function calculateStats() {
   let map = new Map<number, (typeof results)[number]>()

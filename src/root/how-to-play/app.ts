@@ -1,4 +1,4 @@
-import { initTheme } from "ui/theme"
+import { initUI } from "lib/ui"
 import "./style.css"
 
-initTheme()
+initUI()

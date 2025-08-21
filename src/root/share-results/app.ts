@@ -1,12 +1,10 @@
 import { todayIndex } from "game/list"
-import { imageFormats } from "lib/constants"
 import type { Game, ImageFormat } from "lib/types"
-import { localFormat, localGame, localName } from "lib/utils"
-import { initTheme } from "ui/theme"
-import { showToast } from "ui/toast"
+import { initUI, showToast } from "lib/ui"
+import { imageFormats, localFormat, localGame, localName } from "lib/utils"
 import "./style.css"
 
-initTheme()
+initUI()
 
 let main = document.querySelector("main")!
 
@@ -19,7 +17,7 @@ if (
   window.location.replace("../")
 let game = storageGame!
 
-export let certificateContainer = document.createElement("div")
+let certificateContainer = document.createElement("div")
 certificateContainer.classList.add("certificate-container")
 
 let certificateCanvasContainer = document.createElement("div")
@@ -45,9 +43,6 @@ certificateNameInput.addEventListener("input", () => {
     appendCertificate(game)
   }, 1000)
 })
-let certificateNameButton = document.createElement("button")
-certificateNameButton.textContent = "Update"
-certificateNameButton.classList.add("btn")
 certificateNameLabel.append(certificateNameInput)
 
 let downloadForm = document.createElement("form")
@@ -64,6 +59,9 @@ downloadFormatSelect.append(
     return option
   })
 )
+downloadFormatSelect.addEventListener("change", () => {
+  localFormat.set(downloadFormatSelect.value as ImageFormat)
+})
 downloadFormatLabel.append(downloadFormatSelect)
 let downloadButton = document.createElement("button")
 downloadButton.textContent = "Download"
@@ -71,9 +69,7 @@ downloadButton.classList.add("btn")
 downloadForm.addEventListener("submit", e => {
   e.preventDefault()
   let format = downloadFormatSelect.value as ImageFormat
-  localFormat.set(format)
   let a = document.createElement("a")
-  if (!format) return
   a.href = certificateCanvas.toDataURL(`image/${format}`)
   a.download = `certificate.${format}`
   a.click()
@@ -88,7 +84,7 @@ certificateContainer.append(
   downloadForm
 )
 
-export async function appendCertificate(game: Game) {
+async function appendCertificate(game: Game) {
   await ensureFontsReady()
 
   let height = 1600

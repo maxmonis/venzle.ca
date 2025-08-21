@@ -1,5 +1,7 @@
 import type { Game, ImageFormat } from "./types"
 
+export let imageFormats = ["jpg", "png", "webp"] as const
+
 class LocalStorage<
   K extends "audio" | "dark" | "format" | "game" | "name" | "results",
   T extends K extends "audio" | "dark"

@@ -1,5 +1,6 @@
-import { initTheme } from "ui/theme"
+import { initUI } from "lib/ui"
 import { initDraggables, initDropzones } from "../game/dnd"
+import { creatorText, homeButton, main, pageTitle } from "../game/elements"
 import { initHints } from "../game/hints"
 import { todayIndex } from "../game/list"
 import {
@@ -11,19 +12,18 @@ import {
   saveGame,
   updateGameState
 } from "../game/state"
+import { displayStats } from "../game/stats"
+import { showToast } from "../lib/ui"
 import { sessionIndex } from "../lib/utils"
-import { creatorText, homeButton, main, pageTitle } from "../ui/elements"
-import { displayStats } from "../ui/stats"
-import { showToast } from "../ui/toast"
 import "./style.css"
 
 let game = getGame(sessionIndex.get() ?? todayIndex)
 
-initTheme()
+initUI()
 displayStats()
-init()
+initGame()
 
-function init() {
+function initGame() {
   window.scrollTo({ behavior: "smooth", top: 0 })
   pageTitle.innerHTML = getGameText(game.title, game.index)
   creatorText.innerHTML = `Created by ${game.creator}`
@@ -60,6 +60,6 @@ new BroadcastChannel("game").onmessage = e => {
   } else if (typeof e.data == "number") {
     resetGame()
     game = getGame(e.data)
-    init()
+    initGame()
   }
 }

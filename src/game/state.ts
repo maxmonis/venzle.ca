@@ -1,6 +1,7 @@
 import type { Game } from "../lib/types"
+import { removeToast, showToast } from "../lib/ui"
 import { localAudio, localGame, sessionGames, sessionIndex } from "../lib/utils"
-import { startConfetti } from "../ui/confetti"
+import { startConfetti } from "./confetti"
 import {
   circleContainer,
   creatorText,
@@ -13,10 +14,9 @@ import {
   previousGameSelect,
   submitButtonContainer,
   winAudio
-} from "../ui/elements"
-import { updateStats } from "../ui/stats"
-import { removeToast, showToast } from "../ui/toast"
+} from "./elements"
 import { gameList, todayIndex } from "./list"
+import { updateStats } from "./stats"
 
 function appendCircleTitles(titles: [string, string, string]) {
   let keys = ["a", "b", "c"]
@@ -65,7 +65,8 @@ export function checkGame(game: Game, clicked: boolean) {
           } and ${guessCount} guess${guessCount == 1 ? "" : "es"} 😄`
     if (game.index == todayIndex)
       gameSummary.innerHTML +=
-        "<br />Come back tomorrow for a new puzzle!<br /><a href='./share-results/'>Share Results</a>"
+        "<br />Come back tomorrow for a new puzzle!<br />" +
+        "<div><a href='./share-results/'>Share Results</a></div>"
     for (let dropzone of document.querySelectorAll(".dropzone")) {
       dropzone.removeAttribute("data-dnd-value")
       dropzone.removeAttribute("draggable")

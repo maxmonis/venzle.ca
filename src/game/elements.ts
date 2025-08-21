@@ -1,4 +1,4 @@
-import { todayIndex } from "../game/list"
+import { todayIndex } from "./list"
 import { statsText } from "./stats"
 
 export let header = document.querySelector("header")!
@@ -63,7 +63,6 @@ winAudio.volume = 0.1
 winAudio.preload = "auto"
 winAudio.src = "/audio/win.mp3"
 
-main.before(header)
 main.prepend(pageTitle, creatorText)
 gameControls.append(draggables, hintsContainer)
 gameControls.after(previousGameContainer, statsText)

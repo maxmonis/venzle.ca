@@ -1,5 +1,5 @@
 import type { Game } from "../lib/types"
-import { circleContainer, draggables } from "../ui/elements"
+import { circleContainer, draggables } from "./elements"
 
 let isTouchScreen = "ontouchstart" in window || navigator.maxTouchPoints
 let draggedElement: HTMLElement | null = null

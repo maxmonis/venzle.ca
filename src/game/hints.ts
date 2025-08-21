@@ -1,5 +1,5 @@
 import type { Game } from "../lib/types"
-import { hintsContainer } from "../ui/elements"
+import { hintsContainer } from "./elements"
 import { getCenter } from "./state"
 
 export function initHints(game: Game) {
