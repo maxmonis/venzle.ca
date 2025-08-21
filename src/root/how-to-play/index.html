@@ -17,8 +17,17 @@
     <link href="/icon16.png" type="image/png" rel="icon" sizes="16x16" />
     <link rel="manifest" href="/site.webmanifest" />
     <title>Venn</title>
+    <style>
+      .noscript {
+        visibility: visible !important;
+      }
+    </style>
   </head>
-  <body>
+  <body class="noscript" style="visibility: hidden">
+    <noscript>You need to enable JavaScript to use this app</noscript>
+    <script>
+      document.body.classList.remove("noscript")
+    </script>
     <header>
       <a href="../"><img height="40" src="/icon192.png" width="40" /></a>
       <a href="../">Return Home</a>

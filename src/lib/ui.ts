@@ -85,3 +85,13 @@ export let rem = parseInt(getComputedStyle(document.documentElement).fontSize)
 window.addEventListener("resize", () => {
   rem = parseInt(getComputedStyle(document.documentElement).fontSize)
 })
+
+function domReady(cb: () => void) {
+  document.readyState == "complete" || document.readyState == "interactive"
+    ? cb()
+    : document.addEventListener("DOMContentLoaded", cb)
+}
+
+domReady(() => {
+  document.body.style.cssText = ""
+})
