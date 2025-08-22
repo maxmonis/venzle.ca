@@ -123,6 +123,11 @@ p {
   text-wrap: pretty;
 }
 
+pre {
+  font-family: inherit;
+  text-align: center;
+}
+
 small {
   font-size: 75%;
 }
@@ -130,15 +135,11 @@ small {
 a,
 button {
   align-items: center;
-  color: inherit;
+  color: var(--blue);
   display: inline-flex;
   justify-content: center;
   min-height: 2rem;
   min-width: 2rem;
-}
-
-a {
-  color: var(--blue);
 }
 
 button {

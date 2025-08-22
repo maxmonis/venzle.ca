@@ -51,10 +51,6 @@
   text-align: center;
 }
 
-.hints-container button {
-  color: var(--blue);
-}
-
 .previous-game-container {
   display: flex;
   flex-direction: column;
@@ -78,6 +74,5 @@
 }
 
 .home-button {
-  color: var(--blue);
   margin: 0 auto 1.25rem -0.25rem;
 }

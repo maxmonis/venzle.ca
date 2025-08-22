@@ -17,6 +17,40 @@ if (
   window.location.replace("../")
 let game = storageGame!
 
+let emojiMap = {
+  a: "🟨",
+  ab: "🟩",
+  abc: "🟫",
+  ac: "🟧",
+  b: "🟦",
+  bc: "🟪",
+  c: "🟥"
+}
+let emojiOrder = ["a", "ab", "b", "bc", "c", "ac", "abc"] as const
+
+let clipboardText = `${game.title}
+${Object.values(game.hintsUsed).filter(Boolean).length}/3 hints used
+
+${game.guesses
+  .map(guess => {
+    return emojiOrder
+      .map(key => {
+        return guess[key] == game.currentGuess[key] ? emojiMap[key] : "⬜"
+      })
+      .join("")
+  })
+  .join("\n")}`
+
+let textContainer = document.createElement("pre")
+textContainer.textContent = clipboardText
+
+let copyButton = document.createElement("button")
+copyButton.textContent = "Copy to Clipboard"
+copyButton.addEventListener("click", () => {
+  navigator.clipboard.writeText(clipboardText)
+  showToast("Copied to clipboard 😃")
+})
+
 let certificateContainer = document.createElement("div")
 certificateContainer.classList.add("certificate-container")
 
@@ -291,5 +325,5 @@ function wrapText(
   return newY
 }
 
-main.append(certificateContainer)
+main.append(textContainer, copyButton, certificateContainer)
 appendCertificate(game)
