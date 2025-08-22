@@ -1,4 +1,5 @@
 import type { Game } from "lib/types"
+import { gameEvent } from "lib/utils"
 import { circleContainer, draggables } from "./elements"
 
 let isTouchScreen = "ontouchstart" in window || navigator.maxTouchPoints
@@ -110,7 +111,7 @@ function handleEnd(clientX: number, clientY: number) {
   }
   draggedElement.style.cssText = ""
   draggedElement = null
-  new BroadcastChannel("game").postMessage("update")
+  gameEvent.post("update")
 }
 
 export function initDraggables(game: Game) {

@@ -12,7 +12,7 @@ import {
   updateGameState
 } from "game/state"
 import { initUI, showToast } from "lib/ui"
-import { sessionIndex } from "lib/utils"
+import { gameChannel, gameEvent, sessionIndex } from "lib/utils"
 import "./style.css"
 
 if (location.pathname != "/") location.replace(location.origin)
@@ -41,10 +41,17 @@ function initGame() {
   if (game.status != "pending") checkGame(game, false)
 }
 
-new BroadcastChannel("game").onmessage = e => {
-  if (e.data == "update") updateGameState(game)
-  else if (e.data == "save") saveGame(game)
-  else if (e.data == "submit") {
+gameChannel.listen(data => {
+  if (JSON.stringify(data) == JSON.stringify(game)) return
+  resetGame()
+  game = data
+  initGame()
+})
+
+gameEvent.listen(data => {
+  if (data == "update") updateGameState(game)
+  else if (data == "save") saveGame(game)
+  else if (data == "submit") {
     if (
       game.guesses.some(
         guess => JSON.stringify(guess) == JSON.stringify(game.currentGuess)
@@ -56,9 +63,10 @@ new BroadcastChannel("game").onmessage = e => {
     game.guesses.push({ ...game.currentGuess })
     saveGame(game)
     checkGame(game, true)
-  } else if (typeof e.data == "number") {
+    gameChannel.post(game)
+  } else if (typeof data == "number") {
     resetGame()
-    game = getGame(e.data)
+    game = getGame(data)
     initGame()
   }
-}
+})

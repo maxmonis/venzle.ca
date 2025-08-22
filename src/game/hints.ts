@@ -1,4 +1,5 @@
 import type { Game } from "lib/types"
+import { gameEvent } from "lib/utils"
 import { hintsContainer } from "./elements"
 import { getCenter } from "./state"
 
@@ -23,7 +24,7 @@ export function initHints(game: Game) {
           : "Hint B: Click here to reveal clues about the categories"
       hintButton.addEventListener("click", () => {
         game.hintsUsed[key] = true
-        new BroadcastChannel("game").postMessage("save")
+        gameEvent.post("save")
         hintButton.remove()
         hint.append(hintText)
         appendBonusHint(game)
@@ -55,7 +56,7 @@ function appendBonusHint(game: Game) {
       "Still stuck? Click here to reveal the categories"
     bonusHintButton.addEventListener("click", () => {
       game.hintsUsed.c = true
-      new BroadcastChannel("game").postMessage("save")
+      gameEvent.post("save")
       bonusHintButton.remove()
       bonusHint.append(bonusHintText)
     })

@@ -1,6 +1,7 @@
 import type { Game } from "lib/types"
 import { removeToast, showToast } from "lib/ui"
 import {
+  gameChannel,
   localAudio,
   localGame,
   localResults,
@@ -283,6 +284,7 @@ export function updateGameState(game: Game) {
     submitButtonContainer.remove()
   }
   saveGame(game)
+  gameChannel.post(game)
 }
 
 function updateResults(game: Game) {

@@ -2,6 +2,47 @@ import type { Game, ImageFormat } from "./types"
 
 export let imageFormats = ["jpg", "png", "webp"] as const
 
+class Channel<
+  K extends "game" | "theme",
+  T extends K extends "game"
+    ? Game
+    : K extends "theme"
+      ? "audio" | "dark"
+      : never
+> {
+  private readonly channel: BroadcastChannel
+  constructor(key: K) {
+    this.channel = new BroadcastChannel(key)
+  }
+  post(data: T) {
+    this.channel.postMessage(data)
+  }
+  listen(callback: (data: T) => void) {
+    this.channel.onmessage = e => {
+      callback(e.data)
+    }
+  }
+}
+
+class Event<
+  K extends "game",
+  T extends K extends "game" ? string | number : never
+> {
+  private readonly key: `CustomEvent:${K}`
+  constructor(key: K) {
+    this.key = `CustomEvent:${key}`
+  }
+  post(data: T) {
+    document.dispatchEvent(new CustomEvent(this.key, { detail: { data } }))
+  }
+  listen(callback: (data: T) => void) {
+    document.addEventListener(this.key, event => {
+      let customEvent = event as CustomEvent
+      callback(customEvent.detail.data)
+    })
+  }
+}
+
 class LocalStorage<
   K extends
     | "audio"
@@ -62,6 +103,11 @@ class SessionStorage<
     sessionStorage.removeItem(this.key)
   }
 }
+
+export let gameChannel = new Channel("game")
+export let themeChannel = new Channel("theme")
+
+export let gameEvent = new Event("game")
 
 export let localAudio = new LocalStorage("audio")
 export let localDark = new LocalStorage("dark")

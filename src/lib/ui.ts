@@ -1,5 +1,5 @@
 import "style/global.css"
-import { localAudio, localDark, localReload } from "./utils"
+import { localAudio, localDark, localReload, themeChannel } from "./utils"
 
 let audio = localAudio.get()
 
@@ -12,8 +12,10 @@ let darkToggle = document.createElement("button")
 darkToggle.title = "Toggle dark mode"
 
 audioToggle.addEventListener("click", () => {
-  localAudio.set(!audio)
-  new BroadcastChannel("theme").postMessage("audio")
+  audio = !audio
+  localAudio.set(audio)
+  applyAudio()
+  themeChannel.post("audio")
 })
 
 function applyAudio() {
@@ -21,8 +23,10 @@ function applyAudio() {
 }
 
 darkToggle.addEventListener("click", () => {
-  localDark.set(!dark)
-  new BroadcastChannel("theme").postMessage("dark")
+  dark = !dark
+  localDark.set(dark)
+  applyDark()
+  themeChannel.post("dark")
 })
 
 function applyDark() {
@@ -30,15 +34,15 @@ function applyDark() {
   darkToggle.innerText = dark ? "🌛" : "🌞"
 }
 
-new BroadcastChannel("theme").onmessage = e => {
-  if (e.data == "audio") {
+themeChannel.listen(data => {
+  if (data == "audio") {
     audio = localAudio.get()
     applyAudio()
-  } else if (e.data == "dark") {
+  } else if (data == "dark") {
     dark = localDark.get() ?? defaultDark
     applyDark()
   }
-}
+})
 
 let toggleContainer = document.createElement("div")
 toggleContainer.classList.add("theme-toggle-container")

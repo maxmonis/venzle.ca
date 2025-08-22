@@ -1,4 +1,5 @@
 import { chevronLeft } from "lib/svg"
+import { gameEvent } from "lib/utils"
 import { getTodayIndex } from "./list"
 
 export let header = document.querySelector("header")!
@@ -25,7 +26,7 @@ export let homeButton = document.createElement("button")
 homeButton.classList.add("home-button")
 homeButton.append(chevronLeft, "Back to Today's Puzzle")
 homeButton.addEventListener("click", () => {
-  new BroadcastChannel("game").postMessage(getTodayIndex())
+  gameEvent.post(getTodayIndex())
 })
 
 export let pageSubtitle = document.createElement("h2")
@@ -42,7 +43,7 @@ let previousGameLabel = document.createElement("label")
 previousGameLabel.textContent = "Available Puzzles:"
 export let previousGameSelect = document.createElement("select")
 previousGameSelect.addEventListener("change", () => {
-  new BroadcastChannel("game").postMessage(Number(previousGameSelect.value))
+  gameEvent.post(Number(previousGameSelect.value))
 })
 previousGameLabel.append(previousGameSelect)
 previousGameContainer.append(previousGameText, previousGameLabel)
@@ -51,7 +52,7 @@ let submitButton = document.createElement("button")
 submitButton.classList.add("btn")
 submitButton.textContent = "Submit Solution"
 submitButton.addEventListener("click", () => {
-  new BroadcastChannel("game").postMessage("submit")
+  gameEvent.post("submit")
 })
 
 export let submitButtonContainer = document.createElement("div")
