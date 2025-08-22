@@ -14,7 +14,7 @@ if (
   storageGame.status != "solved" ||
   storageGame.index != getTodayIndex()
 )
-  window.location.replace("../")
+  location.replace("../")
 let game = storageGame!
 
 let emojiMap = {

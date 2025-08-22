@@ -15,8 +15,7 @@ import { initUI, showToast } from "lib/ui"
 import { sessionIndex } from "lib/utils"
 import "./style.css"
 
-if (window.location.pathname != "/")
-  window.location.replace(window.location.origin)
+if (location.pathname != "/") location.replace(location.origin)
 
 let game = getGame(sessionIndex.get() ?? getTodayIndex())
 

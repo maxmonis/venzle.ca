@@ -1,5 +1,5 @@
 import "style/global.css"
-import { localAudio, localDark } from "./utils"
+import { localAudio, localDark, localReload } from "./utils"
 
 let audio = localAudio.get()
 
@@ -100,3 +100,15 @@ domReady(() => {
         document.body.style.pointerEvents = "none"
       })
 })
+
+let lastReload = localReload.get() ?? 0
+
+reloadIfStale()
+window.addEventListener("focus", reloadIfStale)
+function reloadIfStale() {
+  let now = new Date().getTime()
+  if (now - lastReload > 36e5) {
+    localReload.set(now)
+    location.reload()
+  }
+}
