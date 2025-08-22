@@ -1,14 +1,6 @@
 import "style/global.css"
 import { localAudio, localDark } from "./utils"
 
-if (
-  !["/", "/how-to-play/", "/share-results/", "/your-stats/"].includes(
-    window.location.pathname
-  )
-) {
-  window.location.replace(window.location.origin)
-}
-
 let audio = localAudio.get()
 
 let defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches
