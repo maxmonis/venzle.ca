@@ -11,7 +11,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "src/root/index.html"),
-        stats: resolve(__dirname, "src/root/stats/index.html"),
+        stats: resolve(__dirname, "src/root/your-stats/index.html"),
         "how-to-play": resolve(__dirname, "src/root/how-to-play/index.html"),
         "share-results": resolve(__dirname, "src/root/share-results/index.html")
       },

@@ -2,7 +2,7 @@ import "style/global.css"
 import { localAudio, localDark } from "./utils"
 
 if (
-  !["/", "/how-to-play/", "/share-results/", "/stats/"].includes(
+  !["/", "/how-to-play/", "/share-results/", "/your-stats/"].includes(
     window.location.pathname
   )
 ) {
