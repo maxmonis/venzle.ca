@@ -7,22 +7,12 @@ interface GameListItem extends Pick<Game, "groups" | "hint" | "title"> {
 export let gameList: Array<GameListItem> = [
   {
     groups: {
-      "Constitutional Monarchy": ["Canada", "Sweden", "Australia", "Japan"],
-      "Touches the Arctic Circle": [
-        "Canada",
-        "Sweden",
-        "United States",
-        "Russia"
-      ],
-      "English is Official Language": [
-        "Canada",
-        "Australia",
-        "United States",
-        "South Africa"
-      ]
+      Color: ["Orange", "Grape", "Pine", "Purple"],
+      Fruit: ["Orange", "Grape", "Apple", "Watermelon"],
+      Tree: ["Orange", "Pine", "Apple", "Cedar"]
     },
-    hint: "Government, Latitude, Language",
-    title: "Countries"
+    hint: "Palette, Food, Bark",
+    title: "Demo Puzzle"
   },
   {
     groups: {
@@ -44,52 +34,42 @@ export let gameList: Array<GameListItem> = [
     title: "Entertainment"
   },
   {
+    creator: "Andrea Alcalá Vásquez",
     groups: {
-      "3000 Career Hits": [
-        "Miguel Cabrera",
-        "Albert Pujols",
-        "Ichiro Suzuki",
-        "Cal Ripken, Jr."
-      ],
-      "500 Career Homeruns": [
-        "Miguel Cabrera",
-        "Albert Pujols",
-        "Ted Williams",
-        "Mickey Mantle"
-      ],
-      ".300 Career Batting Average": [
-        "Miguel Cabrera",
-        "Ichiro Suzuki",
-        "Ted Williams",
-        "Vladimir Guerrero"
-      ]
+      Aquatic: ["Penguin", "Duck", "Seal", "Flying Fish"],
+      Bird: ["Penguin", "Duck", "Ostrich", "Eagle"],
+      "Does Not Fly": ["Penguin", "Seal", "Ostrich", "Zebra"]
     },
-    hint: "Hits, Homers, Average",
-    title: "Baseball"
+    hint: "Water, Feathers, Grounded",
+    title: "Animals"
   },
   {
     groups: {
-      "Led a Nation During Wartime": [
-        "Abraham Lincoln",
-        "Winston Churchill",
-        "Czar Nicholas II",
-        "Joseph Stalin"
+      "Involves Throwing": ["Baseball", "Football", "Shotput", "Soccer"],
+      "Players Wear Helmets": ["Baseball", "Football", "Auto Racing", "Hockey"],
+      "No Game Clock": ["Baseball", "Shotput", "Auto Racing", "Golf"]
+    },
+    hint: "Throw, Helmet, Clock",
+    title: "Sports"
+  },
+  {
+    groups: {
+      "Constitutional Monarchy": ["Canada", "Sweden", "Australia", "Japan"],
+      "Touches the Arctic Circle": [
+        "Canada",
+        "Sweden",
+        "United States",
+        "Russia"
       ],
-      "Killed with a Firearm": [
-        "Abraham Lincoln",
-        "Mahatma Gandhi",
-        "Czar Nicholas II",
-        "Franz Ferdinand"
-      ],
-      "Appears on Modern Currency": [
-        "Abraham Lincoln",
-        "Mahatma Gandhi",
-        "Winston Churchill",
-        "Thomas Jefferson"
+      "English is Official Language": [
+        "Canada",
+        "Australia",
+        "United States",
+        "South Africa"
       ]
     },
-    hint: "War, Death, Currency",
-    title: "Historical Figures"
+    hint: "Government, Latitude, Language",
+    title: "Countries"
   },
   {
     groups: {
@@ -116,80 +96,62 @@ export let gameList: Array<GameListItem> = [
     title: "Actors"
   },
   {
-    groups: {
-      "Won MVP": ["Larry Bird", "Kevin Garnett", "Tim Duncan", "Derrick Rose"],
-      "Won Finals MVP": [
-        "Larry Bird",
-        "Paul Pierce",
-        "Tim Duncan",
-        "Andre Iguodala"
-      ],
-      "Played for Boston Celtics": [
-        "Larry Bird",
-        "Kevin Garnett",
-        "Paul Pierce",
-        "Ray Allen"
-      ]
-    },
-    hint: "Russell Trophy, Jordan Trophy, Red Auerbach",
-    title: "Basketball"
-  },
-  {
-    groups: {
-      Color: ["Orange", "Grape", "Pine", "Purple"],
-      Fruit: ["Orange", "Grape", "Apple", "Watermelon"],
-      Tree: ["Orange", "Pine", "Apple", "Cedar"]
-    },
-    hint: "Palette, Food, Bark",
-    title: "Miscellaneous"
-  },
-  {
     creator: "Hannah Monis",
     groups: {
       "Commonly Eaten": ["Shrimp", "Rabbit", "Lobster", "Cow"],
       "Often Kept as Pet": ["Shrimp", "Rabbit", "Newt", "Dog"],
       "Lives in Water": ["Shrimp", "Lobster", "Newt", "Box Jellyfish"]
     },
-    hint: "Food, Friend, Swim",
-    title: "Animals"
+    hint: "Food, Friend, Habitat",
+    title: "Animals 2"
   },
   {
-    creator: "Hannah Monis",
     groups: {
-      "Contains Alcohol": [
-        "French Onion",
-        "Coq au Vin",
-        "Beer Cheese Soup",
-        "Chicken Marsala"
+      "Drafted Out of High School": [
+        "Dwight Howard",
+        "LeBron James",
+        "Kevin Garnett",
+        "Kobe Bryant"
       ],
-      French: ["French Onion", "Coq au Vin", "Vichyssoise", "Brioche"],
-      Soup: [
-        "French Onion",
-        "Beer Cheese Soup",
-        "Vichyssoise",
-        "Italian Wedding"
+      "Drafted First Overall": [
+        "Dwight Howard",
+        "LeBron James",
+        "Hakeem Olajuwon",
+        "Shaquille O'Neal"
+      ],
+      "Won Defensive Player of the Year": [
+        "Dwight Howard",
+        "Kevin Garnett",
+        "Hakeem Olajuwon",
+        "Ben Wallace"
       ]
     },
-    hint: "Booze, France, Broth",
-    title: "Food"
+    hint: "School, Draft, Defense",
+    title: "Basketball"
   },
   {
     groups: {
-      Caribbean: ["Venezuela", "Suriname", "Cuba", "Jamaica"],
-      "Contains Amazon Rainforest": ["Venezuela", "Suriname", "Peru", "Brazil"],
-      "Spanish is Official Language": ["Venezuela", "Cuba", "Peru", "Spain"]
+      "Led a Nation During Wartime": [
+        "Abraham Lincoln",
+        "Winston Churchill",
+        "Czar Nicholas II",
+        "Joseph Stalin"
+      ],
+      "Killed with a Firearm": [
+        "Abraham Lincoln",
+        "Mahatma Gandhi",
+        "Czar Nicholas II",
+        "Franz Ferdinand"
+      ],
+      "Appears on Modern Currency": [
+        "Abraham Lincoln",
+        "Mahatma Gandhi",
+        "Winston Churchill",
+        "Thomas Jefferson"
+      ]
     },
-    hint: "Beaches, Trees, Language",
-    title: "Countries 2"
-  },
-  {
-    groups: {
-      "Involves Throwing": ["Baseball", "Football", "Shotput", "Soccer"],
-      "Players Wear Helmets": ["Baseball", "Football", "Auto Racing", "Hockey"],
-      "No Game Clock": ["Baseball", "Shotput", "Auto Racing", "Golf"]
-    },
-    hint: "Throw, Helmet, Clock",
-    title: "Sports"
+    hint: "War, Death, Currency",
+    title: "Historical Figures"
   },
   {
     creator: "Margaret Monis",
@@ -214,7 +176,60 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Justice, Metropolis, Heroines",
-    title: "Television"
+    title: "TV Shows"
+  },
+  {
+    groups: {
+      "Big Cat": ["Leopard", "Cheetah", "Tiger", "Puma"],
+      "Has Spots": ["Leopard", "Cheetah", "Spotted Deer", "Giraffe"],
+      "Found in India": ["Leopard", "Tiger", "Spotted Deer", "Rhinoceros"]
+    },
+    hint: "Feline, Fur, Subcontinent",
+    title: "Animals 3"
+  },
+  {
+    groups: {
+      "3000 Career Hits": [
+        "Miguel Cabrera",
+        "Albert Pujols",
+        "Ichiro Suzuki",
+        "Cal Ripken, Jr."
+      ],
+      "500 Career Homeruns": [
+        "Miguel Cabrera",
+        "Albert Pujols",
+        "Ted Williams",
+        "Mickey Mantle"
+      ],
+      ".300 Career Batting Average": [
+        "Miguel Cabrera",
+        "Ichiro Suzuki",
+        "Ted Williams",
+        "Vladimir Guerrero"
+      ]
+    },
+    hint: "Hits, Homers, Average",
+    title: "Baseball"
+  },
+  {
+    creator: "Hannah Monis",
+    groups: {
+      "Contains Alcohol": [
+        "French Onion",
+        "Coq au Vin",
+        "Beer Cheese Soup",
+        "Chicken Marsala"
+      ],
+      French: ["French Onion", "Coq au Vin", "Vichyssoise", "Brioche"],
+      Soup: [
+        "French Onion",
+        "Beer Cheese Soup",
+        "Vichyssoise",
+        "Italian Wedding"
+      ]
+    },
+    hint: "Booze, France, Broth",
+    title: "Food"
   },
   {
     creator: "Margaret Monis",
@@ -242,6 +257,48 @@ export let gameList: Array<GameListItem> = [
     title: "Authors"
   },
   {
+    groups: {
+      Carnivore: ["Crocodile", "Eagle", "Great White Shark", "Tasmanian Devil"],
+      "Lays Eggs": ["Crocodile", "Eagle", "Sea Turtle", "Tortoise"],
+      "Lives in Water": [
+        "Crocodile",
+        "Great White Shark",
+        "Sea Turtle",
+        "Manatee"
+      ]
+    },
+    hint: "Diet, Reproduction, Habitat",
+    title: "Animals 4"
+  },
+  {
+    groups: {
+      "Won MVP": ["Larry Bird", "Kevin Garnett", "Tim Duncan", "Derrick Rose"],
+      "Won Finals MVP": [
+        "Larry Bird",
+        "Paul Pierce",
+        "Tim Duncan",
+        "Andre Iguodala"
+      ],
+      "Played for Boston Celtics": [
+        "Larry Bird",
+        "Kevin Garnett",
+        "Paul Pierce",
+        "Ray Allen"
+      ]
+    },
+    hint: "Russell Trophy, Jordan Trophy, Red Auerbach",
+    title: "Basketball 2"
+  },
+  {
+    groups: {
+      Caribbean: ["Venezuela", "Suriname", "Cuba", "Jamaica"],
+      "Contains Amazon Rainforest": ["Venezuela", "Suriname", "Peru", "Brazil"],
+      "Spanish is Official Language": ["Venezuela", "Cuba", "Peru", "Spain"]
+    },
+    hint: "Beaches, Trees, Language",
+    title: "Countries 2"
+  },
+  {
     creator: "Andrea Alcalá Vásquez",
     groups: {
       British: [
@@ -260,11 +317,58 @@ export let gameList: Array<GameListItem> = [
         "Elton John",
         "Andrew Lloyd Webber",
         "Alan Menken",
-        "John Legend"
+        "Viola Davis"
       ]
     },
-    hint: "Nationality, Mickey, Awards",
+    hint: "Nationality, Disney, Awards",
     title: "Entertainment 2"
+  },
+  {
+    groups: {
+      "Commonly Ridden": ["Elephant", "Water Buffalo", "Camel", "Horse"],
+      "Found in Southeast Asia": [
+        "Elephant",
+        "Water Buffalo",
+        "Orangutan",
+        "Bornean Bearded Pig"
+      ],
+      "No Hooves": ["Elephant", "Camel", "Orangutan", "Raccoon"]
+    },
+    hint: "Saddle, Region, Feet",
+    title: "Animals 5"
+  },
+  {
+    groups: {
+      "60,000 Passing Yards": [
+        "Peyton Manning",
+        "Brett Favre",
+        "Drew Brees",
+        "Ben Roethlisberger"
+      ],
+      "Won MVP": ["Peyton Manning", "Brett Favre", "Joe Montana", "Cam Newton"],
+      "Won Super Bowl MVP": [
+        "Peyton Manning",
+        "Drew Brees",
+        "Joe Montana",
+        "Eli Manning"
+      ]
+    },
+    hint: "Yards, MVP, SB MVP",
+    title: "Quarterbacks"
+  },
+  {
+    groups: {
+      "Majority Muslim": ["Indonesia", "Pakistan", "Maldives", "Afghanistan"],
+      "Population Exceeds 100 Million": [
+        "Indonesia",
+        "Pakistan",
+        "Brazil",
+        "China"
+      ],
+      "Touches Equator": ["Indonesia", "Maldives", "Brazil", "Ecuador"]
+    },
+    hint: "Religion, Population, Latitude",
+    title: "Countries 3"
   },
   {
     creator: "Andrea Alcalá Vásquez",
@@ -280,40 +384,6 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Sales, Nationality, Genre",
     title: "Musicians"
-  },
-  {
-    creator: "Andrea Alcalá Vásquez",
-    groups: {
-      Aquatic: ["Penguin", "Seal", "Duck", "Flying Fish"],
-      "Does Not Fly": ["Penguin", "Seal", "Ostrich", "Elephant"],
-      Feathered: ["Penguin", "Duck", "Ostrich", "Eagle"]
-    },
-    hint: "Water, Ground, Nest",
-    title: "Animals 2"
-  },
-  {
-    groups: {
-      "Drafted Out of High School": [
-        "Dwight Howard",
-        "LeBron James",
-        "Kevin Garnett",
-        "Kobe Bryant"
-      ],
-      "Drafted First Overall": [
-        "Dwight Howard",
-        "LeBron James",
-        "Hakeem Olajuwon",
-        "Shaquille O'Neal"
-      ],
-      "Won Defensive Player of the Year": [
-        "Dwight Howard",
-        "Kevin Garnett",
-        "Hakeem Olajuwon",
-        "Ben Wallace"
-      ]
-    },
-    hint: "School, Draft, Defense",
-    title: "Basketball 2"
   }
   // ,{
   //   groups: {
