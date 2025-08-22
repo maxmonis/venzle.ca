@@ -183,6 +183,15 @@ export let gameList: Array<GameListItem> = [
     title: "Countries 2"
   },
   {
+    groups: {
+      "Involves Throwing": ["Baseball", "Football", "Shotput", "Soccer"],
+      "Players Wear Helmets": ["Baseball", "Football", "Auto Racing", "Hockey"],
+      "No Game Clock": ["Baseball", "Shotput", "Auto Racing", "Golf"]
+    },
+    hint: "Throw, Helmet, Clock",
+    title: "Sports"
+  },
+  {
     creator: "Margaret Monis",
     groups: {
       "Police Show": [
@@ -281,16 +290,31 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Water, Ground, Nest",
     title: "Animals 2"
+  },
+  {
+    groups: {
+      "Drafted Out of High School": [
+        "Dwight Howard",
+        "LeBron James",
+        "Kevin Garnett",
+        "Kobe Bryant"
+      ],
+      "Drafted First Overall": [
+        "Dwight Howard",
+        "LeBron James",
+        "Hakeem Olajuwon",
+        "Shaquille O'Neal"
+      ],
+      "Won Defensive Player of the Year": [
+        "Dwight Howard",
+        "Kevin Garnett",
+        "Hakeem Olajuwon",
+        "Ben Wallace"
+      ]
+    },
+    hint: "School, Draft, Defense",
+    title: "Basketball 2"
   }
-  // ,{
-  //   groups: {
-  //     "Category 1": ["itemA", "itemB", "itemC", "itemE"],
-  //     "Category 2": ["itemA", "itemB", "itemD", "itemF"],
-  //     "Category 3": ["itemA", "itemC", "itemD", "itemG"]
-  //   },
-  //   hint: "",
-  //   title: ""
-  // }
   // ,{
   //   groups: {
   //     "Yellow Circle": ["Brown", "Green", "Orange", "Yellow"],
