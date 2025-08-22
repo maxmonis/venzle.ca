@@ -210,7 +210,11 @@ export function getGame(index: number): Game {
 
 export function getGameText(title: string, index: number) {
   return `${
-    index == getTodayIndex() ? "Today's Puzzle" : `Puzzle ${index + 1}`
+    index == 0
+      ? "How to Play"
+      : index == getTodayIndex()
+        ? "Today's Puzzle"
+        : `Puzzle ${index}`
   }: ${title}`
 }
 

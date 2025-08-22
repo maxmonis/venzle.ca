@@ -14,6 +14,10 @@ main > div p {
   width: min(calc(100vw - 2.5rem), 100%);
 }
 
+main > a {
+  margin-block-start: 1.25rem;
+}
+
 .circle-container {
   margin-block: 1rem 2rem;
   text-align: center;
