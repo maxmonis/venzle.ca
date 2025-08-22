@@ -94,4 +94,9 @@ function domReady(cb: () => void) {
 
 domReady(() => {
   document.body.style.cssText = ""
+  for (let link of document.querySelectorAll("a"))
+    if (link.getAttribute("href")?.startsWith("."))
+      link.addEventListener("click", () => {
+        document.body.style.pointerEvents = "none"
+      })
 })
