@@ -40,7 +40,7 @@ export let gameList: Array<GameListItem> = [
       Bird: ["Penguin", "Duck", "Ostrich", "Eagle"],
       "Does Not Fly": ["Penguin", "Seal", "Ostrich", "Zebra"]
     },
-    hint: "Water, Feathers, Grounded",
+    hint: "Habitat, Feathers, Grounded",
     title: "Animals"
   },
   {
@@ -150,7 +150,7 @@ export let gameList: Array<GameListItem> = [
         "Thomas Jefferson"
       ]
     },
-    hint: "War, Death, Currency",
+    hint: "War, Death, Money",
     title: "Historical Figures"
   },
   {
@@ -184,7 +184,7 @@ export let gameList: Array<GameListItem> = [
       "Has Spots": ["Leopard", "Cheetah", "Spotted Deer", "Giraffe"],
       "Found in India": ["Leopard", "Tiger", "Spotted Deer", "Rhinoceros"]
     },
-    hint: "Feline, Fur, Subcontinent",
+    hint: "Feline, Fur, Region",
     title: "Animals 3"
   },
   {
@@ -272,22 +272,22 @@ export let gameList: Array<GameListItem> = [
   },
   {
     groups: {
-      "Won MVP": ["Larry Bird", "Kevin Garnett", "Tim Duncan", "Derrick Rose"],
-      "Won Finals MVP": [
-        "Larry Bird",
-        "Paul Pierce",
-        "Tim Duncan",
-        "Andre Iguodala"
+      "60,000 Passing Yards": [
+        "Peyton Manning",
+        "Brett Favre",
+        "Drew Brees",
+        "Ben Roethlisberger"
       ],
-      "Played for Boston Celtics": [
-        "Larry Bird",
-        "Kevin Garnett",
-        "Paul Pierce",
-        "Ray Allen"
+      "Won MVP": ["Peyton Manning", "Brett Favre", "Joe Montana", "Cam Newton"],
+      "Won Super Bowl MVP": [
+        "Peyton Manning",
+        "Drew Brees",
+        "Joe Montana",
+        "Eli Manning"
       ]
     },
-    hint: "Russell Trophy, Jordan Trophy, Red Auerbach",
-    title: "Basketball 2"
+    hint: "Yards, MVP, SB MVP",
+    title: "Quarterbacks"
   },
   {
     groups: {
@@ -339,22 +339,22 @@ export let gameList: Array<GameListItem> = [
   },
   {
     groups: {
-      "60,000 Passing Yards": [
-        "Peyton Manning",
-        "Brett Favre",
-        "Drew Brees",
-        "Ben Roethlisberger"
+      "Won MVP": ["Larry Bird", "Kevin Garnett", "Tim Duncan", "Derrick Rose"],
+      "Won Finals MVP": [
+        "Larry Bird",
+        "Paul Pierce",
+        "Tim Duncan",
+        "Andre Iguodala"
       ],
-      "Won MVP": ["Peyton Manning", "Brett Favre", "Joe Montana", "Cam Newton"],
-      "Won Super Bowl MVP": [
-        "Peyton Manning",
-        "Drew Brees",
-        "Joe Montana",
-        "Eli Manning"
+      "Played for Boston Celtics": [
+        "Larry Bird",
+        "Kevin Garnett",
+        "Paul Pierce",
+        "Ray Allen"
       ]
     },
-    hint: "Yards, MVP, SB MVP",
-    title: "Quarterbacks"
+    hint: "Russell Trophy, Jordan Trophy, Red Auerbach",
+    title: "Basketball 2"
   },
   {
     groups: {
@@ -384,6 +384,15 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Sales, Nationality, Genre",
     title: "Musicians"
+  },
+  {
+    groups: {
+      "Found in North America": ["Beaver", "Mouse", "Otter", "Raccoon"],
+      Rodent: ["Beaver", "Mouse", "Capybara", "Guinea Pig"],
+      "Semi-Aquatic": ["Beaver", "Capybara", "Otter", "Hippopotamus"]
+    },
+    hint: "Region, Rodentia, Habitat",
+    title: "Animals 6"
   }
   // ,{
   //   groups: {
