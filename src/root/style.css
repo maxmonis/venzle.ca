@@ -48,6 +48,7 @@
   gap: 0.5rem;
   margin-block-start: 2rem;
   max-width: 65ch;
+  text-align: center;
 }
 
 .hints-container button {
