@@ -259,6 +259,12 @@ dialog::backdrop {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    transition-duration: 0ms;
+  }
+}
+
 @media not all and (min-width: 400px) {
   html {
     font-size: 14px;

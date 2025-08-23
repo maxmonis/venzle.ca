@@ -64,3 +64,18 @@ main > a {
     transform: translate(0);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .circle,
+  .circle-title,
+  .dropzone {
+    animation: none;
+  }
+
+  .circle-a,
+  .circle-b,
+  .circle-c {
+    animation-delay: 0ms;
+    transform: none;
+  }
+}

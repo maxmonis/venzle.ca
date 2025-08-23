@@ -44,3 +44,9 @@ main {
     opacity: 1;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  main {
+    animation: none;
+  }
+}

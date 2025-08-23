@@ -1,4 +1,4 @@
-import { initUI } from "lib/ui"
+import { initUI, reduceMotion } from "lib/ui"
 import { localResults, todayIndex } from "lib/utils"
 import "./style.css"
 
@@ -236,6 +236,7 @@ function animateNumber(
   isPercentage = false,
   decimalPlaces = 0
 ) {
+  if (reduceMotion) duration = 1
   let startTime = -1
   function step(timestamp: number) {
     if (startTime == -1) startTime = timestamp
@@ -268,10 +269,13 @@ document.addEventListener("DOMContentLoaded", () => {
     .forEach((bar, i) => {
       let barFill = bar.querySelector(".bar-fill") as HTMLElement
       let count = stats.guessDistribution[i + 1] ?? 0
-      setTimeout(() => {
-        barFill.style.width = `calc(${(count / maxCount) * 100}% - ${(count / maxCount) * 1.25}rem)`
-        animateNumber(barFill, count, 1000)
-      }, 300)
+      setTimeout(
+        () => {
+          barFill.style.width = `calc(${(count / maxCount) * 100}% - ${(count / maxCount) * 1.25}rem)`
+          animateNumber(barFill, count, 1000)
+        },
+        reduceMotion ? 0 : 300
+      )
     })
 
   hintDistributionGraph
@@ -279,9 +283,12 @@ document.addEventListener("DOMContentLoaded", () => {
     .forEach((bar, i) => {
       let barFill = bar.querySelector(".bar-fill") as HTMLElement
       let count = stats.hintDistribution[i] ?? 0
-      setTimeout(() => {
-        barFill.style.width = `calc(${(count / maxCount) * 100}% - ${(count / maxCount) * 1.25}rem)`
-        animateNumber(barFill, count, 1000)
-      }, 300)
+      setTimeout(
+        () => {
+          barFill.style.width = `calc(${(count / maxCount) * 100}% - ${(count / maxCount) * 1.25}rem)`
+          animateNumber(barFill, count, 1000)
+        },
+        reduceMotion ? 0 : 300
+      )
     })
 })

@@ -1,6 +1,12 @@
 import "style/global.css"
 import { localAudio, localDark, sessionLoad, themeChannel } from "./utils"
 
+let mediaQueryList = matchMedia("(prefers-reduced-motion: reduce)")
+export let reduceMotion = mediaQueryList.matches
+mediaQueryList.addEventListener("change", e => {
+  reduceMotion = e.matches
+})
+
 let audio = localAudio.get()
 
 let defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches

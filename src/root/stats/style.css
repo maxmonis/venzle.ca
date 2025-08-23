@@ -84,3 +84,13 @@ section {
   text-align: right;
   transition: width 1s ease-out;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  section {
+    animation: none;
+  }
+
+  .bar-fill {
+    transition: none;
+  }
+}

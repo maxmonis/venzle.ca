@@ -92,3 +92,9 @@ main :not(:where(.circle-container *, .previous-game-container *)) {
     opacity: 1;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  main :not(:where(.circle-container *, .previous-game-container *)) {
+    animation: none;
+  }
+}
