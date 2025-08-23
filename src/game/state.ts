@@ -73,7 +73,7 @@ export function checkGame(game: Game, clicked: boolean) {
     if (game.index == todayIndex)
       gameSummary.innerHTML +=
         "<br />Come back tomorrow for a new puzzle!<br />" +
-        "<div><a href='./share-results/'>Share Results</a></div>"
+        "<div><a href='./share/'>Share Results</a></div>"
     for (let dropzone of document.querySelectorAll(".dropzone")) {
       dropzone.removeAttribute("data-dnd-value")
       dropzone.removeAttribute("draggable")

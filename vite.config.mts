@@ -10,10 +10,10 @@ export default defineConfig({
     outDir: "../../dist",
     rollupOptions: {
       input: {
+        learn: resolve(__dirname, "src/root/learn/index.html"),
         main: resolve(__dirname, "src/root/index.html"),
-        stats: resolve(__dirname, "src/root/your-stats/index.html"),
-        "how-to-play": resolve(__dirname, "src/root/how-to-play/index.html"),
-        "share-results": resolve(__dirname, "src/root/share-results/index.html")
+        share: resolve(__dirname, "src/root/share/index.html"),
+        stats: resolve(__dirname, "src/root/stats/index.html")
       },
       output: {
         manualChunks(id) {
