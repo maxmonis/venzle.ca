@@ -1,7 +1,13 @@
 import type { Game } from "lib/types"
 import { gameEvent } from "lib/utils"
 import { hintsContainer } from "./elements"
-import { getCenter } from "./state"
+
+export function getCenter(game: Game) {
+  let values = Object.values(game.groups)
+  return values
+    .flatMap(v => v)
+    .find(value => values.every(v => v.includes(value)))!
+}
 
 export function initHints(game: Game) {
   hintsContainer.append(

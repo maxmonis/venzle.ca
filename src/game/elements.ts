@@ -1,6 +1,5 @@
 import { chevronLeft } from "lib/svg"
 import { gameEvent } from "lib/utils"
-import { getTodayIndex } from "./list"
 
 export let header = document.querySelector("header")!
 export let circleContainer = document.querySelector(".circle-container")!
@@ -26,7 +25,10 @@ export let homeButton = document.createElement("button")
 homeButton.classList.add("home-button")
 homeButton.append(chevronLeft, "Back to Today's Puzzle")
 homeButton.addEventListener("click", () => {
-  gameEvent.post(getTodayIndex())
+  let [todayOption, ...options] = previousGameSelect.querySelectorAll("option")
+  todayOption!.selected = true
+  for (let option of options) option.selected = false
+  gameEvent.post(Number(todayOption!.value))
 })
 
 export let pageSubtitle = document.createElement("h2")

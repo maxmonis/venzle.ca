@@ -77,7 +77,7 @@
   margin: 0 auto 1.25rem -0.25rem;
 }
 
-main :not(.circle-container *) {
+main :not(:where(.circle-container *, .previous-game-container *)) {
   animation: fadeIn 300ms forwards;
 }
 
