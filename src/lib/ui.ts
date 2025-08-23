@@ -90,10 +90,10 @@ window.addEventListener("resize", () => {
   rem = parseInt(getComputedStyle(document.documentElement).fontSize)
 })
 
-function domReady(cb: () => void) {
+function domReady(callback: () => void) {
   document.readyState == "complete" || document.readyState == "interactive"
-    ? cb()
-    : document.addEventListener("DOMContentLoaded", cb)
+    ? callback()
+    : document.addEventListener("DOMContentLoaded", callback)
 }
 
 domReady(() => {

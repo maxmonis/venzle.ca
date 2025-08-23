@@ -9,7 +9,6 @@
   --slate: #334155;
 
   --bg-blue: #1d4ed8;
-  --bg-gray: rgba(0, 0, 0, 0.1);
   --bg: var(--light);
   --fg: var(--dark);
 
@@ -23,7 +22,6 @@
   --gray: #d1d5db;
   --slate: #cbd5e1;
 
-  --bg-gray: rgba(255, 255, 255, 0.2);
   --bg: var(--dark);
   --fg: var(--light);
 }

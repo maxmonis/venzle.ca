@@ -71,7 +71,8 @@ function resizeCanvas() {
 export function startConfetti() {
   document.body.prepend(confettiCanvas)
   if (animationFrameId) cancelAnimationFrame(animationFrameId)
-  for (let i = 0; i < window.innerWidth / 3; i++) particles.push(new Particle())
+  let count = window.innerWidth / 3
+  for (let i = 0; i < count; i++) particles.push(new Particle())
   animate()
   setTimeout(() => {
     confettiCanvas.remove()

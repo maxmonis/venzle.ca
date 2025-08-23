@@ -240,11 +240,11 @@ export function initPreviousGameSelect() {
 export function resetGame() {
   pageSubtitle.remove()
   gameSummary.remove()
-  hintsContainer.innerHTML = ""
   for (let element of document.querySelectorAll(
     "[draggable=true],.dropzone,.circle-title"
   ))
     element.remove()
+  hintsContainer.innerHTML = ""
   circleContainer.after(gameControls, hintsContainer)
 }
 
