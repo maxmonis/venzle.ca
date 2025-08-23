@@ -1,7 +1,12 @@
-import { getTodayIndex } from "game/list"
 import type { Game, ImageFormat } from "lib/types"
 import { initUI, showToast } from "lib/ui"
-import { imageFormats, localFormat, localGame, localName } from "lib/utils"
+import {
+  imageFormats,
+  localFormat,
+  localGame,
+  localName,
+  todayIndex
+} from "lib/utils"
 import "./style.css"
 
 initUI()
@@ -12,7 +17,7 @@ let storageGame = localGame.get()
 if (
   !storageGame ||
   storageGame.status != "solved" ||
-  storageGame.index != getTodayIndex()
+  storageGame.index != todayIndex
 )
   location.replace("../")
 let game = storageGame!

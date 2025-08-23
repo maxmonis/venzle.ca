@@ -1,10 +1,8 @@
-import { getTodayIndex } from "game/list"
 import { initUI } from "lib/ui"
-import { localResults } from "lib/utils"
+import { localResults, todayIndex } from "lib/utils"
 import "./style.css"
 
 initUI()
-let todayIndex = getTodayIndex()
 
 let main = document.querySelector("main")!
 

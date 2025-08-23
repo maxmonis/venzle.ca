@@ -16,7 +16,7 @@ import {
   winAudio
 } from "game/elements"
 import { getCenter, initHints } from "game/hints"
-import { gameList, getTodayIndex } from "game/list"
+import { gameList } from "game/list"
 import type { Game } from "lib/types"
 import { initUI, removeToast, showToast } from "lib/ui"
 import {
@@ -26,13 +26,14 @@ import {
   localGame,
   localResults,
   sessionGames,
-  sessionIndex
+  sessionIndex,
+  todayIndex
 } from "lib/utils"
 import "./style.css"
 
 if (location.pathname != "/") location.replace(location.origin)
 
-let game = getGame(sessionIndex.get() ?? getTodayIndex())
+let game = getGame(sessionIndex.get() ?? todayIndex)
 
 initUI()
 initGame()
@@ -45,7 +46,7 @@ function initGame() {
   initDraggables(game)
   initHints(game)
   updateGameState(game)
-  if (game.index == getTodayIndex()) {
+  if (game.index == todayIndex) {
     sessionIndex.remove()
     homeButton.remove()
   } else {
@@ -55,7 +56,6 @@ function initGame() {
   if (game.status != "pending") checkGame(game, false)
 }
 
-let todayIndex = getTodayIndex()
 let selectedGameIndex = sessionIndex.get() ?? todayIndex
 previousGameSelect.append(
   ...gameList
@@ -84,7 +84,6 @@ function appendCircleTitles(titles: [string, string, string]) {
 
 function checkGame(game: Game, clicked: boolean) {
   removeToast()
-  let todayIndex = getTodayIndex()
   let groupEntries = Object.entries(game.groups)
   let { currentGuess } = game
   let guessKeys: Record<"a" | "b" | "c", Array<keyof typeof currentGuess>> = {
@@ -217,7 +216,6 @@ function checkGame(game: Game, clicked: boolean) {
 }
 
 function getGame(index: number): Game {
-  let todayIndex = getTodayIndex()
   if (index == todayIndex) {
     let game = localGame.get()
     if (game && game.index == todayIndex) return game
@@ -252,7 +250,7 @@ function getGameText(title: string, index: number) {
   return `${
     index == 0
       ? "How to Play"
-      : index == getTodayIndex()
+      : index == todayIndex
         ? "Today's Puzzle"
         : `Puzzle ${index}`
   }: ${title}`
@@ -270,7 +268,7 @@ function resetGame() {
 }
 
 function saveGame(game: Game) {
-  if (game.index == getTodayIndex()) {
+  if (game.index == todayIndex) {
     localGame.set(game)
     return
   }
@@ -310,7 +308,7 @@ function updateGameState(game: Game) {
 }
 
 function updateResults(game: Game) {
-  if (game.index != getTodayIndex()) return
+  if (game.index != todayIndex) return
   let results = localResults.get() ?? []
   results.push({
     hints: Object.values(game.hintsUsed).filter(Boolean).length,

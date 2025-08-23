@@ -2,6 +2,10 @@ import type { Game, ImageFormat } from "./types"
 
 export let imageFormats = ["jpg", "png", "webp"] as const
 
+export let todayIndex = Math.floor(
+  (Date.now() - Date.UTC(2025, 7, 22)) / 86400000
+)
+
 class Channel<
   K extends "game" | "theme",
   T extends K extends "game"
