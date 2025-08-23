@@ -339,22 +339,27 @@ export let gameList: Array<GameListItem> = [
   },
   {
     groups: {
-      "Won MVP": ["Larry Bird", "Kevin Garnett", "Tim Duncan", "Derrick Rose"],
-      "Won Finals MVP": [
-        "Larry Bird",
-        "Paul Pierce",
-        "Tim Duncan",
-        "Andre Iguodala"
+      "Won Ballon d'Or": [
+        "Lionel Messi",
+        "Cristiano Ronaldo",
+        "Diego Maradona",
+        "Johan Cruyff"
       ],
-      "Played for Boston Celtics": [
-        "Larry Bird",
-        "Kevin Garnett",
-        "Paul Pierce",
-        "Ray Allen"
+      "Won Champions League": [
+        "Lionel Messi",
+        "Cristiano Ronaldo",
+        "Andrés Iniesta",
+        "Paolo Maldini"
+      ],
+      "Won World Cup": [
+        "Lionel Messi",
+        "Diego Maradona",
+        "Andrés Iniesta",
+        "Pelé"
       ]
     },
-    hint: "Russell Trophy, Jordan Trophy, Red Auerbach",
-    title: "Basketball 2"
+    hint: "MVP, Club, Country",
+    title: "Soccer"
   },
   {
     groups: {
@@ -393,6 +398,34 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Region, Rodentia, Habitat",
     title: "Animals 6"
+  },
+  {
+    groups: {
+      "Won MVP": ["Larry Bird", "Kevin Garnett", "Tim Duncan", "Derrick Rose"],
+      "Won Finals MVP": [
+        "Larry Bird",
+        "Paul Pierce",
+        "Tim Duncan",
+        "Andre Iguodala"
+      ],
+      "Played for Boston Celtics": [
+        "Larry Bird",
+        "Kevin Garnett",
+        "Paul Pierce",
+        "Ray Allen"
+      ]
+    },
+    hint: "Russell Trophy, Jordan Trophy, Red Auerbach",
+    title: "Basketball 2"
+  },
+  {
+    groups: {
+      "Hosted Olympics": ["London", "Tokyo", "Turin", "Rio de Janeiro"],
+      "National Capital": ["London", "Tokyo", "Cairo", "Panama City"],
+      "Part of Roman Empire": ["London", "Turin", "Cairo", "Istanbul"]
+    },
+    hint: "Olympiad, Federal Government, Rome",
+    title: "Cities"
   }
   // ,{
   //   groups: {
