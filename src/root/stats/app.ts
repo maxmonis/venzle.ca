@@ -10,10 +10,12 @@ let results = localResults.get() ?? []
 
 // let i = 20
 // while (i < 200) {
+//   let guesses = Math.floor(Math.random() * 5) + 1
 //   results.push({
-//     guesses: Math.floor(Math.random() * 5) + 1,
+//     guesses,
 //     hints: Math.floor(Math.random() * 4),
-//     index: i
+//     index: i,
+//     status: guesses == 5 && Math.round(Math.random()) ? "failed" : "solved"
 //   })
 //   i += Math.floor(Math.random() * 3) + 1
 // }
@@ -282,9 +284,4 @@ document.addEventListener("DOMContentLoaded", () => {
         animateNumber(barFill, count, 1000)
       }, 300)
     })
-
-  setTimeout(() => {
-    guessDistributionGraph.classList.add("visible")
-    hintDistributionGraph.classList.add("visible")
-  }, 100)
 })
