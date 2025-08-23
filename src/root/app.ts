@@ -222,10 +222,7 @@ function getGame(index: number): Game {
   }
   let game = sessionGames.get()?.find(g => g.index == index)
   if (game) return game
-  if (index >= gameList.length) {
-    location.reload()
-    throw "Caching issue"
-  }
+  if (index >= gameList.length) index = gameList.length - 1
   let { creator = "Max Monis", ...newGame } = gameList[index]!
   return {
     ...newGame,

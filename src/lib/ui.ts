@@ -1,5 +1,5 @@
 import "style/global.css"
-import { localAudio, localDark, localReload, themeChannel } from "./utils"
+import { localAudio, localDark, sessionLoad, themeChannel } from "./utils"
 
 let audio = localAudio.get()
 
@@ -122,18 +122,60 @@ domReady(() => {
       stroke-width="12"
     ></circle>
   </svg>`
-        }, 50)
+        }, 300)
       })
 })
 
-let lastReload = localReload.get() ?? 0
+let now = new Date()
 
 reloadIfStale()
 window.addEventListener("focus", reloadIfStale)
 function reloadIfStale() {
-  let now = new Date().getTime()
-  if (now - lastReload > 36e5) {
-    localReload.set(now)
-    location.reload()
-  }
+  let lastLoad = sessionLoad.get()
+  if (
+    lastLoad &&
+    lastLoad <
+      new Date(
+        Date.UTC(
+          now.getUTCFullYear(),
+          now.getUTCMonth(),
+          now.getUTCDate(),
+          0,
+          0,
+          0,
+          0
+        )
+      ).getTime()
+  )
+    reloadPage()
 }
+
+function reloadPage() {
+  let seconds = 3
+  showToast(`New puzzle available! Reloading in ${seconds}...`)
+  setInterval(() => {
+    seconds--
+    toast.textContent = `New puzzle available! Reloading in ${seconds}...`
+  }, 1200)
+  setTimeout(() => {
+    sessionLoad.set(new Date().getTime())
+    location.reload()
+  }, 3500)
+}
+
+setTimeout(
+  reloadPage,
+  new Date(
+    Date.UTC(
+      now.getUTCFullYear(),
+      now.getUTCMonth(),
+      now.getUTCDate() + 1,
+      0,
+      0,
+      0,
+      0
+    )
+  ).getTime() - now.getTime()
+)
+
+sessionLoad.set(now.getTime())

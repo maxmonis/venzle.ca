@@ -48,14 +48,7 @@ class Event<
 }
 
 class LocalStorage<
-  K extends
-    | "audio"
-    | "dark"
-    | "format"
-    | "game"
-    | "name"
-    | "reload"
-    | "results",
+  K extends "audio" | "dark" | "format" | "game" | "name" | "results",
   T extends K extends "audio" | "dark"
     ? boolean
     : K extends "format"
@@ -64,16 +57,14 @@ class LocalStorage<
         ? Game
         : K extends "name"
           ? string
-          : K extends "reload"
-            ? number
-            : K extends "results"
-              ? Array<{
-                  guesses: number
-                  hints: number
-                  index: number
-                  status: Game["status"]
-                }>
-              : never
+          : K extends "results"
+            ? Array<{
+                guesses: number
+                hints: number
+                index: number
+                status: Game["status"]
+              }>
+            : never
 > {
   private readonly key: K
   constructor(key: K) {
@@ -89,8 +80,12 @@ class LocalStorage<
 }
 
 class SessionStorage<
-  K extends "games" | "index",
-  T extends K extends "games" ? Array<Game> : K extends "index" ? number : never
+  K extends "games" | "index" | "load",
+  T extends K extends "games"
+    ? Array<Game>
+    : K extends "index" | "load"
+      ? number
+      : never
 > {
   private readonly key: K
   constructor(key: K) {
@@ -118,8 +113,8 @@ export let localDark = new LocalStorage("dark")
 export let localFormat = new LocalStorage("format")
 export let localGame = new LocalStorage("game")
 export let localName = new LocalStorage("name")
-export let localReload = new LocalStorage("reload")
 export let localResults = new LocalStorage("results")
 
 export let sessionGames = new SessionStorage("games")
 export let sessionIndex = new SessionStorage("index")
+export let sessionLoad = new SessionStorage("load")
