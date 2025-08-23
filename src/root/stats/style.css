@@ -9,6 +9,7 @@ h3 {
 }
 
 section {
+  animation: fadeInUp 600ms ease-out forwards;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -41,7 +42,6 @@ section {
 }
 
 .distribution {
-  animation: fadeInUp 600ms ease-out forwards;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
