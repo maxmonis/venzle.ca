@@ -102,6 +102,27 @@ domReady(() => {
     if (link.getAttribute("href")?.startsWith("."))
       link.addEventListener("click", () => {
         document.body.style.pointerEvents = "none"
+        setTimeout(() => {
+          document.body.innerHTML = `
+  <svg
+    class="spinner"
+    height="40"
+    preserveAspectRatio="xMidYMid"
+    viewBox="0 0 100 100"
+    width="40"
+  >
+    <rect fill="none" height="100" width="100" x="0" y="0"></rect>
+    <circle
+      cx="50"
+      cy="50"
+      fill="none"
+      r="40"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-width="12"
+    ></circle>
+  </svg>`
+        }, 50)
       })
 })
 

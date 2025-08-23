@@ -256,3 +256,22 @@ dialog::backdrop {
     font-size: 18px;
   }
 }
+
+.spinner {
+  animation: 1.25s linear spinner infinite;
+  margin: 5rem auto;
+}
+
+@keyframes spinner {
+  0% {
+    stroke-dashoffset: 502;
+    stroke-dasharray: 150.6 100.4;
+  }
+  50% {
+    stroke-dasharray: 1 250;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 150.6 100.4;
+  }
+}
