@@ -278,7 +278,8 @@ export function updateGameState(game: Game) {
     guessesText.textContent = `${remainingGuesses} guess${
       remainingGuesses == 1 ? "" : "es"
     } remaining`
-    circleContainer.after(submitButtonContainer)
+    if (!main.contains(submitButtonContainer))
+      circleContainer.after(submitButtonContainer)
   } else {
     if (!main.contains(gameControls)) circleContainer.after(gameControls)
     submitButtonContainer.remove()
