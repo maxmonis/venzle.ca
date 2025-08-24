@@ -267,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
   guessDistributionGraph
     .querySelectorAll<HTMLElement>(".bar")
     .forEach((bar, i) => {
-      let barFill = bar.querySelector(".bar-fill") as HTMLElement
+      let barFill = bar.querySelector<HTMLElement>(".bar-fill")!
       let count = stats.guessDistribution[i + 1] ?? 0
       setTimeout(
         () => {
@@ -281,7 +281,7 @@ document.addEventListener("DOMContentLoaded", () => {
   hintDistributionGraph
     .querySelectorAll<HTMLElement>(".bar")
     .forEach((bar, i) => {
-      let barFill = bar.querySelector(".bar-fill") as HTMLElement
+      let barFill = bar.querySelector<HTMLElement>(".bar-fill")!
       let count = stats.hintDistribution[i] ?? 0
       setTimeout(
         () => {
