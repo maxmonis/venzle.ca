@@ -1,0 +1,64 @@
+import type { Game } from "../src/lib/types"
+
+interface GameListItem extends Pick<Game, "groups" | "hint" | "title"> {
+  creator?: string
+}
+
+export let gameList: Array<GameListItem> = [
+  {
+    creator: "Hannah Monis",
+    groups: {
+      "Commonly Eaten": ["Shrimp", "Rabbit", "Lobster", "Cow"],
+      "Often Kept as Pet": ["Shrimp", "Rabbit", "Newt", "Dog"],
+      "Lives in Water": ["Shrimp", "Lobster", "Newt", "Box Jellyfish"]
+    },
+    hint: "Food, Friend, Habitat",
+    title: "Animals 2"
+  },
+  {
+    groups: {
+      "Big Cat": ["Leopard", "Cheetah", "Tiger", "Puma"],
+      "Has Spots": ["Leopard", "Cheetah", "Spotted Deer", "Giraffe"],
+      "Found in India": ["Leopard", "Tiger", "Spotted Deer", "Rhinoceros"]
+    },
+    hint: "Feline, Fur, Region",
+    title: "Animals 3"
+  },
+  {
+    groups: {
+      Carnivore: ["Crocodile", "Eagle", "Great White Shark", "Tasmanian Devil"],
+      "Lays Eggs": ["Crocodile", "Eagle", "Sea Turtle", "Tortoise"],
+      "Lives in Water": [
+        "Crocodile",
+        "Great White Shark",
+        "Sea Turtle",
+        "Manatee"
+      ]
+    },
+    hint: "Diet, Reproduction, Habitat",
+    title: "Animals 4"
+  },
+  {
+    groups: {
+      "Commonly Ridden": ["Elephant", "Water Buffalo", "Camel", "Horse"],
+      "Found in Southeast Asia": [
+        "Elephant",
+        "Water Buffalo",
+        "Orangutan",
+        "Bornean Bearded Pig"
+      ],
+      "No Hooves": ["Elephant", "Camel", "Orangutan", "Raccoon"]
+    },
+    hint: "Saddle, Region, Feet",
+    title: "Animals 5"
+  },
+  {
+    groups: {
+      "Found in North America": ["Beaver", "Mouse", "Otter", "Raccoon"],
+      Rodent: ["Beaver", "Mouse", "Capybara", "Guinea Pig"],
+      "Semi-Aquatic": ["Beaver", "Capybara", "Otter", "Hippopotamus"]
+    },
+    hint: "Region, Rodentia, Habitat",
+    title: "Animals 6"
+  }
+]

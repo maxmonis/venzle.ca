@@ -1,0 +1,118 @@
+import type { Game } from "../src/lib/types"
+
+interface GameListItem extends Pick<Game, "groups" | "hint" | "title"> {
+  creator?: string
+}
+
+export let gameList: Array<GameListItem> = [
+  {
+    groups: {
+      "Drafted Out of High School": [
+        "Dwight Howard",
+        "LeBron James",
+        "Kevin Garnett",
+        "Kobe Bryant"
+      ],
+      "Drafted First Overall": [
+        "Dwight Howard",
+        "LeBron James",
+        "Hakeem Olajuwon",
+        "Shaquille O'Neal"
+      ],
+      "Won Defensive Player of the Year": [
+        "Dwight Howard",
+        "Kevin Garnett",
+        "Hakeem Olajuwon",
+        "Ben Wallace"
+      ]
+    },
+    hint: "School, Draft, Defense",
+    title: "Basketball"
+  },
+  {
+    groups: {
+      "3000 Career Hits": [
+        "Miguel Cabrera",
+        "Albert Pujols",
+        "Ichiro Suzuki",
+        "Cal Ripken, Jr."
+      ],
+      "500 Career Homeruns": [
+        "Miguel Cabrera",
+        "Albert Pujols",
+        "Ted Williams",
+        "Mickey Mantle"
+      ],
+      ".300 Career Batting Average": [
+        "Miguel Cabrera",
+        "Ichiro Suzuki",
+        "Ted Williams",
+        "Vladimir Guerrero"
+      ]
+    },
+    hint: "Hits, Homers, Average",
+    title: "Baseball"
+  },
+  {
+    groups: {
+      "60,000 Passing Yards": [
+        "Peyton Manning",
+        "Brett Favre",
+        "Drew Brees",
+        "Ben Roethlisberger"
+      ],
+      "Won MVP": ["Peyton Manning", "Brett Favre", "Joe Montana", "Cam Newton"],
+      "Won Super Bowl MVP": [
+        "Peyton Manning",
+        "Drew Brees",
+        "Joe Montana",
+        "Eli Manning"
+      ]
+    },
+    hint: "Yards, MVP, SB MVP",
+    title: "Quarterbacks"
+  },
+  {
+    groups: {
+      "Won Ballon d'Or": [
+        "Lionel Messi",
+        "Cristiano Ronaldo",
+        "Diego Maradona",
+        "Johan Cruyff"
+      ],
+      "Won Champions League": [
+        "Lionel Messi",
+        "Cristiano Ronaldo",
+        "Andrés Iniesta",
+        "Paolo Maldini"
+      ],
+      "Won World Cup": [
+        "Lionel Messi",
+        "Diego Maradona",
+        "Andrés Iniesta",
+        "Pelé"
+      ]
+    },
+    hint: "MVP, Club, Country",
+    title: "Soccer"
+  },
+  {
+    groups: {
+      "Won MVP": ["Larry Bird", "Kevin Garnett", "Tim Duncan", "Derrick Rose"],
+      "Won Finals MVP": [
+        "Larry Bird",
+        "Paul Pierce",
+        "Tim Duncan",
+        "Andre Iguodala"
+      ],
+      "Played for Boston Celtics": [
+        "Larry Bird",
+        "Kevin Garnett",
+        "Paul Pierce",
+        "Ray Allen"
+      ]
+    },
+    hint: "Russell Trophy, Jordan Trophy, Red Auerbach",
+    title: "Basketball 2"
+  }
+]
