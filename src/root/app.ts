@@ -45,7 +45,7 @@ function initGame() {
   initDropzones(game)
   initDraggables(game)
   initHints(game)
-  updateGameState(game)
+  updateGameState()
   if (game.index == todayIndex) {
     sessionIndex.remove()
     homeButton.remove()
@@ -53,7 +53,7 @@ function initGame() {
     main.prepend(homeButton)
     sessionIndex.set(game.index)
   }
-  if (game.status != "pending") checkGame(game, false)
+  if (game.status != "pending") checkGame(false)
 }
 
 let selectedGameIndex = sessionIndex.get() ?? todayIndex
@@ -82,7 +82,7 @@ function appendCircleTitles(titles: [string, string, string]) {
   )
 }
 
-function checkGame(game: Game, clicked: boolean) {
+function checkGame(clicked: boolean) {
   removeToast()
   let groupEntries = Object.entries(game.groups)
   let { currentGuess } = game
@@ -129,8 +129,8 @@ function checkGame(game: Game, clicked: boolean) {
     hintsContainer.remove()
     if (clicked) {
       game.status = "solved"
-      saveGame(game)
-      updateResults(game)
+      saveGame()
+      updateResults()
       startConfetti()
       if (localAudio.get()) {
         document.body.append(winAudio)
@@ -209,8 +209,8 @@ function checkGame(game: Game, clicked: boolean) {
     circleContainer.after(gameSummary)
     if (clicked) {
       game.status = "failed"
-      saveGame(game)
-      updateResults(game)
+      saveGame()
+      updateResults()
     }
   }
 }
@@ -264,7 +264,7 @@ function resetGame() {
   circleContainer.after(gameControls, hintsContainer)
 }
 
-function saveGame(game: Game) {
+function saveGame() {
   if (game.index == todayIndex) {
     localGame.set(game)
     return
@@ -282,7 +282,7 @@ function saveGame(game: Game) {
   sessionGames.set(games)
 }
 
-function updateGameState(game: Game) {
+function updateGameState() {
   for (let dropzone of document.querySelectorAll(".dropzone")) {
     let id = dropzone.id.split("-")[1] as keyof typeof game.currentGuess
     if (id in game.currentGuess)
@@ -300,11 +300,11 @@ function updateGameState(game: Game) {
     if (!main.contains(gameControls)) circleContainer.after(gameControls)
     submitButtonContainer.remove()
   }
-  saveGame(game)
+  saveGame()
   gameChannel.post(game)
 }
 
-function updateResults(game: Game) {
+function updateResults() {
   if (game.index != todayIndex) return
   let results = localResults.get() ?? []
   results.push({
@@ -324,8 +324,8 @@ gameChannel.listen(data => {
 })
 
 gameEvent.listen(data => {
-  if (data == "update") updateGameState(game)
-  else if (data == "save") saveGame(game)
+  if (data == "update") updateGameState()
+  else if (data == "save") saveGame()
   else if (data == "submit") {
     if (
       game.guesses.some(
@@ -336,8 +336,8 @@ gameEvent.listen(data => {
       return
     }
     game.guesses.push({ ...game.currentGuess })
-    saveGame(game)
-    checkGame(game, true)
+    saveGame()
+    checkGame(true)
     gameChannel.post(game)
   } else if (typeof data == "number") {
     resetGame()
