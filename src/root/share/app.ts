@@ -186,11 +186,11 @@ async function appendCertificate(game: Game) {
   ctx.textAlign = "center"
   ctx.font = `900 120px "Georgia", "Times New Roman", serif`
   ctx.fillStyle = "#111827"
-  ctx.fillText("VENN", width / 2, cursorY + 40)
+  ctx.fillText("VENZLE", width / 2, cursorY + 36)
   ctx.restore()
   cursorY += 300
 
-  ctx.font = `400 72px "Georgia", "Times New Roman", serif`
+  ctx.font = `400 96px "Georgia", "Times New Roman", serif`
   ctx.fillText("venzle.ca", centerX, cursorY)
 
   let footerY = height - padding - 40
