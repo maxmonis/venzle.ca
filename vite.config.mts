@@ -1,6 +1,7 @@
 import { dirname, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 import { defineConfig } from "vite"
+import version from "vite-plugin-package-version"
 import tsconfigPaths from "vite-tsconfig-paths"
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -22,7 +23,7 @@ export default defineConfig({
       }
     }
   },
-  plugins: [tsconfigPaths()],
+  plugins: [tsconfigPaths(), version()],
   root: "src/root",
   server: { open: true }
 })

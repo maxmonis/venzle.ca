@@ -1,6 +1,9 @@
 import "style/global.css"
 import { localAudio, localDark, sessionLoad, themeChannel } from "./utils"
 
+document.querySelector<HTMLElement>(".site-logo")!.title =
+  `Venzle v${import.meta.env.PACKAGE_VERSION}`
+
 let mediaQueryList = matchMedia("(prefers-reduced-motion: reduce)")
 export let reduceMotion = mediaQueryList.matches
 mediaQueryList.addEventListener("change", e => {
