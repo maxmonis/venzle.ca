@@ -7,7 +7,7 @@
     "vite": "^7.1.2",
     "vite-tsconfig-paths": "^5.1.4"
   },
-  "name": "venn",
+  "name": "venzle.ca",
   "private": true,
   "scripts": {
     "build": "tsc && vite build --emptyOutDir",

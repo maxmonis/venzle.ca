@@ -191,7 +191,7 @@ async function appendCertificate(game: Game) {
   cursorY += 300
 
   ctx.font = `400 72px "Georgia", "Times New Roman", serif`
-  ctx.fillText("venn.maxmonis.com", centerX, cursorY)
+  ctx.fillText("venzle.ca", centerX, cursorY)
 
   let footerY = height - padding - 40
   ctx.strokeStyle = "#a8a29d"
