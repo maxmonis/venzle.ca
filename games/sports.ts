@@ -74,6 +74,30 @@ export let gameList: Array<GameListItem> = [
   },
   {
     groups: {
+      "Judged Event": [
+        "Snowboard Halfpipe",
+        "Skateboarding Park",
+        "Figure Skating",
+        "Diving"
+      ],
+      "Uses a Board": [
+        "Snowboard Halfpipe",
+        "Skateboarding Park",
+        "Snowboard Cross",
+        "Windsurfing"
+      ],
+      "Winter Sport": [
+        "Snowboard Halfpipe",
+        "Snowboard Cross",
+        "Figure Skating",
+        "Speed Skating"
+      ]
+    },
+    hint: "Scoring, Board, Season",
+    title: "Olympics"
+  },
+  {
+    groups: {
       "Won MVP": ["Larry Bird", "Kevin Garnett", "Tim Duncan", "Derrick Rose"],
       "Won Finals MVP": [
         "Larry Bird",
@@ -92,3 +116,13 @@ export let gameList: Array<GameListItem> = [
     title: "Basketball 2"
   }
 ]
+
+//   {
+//   groups: {
+//   "Net at Each End": ["Soccer", "Ringette", "Lacrosse", "Ice Hockey"],
+//   "Played on Ice": ["Figure Skating", "Ringette", "Ice Cross Downhill", "Ice Hockey"],
+//   "Allows Body Checking": ["Rugby", "Ice Cross Downhill", "Lacrosse", "Ice Hockey"]
+//   },
+//   hint: "Goals, Ice, Contact",
+//   title: "Sports"
+//   },

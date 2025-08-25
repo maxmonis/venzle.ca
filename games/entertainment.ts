@@ -93,5 +93,43 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Sales, Nationality, Genre",
     title: "Musicians"
+  },
+  {
+    groups: {
+      "Female Leads": ["Girls", "Insecure", "Broad City", "Charmed"],
+      "On HBO": ["Girls", "Insecure", "Succession", "Westworld"],
+      "Set in New York City": [
+        "Girls",
+        "Broad City",
+        "Succession",
+        "How I Met Your Mother"
+      ]
+    },
+    hint: "Heroines, Premium, Metropolis",
+    title: "TV Shows 2"
+  },
+  {
+    groups: {
+      "Published in the 19th Century": [
+        "Little Women",
+        "Adventures of Huckleberry Finn",
+        "Jane Eyre",
+        "Crime and Punishment"
+      ],
+      "Set in the United States": [
+        "Little Women",
+        "Adventures of Huckleberry Finn",
+        "Beloved",
+        "The Great Gatsby"
+      ],
+      "Written by a Woman": [
+        "Little Women",
+        "Jane Eyre",
+        "Beloved",
+        "Mrs Dalloway"
+      ]
+    },
+    hint: "Century, Setting, Author",
+    title: "Literature"
   }
 ]

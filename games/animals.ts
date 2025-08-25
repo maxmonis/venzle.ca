@@ -48,7 +48,16 @@ export let gameList: Array<GameListItem> = [
       Rodent: ["Beaver", "Mouse", "Capybara", "Guinea Pig"],
       "Semi-Aquatic": ["Beaver", "Capybara", "Otter", "Hippopotamus"]
     },
-    hint: "Region, Rodentia, Habitat",
+    hint: "Region, Teeth, Habitat",
     title: "Animals 6"
+  },
+  {
+    groups: {
+      "Can Fly": ["Elf Owl", "Roadrunner", "Fruit Bat", "Swan"],
+      "Lives in the Desert": ["Elf Owl", "Roadrunner", "Scorpion", "Camel"],
+      Nocturnal: ["Elf Owl", "Fruit Bat", "Scorpion", "Raccoon"]
+    },
+    hint: "Wings, Arid, Night",
+    title: "Animals 7"
   }
 ]

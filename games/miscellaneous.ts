@@ -45,12 +45,50 @@ export let gameList: Array<GameListItem> = [
   },
   {
     groups: {
+      "Happened in the 18th Century": [
+        "American Revolution",
+        "Boston Tea Party",
+        "French Revolution",
+        "Cook's First Voyage"
+      ],
+      "Happened in North America": [
+        "American Revolution",
+        "Boston Tea Party",
+        "Mexican Revolution",
+        "California Gold Rush"
+      ],
+      Revolution: [
+        "American Revolution",
+        "Mexican Revolution",
+        "French Revolution",
+        "Russian Revolution"
+      ]
+    },
+    hint: "Century, Continent, Uprising",
+    title: "History"
+  },
+  {
+    groups: {
       "Hosted Olympics": ["London", "Tokyo", "Turin", "Rio de Janeiro"],
       "National Capital": ["London", "Tokyo", "Cairo", "Panama City"],
       "Part of Roman Empire": ["London", "Turin", "Cairo", "Istanbul"]
     },
-    hint: "Olympiad, Federal Government, Rome",
+    hint: "Olympiad, Capital, Rome",
     title: "Cities"
+  },
+  {
+    groups: {
+      British: ["Charles I", "Queen Victoria", "Anne Boleyn", "Charles Darwin"],
+      Executed: ["Charles I", "Louis XVI", "Anne Boleyn", "Socrates"],
+      Monarch: [
+        "Charles I",
+        "Queen Victoria",
+        "Louis XVI",
+        "Suleiman the Magnificent"
+      ]
+    },
+    hint: "Nationality, Death, Throne",
+    title: "Historical Figures 2"
   },
   {
     groups: {
