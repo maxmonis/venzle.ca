@@ -131,7 +131,7 @@ let countsSection = document.createElement("section")
 let totalsContainer = document.createElement("div")
 
 let totalsUl = document.createElement("ul")
-totalsUl.className = "stats-summary"
+totalsUl.classList.add("stats-summary")
 let totalsHeading = document.createElement("h3")
 totalsHeading.textContent = "Summary"
 
@@ -153,7 +153,7 @@ let streaksContainer = document.createElement("div")
 let streaksHeading = document.createElement("h3")
 streaksHeading.textContent = "Streaks"
 let streaksUl = document.createElement("ul")
-streaksUl.className = "stats-summary"
+streaksUl.classList.add("stats-summary")
 
 streaksUl.append(
   ...streaksList.map(({ text }) => {
@@ -181,20 +181,20 @@ let maxCount = Math.max(
 )
 
 let guessDistributionGraph = document.createElement("div")
-guessDistributionGraph.className = "distribution guess-distribution"
+guessDistributionGraph.classList.add("distribution")
 let guessHeading = document.createElement("h3")
 guessHeading.textContent = "Guess Distribution"
 guessDistributionGraph.append(guessHeading)
 
 for (let i = 1; i <= 5; i++) {
   let bar = document.createElement("div")
-  bar.className = "bar"
+  bar.classList.add("bar")
 
   let label = document.createElement("span")
   label.textContent = i.toString()
 
   let barFill = document.createElement("div")
-  barFill.className = "bar-fill"
+  barFill.classList.add("bar-fill")
   barFill.style.width = "0%"
   barFill.textContent = "0"
 
@@ -204,21 +204,20 @@ for (let i = 1; i <= 5; i++) {
 graphContainer.append(guessDistributionGraph)
 
 let hintDistributionGraph = document.createElement("div")
-hintDistributionGraph.className = "distribution hint-distribution"
+hintDistributionGraph.classList.add("distribution")
 let hintHeading = document.createElement("h3")
 hintHeading.textContent = "Hint Distribution"
 hintDistributionGraph.append(hintHeading)
 
 for (let i = 0; i <= 3; i++) {
   let bar = document.createElement("div")
-  bar.className = "bar"
+  bar.classList.add("bar")
 
   let label = document.createElement("span")
-  label.className = "label"
   label.textContent = i.toString()
 
   let barFill = document.createElement("div")
-  barFill.className = "bar-fill"
+  barFill.classList.add("bar-fill")
   barFill.style.width = "0%"
   barFill.textContent = "0"
 
