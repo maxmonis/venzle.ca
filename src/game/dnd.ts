@@ -84,10 +84,10 @@ function handleEnd(clientX: number, clientY: number) {
     makeElementDraggable(newDropzone, draggedElementText, draggedElementValue)
   if (oldDropzone && newDropzone) {
     if (newDropzoneText && newDropzoneValue) {
-      oldDropzone.textContent = newDropzoneText
+      oldDropzone.innerHTML = `<span>${newDropzoneText}</span>`
       oldDropzone.setAttribute("data-dnd-value", newDropzoneValue)
     } else {
-      oldDropzone.textContent = null
+      oldDropzone.innerHTML = ""
       oldDropzone.removeAttribute("data-dnd-value")
       oldDropzone.removeAttribute("draggable")
     }
@@ -99,7 +99,7 @@ function handleEnd(clientX: number, clientY: number) {
       clientY < rect.top ||
       clientY > rect.bottom
     ) {
-      oldDropzone.textContent = null
+      oldDropzone.innerHTML = ""
       oldDropzone.removeAttribute("data-dnd-value")
       oldDropzone.removeAttribute("draggable")
       createDraggable(draggedElementText, draggedElementValue)
@@ -160,7 +160,7 @@ function makeElementDraggable(
   text: string,
   value: string
 ) {
-  element.textContent = text
+  element.innerHTML = `<span>${text}</span>`
   element.setAttribute("data-dnd-value", value)
   element.setAttribute("draggable", "true")
   if (!isTouchScreen)

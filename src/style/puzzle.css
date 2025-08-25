@@ -32,7 +32,10 @@
 }
 
 .circle-title {
+  background-color: var(--light);
   border-radius: 1.5rem;
+  border-style: solid;
+  border-width: 2px;
   color: var(--dark);
   font-size: 0.875rem;
   font-weight: 700;
@@ -44,19 +47,19 @@
 }
 
 .circle-title-a {
-  background-color: var(--circle-a);
+  border-color: var(--circle-a);
   left: 0;
   top: -1.25rem;
 }
 
 .circle-title-b {
-  background-color: var(--circle-b);
+  border-color: var(--circle-b);
   right: 0;
   top: -1.25rem;
 }
 
 .circle-title-c {
-  background-color: var(--circle-c);
+  border-color: var(--circle-c);
   bottom: -1.25rem;
   left: 6.25rem;
 }
@@ -76,6 +79,24 @@
 
 .dropzone {
   position: absolute;
+}
+
+.dropzone:not([draggable="true"]) {
+  padding-inline: 0;
+}
+
+.dropzone:not([draggable="true"]) span {
+  align-items: center;
+  background-color: var(--light);
+  border-radius: 1.25rem;
+  border-style: solid;
+  display: flex;
+  font-size: 0.875rem;
+  justify-content: center;
+  line-height: 1;
+  min-height: 2.625rem;
+  min-width: 5rem;
+  padding: 0.375rem 0.5rem;
 }
 
 .dropzone-a {

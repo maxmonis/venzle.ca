@@ -202,7 +202,7 @@ function checkGame(clicked: boolean) {
     for (let [key, value] of Object.entries(solution)) {
       let dropzone = main.querySelector(`#dropzone-${key}`)
       if (!dropzone) continue
-      dropzone.textContent = value
+      dropzone.innerHTML = `<span>${value}</span>`
       dropzone.removeAttribute("data-dnd-value")
       dropzone.removeAttribute("draggable")
     }
@@ -226,7 +226,7 @@ function clearPuzzle() {
     let dropzoneText = dropzone.textContent
     let dropzoneValue = dropzone.getAttribute("data-dnd-value")
     if (!dropzoneText || !dropzoneValue) continue
-    dropzone.textContent = ""
+    dropzone.innerHTML = ""
     dropzone.removeAttribute("data-dnd-value")
     dropzone.removeAttribute("draggable")
     createDraggable(dropzoneText, dropzoneValue)
