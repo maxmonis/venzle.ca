@@ -1,5 +1,5 @@
 import "style/global.css"
-import { localAudio, localDark, sessionLoad, themeChannel } from "./utils"
+import { localAudio, localDark, localLoad, themeChannel } from "./utils"
 
 document.querySelector<HTMLElement>(".site-logo")!.title =
   `Venzle v${import.meta.env.PACKAGE_VERSION}`
@@ -140,7 +140,7 @@ let now = new Date()
 reloadIfStale()
 window.addEventListener("focus", reloadIfStale)
 function reloadIfStale() {
-  let lastLoad = sessionLoad.get()
+  let lastLoad = localLoad.get()
   if (
     lastLoad &&
     lastLoad <
@@ -159,7 +159,7 @@ function reloadIfStale() {
     reloadPage()
 }
 
-function reloadPage() {
+export function reloadPage() {
   let seconds = 3
   showToast(`New puzzle available! Reloading in ${seconds}...`)
   setInterval(() => {
@@ -167,7 +167,7 @@ function reloadPage() {
     toast.textContent = `New puzzle available! Reloading in ${seconds}...`
   }, 1200)
   setTimeout(() => {
-    sessionLoad.set(new Date().getTime())
+    localLoad.set(new Date().getTime())
     location.reload()
   }, 3500)
 }
@@ -187,4 +187,4 @@ setTimeout(
   ).getTime() - now.getTime()
 )
 
-sessionLoad.set(now.getTime())
+localLoad.set(now.getTime())

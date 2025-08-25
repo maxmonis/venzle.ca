@@ -19,12 +19,13 @@ import {
 import { getCenter, initHints } from "game/hints"
 import { gameList } from "game/list"
 import type { Game } from "lib/types"
-import { initUI, removeToast, showToast } from "lib/ui"
+import { initUI, reloadPage, removeToast, showToast } from "lib/ui"
 import {
   gameChannel,
   gameEvent,
   localAudio,
   localGame,
+  localLoad,
   localResults,
   sessionGames,
   sessionIndex,
@@ -240,7 +241,11 @@ function getGame(index: number): Game {
   }
   let game = sessionGames.get()?.find(g => g.index == index)
   if (game) return game
-  if (index >= gameList.length) index = gameList.length - 1
+  if (index >= gameList.length) {
+    index = gameList.length - 1
+    let lastLoad = localLoad.get()
+    if (lastLoad && new Date().getTime() - 36e5 > lastLoad) reloadPage()
+  }
   let { creator = "Max Monis", ...newGame } = gameList[index]!
   return {
     ...newGame,
