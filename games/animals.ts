@@ -6,16 +6,6 @@ interface GameListItem extends Pick<Game, "groups" | "hint" | "title"> {
 
 export let gameList: Array<GameListItem> = [
   {
-    creator: "Hannah Monis",
-    groups: {
-      "Commonly Eaten": ["Shrimp", "Rabbit", "Lobster", "Cow"],
-      "Often Kept as Pet": ["Shrimp", "Rabbit", "Newt", "Dog"],
-      "Lives in Water": ["Shrimp", "Lobster", "Newt", "Box Jellyfish"]
-    },
-    hint: "Food, Friend, Habitat",
-    title: "Animals 2"
-  },
-  {
     groups: {
       "Big Cat": ["Leopard", "Cheetah", "Tiger", "Puma"],
       "Has Spots": ["Leopard", "Cheetah", "Spotted Deer", "Giraffe"],

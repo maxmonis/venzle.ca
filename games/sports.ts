@@ -7,30 +7,6 @@ interface GameListItem extends Pick<Game, "groups" | "hint" | "title"> {
 export let gameList: Array<GameListItem> = [
   {
     groups: {
-      "Drafted Out of High School": [
-        "Dwight Howard",
-        "LeBron James",
-        "Kevin Garnett",
-        "Kobe Bryant"
-      ],
-      "Drafted First Overall": [
-        "Dwight Howard",
-        "LeBron James",
-        "Hakeem Olajuwon",
-        "Shaquille O'Neal"
-      ],
-      "Won Defensive Player of the Year": [
-        "Dwight Howard",
-        "Kevin Garnett",
-        "Hakeem Olajuwon",
-        "Ben Wallace"
-      ]
-    },
-    hint: "School, Draft, Defense",
-    title: "Basketball"
-  },
-  {
-    groups: {
       "3000 Career Hits": [
         "Miguel Cabrera",
         "Albert Pujols",

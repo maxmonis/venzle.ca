@@ -30,25 +30,6 @@ export let gameList: Array<GameListItem> = [
     title: "Actors"
   },
   {
-    groups: {
-      Book: [
-        "The Handmaid's Tale",
-        "No Country For Old Men",
-        "Big Little Lies",
-        "A Confederacy of Dunces"
-      ],
-      Movie: [
-        "The Handmaid's Tale",
-        "No Country For Old Men",
-        "Fargo",
-        "The Big Lebowski"
-      ],
-      "TV Show": ["The Handmaid's Tale", "Fargo", "Big Little Lies", "Lost"]
-    },
-    hint: "Bestseller, Premiere, Series",
-    title: "Entertainment"
-  },
-  {
     creator: "Margaret Monis",
     groups: {
       British: [

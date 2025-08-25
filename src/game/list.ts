@@ -55,18 +55,13 @@ export let gameList: Array<GameListItem> = [
       "Contains Alcohol": [
         "French Onion",
         "Coq au Vin",
-        "Beer Cheese Soup",
+        "Beer Cheese",
         "Chicken Marsala"
       ],
       French: ["French Onion", "Coq au Vin", "Vichyssoise", "Brioche"],
-      Soup: [
-        "French Onion",
-        "Beer Cheese Soup",
-        "Vichyssoise",
-        "Italian Wedding"
-      ]
+      Soup: ["French Onion", "Beer Cheese", "Vichyssoise", "Italian Wedding"]
     },
-    hint: "Booze, France, Broth",
+    hint: "Liquor, Nationality, Broth",
     title: "Food"
   },
   {
@@ -77,6 +72,78 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Throw, Helmet, Clock",
     title: "Sports"
+  },
+  {
+    creator: "Hannah Monis",
+    groups: {
+      "Commonly Eaten": ["Shrimp", "Rabbit", "Lobster", "Cow"],
+      "Often Kept as Pet": ["Shrimp", "Rabbit", "Newt", "Dog"],
+      "Lives in Water": ["Shrimp", "Lobster", "Newt", "Box Jellyfish"]
+    },
+    hint: "Food, Friend, Habitat",
+    title: "Animals 2"
+  },
+  {
+    groups: {
+      Book: [
+        "The Handmaid's Tale",
+        "No Country For Old Men",
+        "Big Little Lies",
+        "A Confederacy of Dunces"
+      ],
+      Movie: [
+        "The Handmaid's Tale",
+        "No Country For Old Men",
+        "Fargo",
+        "The Big Lebowski"
+      ],
+      "TV Show": ["The Handmaid's Tale", "Fargo", "Big Little Lies", "Lost"]
+    },
+    hint: "Bestseller, Premiere, Series",
+    title: "Entertainment"
+  },
+  {
+    groups: {
+      "Constitutional Monarchy": ["Canada", "Sweden", "Australia", "Japan"],
+      "Touches the Arctic Circle": [
+        "Canada",
+        "Sweden",
+        "United States",
+        "Russia"
+      ],
+      "English is Official Language": [
+        "Canada",
+        "Australia",
+        "United States",
+        "South Africa"
+      ]
+    },
+    hint: "Government, Latitude, Language",
+    title: "Countries"
+  },
+  {
+    groups: {
+      "Drafted Out of High School": [
+        "Dwight Howard",
+        "LeBron James",
+        "Kevin Garnett",
+        "Kobe Bryant"
+      ],
+      "Drafted First Overall": [
+        "Dwight Howard",
+        "LeBron James",
+        "Hakeem Olajuwon",
+        "Shaquille O'Neal"
+      ],
+      "Won Defensive Player of the Year": [
+        "Dwight Howard",
+        "Kevin Garnett",
+        "Hakeem Olajuwon",
+        "Ben Wallace"
+      ]
+    },
+    hint: "School, Draft, Defense",
+    title: "Basketball"
   }
   // ,{
   //   groups: {

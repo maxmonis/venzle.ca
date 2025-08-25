@@ -7,25 +7,6 @@ interface GameListItem extends Pick<Game, "groups" | "hint" | "title"> {
 export let gameList: Array<GameListItem> = [
   {
     groups: {
-      "Constitutional Monarchy": ["Canada", "Sweden", "Australia", "Japan"],
-      "Touches the Arctic Circle": [
-        "Canada",
-        "Sweden",
-        "United States",
-        "Russia"
-      ],
-      "English is Official Language": [
-        "Canada",
-        "Australia",
-        "United States",
-        "South Africa"
-      ]
-    },
-    hint: "Government, Latitude, Language",
-    title: "Countries"
-  },
-  {
-    groups: {
       "Led a Nation During Wartime": [
         "Abraham Lincoln",
         "Winston Churchill",
