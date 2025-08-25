@@ -1,5 +1,5 @@
 import { startConfetti } from "game/confetti"
-import { initDraggables, initDropzones } from "game/dnd"
+import { createDraggable, initDraggables, initDropzones } from "game/dnd"
 import {
   circleContainer,
   creatorText,
@@ -12,6 +12,7 @@ import {
   pageSubtitle,
   pageTitle,
   previousGameSelect,
+  resetButton,
   submitButtonContainer,
   winAudio
 } from "game/elements"
@@ -126,6 +127,7 @@ function checkGame(clicked: boolean) {
     circleContainer.after(gameSummary)
     gameControls.remove()
     submitButtonContainer.remove()
+    resetButton.remove()
     hintsContainer.remove()
     if (clicked) {
       game.status = "solved"
@@ -182,6 +184,7 @@ function checkGame(clicked: boolean) {
     pageSubtitle.textContent = "Better luck next time!"
     creatorText.after(pageSubtitle)
     submitButtonContainer.remove()
+    resetButton.remove()
     hintsContainer.remove()
     let [titleA, valuesA] = groupEntries[0]!
     let [titleB, valuesB] = groupEntries[1]!
@@ -213,6 +216,21 @@ function checkGame(clicked: boolean) {
       updateResults()
     }
   }
+}
+
+function clearPuzzle() {
+  for (let key in game.currentGuess)
+    game.currentGuess[key as keyof typeof game.currentGuess] = ""
+  for (let dropzone of document.querySelectorAll<HTMLElement>(".dropzone")) {
+    let dropzoneText = dropzone.textContent
+    let dropzoneValue = dropzone.getAttribute("data-dnd-value")
+    if (!dropzoneText || !dropzoneValue) continue
+    dropzone.textContent = ""
+    dropzone.removeAttribute("data-dnd-value")
+    dropzone.removeAttribute("draggable")
+    createDraggable(dropzoneText, dropzoneValue)
+  }
+  updateGameState()
 }
 
 function getGame(index: number): Game {
@@ -300,6 +318,8 @@ function updateGameState() {
     if (!main.contains(gameControls)) circleContainer.after(gameControls)
     submitButtonContainer.remove()
   }
+  if (!Object.values(game.currentGuess).some(Boolean)) resetButton.remove()
+  else if (!main.contains(resetButton)) gameControls.after(resetButton)
   saveGame()
   gameChannel.post(game)
 }
@@ -326,6 +346,7 @@ gameChannel.listen(data => {
 gameEvent.listen(data => {
   if (data == "update") updateGameState()
   else if (data == "save") saveGame()
+  else if (data == "reset") clearPuzzle()
   else if (data == "submit") {
     if (
       game.guesses.some(

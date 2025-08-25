@@ -50,6 +50,13 @@ previousGameSelect.addEventListener("change", () => {
 previousGameLabel.append(previousGameSelect)
 previousGameContainer.append(previousGameText, previousGameLabel)
 
+export let resetButton = document.createElement("button")
+resetButton.classList.add("reset-button")
+resetButton.textContent = "Reset Puzzle"
+resetButton.addEventListener("click", () => {
+  gameEvent.post("reset")
+})
+
 let submitButton = document.createElement("button")
 submitButton.classList.add("btn")
 submitButton.textContent = "Submit Solution"

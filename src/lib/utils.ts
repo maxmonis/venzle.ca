@@ -30,7 +30,9 @@ class Channel<
 
 class Event<
   K extends "game",
-  T extends K extends "game" ? string | number : never
+  T extends K extends "game"
+    ? "reset" | "save" | "submit" | "update" | number
+    : never
 > {
   private readonly key: `CustomEvent:${K}`
   constructor(key: K) {
