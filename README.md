@@ -43,7 +43,7 @@ Locally build the app and start a preview on `http://localhost:4173` (no hot
 reloading)
 
 ```
-npm run dev
+npm run prod
 ```
 
 ## Deployment
