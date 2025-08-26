@@ -25,10 +25,10 @@ import {
   gameEvent,
   localAudio,
   localGame,
-  localLoad,
   localResults,
   sessionGames,
   sessionIndex,
+  sessionLoad,
   todayIndex
 } from "lib/utils"
 import "./style.css"
@@ -243,7 +243,7 @@ function getGame(index: number): Game {
   if (game) return game
   if (index >= gameList.length) {
     index = gameList.length - 1
-    let lastLoad = localLoad.get()
+    let lastLoad = sessionLoad.get()
     if (lastLoad && new Date().getTime() - 36e5 > lastLoad) reloadPage()
   }
   let { creator = "Max Monis", ...newGame } = gameList[index]!
