@@ -1,8 +1,4 @@
-import type { Game } from "../src/lib/types"
-
-interface GameListItem extends Pick<Game, "groups" | "hint" | "title"> {
-  creator?: string
-}
+import type { GameListItem } from "../src/lib/types"
 
 export let gameList: Array<GameListItem> = [
   {

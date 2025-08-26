@@ -12,6 +12,10 @@ export interface Game {
   title: string
 }
 
+export interface GameListItem extends Pick<Game, "groups" | "hint" | "title"> {
+  creator?: string
+}
+
 interface Guess {
   a: string
   ab: string
