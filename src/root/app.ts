@@ -32,6 +32,8 @@ import {
 } from "lib/utils"
 import "./style.css"
 
+reloadIfStale()
+
 if (location.pathname != "/") location.replace(location.origin)
 
 let game = getGame(sessionIndex.get() ?? todayIndex)

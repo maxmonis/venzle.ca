@@ -135,8 +135,6 @@ domReady(() => {
       })
 })
 
-reloadIfStale()
-
 for (let event of ["focus", "keydown", "pointerdown"])
   document.addEventListener(event, reloadIfStale)
 
