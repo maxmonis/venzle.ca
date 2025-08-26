@@ -52,6 +52,7 @@ textContainer.textContent = clipboardText
 let copyButton = document.createElement("button")
 copyButton.textContent = "Copy to Clipboard"
 copyButton.addEventListener("click", () => {
+  window.gtag("event", "copy_to_clipboard_click")
   navigator.clipboard.writeText(clipboardText)
   showToast("Copied to clipboard 😃")
 })
@@ -107,6 +108,7 @@ downloadButton.textContent = "Download"
 downloadButton.classList.add("btn")
 downloadForm.addEventListener("submit", e => {
   e.preventDefault()
+  window.gtag("event", "download_certificate_click")
   let format = downloadFormatSelect.value as ImageFormat
   let a = document.createElement("a")
   a.href = certificateCanvas.toDataURL(`image/${format}`)

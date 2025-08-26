@@ -29,6 +29,7 @@ export function initHints(game: Game) {
           ? "Hint A: Click here to reveal who's in the center"
           : "Hint B: Click here to reveal clues about the categories"
       hintButton.addEventListener("click", () => {
+        window.gtag("event", `hint_${key}_click`)
         game.hintsUsed[key] = true
         gameEvent.post("save")
         hintButton.remove()
@@ -61,6 +62,7 @@ function appendBonusHint(game: Game) {
     bonusHintButton.textContent =
       "Still stuck? Click here to reveal the categories"
     bonusHintButton.addEventListener("click", () => {
+      window.gtag("event", "hint_c_click")
       game.hintsUsed.c = true
       gameEvent.post("save")
       bonusHintButton.remove()

@@ -131,6 +131,7 @@ function checkGame(clicked: boolean) {
     resetButton.remove()
     hintsContainer.remove()
     if (clicked) {
+      window.gtag("event", "puzzle_solve")
       game.status = "solved"
       saveGame()
       updateResults()
@@ -145,7 +146,9 @@ function checkGame(clicked: boolean) {
     }
     return
   }
-  let remainingGuesses = 5 - game.guesses.length
+  let guessCount = game.guesses.length
+  window.gtag("event", `incorrect_guess_${guessCount}`)
+  let remainingGuesses = 5 - guessCount
   if (remainingGuesses) {
     let guessesTextContent = `${remainingGuesses} guess${
       remainingGuesses == 1 ? "" : "es"
@@ -212,6 +215,7 @@ function checkGame(clicked: boolean) {
       gameSummary.innerHTML += "<br />Come back tomorrow for a new puzzle!"
     circleContainer.after(gameSummary)
     if (clicked) {
+      window.gtag("event", "puzzle_fail")
       game.status = "failed"
       saveGame()
       updateResults()
@@ -236,16 +240,19 @@ function clearPuzzle() {
 
 function getGame(index: number): Game {
   if (index == todayIndex) {
+    window.gtag("event", "puzzle_resume")
     let game = localGame.get()
     if (game && game.index == todayIndex) return game
   }
   let game = sessionGames.get()?.find(g => g.index == index)
   if (game) return game
   if (index >= gameList.length) {
+    window.gtag("event", "invalid_puzzle_index")
     index = gameList.length - 1
     let lastLoad = sessionLoad.get()
     if (lastLoad && new Date().getTime() - 36e5 > lastLoad) reloadPage()
   }
+  window.gtag("event", "puzzle_start")
   let { creator = "Max Monis", ...newGame } = gameList[index]!
   return {
     ...newGame,

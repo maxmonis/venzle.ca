@@ -25,6 +25,7 @@ export let homeButton = document.createElement("button")
 homeButton.classList.add("home-button")
 homeButton.append(chevronLeft, "Back to Today's Puzzle")
 homeButton.addEventListener("click", () => {
+  window.gtag("event", "home_button_click")
   let [todayOption, ...options] = previousGameSelect.querySelectorAll("option")
   todayOption!.selected = true
   for (let option of options) option.selected = false
@@ -45,6 +46,7 @@ let previousGameLabel = document.createElement("label")
 previousGameLabel.textContent = "Available Puzzles:"
 export let previousGameSelect = document.createElement("select")
 previousGameSelect.addEventListener("change", () => {
+  window.gtag("event", "previous_game_select")
   gameEvent.post(Number(previousGameSelect.value))
 })
 previousGameLabel.append(previousGameSelect)
@@ -54,6 +56,7 @@ export let resetButton = document.createElement("button")
 resetButton.classList.add("reset-button")
 resetButton.textContent = "Reset Puzzle"
 resetButton.addEventListener("click", () => {
+  window.gtag("event", "reset_puzzle_click")
   gameEvent.post("reset")
 })
 
@@ -61,6 +64,7 @@ let submitButton = document.createElement("button")
 submitButton.classList.add("btn")
 submitButton.textContent = "Submit Solution"
 submitButton.addEventListener("click", () => {
+  window.gtag("event", "submit_solution_click")
   gameEvent.post("submit")
 })
 

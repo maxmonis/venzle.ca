@@ -167,6 +167,7 @@ export function reloadPage(message = "New puzzle available!") {
     toast.textContent = `${message} Reloading in ${seconds}...`
   }, 1200)
   setTimeout(() => {
+    window.gtag("event", "reload_page")
     sessionLoad.set(new Date().getTime())
     location.reload()
   }, 3500)
@@ -192,3 +193,15 @@ if (lastLoad && new Date().getTime() - 36e5 > lastLoad)
   reloadPage("New version available!")
 
 sessionLoad.set(now.getTime())
+
+declare global {
+  interface Window {
+    gtag: (
+      command: "event",
+      action: string,
+      params?: {
+        [key: string]: string | number | boolean | null | undefined
+      }
+    ) => void
+  }
+}
