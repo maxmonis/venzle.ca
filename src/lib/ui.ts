@@ -159,12 +159,12 @@ function reloadIfStale() {
     reloadPage()
 }
 
-export function reloadPage() {
+export function reloadPage(message = "New puzzle available!") {
   let seconds = 3
-  showToast(`New puzzle available! Reloading in ${seconds}...`)
+  showToast(`${message} Reloading in ${seconds}...`)
   setInterval(() => {
     seconds--
-    toast.textContent = `New puzzle available! Reloading in ${seconds}...`
+    toast.textContent = `${message} Reloading in ${seconds}...`
   }, 1200)
   setTimeout(() => {
     sessionLoad.set(new Date().getTime())
@@ -186,5 +186,9 @@ setTimeout(
     )
   ).getTime() - now.getTime()
 )
+
+let lastLoad = sessionLoad.get()
+if (lastLoad && new Date().getTime() - 36e5 > lastLoad)
+  reloadPage("New version available!")
 
 sessionLoad.set(now.getTime())
