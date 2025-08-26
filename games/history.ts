@@ -53,6 +53,41 @@ export let gameList: Array<GameListItem> = [
   },
   {
     groups: {
+      Philosopher: ["Plato", "Socrates", "Aristotle", "Thales"],
+      "From Athens": ["Plato", "Socrates", "Aristophanes", "Pericles"],
+      "Wrote surviving works": ["Plato", "Aristotle", "Aristophanes", "Homer"]
+    },
+    hint: "School, City, Texts",
+    published: false,
+    title: "Ancient Greeks"
+  },
+  {
+    groups: {
+      "Authored surviving works": [
+        "Julius Caesar",
+        "Cicero",
+        "Pliny the Elder",
+        "Virgil"
+      ],
+      "Held the Consulship": [
+        "Julius Caesar",
+        "Cicero",
+        "Scipio Africanus",
+        "Cato the Younger"
+      ],
+      "Major Military Commander": [
+        "Julius Caesar",
+        "Scipio Africanus",
+        "Pliny the Elder",
+        "Pompey the Great"
+      ]
+    },
+    hint: "Text, Office, General",
+    published: false,
+    title: "Ancient Romans"
+  },
+  {
+    groups: {
       British: ["Charles I", "Queen Victoria", "Anne Boleyn", "Charles Darwin"],
       Executed: ["Charles I", "Louis XVI", "Anne Boleyn", "Socrates"],
       Monarch: [

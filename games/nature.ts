@@ -10,5 +10,90 @@ export let gameList: Array<GameListItem> = [
     hint: "Scent, Floristry, Origin",
     published: false,
     title: "Flowers"
+  },
+  {
+    groups: {
+      "Bird of Prey": [
+        "American Kestrel",
+        "Common Kestrel",
+        "Bald Eagle",
+        "Eurasian Eagle-Owl"
+      ],
+      "Can Hover": [
+        "American Kestrel",
+        "Common Kestrel",
+        "Ruby-throated Hummingbird",
+        "Pied Kingfisher"
+      ],
+      "Native to the Americas": [
+        "American Kestrel",
+        "Bald Eagle",
+        "Ruby-throated Hummingbird",
+        "Blue Jay"
+      ]
+    },
+    hint: "Raptor, Hover, Region",
+    published: false,
+    title: "Birds"
+  },
+  {
+    groups: {
+      "Has Legs": [
+        "Perentie",
+        "Gila Monster",
+        "Blue-tongued Skink",
+        "Green Iguana"
+      ],
+      Venomous: ["Perentie", "Gila Monster", "Inland Taipan", "King Cobra"],
+      "Found in Australia": [
+        "Perentie",
+        "Blue-tongued Skink",
+        "Inland Taipan",
+        "Woma Python"
+      ]
+    },
+    hint: "Limbs, Poison, Region",
+    published: false,
+    title: "Reptiles"
+  },
+  {
+    groups: {
+      "Flowering plant": [
+        "Cabbage",
+        "Tomato",
+        "English Oak",
+        "Bird of Paradise"
+      ],
+      "Used as food": ["Cabbage", "Tomato", "Stone Pine", "Ginkgo"],
+      "Native to Europe": ["Cabbage", "English Oak", "Stone Pine", "Yew"]
+    },
+    hint: "Angiosperm, Edible, Region",
+    published: false,
+    title: "Plants"
+  },
+  {
+    groups: {
+      Edible: ["Common Carp", "Tilapia", "Atlantic Cod", "Mahi-mahi"],
+      Freshwater: ["Common Carp", "Tilapia", "European Minnow", "Electric Eel"],
+      "Found in Europe": [
+        "Common Carp",
+        "Atlantic Cod",
+        "European Minnow",
+        "Long-snouted Seahorse"
+      ]
+    },
+    hint: "Taste, Habitat, Continent",
+    published: false,
+    title: "Fish"
+  },
+  {
+    groups: {
+      "Experiences Metamorphosis": ["Honeybee", "Butterfly", "Wasp", "Ladybug"],
+      "Feeds on Nectar": ["Honeybee", "Butterfly", "Ant", "Moth"],
+      "Lives in Colonies": ["Honeybee", "Wasp", "Ant", "Termite"]
+    },
+    hint: "Evolution, Feeding, Social",
+    published: false,
+    title: "Insects"
   }
 ]

@@ -29,6 +29,31 @@ export let gameList: Array<GameListItem> = [
   },
   {
     groups: {
+      "Romantic Era": [
+        "Frédéric Chopin",
+        "Pyotr Ilyich Tchaikovsky",
+        "Franz Schubert",
+        "Richard Wagner"
+      ],
+      "Wrote Piano Concertos": [
+        "Frédéric Chopin",
+        "Pyotr Ilyich Tchaikovsky",
+        "Wolfgang Amadeus Mozart",
+        "Sergei Prokofiev"
+      ],
+      "Died before 40": [
+        "Frédéric Chopin",
+        "Franz Schubert",
+        "Wolfgang Amadeus Mozart",
+        "Henry Purcell"
+      ]
+    },
+    hint: "Era, Concertos, Age",
+    published: false,
+    title: "Composers"
+  },
+  {
+    groups: {
       "Released in the 1970s": [
         "Horses",
         "Boston",

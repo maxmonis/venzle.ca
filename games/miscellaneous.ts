@@ -72,5 +72,30 @@ export let gameList: Array<GameListItem> = [
     hint: "UN, Script, Large native population",
     published: false,
     title: "Languages"
+  },
+  {
+    groups: {
+      German: [
+        "Martin Heidegger",
+        "Friedrich Nietzsche",
+        "Jürgen Habermas",
+        "Gottfried Wilhelm Leibniz"
+      ],
+      Existentialist: [
+        "Martin Heidegger",
+        "Friedrich Nietzsche",
+        "Jean-Paul Sartre",
+        "Søren Kierkegaard"
+      ],
+      "Major 20th-Century Work": [
+        "Martin Heidegger",
+        "Jürgen Habermas",
+        "Jean-Paul Sartre",
+        "Ludwig Wittgenstein"
+      ]
+    },
+    hint: "Nationality, Movement, Century",
+    published: false,
+    title: "Philosophers"
   }
 ]
