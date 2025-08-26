@@ -6,7 +6,7 @@ export let gameList: Array<GameListItem> = [
       "Won Best Picture": [
         "The King's Speech",
         "The Silence of the Lambs",
-        "Spotlight",
+        "12 Years a Slave",
         "The Hurt Locker"
       ],
       "Set in the 20th Century": [
@@ -17,7 +17,7 @@ export let gameList: Array<GameListItem> = [
       ],
       "Based on a True Story": [
         "The King's Speech",
-        "Spotlight",
+        "12 Years a Slave",
         "The Imitation Game",
         "The Social Network"
       ]

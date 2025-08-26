@@ -79,7 +79,7 @@ let weekOne: GameList = [
       "Won Best Picture": [
         "The King's Speech",
         "The Silence of the Lambs",
-        "Lincoln",
+        "12 Years a Slave",
         "The Hurt Locker"
       ],
       "Set in the 20th Century": [
@@ -90,7 +90,7 @@ let weekOne: GameList = [
       ],
       "Based on a True Story": [
         "The King's Speech",
-        "Lincoln",
+        "12 Years a Slave",
         "The Imitation Game",
         "The Social Network"
       ]
