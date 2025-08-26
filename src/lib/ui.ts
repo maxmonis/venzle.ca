@@ -1,5 +1,5 @@
 import "style/global.css"
-import { localAudio, localDark, sessionLoad, themeChannel } from "./utils"
+import { localAudio, localDark, localLoad, themeChannel } from "./utils"
 
 document.querySelector<HTMLElement>(".site-logo")!.title =
   `Venzle v${import.meta.env.PACKAGE_VERSION}`
@@ -135,12 +135,15 @@ domReady(() => {
       })
 })
 
-let now = new Date()
-
 reloadIfStale()
-window.addEventListener("focus", reloadIfStale)
-function reloadIfStale() {
-  let lastLoad = sessionLoad.get()
+
+for (let event of ["focus", "keydown", "pointerdown"])
+  document.addEventListener(event, reloadIfStale)
+
+export function reloadIfStale() {
+  let lastLoad = localLoad.get()
+  localLoad.set(new Date().getTime())
+  let now = new Date()
   if (
     lastLoad &&
     lastLoad <
@@ -155,27 +158,39 @@ function reloadIfStale() {
           0
         )
       ).getTime()
-  )
-    reloadPage()
+  ) {
+    reloadPage(false)
+    return true
+  }
+  return false
 }
 
-export function reloadPage(message = "New puzzle available!") {
+function reloadPage(notify: boolean) {
+  window.gtag("event", "reload_page")
+  document.body.style.pointerEvents = "none"
+  if (!notify) {
+    location.reload()
+    return
+  }
   let seconds = 3
-  showToast(`${message} Reloading in ${seconds}...`)
-  setInterval(() => {
+  showToast(`New puzzle available! Reloading in ${seconds}...`)
+  let interval = setInterval(() => {
     seconds--
-    toast.textContent = `${message} Reloading in ${seconds}...`
+    toast.textContent = `New puzzle available! Reloading in ${seconds}...`
   }, 1200)
   setTimeout(() => {
-    window.gtag("event", "reload_page")
-    sessionLoad.set(new Date().getTime())
+    clearInterval(interval)
     location.reload()
   }, 3500)
 }
 
-setTimeout(
-  reloadPage,
-  new Date(
+scheduleMidnightReload()
+function scheduleMidnightReload() {
+  let now = new Date()
+  setTimeout(
+    () => {
+      reloadPage(true)
+    },
     Date.UTC(
       now.getUTCFullYear(),
       now.getUTCMonth(),
@@ -184,15 +199,9 @@ setTimeout(
       0,
       0,
       0
-    )
-  ).getTime() - now.getTime()
-)
-
-let lastLoad = sessionLoad.get()
-if (lastLoad && new Date().getTime() - 36e5 > lastLoad)
-  reloadPage("New version available!")
-
-sessionLoad.set(now.getTime())
+    ) - now.getTime()
+  )
+}
 
 declare global {
   interface Window {

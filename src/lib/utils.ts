@@ -84,12 +84,8 @@ class LocalStorage<
 }
 
 class SessionStorage<
-  K extends "games" | "index" | "load",
-  T extends K extends "games"
-    ? Array<Game>
-    : K extends "index" | "load"
-      ? number
-      : never
+  K extends "games" | "index",
+  T extends K extends "games" ? Array<Game> : K extends "index" ? number : never
 > {
   private readonly key: K
   constructor(key: K) {
@@ -116,9 +112,9 @@ export let localAudio = new LocalStorage("audio")
 export let localDark = new LocalStorage("dark")
 export let localFormat = new LocalStorage("format")
 export let localGame = new LocalStorage("game")
+export let localLoad = new LocalStorage("load")
 export let localName = new LocalStorage("name")
 export let localResults = new LocalStorage("results")
 
 export let sessionGames = new SessionStorage("games")
 export let sessionIndex = new SessionStorage("index")
-export let sessionLoad = new SessionStorage("load")

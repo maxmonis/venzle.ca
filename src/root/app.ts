@@ -19,7 +19,7 @@ import {
 import { getCenter, initHints } from "game/hints"
 import { gameList } from "game/list"
 import type { Game } from "lib/types"
-import { initUI, reloadPage, removeToast, showToast } from "lib/ui"
+import { initUI, reloadIfStale, removeToast, showToast } from "lib/ui"
 import {
   gameChannel,
   gameEvent,
@@ -28,7 +28,6 @@ import {
   localResults,
   sessionGames,
   sessionIndex,
-  sessionLoad,
   todayIndex
 } from "lib/utils"
 import "./style.css"
@@ -86,6 +85,7 @@ function appendCircleTitles(titles: [string, string, string]) {
 
 function checkGame(clicked: boolean) {
   removeToast()
+  if (clicked && reloadIfStale()) return
   let groupEntries = Object.entries(game.groups)
   let { currentGuess } = game
   let guessKeys: Record<"a" | "b" | "c", Array<keyof typeof currentGuess>> = {
@@ -249,8 +249,7 @@ function getGame(index: number): Game {
   if (index >= gameList.length) {
     window.gtag("event", "invalid_puzzle_index")
     index = gameList.length - 1
-    let lastLoad = sessionLoad.get()
-    if (lastLoad && new Date().getTime() - 36e5 > lastLoad) reloadPage()
+    reloadIfStale()
   }
   window.gtag("event", "puzzle_start")
   let { creator = "Max Monis", ...newGame } = gameList[index]!
