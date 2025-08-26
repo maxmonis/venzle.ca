@@ -14,6 +14,7 @@ export interface Game {
 
 export interface GameListItem extends Pick<Game, "groups" | "hint" | "title"> {
   creator?: string
+  published: boolean
 }
 
 interface Guess {

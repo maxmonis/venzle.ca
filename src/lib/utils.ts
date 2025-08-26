@@ -6,6 +6,11 @@ export let todayIndex = Math.floor(
   (Date.now() - Date.UTC(2025, 7, 23)) / 86400000
 )
 
+if (import.meta.env.DEV) {
+  let { gameList } = await import("../game/list")
+  todayIndex = gameList.length - 1
+}
+
 class Channel<
   K extends "game" | "theme",
   T extends K extends "game"

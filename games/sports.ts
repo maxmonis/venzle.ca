@@ -3,6 +3,42 @@ import type { GameListItem } from "../src/lib/types"
 export let gameList: Array<GameListItem> = [
   {
     groups: {
+      "Involves Throwing": ["Baseball", "Football", "Shotput", "Soccer"],
+      "Players Wear Helmets": ["Baseball", "Football", "Auto Racing", "Hockey"],
+      "No Game Clock": ["Baseball", "Shotput", "Auto Racing", "Golf"]
+    },
+    hint: "Throw, Helmet, Clock",
+    published: true,
+    title: "Sports"
+  },
+  {
+    creator: "Evan Williams",
+    groups: {
+      "Drafted Out of High School": [
+        "Dwight Howard",
+        "LeBron James",
+        "Kevin Garnett",
+        "Kobe Bryant"
+      ],
+      "Drafted First Overall": [
+        "Dwight Howard",
+        "LeBron James",
+        "Hakeem Olajuwon",
+        "Shaquille O'Neal"
+      ],
+      "Won Defensive Player of the Year": [
+        "Dwight Howard",
+        "Kevin Garnett",
+        "Hakeem Olajuwon",
+        "Ben Wallace"
+      ]
+    },
+    hint: "School, Draft, Defense",
+    published: true,
+    title: "Basketball"
+  },
+  {
+    groups: {
       "3000 Career Hits": [
         "Miguel Cabrera",
         "Albert Pujols",
@@ -23,6 +59,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Hits, Homers, Average",
+    published: false,
     title: "Baseball"
   },
   {
@@ -42,6 +79,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Yards, MVP, SB MVP",
+    published: false,
     title: "Quarterbacks"
   },
   {
@@ -66,6 +104,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "MVP, Club, Country",
+    published: false,
     title: "Soccer"
   },
   {
@@ -90,6 +129,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Scoring, Board, Season",
+    published: false,
     title: "Olympics"
   },
   {
@@ -109,6 +149,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Russell Trophy, Jordan Trophy, Red Auerbach",
+    published: false,
     title: "Basketball 2"
   }
 ]

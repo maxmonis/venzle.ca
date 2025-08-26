@@ -2,6 +2,32 @@ import type { GameListItem } from "../src/lib/types"
 
 export let gameList: Array<GameListItem> = [
   {
+    groups: {
+      Color: ["Orange", "Grape", "Pine", "Purple"],
+      Fruit: ["Orange", "Grape", "Apple", "Watermelon"],
+      Tree: ["Orange", "Pine", "Apple", "Cedar"]
+    },
+    hint: "Palette, Food, Bark",
+    published: true,
+    title: "Demo Puzzle"
+  },
+  {
+    creator: "Hannah Monis",
+    groups: {
+      "Contains Alcohol": [
+        "French Onion",
+        "Coq au Vin",
+        "Beer Cheese",
+        "Chicken Marsala"
+      ],
+      French: ["French Onion", "Coq au Vin", "Vichyssoise", "Brioche"],
+      Soup: ["French Onion", "Beer Cheese", "Vichyssoise", "Italian Wedding"]
+    },
+    hint: "Liquor, Nationality, Broth",
+    published: true,
+    title: "Food"
+  },
+  {
     creator: "Paul T",
     groups: {
       British: [
@@ -10,13 +36,13 @@ export let gameList: Array<GameListItem> = [
         "Land Rover Series III",
         "Bentley Bentayga"
       ],
-      "2-Door Coupe": [
+      "Two-Door Coupe": [
         "Aston Martin Vanquish",
         "Jaguar E-Type",
         "Ford Mustang Mach 1",
         "Chevrolet Camaro"
       ],
-      "Driven By James Bond": [
+      "Driven by James Bond": [
         "Aston Martin Vanquish",
         "Ford Mustang Mach 1",
         "Land Rover Series III",
@@ -24,6 +50,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Nationality, Doors, 007",
+    published: true,
     title: "Cars"
   },
   {
@@ -43,6 +70,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "UN, Script, Large native population",
+    published: false,
     title: "Languages"
   }
 ]

@@ -3,6 +3,21 @@ import type { GameListItem } from "../src/lib/types"
 export let gameList: Array<GameListItem> = [
   {
     groups: {
+      "Constitutional Monarchy": ["Canada", "Sweden", "Australia", "Japan"],
+      "Touches the Arctic Circle": ["Canada", "Sweden", "USA", "Russia"],
+      "English is Official Language": [
+        "Canada",
+        "Australia",
+        "USA",
+        "South Africa"
+      ]
+    },
+    hint: "Government, Latitude, Language",
+    published: true,
+    title: "Countries"
+  },
+  {
+    groups: {
       "Majority Muslim": ["Indonesia", "Pakistan", "Maldives", "Afghanistan"],
       "Population Exceeds 100 Million": [
         "Indonesia",
@@ -13,6 +28,7 @@ export let gameList: Array<GameListItem> = [
       "Touches Equator": ["Indonesia", "Maldives", "Brazil", "Ecuador"]
     },
     hint: "Religion, Population, Latitude",
+    published: false,
     title: "Countries 2"
   },
   {
@@ -22,6 +38,7 @@ export let gameList: Array<GameListItem> = [
       "Part of Roman Empire": ["London", "Turin", "Cairo", "Istanbul"]
     },
     hint: "Olympiad, Capital, Rome",
+    published: false,
     title: "Cities"
   },
   {
@@ -31,6 +48,7 @@ export let gameList: Array<GameListItem> = [
       "Spanish is Official Language": ["Venezuela", "Cuba", "Peru", "Spain"]
     },
     hint: "Beaches, Trees, Language",
+    published: false,
     title: "Countries 3"
   }
 ]

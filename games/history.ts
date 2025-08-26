@@ -23,6 +23,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "War, Death, Money",
+    published: true,
     title: "Historical Figures"
   },
   {
@@ -47,6 +48,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Century, Continent, Uprising",
+    published: false,
     title: "History"
   },
   {
@@ -61,6 +63,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Nationality, Death, Throne",
+    published: false,
     title: "Historical Figures 2"
   }
 ]

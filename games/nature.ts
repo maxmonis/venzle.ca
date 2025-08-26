@@ -8,6 +8,7 @@ export let gameList: Array<GameListItem> = [
       "Native to Asia": ["Rose", "Jasmine", "Orchid", "Lotus"]
     },
     hint: "Scent, Floristry, Origin",
+    published: false,
     title: "Flowers"
   }
 ]

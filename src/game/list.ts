@@ -1,10 +1,8 @@
-import type { Game } from "lib/types"
+import type { GameListItem } from "lib/types"
 
-interface GameListItem extends Pick<Game, "groups" | "hint" | "title"> {
-  creator?: string
-}
+type GameList = Array<Omit<GameListItem, "published">>
 
-export let gameList: Array<GameListItem> = [
+let demo: GameList = [
   {
     groups: {
       Color: ["Orange", "Grape", "Pine", "Purple"],
@@ -13,7 +11,19 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Palette, Food, Bark",
     title: "Demo Puzzle"
-  },
+  }
+  // {
+  //   groups: {
+  //     "Yellow Circle": ["Brown", "Green", "Orange", "Yellow"],
+  //     "Blue Circle": ["Brown", "Green", "Purple", "Blue"],
+  //     "Red Circle": ["Brown", "Orange", "Purple", "Red"]
+  //   },
+  //   hint: "",
+  //   title: ""
+  // }
+]
+
+let weekOne: GameList = [
   {
     creator: "Andrea Alcalá Vásquez",
     groups: {
@@ -66,60 +76,50 @@ export let gameList: Array<GameListItem> = [
   },
   {
     groups: {
-      "Involves Throwing": ["Baseball", "Football", "Shotput", "Soccer"],
-      "Players Wear Helmets": ["Baseball", "Football", "Auto Racing", "Hockey"],
-      "No Game Clock": ["Baseball", "Shotput", "Auto Racing", "Golf"]
-    },
-    hint: "Throw, Helmet, Clock",
-    title: "Sports"
-  },
-  {
-    creator: "Hannah Monis",
-    groups: {
-      "Commonly Eaten": ["Shrimp", "Rabbit", "Lobster", "Cow"],
-      "Often Kept as Pet": ["Shrimp", "Rabbit", "Newt", "Dog"],
-      "Lives in Water": ["Shrimp", "Lobster", "Newt", "Box Jellyfish"]
-    },
-    hint: "Food, Friend, Habitat",
-    title: "Animals 2"
-  },
-  {
-    groups: {
-      Book: [
-        "The Handmaid's Tale",
-        "No Country For Old Men",
-        "Big Little Lies",
-        "A Confederacy of Dunces"
+      "Won Best Picture": [
+        "The King's Speech",
+        "The Silence of the Lambs",
+        "Lincoln",
+        "The Hurt Locker"
       ],
-      Movie: [
-        "The Handmaid's Tale",
-        "No Country For Old Men",
-        "Fargo",
-        "The Big Lebowski"
+      "Set in the 20th Century": [
+        "The King's Speech",
+        "The Silence of the Lambs",
+        "The Imitation Game",
+        "Back to the Future"
       ],
-      "TV Show": ["The Handmaid's Tale", "Fargo", "Big Little Lies", "Lost"]
+      "Based on a True Story": [
+        "The King's Speech",
+        "Lincoln",
+        "The Imitation Game",
+        "The Social Network"
+      ]
     },
-    hint: "Bestseller, Premiere, Series",
-    title: "Entertainment"
+    hint: "Academy, Century, Inspiration",
+    title: "Movies"
   },
   {
     groups: {
       "Constitutional Monarchy": ["Canada", "Sweden", "Australia", "Japan"],
-      "Touches the Arctic Circle": [
-        "Canada",
-        "Sweden",
-        "United States",
-        "Russia"
-      ],
+      "Touches the Arctic Circle": ["Canada", "Sweden", "USA", "Russia"],
       "English is Official Language": [
         "Canada",
         "Australia",
-        "United States",
+        "USA",
         "South Africa"
       ]
     },
     hint: "Government, Latitude, Language",
     title: "Countries"
+  },
+  {
+    groups: {
+      "Released in the 1990s": ["Spice", "Ten", "OK Computer", "Nevermind"],
+      "Debut Album": ["Spice", "Ten", "Led Zeppelin", "The Doors"],
+      British: ["Spice", "OK Computer", "Led Zeppelin", "Abbey Road"]
+    },
+    hint: "Decade, Debut, Nationality",
+    title: "Albums"
   },
   {
     creator: "Evan Williams",
@@ -146,13 +146,120 @@ export let gameList: Array<GameListItem> = [
     hint: "School, Draft, Defense",
     title: "Basketball"
   }
-  // ,{
-  //   groups: {
-  //     "Yellow Circle": ["Brown", "Green", "Orange", "Yellow"],
-  //     "Blue Circle": ["Brown", "Green", "Purple", "Blue"],
-  //     "Red Circle": ["Brown", "Orange", "Purple", "Red"]
-  //   },
-  //   hint: "",
-  //   title: ""
-  // }
 ]
+
+let weekTwo: GameList = [
+  {
+    creator: "Hannah Monis",
+    groups: {
+      "Commonly Eaten": ["Shrimp", "Rabbit", "Lobster", "Cow"],
+      "Often Kept as Pet": ["Shrimp", "Rabbit", "Newt", "Dog"],
+      "Lives in Water": ["Shrimp", "Lobster", "Newt", "Box Jellyfish"]
+    },
+    hint: "Food, Friend, Habitat",
+    title: "Animals 2"
+  },
+  {
+    creator: "Andrea Alcalá Vásquez",
+    groups: {
+      "100 Million Physical Records Sold": [
+        "Michael Jackson",
+        "Eagles",
+        "Celine Dion",
+        "Led Zeppelin"
+      ],
+      American: ["Michael Jackson", "Eagles", "Lady Gaga", "Kings of Leon"],
+      "Pop Singer": ["Michael Jackson", "Celine Dion", "Lady Gaga", "Dua Lipa"]
+    },
+    hint: "Sales, Nationality, Genre",
+    title: "Musicians"
+  },
+  {
+    creator: "Paul T",
+    groups: {
+      British: [
+        "Aston Martin Vanquish",
+        "Jaguar E-Type",
+        "Land Rover Series III",
+        "Bentley Bentayga"
+      ],
+      "Two-Door Coupe": [
+        "Aston Martin Vanquish",
+        "Jaguar E-Type",
+        "Ford Mustang Mach 1",
+        "Chevrolet Camaro"
+      ],
+      "Driven by James Bond": [
+        "Aston Martin Vanquish",
+        "Ford Mustang Mach 1",
+        "Land Rover Series III",
+        "Mercedes-Benz S 300"
+      ]
+    },
+    hint: "Nationality, Doors, 007",
+    title: "Cars"
+  },
+  {
+    groups: {
+      Book: [
+        "The Handmaid's Tale",
+        "No Country For Old Men",
+        "Big Little Lies",
+        "A Confederacy of Dunces"
+      ],
+      Movie: [
+        "The Handmaid's Tale",
+        "No Country For Old Men",
+        "Fargo",
+        "The Big Lebowski"
+      ],
+      "TV Show": ["The Handmaid's Tale", "Fargo", "Big Little Lies", "Lost"]
+    },
+    hint: "Bestseller, Premiere, Series",
+    title: "Entertainment"
+  },
+  {
+    groups: {
+      Italian: ["Michelangelo", "Raphael", "Donatello", "Antonio Vivaldi"],
+      Painter: ["Michelangelo", "Raphael", "Pablo Picasso", "Frida Kahlo"],
+      Sculptor: ["Michelangelo", "Donatello", "Pablo Picasso", "Auguste Rodin"]
+    },
+    hint: "Nationality, Canvas, Marble",
+    title: "Artists"
+  },
+  {
+    groups: {
+      "Led a Nation During Wartime": [
+        "Abraham Lincoln",
+        "Winston Churchill",
+        "Czar Nicholas II",
+        "Joseph Stalin"
+      ],
+      "Killed with a Firearm": [
+        "Abraham Lincoln",
+        "Mahatma Gandhi",
+        "Czar Nicholas II",
+        "Franz Ferdinand"
+      ],
+      "Appears on Modern Currency": [
+        "Abraham Lincoln",
+        "Mahatma Gandhi",
+        "Winston Churchill",
+        "Thomas Jefferson"
+      ]
+    },
+    hint: "War, Death, Money",
+    title: "Historical Figures"
+  },
+  {
+    groups: {
+      "Involves Throwing": ["Baseball", "Football", "Shotput", "Soccer"],
+      "Players Wear Helmets": ["Baseball", "Football", "Auto Racing", "Hockey"],
+      "No Game Clock": ["Baseball", "Shotput", "Auto Racing", "Golf"]
+    },
+    hint: "Throw, Helmet, Clock",
+    title: "Sports"
+  }
+]
+
+export let gameList = demo.concat(weekOne, weekTwo)

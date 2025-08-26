@@ -2,12 +2,35 @@ import type { GameListItem } from "../src/lib/types"
 
 export let gameList: Array<GameListItem> = [
   {
+    creator: "Andrea Alcalá Vásquez",
+    groups: {
+      Aquatic: ["Penguin", "Duck", "Seal", "Flying Fish"],
+      Bird: ["Penguin", "Duck", "Ostrich", "Eagle"],
+      "Does Not Fly": ["Penguin", "Seal", "Ostrich", "Zebra"]
+    },
+    hint: "Habitat, Feathers, Grounded",
+    published: true,
+    title: "Animals"
+  },
+  {
+    creator: "Hannah Monis",
+    groups: {
+      "Commonly Eaten": ["Shrimp", "Rabbit", "Lobster", "Cow"],
+      "Often Kept as Pet": ["Shrimp", "Rabbit", "Newt", "Dog"],
+      "Lives in Water": ["Shrimp", "Lobster", "Newt", "Box Jellyfish"]
+    },
+    hint: "Food, Friend, Habitat",
+    published: true,
+    title: "Animals 2"
+  },
+  {
     groups: {
       "Big Cat": ["Leopard", "Cheetah", "Tiger", "Puma"],
       "Has Spots": ["Leopard", "Cheetah", "Spotted Deer", "Giraffe"],
       "Found in India": ["Leopard", "Tiger", "Spotted Deer", "Rhinoceros"]
     },
     hint: "Feline, Fur, Region",
+    published: false,
     title: "Animals 3"
   },
   {
@@ -22,6 +45,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Diet, Reproduction, Habitat",
+    published: false,
     title: "Animals 4"
   },
   {
@@ -36,6 +60,7 @@ export let gameList: Array<GameListItem> = [
       "No Hooves": ["Elephant", "Camel", "Orangutan", "Raccoon"]
     },
     hint: "Saddle, Region, Feet",
+    published: false,
     title: "Animals 5"
   },
   {
@@ -45,6 +70,7 @@ export let gameList: Array<GameListItem> = [
       "Semi-Aquatic": ["Beaver", "Capybara", "Otter", "Hippopotamus"]
     },
     hint: "Region, Teeth, Habitat",
+    published: false,
     title: "Animals 6"
   },
   {
@@ -54,6 +80,7 @@ export let gameList: Array<GameListItem> = [
       Nocturnal: ["Elf Owl", "Fruit Bat", "Scorpion", "Raccoon"]
     },
     hint: "Wings, Arid, Night",
+    published: false,
     title: "Animals 7"
   }
 ]

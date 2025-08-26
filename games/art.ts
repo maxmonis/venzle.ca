@@ -8,6 +8,7 @@ export let gameList: Array<GameListItem> = [
       Sculptor: ["Michelangelo", "Donatello", "Pablo Picasso", "Auguste Rodin"]
     },
     hint: "Nationality, Canvas, Marble",
+    published: true,
     title: "Artists"
   },
   {
@@ -32,6 +33,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Medium, Material, Memorial",
+    published: false,
     title: "Works of Art"
   },
   {
@@ -56,6 +58,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Nationality, Easel, Century",
+    published: false,
     title: "Artists 2"
   }
 ]

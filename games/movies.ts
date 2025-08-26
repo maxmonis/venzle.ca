@@ -22,7 +22,33 @@ export let gameList: Array<GameListItem> = [
         "The Social Network"
       ]
     },
-    hint: "Academy, Century, Non-Fiction",
+    hint: "Academy, Century, Inspiration",
+    published: true,
     title: "Movies"
+  },
+  {
+    groups: {
+      "Nominated for Best Picture": [
+        "The Return of the King",
+        "Inception",
+        "Atonement",
+        "Lady Bird"
+      ],
+      "Grossed over $300M worldwide": [
+        "The Return of the King",
+        "Inception",
+        "Twilight",
+        "Transformers"
+      ],
+      "Based on a Book": [
+        "The Return of the King",
+        "Atonement",
+        "Twilight",
+        "The Perks of Being a Wallflower"
+      ]
+    },
+    hint: "Nomination, Box Office, Inspiration",
+    published: false,
+    title: "Movies 2"
   }
 ]

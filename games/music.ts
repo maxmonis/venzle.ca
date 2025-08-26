@@ -2,6 +2,16 @@ import type { GameListItem } from "../src/lib/types"
 
 export let gameList: Array<GameListItem> = [
   {
+    groups: {
+      "Released in the 1990s": ["Spice", "Ten", "OK Computer", "Nevermind"],
+      "Debut Album": ["Spice", "Ten", "Led Zeppelin", "The Doors"],
+      British: ["Spice", "OK Computer", "Led Zeppelin", "Abbey Road"]
+    },
+    hint: "Decade, Debut, Nationality",
+    published: true,
+    title: "Albums"
+  },
+  {
     creator: "Andrea Alcalá Vásquez",
     groups: {
       "100 Million Physical Records Sold": [
@@ -14,30 +24,27 @@ export let gameList: Array<GameListItem> = [
       "Pop Singer": ["Michael Jackson", "Celine Dion", "Lady Gaga", "Dua Lipa"]
     },
     hint: "Sales, Nationality, Genre",
+    published: true,
     title: "Musicians"
   },
   {
     groups: {
-      "Released in the 1990s": [
-        "Definitely Maybe (Oasis)",
-        "Ten (Pearl Jam)",
-        "OK Computer (Radiohead)",
-        "Nevermind (Nirvana)"
+      "Released in the 1970s": [
+        "Horses",
+        "Boston",
+        "Blue",
+        "The Dark Side of the Moon"
       ],
       "Debut Album": [
-        "Definitely Maybe (Oasis)",
-        "Ten (Pearl Jam)",
-        "Please Please Me (The Beatles)",
-        "Appetite for Destruction (Guns N' Roses)"
+        "Horses",
+        "Boston",
+        "Suzanne Vega",
+        "Are You Experienced"
       ],
-      British: [
-        "Definitely Maybe (Oasis)",
-        "OK Computer (Radiohead)",
-        "Please Please Me (The Beatles)",
-        "Houses of the Holy (Led Zeppelin)"
-      ]
+      "Female Artist": ["Horses", "Blue", "Suzanne Vega", "Back to Black"]
     },
-    hint: "Decade, Debut, Nationality",
-    title: "Albums"
+    hint: "Decade, Debut, Artist",
+    published: false,
+    title: "Albums 2"
   }
 ]

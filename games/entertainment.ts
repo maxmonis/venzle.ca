@@ -3,6 +3,27 @@ import type { GameListItem } from "../src/lib/types"
 export let gameList: Array<GameListItem> = [
   {
     groups: {
+      Book: [
+        "The Handmaid's Tale",
+        "No Country For Old Men",
+        "Big Little Lies",
+        "A Confederacy of Dunces"
+      ],
+      Movie: [
+        "The Handmaid's Tale",
+        "No Country For Old Men",
+        "Fargo",
+        "The Big Lebowski"
+      ],
+      "TV Show": ["The Handmaid's Tale", "Fargo", "Big Little Lies", "Lost"]
+    },
+    hint: "Bestseller, Premiere, Series",
+    published: true,
+    title: "Entertainment"
+  },
+  {
+    creator: "Andrea Alcalá Vásquez",
+    groups: {
       "Oscar Winner": [
         "Daniel Day-Lewis",
         "Rachel Weisz",
@@ -23,6 +44,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Academy, Nationality, DOB",
+    published: false,
     title: "Actors"
   },
   {
@@ -48,6 +70,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Nationality, Disney, Awards",
+    published: false,
     title: "Entertainment 2"
   }
 ]

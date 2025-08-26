@@ -22,7 +22,33 @@ export let gameList: Array<GameListItem> = [
         "Stephen Hawking"
       ]
     },
-    hint: "Prize, DOB, Physics",
+    hint: "Prize, DOB, Field",
+    published: false,
     title: "Scientists"
+  },
+  {
+    groups: {
+      "Nobel Prize Winner": [
+        "Ahmed Zewail",
+        "John Bardeen",
+        "Marie Curie",
+        "Wilhelm Röntgen"
+      ],
+      "Born after 1900": [
+        "Ahmed Zewail",
+        "John Bardeen",
+        "Rosalind Franklin",
+        "Alan Turing"
+      ],
+      Chemist: [
+        "Ahmed Zewail",
+        "Marie Curie",
+        "Rosalind Franklin",
+        "Dmitri Mendeleev"
+      ]
+    },
+    hint: "Prize, DOB, Field",
+    published: false,
+    title: "Scientists 2"
   }
 ]

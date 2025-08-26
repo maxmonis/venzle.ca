@@ -24,6 +24,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Nationality, Gender, Era",
+    published: false,
     title: "Authors"
   },
   {
@@ -48,6 +49,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Century, Setting, Author",
+    published: false,
     title: "Literature"
   }
 ]
