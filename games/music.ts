@@ -54,6 +54,26 @@ export let gameList: Array<GameListItem> = [
   },
   {
     groups: {
+      "One-Word Title": ["Believe", "Bad", "Linger", "Clocks"],
+      "Billboard Hot 100 #1 Hit": [
+        "Believe",
+        "Bad",
+        "I Will Always Love You",
+        "Hey Jude"
+      ],
+      "Released in the 1990s": [
+        "Believe",
+        "Linger",
+        "Smells Like Teen Spirit",
+        "I Will Always Love You"
+      ]
+    },
+    hint: "Title, Peak, Decade",
+    published: false,
+    title: "Songs"
+  },
+  {
+    groups: {
       "Released in the 1970s": [
         "Horses",
         "Boston",

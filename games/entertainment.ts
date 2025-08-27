@@ -48,6 +48,31 @@ export let gameList: Array<GameListItem> = [
     title: "Actors"
   },
   {
+    groups: {
+      "Written by Shakespeare": [
+        "The Winter's Tale",
+        "A Midsummer Night's Dream",
+        "King Lear",
+        "Timon of Athens"
+      ],
+      Comedy: [
+        "The Winter's Tale",
+        "A Midsummer Night's Dream",
+        "The King and I",
+        "Noises Off"
+      ],
+      "Features a Royal Family": [
+        "The Winter's Tale",
+        "King Lear",
+        "The King and I",
+        "The Lion in Winter"
+      ]
+    },
+    hint: "Playwright, Tone, Royalty",
+    published: false,
+    title: "Plays"
+  },
+  {
     creator: "Andrea Alcalá Vásquez",
     groups: {
       British: [

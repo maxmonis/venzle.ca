@@ -55,23 +55,63 @@ export let gameList: Array<GameListItem> = [
   },
   {
     groups: {
+      "Commonly Used in Desserts": [
+        "Mango",
+        "Cherry",
+        "Pineapple",
+        "Strawberry"
+      ],
+      "Has a Pit": ["Mango", "Cherry", "Avocado", "Olive"],
+      Tropical: ["Mango", "Pineapple", "Avocado", "Breadfruit"]
+    },
+    hint: "Sweet, Stone, Climate",
+    published: false,
+    title: "Fruits"
+  },
+  {
+    groups: {
       "Official language of the United Nations": [
         "English",
         "French",
         "Mandarin Chinese",
         "Russian"
       ],
-      "Uses Latin script": ["English", "French", "Portuguese", "German"],
+      "Uses Latin Script": ["English", "French", "Spanish", "Vietnamese"],
       "More than 200 million native speakers": [
         "English",
         "Mandarin Chinese",
-        "Portuguese",
+        "Spanish",
         "Hindi"
       ]
     },
     hint: "UN, Script, Large native population",
     published: false,
     title: "Languages"
+  },
+  {
+    groups: {
+      "Jet-powered": [
+        "Lockheed SR-71",
+        "F-22 Raptor",
+        "Boeing 747",
+        "Airbus A320"
+      ],
+      "Used in Military": [
+        "Lockheed SR-71",
+        "F-22 Raptor",
+        "Lockheed C-130 Hercules",
+        "MQ-9 Reaper"
+      ],
+      "First flown before 1970": [
+        "Lockheed SR-71",
+        "Boeing 747",
+        "Lockheed C-130 Hercules",
+        "Cessna 172"
+      ]
+    },
+    hint: "Propulsion, Combat, Debut",
+    published: false,
+    title: "Aircraft"
   },
   {
     groups: {
