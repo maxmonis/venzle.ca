@@ -149,9 +149,9 @@ function checkGame(clicked: boolean) {
     return
   }
   let guessCount = game.guesses.length
-  if (clicked) window.gtag("event", `incorrect_guess_${guessCount}`)
   let remainingGuesses = 5 - guessCount
   if (remainingGuesses) {
+    if (clicked) window.gtag("event", `incorrect_guess_${guessCount}`)
     let guessesTextContent = `${remainingGuesses} guess${
       remainingGuesses == 1 ? "" : "es"
     } remaining`
