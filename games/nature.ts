@@ -58,6 +58,26 @@ export let gameList: Array<GameListItem> = [
   },
   {
     groups: {
+      "Lived in the Cretaceous": [
+        "Tyrannosaurus",
+        "Triceratops",
+        "Velociraptor",
+        "Argentinosaurus"
+      ],
+      "Found in North America": [
+        "Tyrannosaurus",
+        "Triceratops",
+        "Allosaurus",
+        "Stegosaurus"
+      ],
+      Carnivore: ["Tyrannosaurus", "Velociraptor", "Allosaurus", "Megalosaurus"]
+    },
+    hint: "Period, Region, Diet",
+    published: false,
+    title: "Dinosaurs"
+  },
+  {
+    groups: {
       "Flowering plant": [
         "Cabbage",
         "Tomato",

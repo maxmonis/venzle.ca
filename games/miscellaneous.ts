@@ -55,6 +55,26 @@ export let gameList: Array<GameListItem> = [
   },
   {
     groups: {
+      "Tech Founder": ["Elon Musk", "Jack Ma", "Bill Gates", "Michael Dell"],
+      "Born Outside the United States": [
+        "Elon Musk",
+        "Jack Ma",
+        "Bernard Arnault",
+        "Roman Abramovich"
+      ],
+      "Has Topped Forbes List": [
+        "Elon Musk",
+        "Bill Gates",
+        "Bernard Arnault",
+        "Warren Buffett"
+      ]
+    },
+    hint: "Tech, Nationality, Forbes",
+    title: "Billionaires",
+    published: false
+  },
+  {
+    groups: {
       "Commonly Used in Desserts": [
         "Mango",
         "Cherry",

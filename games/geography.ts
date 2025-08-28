@@ -18,6 +18,41 @@ export let gameList: Array<GameListItem> = [
   },
   {
     groups: {
+      "Not Located in the Americas": [
+        "Taj Mahal",
+        "Great Wall of China",
+        "Petra",
+        "Colosseum"
+      ],
+      "Built Since 1000 AD": [
+        "Taj Mahal",
+        "Great Wall of China",
+        "Machu Pichu",
+        "Christ the Redeemer"
+      ],
+      "Name is not Translated to English": [
+        "Taj Mahal",
+        "Petra",
+        "Machu Pichu",
+        "Chichen Itza"
+      ]
+    },
+    hint: "Region, Era, Name",
+    published: false,
+    title: "Wonders of the World"
+  },
+  {
+    groups: {
+      "Hosted Olympics": ["London", "Tokyo", "Turin", "Rio de Janeiro"],
+      "National Capital": ["London", "Tokyo", "Cairo", "Panama City"],
+      "Part of Roman Empire": ["London", "Turin", "Cairo", "Istanbul"]
+    },
+    hint: "Olympiad, Capital, Rome",
+    published: false,
+    title: "Cities"
+  },
+  {
+    groups: {
       "Majority Muslim": ["Indonesia", "Pakistan", "Maldives", "Afghanistan"],
       "Population Exceeds 100 Million": [
         "Indonesia",
@@ -33,13 +68,53 @@ export let gameList: Array<GameListItem> = [
   },
   {
     groups: {
-      "Hosted Olympics": ["London", "Tokyo", "Turin", "Rio de Janeiro"],
-      "National Capital": ["London", "Tokyo", "Cairo", "Panama City"],
-      "Part of Roman Empire": ["London", "Turin", "Cairo", "Istanbul"]
+      "UNESCO World Heritage Site": [
+        "Mont-Saint-Michel",
+        "Acropolis of Athens",
+        "Robben Island",
+        "Machu Picchu"
+      ],
+      "Located in Europe": [
+        "Mont-Saint-Michel",
+        "Acropolis of Athens",
+        "Blue Lagoon",
+        "Eiffel Tower"
+      ],
+      "Located on an Island": [
+        "Mont-Saint-Michel",
+        "Robben Island",
+        "Blue Lagoon",
+        "Alcatraz"
+      ]
     },
-    hint: "Olympiad, Capital, Rome",
+    hint: "UNESCO, Region, Island",
     published: false,
-    title: "Cities"
+    title: "Landmarks"
+  },
+  {
+    groups: {
+      "Touches Manhattan": [
+        "Brooklyn Bridge",
+        "St. Patrick's Cathedral",
+        "Manhattan Bridge",
+        "One World Trade Center"
+      ],
+      "Completed in the 19th Century": [
+        "Brooklyn Bridge",
+        "St. Patrick's Cathedral",
+        "Prospect Park",
+        "Bronx Zoo"
+      ],
+      Bridge: [
+        "Brooklyn Bridge",
+        "Manhattan Bridge",
+        "Hell Gate Bridge",
+        "Verrazzano-Narrows Bridge"
+      ]
+    },
+    hint: "Burough, Century, Bridge",
+    title: "New York City Landmarks",
+    published: false
   },
   {
     groups: {

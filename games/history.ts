@@ -63,6 +63,31 @@ export let gameList: Array<GameListItem> = [
   },
   {
     groups: {
+      "Happened in 1950s": [
+        "Hungarian Revolution",
+        "Cuban Revolution",
+        "Launch of Sputnik",
+        "Korean War"
+      ],
+      "Political Revolution": [
+        "Hungarian Revolution",
+        "Cuban Revolution",
+        "Russian Revolution",
+        "Chinese Communist Revolution"
+      ],
+      "Happened in Europe": [
+        "Hungarian Revolution",
+        "Launch of Sputnik",
+        "Russian Revolution",
+        "Creation of Berlin Wall"
+      ]
+    },
+    hint: "Decade, Uprising, Region",
+    published: false,
+    title: "20th Century History"
+  },
+  {
+    groups: {
       "Authored surviving works": [
         "Julius Caesar",
         "Cicero",
@@ -85,6 +110,31 @@ export let gameList: Array<GameListItem> = [
     hint: "Text, Office, General",
     published: false,
     title: "Ancient Romans"
+  },
+  {
+    groups: {
+      "Former Vice President": [
+        "Richard Nixon",
+        "Joe Biden",
+        "Theodore Roosevelt",
+        "Thomas Jefferson"
+      ],
+      "Born in the 20th Century": [
+        "Richard Nixon",
+        "Joe Biden",
+        "Ronald Reagan",
+        "Barack Obama"
+      ],
+      Republican: [
+        "Richard Nixon",
+        "Theodore Roosevelt",
+        "Ronald Reagan",
+        "Abraham Lincoln"
+      ]
+    },
+    hint: "VP, DOB, Party",
+    published: false,
+    title: "US Presidents"
   },
   {
     groups: {

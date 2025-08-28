@@ -3,7 +3,7 @@ import type { imageFormats } from "./utils"
 export interface Game {
   creator: string
   currentGuess: Guess
-  groups: Record<string, Array<string>>
+  groups: Record<string, [string, string, string, string]>
   guesses: Array<Guess>
   hint: string
   hintsUsed: { a: boolean; b: boolean; c: boolean }

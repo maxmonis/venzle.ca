@@ -97,5 +97,30 @@ export let gameList: Array<GameListItem> = [
     hint: "Nationality, Disney, Awards",
     published: false,
     title: "Entertainment 2"
+  },
+  {
+    groups: {
+      "Oscar Winner": [
+        "Anthony Hopkins",
+        "Brie Larson",
+        "Gary Oldman",
+        "Frances McDormand"
+      ],
+      "Appeared in the MCU": [
+        "Anthony Hopkins",
+        "Brie Larson",
+        "Tom Hiddleston",
+        "Chris Evans"
+      ],
+      British: [
+        "Anthony Hopkins",
+        "Gary Oldman",
+        "Tom Hiddleston",
+        "Hugh Grant"
+      ]
+    },
+    hint: "Academy, MCU, Nationality",
+    published: false,
+    title: "Actors 2"
   }
 ]
