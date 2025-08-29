@@ -51,5 +51,20 @@ export let gameList: Array<GameListItem> = [
     hint: "Century, Setting, Author",
     published: false,
     title: "Literature"
+  },
+  {
+    groups: {
+      "Appears in a Novel": [
+        "Jay Gatsby",
+        "Atticus Finch",
+        "Tess Durbeyfield",
+        "Elizabeth Bennet"
+      ],
+      Male: ["Jay Gatsby", "Atticus Finch", "Romeo", "Prospero"],
+      "Dies by the End": ["Jay Gatsby", "Tess Durbeyfield", "Romeo", "Ophelia"]
+    },
+    hint: "Book, Gender, Death",
+    published: false,
+    title: "Literary Characters"
   }
 ]

@@ -39,6 +39,31 @@ export let gameList: Array<GameListItem> = [
   },
   {
     groups: {
+      "Track & Field Athlete": [
+        "Usain Bolt",
+        "Merlene Ottey",
+        "Carl Lewis",
+        "Steve Prefontaine"
+      ],
+      "Not American": [
+        "Usain Bolt",
+        "Merlene Ottey",
+        "Nadia Comăneci",
+        "Elvis Stojko"
+      ],
+      "Gold Medalist": [
+        "Usain Bolt",
+        "Carl Lewis",
+        "Michael Phelps",
+        "Nadia Comăneci"
+      ]
+    },
+    hint: "Sport, Nationality, Medal",
+    published: false,
+    title: "Olympians"
+  },
+  {
+    groups: {
       "3000 Career Hits": [
         "Miguel Cabrera",
         "Albert Pujols",

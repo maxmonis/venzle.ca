@@ -93,6 +93,21 @@ export let gameList: Array<GameListItem> = [
   },
   {
     groups: {
+      "Flows through Europe": ["Danube", "Volga", "Southern Bug", "Seine"],
+      "Longer than 1,000 km": ["Danube", "Volga", "Kizilirmak", "Nile"],
+      "Empties into the Black Sea": [
+        "Danube",
+        "Southern Bug",
+        "Kizilirmak",
+        "Sakarya"
+      ]
+    },
+    hint: "Region, Length, Black Sea",
+    published: false,
+    title: "Rivers"
+  },
+  {
+    groups: {
       "Touches Manhattan": [
         "Brooklyn Bridge",
         "St. Patrick's Cathedral",
