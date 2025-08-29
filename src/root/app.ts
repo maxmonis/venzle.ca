@@ -134,6 +134,7 @@ function checkGame(clicked: boolean) {
     hintsContainer.remove()
     if (clicked) {
       window.gtag("event", "puzzle_solve")
+      if (game.index == todayIndex) window.gtag("event", "daily_puzzle_solve")
       game.status = "solved"
       saveGame()
       updateResults()
@@ -218,6 +219,7 @@ function checkGame(clicked: boolean) {
     circleContainer.after(gameSummary)
     if (clicked) {
       window.gtag("event", "puzzle_fail")
+      if (game.index == todayIndex) window.gtag("event", "daily_puzzle_fail")
       game.status = "failed"
       saveGame()
       updateResults()
@@ -243,6 +245,7 @@ function clearPuzzle() {
 function getGame(index: number): Game {
   if (index == todayIndex) {
     window.gtag("event", "puzzle_resume")
+    if (index == todayIndex) window.gtag("event", "daily_puzzle_resume")
     let game = localGame.get()
     if (game && game.index == todayIndex) return game
   }
@@ -254,6 +257,7 @@ function getGame(index: number): Game {
     reloadIfStale()
   }
   window.gtag("event", "puzzle_start")
+  if (index == todayIndex) window.gtag("event", "daily_puzzle_start")
   let { creator = "Max Monis", ...newGame } = gameList[index]!
   return {
     ...newGame,
