@@ -30,7 +30,7 @@ export let gameList: Array<GameListItem> = [
       "Found in India": ["Leopard", "Tiger", "Spotted Deer", "Rhinoceros"]
     },
     hint: "Feline, Fur, Region",
-    published: false,
+    published: true,
     title: "Animals 3"
   },
   {

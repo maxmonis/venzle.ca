@@ -66,7 +66,7 @@ export let gameList: Array<GameListItem> = [
       "Happened in 1950s": [
         "Hungarian Revolution",
         "Cuban Revolution",
-        "Launch of Sputnik",
+        "Treaty of Rome",
         "Korean War"
       ],
       "Political Revolution": [
@@ -77,13 +77,13 @@ export let gameList: Array<GameListItem> = [
       ],
       "Happened in Europe": [
         "Hungarian Revolution",
-        "Launch of Sputnik",
+        "Treaty of Rome",
         "Russian Revolution",
         "Creation of Berlin Wall"
       ]
     },
     hint: "Decade, Uprising, Region",
-    published: false,
+    published: true,
     title: "20th Century History"
   },
   {

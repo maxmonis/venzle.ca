@@ -59,7 +59,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Sport, Nationality, Medal",
-    published: false,
+    published: true,
     title: "Olympians"
   },
   {

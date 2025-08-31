@@ -262,4 +262,147 @@ let weekTwo: GameList = [
   }
 ]
 
-export let gameList = demo.concat(weekOne, weekTwo)
+let weekThree: GameList = [
+  {
+    groups: {
+      "Big Cat": ["Leopard", "Cheetah", "Tiger", "Puma"],
+      "Has Spots": ["Leopard", "Cheetah", "Spotted Deer", "Giraffe"],
+      "Found in India": ["Leopard", "Tiger", "Spotted Deer", "Rhinoceros"]
+    },
+    hint: "Feline, Fur, Region",
+    title: "Animals 3"
+  },
+  {
+    creator: "Andrea Alcalá Vásquez",
+    groups: {
+      "Oscar Winner": [
+        "Daniel Day-Lewis",
+        "Rachel Weisz",
+        "Tom Hanks",
+        "Emma Stone"
+      ],
+      British: [
+        "Daniel Day-Lewis",
+        "Rachel Weisz",
+        "Alfred Molina",
+        "Idris Elba"
+      ],
+      "Born in the 1950s": [
+        "Daniel Day-Lewis",
+        "Tom Hanks",
+        "Alfred Molina",
+        "Bruce Willis"
+      ]
+    },
+    hint: "Academy, Nationality, DOB",
+    title: "Actors"
+  },
+  {
+    groups: {
+      "Hosted Olympics": ["London", "Tokyo", "Turin", "Rio de Janeiro"],
+      "National Capital": ["London", "Tokyo", "Cairo", "Panama City"],
+      "Located Within Roman Empire": ["London", "Turin", "Cairo", "Istanbul"]
+    },
+    hint: "Olympiad, Capital, Rome",
+    title: "Cities"
+  },
+  {
+    creator: "Margaret Monis",
+    groups: {
+      British: [
+        "Charlotte Brontë",
+        "J. K. Rowling",
+        "Charles Dickens",
+        "Ian McEwan"
+      ],
+      Female: [
+        "Charlotte Brontë",
+        "J. K. Rowling",
+        "Louisa May Alcott",
+        "Margaret Atwood"
+      ],
+      Victorian: [
+        "Charlotte Brontë",
+        "Charles Dickens",
+        "Louisa May Alcott",
+        "Jules Verne"
+      ]
+    },
+    hint: "Nationality, Gender, Era",
+    title: "Authors"
+  },
+  {
+    groups: {
+      "Won Best Director Oscar": [
+        "Steven Spielberg",
+        "Peter Jackson",
+        "Clint Eastwood",
+        "Alfonso Cuarón"
+      ],
+      "Directed a Film Which Grossed $1B": [
+        "Steven Spielberg",
+        "Peter Jackson",
+        "J. J. Abrams",
+        "David Yates"
+      ],
+      American: [
+        "Steven Spielberg",
+        "Clint Eastwood",
+        "J. J. Abrams",
+        "Quentin Tarantino"
+      ]
+    },
+    hint: "Academy, Box Office, Nationality",
+    title: "Directors"
+  },
+  {
+    groups: {
+      "Happened in 1950s": [
+        "Hungarian Revolution",
+        "Cuban Revolution",
+        "Treaty of Rome",
+        "Korean War"
+      ],
+      "Political Revolution": [
+        "Hungarian Revolution",
+        "Cuban Revolution",
+        "Russian Revolution",
+        "Chinese Communist Revolution"
+      ],
+      "Happened in Europe": [
+        "Hungarian Revolution",
+        "Treaty of Rome",
+        "Russian Revolution",
+        "Creation of Berlin Wall"
+      ]
+    },
+    hint: "Decade, Uprising, Region",
+    title: "20th Century History"
+  },
+  {
+    groups: {
+      "Track & Field Athlete": [
+        "Usain Bolt",
+        "Merlene Ottey",
+        "Carl Lewis",
+        "Steve Prefontaine"
+      ],
+      "Not American": [
+        "Usain Bolt",
+        "Merlene Ottey",
+        "Nadia Comăneci",
+        "Elvis Stojko"
+      ],
+      "Gold Medalist": [
+        "Usain Bolt",
+        "Carl Lewis",
+        "Michael Phelps",
+        "Nadia Comăneci"
+      ]
+    },
+    hint: "Sport, Nationality, Medal",
+    title: "Olympians"
+  }
+]
+
+export let gameList = demo.concat(weekOne, weekTwo, weekThree)

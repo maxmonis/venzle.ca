@@ -5,26 +5,26 @@ export let gameList: Array<GameListItem> = [
     creator: "Margaret Monis",
     groups: {
       British: [
-        "Jane Austen",
+        "Charlotte Brontë",
         "J. K. Rowling",
         "Charles Dickens",
         "Ian McEwan"
       ],
       Female: [
-        "Jane Austen",
+        "Charlotte Brontë",
         "J. K. Rowling",
         "Louisa May Alcott",
         "Margaret Atwood"
       ],
       Victorian: [
-        "Jane Austen",
+        "Charlotte Brontë",
         "Charles Dickens",
         "Louisa May Alcott",
         "Jules Verne"
       ]
     },
     hint: "Nationality, Gender, Era",
-    published: false,
+    published: true,
     title: "Authors"
   },
   {

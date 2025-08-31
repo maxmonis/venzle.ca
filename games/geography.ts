@@ -24,20 +24,20 @@ export let gameList: Array<GameListItem> = [
         "Petra",
         "Colosseum"
       ],
-      "Built Since 1000 AD": [
+      "Completed After 1400 AD": [
         "Taj Mahal",
         "Great Wall of China",
-        "Machu Pichu",
+        "Machu Picchu",
         "Christ the Redeemer"
       ],
-      "Name is not Translated to English": [
+      "Name is not Translated": [
         "Taj Mahal",
         "Petra",
-        "Machu Pichu",
-        "Chichen Itza"
+        "Machu Picchu",
+        "Chichén Itzá"
       ]
     },
-    hint: "Region, Era, Name",
+    hint: "Region, Completion, Name",
     published: false,
     title: "Wonders of the World"
   },
@@ -45,10 +45,10 @@ export let gameList: Array<GameListItem> = [
     groups: {
       "Hosted Olympics": ["London", "Tokyo", "Turin", "Rio de Janeiro"],
       "National Capital": ["London", "Tokyo", "Cairo", "Panama City"],
-      "Part of Roman Empire": ["London", "Turin", "Cairo", "Istanbul"]
+      "Located Within Roman Empire": ["London", "Turin", "Cairo", "Istanbul"]
     },
     hint: "Olympiad, Capital, Rome",
-    published: false,
+    published: true,
     title: "Cities"
   },
   {

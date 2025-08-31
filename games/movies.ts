@@ -48,7 +48,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Academy, Box Office, Nationality",
-    published: false,
+    published: true,
     title: "Directors"
   },
   {
