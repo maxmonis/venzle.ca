@@ -33,13 +33,13 @@ export let gameList: Array<GameListItem> = [
       British: [
         "Daniel Day-Lewis",
         "Rachel Weisz",
-        "Alfred Molina",
+        "Hugh Laurie",
         "Idris Elba"
       ],
       "Born in the 1950s": [
         "Daniel Day-Lewis",
         "Tom Hanks",
-        "Alfred Molina",
+        "Hugh Laurie",
         "Bruce Willis"
       ]
     },

@@ -51,7 +51,7 @@ export let gameList: Array<GameListItem> = [
         "Nadia Comăneci",
         "Elvis Stojko"
       ],
-      "Gold Medalist": [
+      "Olympic Gold Medalist": [
         "Usain Bolt",
         "Carl Lewis",
         "Michael Phelps",

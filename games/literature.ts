@@ -16,14 +16,14 @@ export let gameList: Array<GameListItem> = [
         "Louisa May Alcott",
         "Margaret Atwood"
       ],
-      Victorian: [
+      "Active in the 19th Century": [
         "Charlotte Brontë",
         "Charles Dickens",
         "Louisa May Alcott",
         "Jules Verne"
       ]
     },
-    hint: "Nationality, Gender, Era",
+    hint: "Nationality, Gender, Century",
     published: true,
     title: "Authors"
   },

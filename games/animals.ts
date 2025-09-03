@@ -27,7 +27,12 @@ export let gameList: Array<GameListItem> = [
     groups: {
       "Big Cat": ["Leopard", "Cheetah", "Tiger", "Puma"],
       "Has Spots": ["Leopard", "Cheetah", "Spotted Deer", "Giraffe"],
-      "Found in India": ["Leopard", "Tiger", "Spotted Deer", "Rhinoceros"]
+      "Found in India": [
+        "Leopard",
+        "Tiger",
+        "Spotted Deer",
+        "Indian Rhinoceros"
+      ]
     },
     hint: "Feline, Fur, Region",
     published: true,

@@ -267,7 +267,12 @@ let weekThree: GameList = [
     groups: {
       "Big Cat": ["Leopard", "Cheetah", "Tiger", "Puma"],
       "Has Spots": ["Leopard", "Cheetah", "Spotted Deer", "Giraffe"],
-      "Found in India": ["Leopard", "Tiger", "Spotted Deer", "Rhinoceros"]
+      "Found in India": [
+        "Leopard",
+        "Tiger",
+        "Spotted Deer",
+        "Indian Rhinoceros"
+      ]
     },
     hint: "Feline, Fur, Region",
     title: "Animals 3"
@@ -284,13 +289,13 @@ let weekThree: GameList = [
       British: [
         "Daniel Day-Lewis",
         "Rachel Weisz",
-        "Alfred Molina",
+        "Hugh Laurie",
         "Idris Elba"
       ],
       "Born in the 1950s": [
         "Daniel Day-Lewis",
         "Tom Hanks",
-        "Alfred Molina",
+        "Hugh Laurie",
         "Bruce Willis"
       ]
     },
@@ -321,14 +326,14 @@ let weekThree: GameList = [
         "Louisa May Alcott",
         "Margaret Atwood"
       ],
-      Victorian: [
+      "Active in the 19th Century": [
         "Charlotte Brontë",
         "Charles Dickens",
         "Louisa May Alcott",
         "Jules Verne"
       ]
     },
-    hint: "Nationality, Gender, Era",
+    hint: "Nationality, Gender, Century",
     title: "Authors"
   },
   {
@@ -393,7 +398,7 @@ let weekThree: GameList = [
         "Nadia Comăneci",
         "Elvis Stojko"
       ],
-      "Gold Medalist": [
+      "Olympic Gold Medalist": [
         "Usain Bolt",
         "Carl Lewis",
         "Michael Phelps",
