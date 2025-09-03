@@ -25,6 +25,7 @@ import {
   gameEvent,
   localAudio,
   localGame,
+  localLoad,
   localResults,
   sessionGames,
   sessionIndex,
@@ -32,6 +33,7 @@ import {
 } from "lib/utils"
 import "./style.css"
 
+if (!localLoad.get()) showWelcomeDialog()
 reloadIfStale()
 
 if (location.pathname != "/") location.replace(location.origin)
@@ -315,6 +317,37 @@ function saveGame() {
   })
   if (!mapped) games.push(game)
   sessionGames.set(games)
+}
+
+function showWelcomeDialog() {
+  let dialog = document.createElement("dialog")
+  let content = document.createElement("div")
+  let heading = document.createElement("h1")
+  heading.textContent = "Welcome to Venzle!"
+  let text = document.createElement("p")
+  text.textContent = "Get started by learning to play"
+  let ctaContainer = document.createElement("div")
+  ctaContainer.classList.add("dialog-cta-container")
+  let button = document.createElement("button")
+  button.textContent = "Skip"
+  button.classList.add("red-text")
+  let link = document.createElement("a")
+  link.textContent = "How to Play"
+  link.autofocus = true
+  link.setAttribute("href", "./learn/")
+  for (let element of [button, link])
+    element.addEventListener("click", () => {
+      dialog.close()
+      dialog.remove()
+    })
+  ctaContainer.append(button, link)
+  content.append(heading, text, ctaContainer)
+  dialog.append(content)
+  document.body.append(dialog)
+  dialog.showModal()
+  dialog.addEventListener("keydown", e => {
+    if (e.key == "Escape") e.preventDefault()
+  })
 }
 
 function updateGameState() {
