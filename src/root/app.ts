@@ -34,7 +34,6 @@ import {
 import "./style.css"
 
 if (!localLoad.get()) showWelcomeDialog()
-reloadIfStale()
 
 if (location.pathname != "/") location.replace(location.origin)
 
