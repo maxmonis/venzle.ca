@@ -84,7 +84,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Hits, Homers, Average",
-    published: false,
+    published: true,
     title: "Baseball"
   },
   {

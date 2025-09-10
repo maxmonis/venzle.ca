@@ -95,7 +95,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Nationality, Disney, Awards",
-    published: false,
+    published: true,
     title: "Entertainment 2"
   },
   {
@@ -122,5 +122,30 @@ export let gameList: Array<GameListItem> = [
     hint: "Academy, MCU, Nationality",
     published: false,
     title: "Actors 2"
+  },
+  {
+    groups: {
+      "Won an Acting Oscar": [
+        "Anthony Hopkins",
+        "Sean Penn",
+        "Colin Firth",
+        "Julia Roberts"
+      ],
+      "Has Directed a Feature Film": [
+        "Anthony Hopkins",
+        "Sean Penn",
+        "Idris Elba",
+        "Ben Affleck"
+      ],
+      British: [
+        "Anthony Hopkins",
+        "Colin Firth",
+        "Idris Elba",
+        "Keira Knightley"
+      ]
+    },
+    hint: "Academy, Director, Nationality",
+    published: false,
+    title: "Actors 3"
   }
 ]

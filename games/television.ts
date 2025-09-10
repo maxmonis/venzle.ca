@@ -41,5 +41,31 @@ export let gameList: Array<GameListItem> = [
     hint: "Heroines, Premium, Metropolis",
     published: false,
     title: "TV Shows 2"
+  },
+
+  {
+    groups: {
+      "Set in New York City": [
+        "30 Rock",
+        "Broad City",
+        "Seinfeld",
+        "How I Met Your Mother"
+      ],
+      "Single-Camera": [
+        "30 Rock",
+        "Broad City",
+        "The Office (US)",
+        "Arrested Development"
+      ],
+      "Originally Aired on NBC": [
+        "30 Rock",
+        "Seinfeld",
+        "The Office (US)",
+        "Frasier"
+      ]
+    },
+    hint: "City, Format, Network",
+    published: false,
+    title: "TV Shows 3"
   }
 ]

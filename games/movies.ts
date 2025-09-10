@@ -73,7 +73,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Nomination, Box Office, Inspiration",
-    published: false,
+    published: true,
     title: "Movies 2"
   },
   {
@@ -100,5 +100,30 @@ export let gameList: Array<GameListItem> = [
     hint: "Genre, Script, Nationality",
     published: false,
     title: "Directors 2"
+  },
+  {
+    groups: {
+      "Won Best Picture Oscar": [
+        "The Apartment",
+        "The Sound of Music",
+        "The Artist",
+        "The Godfather"
+      ],
+      "Released Before 1970": [
+        "The Apartment",
+        "The Sound of Music",
+        "Psycho",
+        "2001: A Space Odyssey"
+      ],
+      "Black-and-White": [
+        "The Apartment",
+        "The Artist",
+        "Psycho",
+        "Raging Bull"
+      ]
+    },
+    hint: "Oscar, Era, Color",
+    published: false,
+    title: "Movies 3"
   }
 ]

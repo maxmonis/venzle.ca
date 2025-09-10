@@ -50,7 +50,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Diet, Reproduction, Habitat",
-    published: false,
+    published: true,
     title: "Animals 4"
   },
   {
@@ -87,5 +87,25 @@ export let gameList: Array<GameListItem> = [
     hint: "Wings, Arid, Night",
     published: false,
     title: "Animals 7"
+  },
+  {
+    groups: {
+      Venomous: [
+        "Inland Taipan",
+        "King Cobra",
+        "Common Death Adder",
+        "Rattlesnake"
+      ],
+      "Lays Eggs": ["Inland Taipan", "King Cobra", "Emu", "Chicken"],
+      "Found in Australia": [
+        "Inland Taipan",
+        "Common Death Adder",
+        "Emu",
+        "Koala"
+      ]
+    },
+    hint: "Venom, Eggs, Region",
+    published: false,
+    title: "Animals 8"
   }
 ]

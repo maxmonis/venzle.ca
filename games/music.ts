@@ -69,8 +69,23 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Title, Peak, Decade",
-    published: false,
+    published: true,
     title: "Songs"
+  },
+  {
+    groups: {
+      "One-Word Stage Name": ["Beyoncé", "Cher", "Adele", "Shakira"],
+      "Started in a Group": [
+        "Beyoncé",
+        "Cher",
+        "Paul McCartney",
+        "Brandon Flowers"
+      ],
+      "Has 10+ Grammy Wins": ["Beyoncé", "Adele", "Paul McCartney", "Lady Gaga"]
+    },
+    hint: "Name, Band, Trophies",
+    published: false,
+    title: "Musicians 2"
   },
   {
     groups: {
@@ -91,5 +106,55 @@ export let gameList: Array<GameListItem> = [
     hint: "Decade, Debut, Artist",
     published: false,
     title: "Albums 2"
+  },
+  {
+    groups: {
+      "Released in the 1980s": [
+        "Careless Whisper",
+        "Billie Jean",
+        "Love Will Tear Us Apart",
+        "Blister in the Sun"
+      ],
+      "#1 on Billboard Hot 100": [
+        "Careless Whisper",
+        "Billie Jean",
+        "Rolling in the Deep",
+        "Please Please Please"
+      ],
+      "By a British Artist": [
+        "Careless Whisper",
+        "Love Will Tear Us Apart",
+        "Rolling in the Deep",
+        "Wonderwall"
+      ]
+    },
+    hint: "Decade, Chart, Nationality",
+    published: false,
+    title: "Songs 2"
+  },
+  {
+    groups: {
+      "Debut Studio Album": [
+        "The Miseducation of Lauryn Hill",
+        "Are You Experienced",
+        "When We All Fall Asleep, Where Do We Go?",
+        "Parachutes"
+      ],
+      "Released Before 2000": [
+        "The Miseducation of Lauryn Hill",
+        "Are You Experienced",
+        "Rumours",
+        "OK Computer"
+      ],
+      "Won Grammy (Album of the Year)": [
+        "The Miseducation of Lauryn Hill",
+        "When We All Fall Asleep, Where Do We Go?",
+        "Rumours",
+        "Golden Hour"
+      ]
+    },
+    hint: "Debut, Era, Grammy",
+    published: false,
+    title: "Albums 3"
   }
 ]

@@ -1,8 +1,17 @@
 import type { GameListItem } from "lib/types"
 
-type GameList = Array<Omit<GameListItem, "published">>
+type PublishedGame = Omit<GameListItem, "published">
+type GameList = [
+  PublishedGame,
+  PublishedGame,
+  PublishedGame,
+  PublishedGame,
+  PublishedGame,
+  PublishedGame,
+  PublishedGame
+]
 
-let demo: GameList = [
+let demo: [PublishedGame] = [
   {
     groups: {
       Color: ["Orange", "Grape", "Pine", "Purple"],
@@ -410,4 +419,161 @@ let weekThree: GameList = [
   }
 ]
 
-export let gameList = demo.concat(weekOne, weekTwo, weekThree)
+let weekFour: GameList = [
+  {
+    groups: {
+      Carnivore: ["Crocodile", "Eagle", "Great White Shark", "Tasmanian Devil"],
+      "Lays Eggs": ["Crocodile", "Eagle", "Sea Turtle", "Tortoise"],
+      "Lives in Water": [
+        "Crocodile",
+        "Great White Shark",
+        "Sea Turtle",
+        "Manatee"
+      ]
+    },
+    hint: "Diet, Reproduction, Habitat",
+    title: "Animals 4"
+  },
+  {
+    creator: "Andrea Alcalá Vásquez",
+    groups: {
+      British: [
+        "Elton John",
+        "Jeremy Irons",
+        "Andrew Lloyd Webber",
+        "Hugh Grant"
+      ],
+      "Contributed to Disney Soundtrack": [
+        "Elton John",
+        "Jeremy Irons",
+        "Alan Menken",
+        "Josh Gad"
+      ],
+      "EGOT Winner": [
+        "Elton John",
+        "Andrew Lloyd Webber",
+        "Alan Menken",
+        "Viola Davis"
+      ]
+    },
+    hint: "Nationality, Disney, Awards",
+    title: "Entertainment 2"
+  },
+  {
+    groups: {
+      "Former Vice President": [
+        "Richard Nixon",
+        "Joe Biden",
+        "Theodore Roosevelt",
+        "Thomas Jefferson"
+      ],
+      "Born in the 20th Century": [
+        "Richard Nixon",
+        "Joe Biden",
+        "Ronald Reagan",
+        "Barack Obama"
+      ],
+      Republican: [
+        "Richard Nixon",
+        "Theodore Roosevelt",
+        "Ronald Reagan",
+        "Abraham Lincoln"
+      ]
+    },
+    hint: "VP, DOB, Party",
+    title: "US Presidents"
+  },
+  {
+    groups: {
+      "One-Word Title": ["Believe", "Bad", "Linger", "Clocks"],
+      "Billboard Hot 100 #1 Hit": [
+        "Believe",
+        "Bad",
+        "I Will Always Love You",
+        "Hey Jude"
+      ],
+      "Released in the 1990s": [
+        "Believe",
+        "Linger",
+        "Smells Like Teen Spirit",
+        "I Will Always Love You"
+      ]
+    },
+    hint: "Title, Peak, Decade",
+    title: "Songs"
+  },
+  {
+    groups: {
+      "Not Located in the Americas": [
+        "Taj Mahal",
+        "Great Wall of China",
+        "Petra",
+        "Colosseum"
+      ],
+      "Completed After 1400 AD": [
+        "Taj Mahal",
+        "Great Wall of China",
+        "Machu Picchu",
+        "Christ the Redeemer"
+      ],
+      "Name is not Translated": [
+        "Taj Mahal",
+        "Petra",
+        "Machu Picchu",
+        "Chichén Itzá"
+      ]
+    },
+    hint: "Region, Completion, Name",
+    title: "Wonders of the World"
+  },
+  {
+    groups: {
+      "Nominated for Best Picture": [
+        "The Return of the King",
+        "Inception",
+        "Atonement",
+        "Lady Bird"
+      ],
+      "Grossed over $300M worldwide": [
+        "The Return of the King",
+        "Inception",
+        "Twilight",
+        "Transformers"
+      ],
+      "Based on a Book": [
+        "The Return of the King",
+        "Atonement",
+        "Twilight",
+        "The Perks of Being a Wallflower"
+      ]
+    },
+    hint: "Nomination, Box Office, Inspiration",
+    title: "Movies 2"
+  },
+  {
+    groups: {
+      "3000 Career Hits": [
+        "Miguel Cabrera",
+        "Albert Pujols",
+        "Ichiro Suzuki",
+        "Cal Ripken, Jr."
+      ],
+      "500 Career Homeruns": [
+        "Miguel Cabrera",
+        "Albert Pujols",
+        "Ted Williams",
+        "Mickey Mantle"
+      ],
+      ".300 Career Batting Average": [
+        "Miguel Cabrera",
+        "Ichiro Suzuki",
+        "Ted Williams",
+        "Vladimir Guerrero"
+      ]
+    },
+    hint: "Hits, Homers, Average",
+    title: "Baseball"
+  }
+]
+
+export let gameList = demo.concat(weekOne, weekTwo, weekThree, weekFour)

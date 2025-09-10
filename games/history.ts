@@ -133,7 +133,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "VP, DOB, Party",
-    published: false,
+    published: true,
     title: "US Presidents"
   },
   {

@@ -38,7 +38,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Region, Completion, Name",
-    published: false,
+    published: true,
     title: "Wonders of the World"
   },
   {
