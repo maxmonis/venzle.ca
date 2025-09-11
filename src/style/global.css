@@ -14,8 +14,6 @@
   --fg: var(--dark);
 
   --htm-border: var(--slate);
-  --htm-toast-bg: var(--fg);
-  --htm-toast-fg: var(--bg);
 
   --h1: clamp(1.5rem, 6.25vmin, 2rem);
   --h2: clamp(1.375rem, 5vmin, 1.75rem);
@@ -235,6 +233,8 @@ dialog::backdrop {
 }
 
 htm-toast {
+  --htm-bg: var(--fg);
+  --htm-fg: var(--bg);
   line-height: 1.3;
 }
 
@@ -254,6 +254,10 @@ htm-toast {
   top: 0;
   width: 100vw;
   z-index: -10;
+}
+
+htm-spinner {
+  margin: 5rem auto;
 }
 
 @media (prefers-contrast: more) {
@@ -285,24 +289,5 @@ htm-toast {
 @media (min-width: 800px) and (min-height: 800px) {
   html {
     font-size: 18px;
-  }
-}
-
-.spinner {
-  animation: 1.25s linear spinner infinite;
-  margin: 5rem auto;
-}
-
-@keyframes spinner {
-  0% {
-    stroke-dashoffset: 502;
-    stroke-dasharray: 150.6 100.4;
-  }
-  50% {
-    stroke-dasharray: 1 250;
-  }
-  100% {
-    stroke-dashoffset: 0;
-    stroke-dasharray: 150.6 100.4;
   }
 }
