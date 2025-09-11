@@ -1,7 +1,7 @@
 import { Spinner, Toast } from "htm-elements"
 import "htm-elements/styles.css"
 import "style/global.css"
-import { localAudio, localDark, localLoad, themeChannel } from "./utils"
+import { localAudio, localDark, themeChannel } from "./utils"
 
 export let toast = new Toast()
 
@@ -94,41 +94,9 @@ domReady(() => {
       })
 })
 
-for (let event of ["focus", "keydown", "pointerdown"])
-  document.addEventListener(event, reloadIfStale)
-
-export function reloadIfStale() {
-  let lastLoad = localLoad.get()
-  localLoad.set(new Date().getTime())
-  let now = new Date()
-  if (
-    lastLoad &&
-    lastLoad <
-      new Date(
-        Date.UTC(
-          now.getUTCFullYear(),
-          now.getUTCMonth(),
-          now.getUTCDate(),
-          0,
-          0,
-          0,
-          0
-        )
-      ).getTime()
-  ) {
-    reloadPage(false)
-    return true
-  }
-  return false
-}
-
-function reloadPage(notify: boolean) {
+function reloadPage() {
   window.gtag("event", "reload_page")
   document.body.style.pointerEvents = "none"
-  if (!notify) {
-    location.reload()
-    return
-  }
   let seconds = 3
   toast.show(`New puzzle available! Reloading in ${seconds}...`)
   let interval = setInterval(() => {
@@ -145,9 +113,7 @@ scheduleMidnightReload()
 function scheduleMidnightReload() {
   let now = new Date()
   setTimeout(
-    () => {
-      reloadPage(true)
-    },
+    reloadPage,
     Date.UTC(
       now.getUTCFullYear(),
       now.getUTCMonth(),
