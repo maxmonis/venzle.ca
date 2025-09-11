@@ -13,6 +13,10 @@
   --bg: var(--light);
   --fg: var(--dark);
 
+  --htm-border: var(--slate);
+  --htm-toast-bg: var(--fg);
+  --htm-toast-fg: var(--bg);
+
   --h1: clamp(1.5rem, 6.25vmin, 2rem);
   --h2: clamp(1.375rem, 5vmin, 1.75rem);
   --h3: clamp(1.25rem, 4vmin, 1.5rem);
@@ -230,29 +234,8 @@ dialog::backdrop {
   text-align: center;
 }
 
-.toast {
-  background-color: var(--fg);
-  border-radius: 0.5rem;
-  border-style: solid;
-  bottom: -10rem;
-  color: var(--bg);
+htm-toast {
   line-height: 1.3;
-  max-width: 20rem;
-  padding: 0.75rem 1.25rem;
-  position: fixed;
-  right: 1.25rem;
-  transition-duration: 250ms;
-  transition-property: bottom, right;
-  transition-timing-function: cubic-bezier(0.75, -0.75, 0.25, 1.5);
-  z-index: 10;
-}
-
-.toast.enter {
-  bottom: 1.25rem;
-}
-
-.toast.exit {
-  right: -20rem;
 }
 
 .bg-gradient {
@@ -276,12 +259,6 @@ dialog::backdrop {
 @media (prefers-contrast: more) {
   .bg-gradient {
     display: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .toast {
-    transition-duration: 0ms;
   }
 }
 

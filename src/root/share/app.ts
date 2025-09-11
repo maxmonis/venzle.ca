@@ -1,5 +1,5 @@
 import type { Game, ImageFormat } from "lib/types"
-import { initUI, showToast } from "lib/ui"
+import { initUI, toast } from "lib/ui"
 import {
   imageFormats,
   localFormat,
@@ -54,7 +54,7 @@ copyButton.textContent = "Copy to Clipboard"
 copyButton.addEventListener("click", () => {
   window.gtag("event", "copy_to_clipboard_click")
   navigator.clipboard.writeText(clipboardText)
-  showToast("Copied to clipboard 😃")
+  toast.show("Copied to clipboard 😃")
 })
 
 let certificateContainer = document.createElement("div")
@@ -115,7 +115,7 @@ downloadForm.addEventListener("submit", e => {
   a.download = `certificate.${format}`
   a.click()
   a.remove()
-  showToast("Certificate downloaded 😁")
+  toast.show("Certificate downloaded 😁")
 })
 downloadForm.append(downloadFormatLabel, downloadButton)
 

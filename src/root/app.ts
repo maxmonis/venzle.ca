@@ -19,7 +19,7 @@ import {
 import { getCenter, initHints } from "game/hints"
 import { gameList } from "game/list"
 import type { Game } from "lib/types"
-import { initUI, reloadIfStale, removeToast, showToast } from "lib/ui"
+import { initUI, reloadIfStale, toast } from "lib/ui"
 import {
   gameChannel,
   gameEvent,
@@ -88,7 +88,7 @@ function appendCircleTitles(titles: [string, string, string]) {
 }
 
 function checkGame(clicked: boolean) {
-  removeToast()
+  toast.hide()
   if (clicked && reloadIfStale()) return
   let groupEntries = Object.entries(game.groups)
   let { currentGuess } = game
@@ -180,13 +180,13 @@ function checkGame(clicked: boolean) {
           correctPart = "🔴 red circle"
         else correctPart = "The center"
       }
-      showToast(
+      toast.show(
         (correctPart
           ? `${correctPart} is correct ✅`
           : "That's not the answer but keep trying!") +
           "<br />You have " +
           guessesTextContent,
-        correctPart ? 5000 : 3000
+        { duration: correctPart ? 5000 : 3000 }
       )
     }
   } else {
@@ -403,7 +403,7 @@ gameEvent.listen(data => {
         guess => JSON.stringify(guess) == JSON.stringify(game.currentGuess)
       )
     ) {
-      showToast("You already guessed that 😅<br />Please try again")
+      toast.show("You already guessed that 😅<br />Please try again")
       return
     }
     game.guesses.push({ ...game.currentGuess })

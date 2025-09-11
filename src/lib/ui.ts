@@ -1,5 +1,9 @@
+import { Toast } from "htm-elements"
+import "htm-elements/styles.css"
 import "style/global.css"
 import { localAudio, localDark, localLoad, themeChannel } from "./utils"
+
+export let toast = new Toast()
 
 document.querySelector<HTMLElement>(".site-logo")!.title =
   `Venzle v${import.meta.env.PACKAGE_VERSION}`
@@ -62,35 +66,6 @@ document.querySelector("footer")!.prepend(toggleContainer)
 export function initUI() {
   applyAudio()
   applyDark()
-}
-
-let toast = document.createElement("div")
-toast.classList.add("toast")
-toast.role = "alert"
-
-let toastTimeout: ReturnType<typeof setTimeout>
-
-export function removeToast() {
-  if (!document.body.contains(toast)) return
-  return new Promise(resolve => {
-    clearTimeout(toastTimeout)
-    toast.classList.add("exit")
-    toastTimeout = setTimeout(() => {
-      toast.classList.remove("enter", "exit")
-      toast.remove()
-      resolve(true)
-    }, 250)
-  })
-}
-
-export async function showToast(message: string, durationMS = 3000) {
-  await removeToast()
-  toast.innerHTML = message
-  document.body.append(toast)
-  toastTimeout = setTimeout(() => {
-    toast.classList.add("enter")
-    toastTimeout = setTimeout(removeToast, durationMS)
-  }, 50)
 }
 
 export let rem = parseInt(getComputedStyle(document.documentElement).fontSize)
@@ -171,7 +146,7 @@ function reloadPage(notify: boolean) {
     return
   }
   let seconds = 3
-  showToast(`New puzzle available! Reloading in ${seconds}...`)
+  toast.show(`New puzzle available! Reloading in ${seconds}...`)
   let interval = setInterval(() => {
     seconds--
     toast.textContent = `New puzzle available! Reloading in ${seconds}...`
