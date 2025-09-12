@@ -115,5 +115,20 @@ export let gameList: Array<GameListItem> = [
     hint: "Evolution, Feeding, Social",
     published: false,
     title: "Insects"
+  },
+  {
+    groups: {
+      Deciduous: ["Hickory", "Sweet Chestnut", "Maple", "Silver Birch"],
+      "Produces edible nuts": [
+        "Hickory",
+        "Sweet Chestnut",
+        "Pinyon Pine",
+        "Coconut palm"
+      ],
+      "Native to North America": ["Hickory", "Maple", "Pinyon Pine", "Sequoia"]
+    },
+    hint: "Leaves, Nuts, Region",
+    published: false,
+    title: "Trees"
   }
 ]

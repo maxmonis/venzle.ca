@@ -140,5 +140,30 @@ export let gameList: Array<GameListItem> = [
     hint: "Beaches, Trees, Language",
     published: false,
     title: "Countries 3"
+  },
+  {
+    groups: {
+      "Highest point in its Country": [
+        "Kilimanjaro",
+        "Mount Fuji",
+        "Aconcagua",
+        "Ben Nevis"
+      ],
+      Volcanic: [
+        "Kilimanjaro",
+        "Mount Fuji",
+        "Mount Rainier",
+        "Mount Vesuvius"
+      ],
+      "Over 4,000 Meters Tall": [
+        "Kilimanjaro",
+        "Aconcagua",
+        "Mount Rainier",
+        "Mount Whitney"
+      ]
+    },
+    hint: "National Record, Lava, Height",
+    published: false,
+    title: "Mountains"
   }
 ]

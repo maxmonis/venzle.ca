@@ -107,5 +107,15 @@ export let gameList: Array<GameListItem> = [
     hint: "Venom, Eggs, Region",
     published: false,
     title: "Animals 8"
+  },
+  {
+    groups: {
+      "Has Feathers": ["Barn Owl", "Sparrow", "Kakapo", "Ostrich"],
+      "Can Fly": ["Barn Owl", "Sparrow", "Bat", "Dragonfly"],
+      "Is Nocturnal": ["Barn Owl", "Kakapo", "Bat", "Hedgehog"]
+    },
+    hint: "Feathers, Flight, Night",
+    published: false,
+    title: "Animals 9"
   }
 ]
