@@ -25,7 +25,7 @@ git clone https://github.com/maxmonis/venzle.ca.git
 cd venzle.ca
 ```
 
-Install dev deps (there are no production dependencies)
+Install dependencies:
 
 ```
 npm i
