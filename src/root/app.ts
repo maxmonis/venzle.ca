@@ -1,4 +1,3 @@
-import { startConfetti } from "game/confetti"
 import { createDraggable, initDraggables, initDropzones } from "game/dnd"
 import {
   circleContainer,
@@ -18,6 +17,7 @@ import {
 } from "game/elements"
 import { getCenter, initHints } from "game/hints"
 import { gameList } from "game/list"
+import { Confetti } from "htm-elements"
 import type { Game } from "lib/types"
 import { initUI, toast } from "lib/ui"
 import {
@@ -139,7 +139,7 @@ function checkGame(clicked: boolean) {
       game.status = "solved"
       saveGame()
       updateResults()
-      startConfetti()
+      new Confetti().start()
       if (localAudio.get()) {
         document.body.append(winAudio)
         winAudio.play()

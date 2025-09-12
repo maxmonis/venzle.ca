@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "htm-elements": "^0.0.8"
+    "htm-elements": "^0.0.9"
   },
   "devDependencies": {
     "@types/node": "^24.3.0",
