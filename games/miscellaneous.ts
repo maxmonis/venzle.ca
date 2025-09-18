@@ -70,8 +70,8 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Tech, Nationality, Forbes",
-    title: "Billionaires",
-    published: false
+    published: true,
+    title: "Billionaires"
   },
   {
     groups: {

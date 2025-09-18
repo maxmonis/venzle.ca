@@ -75,16 +75,21 @@ export let gameList: Array<GameListItem> = [
   {
     groups: {
       "One-Word Stage Name": ["Beyoncé", "Cher", "Adele", "Shakira"],
-      "Started in a Group": [
+      "Started in a Group/Duo": [
         "Beyoncé",
         "Cher",
         "Paul McCartney",
         "Brandon Flowers"
       ],
-      "Has 10+ Grammy Wins": ["Beyoncé", "Adele", "Paul McCartney", "Lady Gaga"]
+      "Has 10+ Grammy Wins": [
+        "Beyoncé",
+        "Adele",
+        "Paul McCartney",
+        "Stevie Wonder"
+      ]
     },
-    hint: "Name, Band, Trophies",
-    published: false,
+    hint: "Name, Band, Grammys",
+    published: true,
     title: "Musicians 2"
   },
   {

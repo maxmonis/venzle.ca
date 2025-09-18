@@ -49,7 +49,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Century, Setting, Author",
-    published: false,
+    published: true,
     title: "Literature"
   },
   {

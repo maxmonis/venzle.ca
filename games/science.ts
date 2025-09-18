@@ -23,7 +23,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Prize, DOB, Field",
-    published: false,
+    published: true,
     title: "Scientists"
   },
   {

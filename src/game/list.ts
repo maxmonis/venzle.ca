@@ -576,4 +576,156 @@ let weekFour: GameList = [
   }
 ]
 
-export let gameList = demo.concat(weekOne, weekTwo, weekThree, weekFour)
+let weekFive: GameList = [
+  {
+    groups: {
+      "Commonly Ridden": ["Elephant", "Water Buffalo", "Camel", "Horse"],
+      "Found in Southeast Asia": [
+        "Elephant",
+        "Water Buffalo",
+        "Orangutan",
+        "Bornean Bearded Pig"
+      ],
+      "No Hooves": ["Elephant", "Camel", "Orangutan", "Raccoon"]
+    },
+    hint: "Saddle, Region, Feet",
+    title: "Animals 5"
+  },
+  {
+    groups: {
+      "One-Word Stage Name": ["Beyoncé", "Cher", "Adele", "Shakira"],
+      "Started in a Group/Duo": [
+        "Beyoncé",
+        "Cher",
+        "Paul McCartney",
+        "Brandon Flowers"
+      ],
+      "Has 10+ Grammy Wins": [
+        "Beyoncé",
+        "Adele",
+        "Paul McCartney",
+        "Stevie Wonder"
+      ]
+    },
+    hint: "Name, Band, Grammys",
+    title: "Musicians 2"
+  },
+  {
+    groups: {
+      "Tech Founder": ["Elon Musk", "Jack Ma", "Bill Gates", "Michael Dell"],
+      "Born Outside the United States": [
+        "Elon Musk",
+        "Jack Ma",
+        "Bernard Arnault",
+        "Roman Abramovich"
+      ],
+      "Has Topped Forbes List": [
+        "Elon Musk",
+        "Bill Gates",
+        "Bernard Arnault",
+        "Warren Buffett"
+      ]
+    },
+    hint: "Tech, Nationality, Forbes",
+    title: "Billionaires"
+  },
+  {
+    groups: {
+      "Published in the 19th Century": [
+        "Little Women",
+        "Adventures of Huckleberry Finn",
+        "Jane Eyre",
+        "Crime and Punishment"
+      ],
+      "Set in the United States": [
+        "Little Women",
+        "Adventures of Huckleberry Finn",
+        "Beloved",
+        "The Great Gatsby"
+      ],
+      "Written by a Woman": [
+        "Little Women",
+        "Jane Eyre",
+        "Beloved",
+        "Mrs Dalloway"
+      ]
+    },
+    hint: "Century, Setting, Author",
+    title: "Literature"
+  },
+  {
+    groups: {
+      "Won Best Picture Oscar": [
+        "The Apartment",
+        "The Sound of Music",
+        "The Artist",
+        "Gandhi"
+      ],
+      "Released Before 1970": [
+        "The Apartment",
+        "The Sound of Music",
+        "Psycho",
+        "2001: A Space Odyssey"
+      ],
+      "Black-and-White": [
+        "The Apartment",
+        "The Artist",
+        "Psycho",
+        "Raging Bull"
+      ]
+    },
+    hint: "Academy, Era, Color",
+    title: "Movies 3"
+  },
+  {
+    groups: {
+      "Nobel Prize Winner": [
+        "Albert Einstein",
+        "Alexander Fleming",
+        "Richard Feynman",
+        "Dorothy Hodgkin"
+      ],
+      "Born before 1900": [
+        "Albert Einstein",
+        "Alexander Fleming",
+        "James Clerk Maxwell",
+        "Gregor Mendel"
+      ],
+      Physicist: [
+        "Albert Einstein",
+        "Richard Feynman",
+        "James Clerk Maxwell",
+        "Stephen Hawking"
+      ]
+    },
+    hint: "Prize, DOB, Field",
+    title: "Scientists"
+  },
+  {
+    groups: {
+      "60,000 Passing Yards": [
+        "Peyton Manning",
+        "Brett Favre",
+        "Drew Brees",
+        "Ben Roethlisberger"
+      ],
+      "Won MVP": ["Peyton Manning", "Brett Favre", "Joe Montana", "Cam Newton"],
+      "Won Super Bowl MVP": [
+        "Peyton Manning",
+        "Drew Brees",
+        "Joe Montana",
+        "Eli Manning"
+      ]
+    },
+    hint: "Yards, MVP, SB MVP",
+    title: "Quarterbacks"
+  }
+]
+
+export let gameList = demo.concat(
+  weekOne,
+  weekTwo,
+  weekThree,
+  weekFour,
+  weekFive
+)

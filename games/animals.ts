@@ -65,7 +65,7 @@ export let gameList: Array<GameListItem> = [
       "No Hooves": ["Elephant", "Camel", "Orangutan", "Raccoon"]
     },
     hint: "Saddle, Region, Feet",
-    published: false,
+    published: true,
     title: "Animals 5"
   },
   {

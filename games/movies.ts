@@ -107,7 +107,7 @@ export let gameList: Array<GameListItem> = [
         "The Apartment",
         "The Sound of Music",
         "The Artist",
-        "The Godfather"
+        "Gandhi"
       ],
       "Released Before 1970": [
         "The Apartment",
@@ -122,8 +122,8 @@ export let gameList: Array<GameListItem> = [
         "Raging Bull"
       ]
     },
-    hint: "Oscar, Era, Color",
-    published: false,
+    hint: "Academy, Era, Color",
+    published: true,
     title: "Movies 3"
   }
 ]

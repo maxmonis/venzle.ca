@@ -104,7 +104,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Yards, MVP, SB MVP",
-    published: false,
+    published: true,
     title: "Quarterbacks"
   },
   {
