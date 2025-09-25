@@ -59,7 +59,7 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Nationality, Easel, Century",
     published: false,
-    title: "Artists 2"
+    title: "Artists"
   }
 ]
 
@@ -85,10 +85,10 @@ export let gameList: Array<GameListItem> = [
 //       ]
 //     },
 //     hint: "Country, Faith, Century",
-//     title: "Works of Art 2"
+//     title: "Works of Art"
 //   },
 //   {
-//     title: "Works of Art 3",
+//     title: "Works of Art",
 //     hint: "Dutch, 1600s, Portraiture",
 //     groups: {
 //       Dutch: [
@@ -112,7 +112,7 @@ export let gameList: Array<GameListItem> = [
 //     }
 //   },
 //   {
-//     title: "Works of Art 4",
+//     title: "Works of Art",
 //     hint: "France, Countryside, 1800s",
 //     groups: {
 //       French: [
@@ -136,7 +136,7 @@ export let gameList: Array<GameListItem> = [
 //     }
 //   },
 //   {
-//     title: "Works of Art 5",
+//     title: "Works of Art",
 //     hint: "Murals, Public, 20th Century",
 //     groups: {
 //       "Public Art": [

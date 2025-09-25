@@ -21,7 +21,7 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Food, Friend, Habitat",
     published: true,
-    title: "Animals 2"
+    title: "Animals"
   },
   {
     groups: {
@@ -36,7 +36,7 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Feline, Fur, Region",
     published: true,
-    title: "Animals 3"
+    title: "Animals"
   },
   {
     groups: {
@@ -51,7 +51,7 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Diet, Reproduction, Habitat",
     published: true,
-    title: "Animals 4"
+    title: "Animals"
   },
   {
     groups: {
@@ -66,7 +66,7 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Saddle, Region, Feet",
     published: true,
-    title: "Animals 5"
+    title: "Animals"
   },
   {
     groups: {
@@ -76,7 +76,7 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Region, Teeth, Habitat",
     published: true,
-    title: "Animals 6"
+    title: "Animals"
   },
   {
     groups: {
@@ -86,7 +86,7 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Wings, Arid, Night",
     published: false,
-    title: "Animals 7"
+    title: "Animals"
   },
   {
     groups: {
@@ -106,7 +106,7 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Venom, Eggs, Region",
     published: false,
-    title: "Animals 8"
+    title: "Animals"
   },
   {
     groups: {
@@ -116,6 +116,6 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Feathers, Flight, Night",
     published: false,
-    title: "Animals 9"
+    title: "Animals"
   }
 ]

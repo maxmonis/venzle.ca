@@ -149,6 +149,6 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Nationality, Death, Throne",
     published: true,
-    title: "Historical Figures 2"
+    title: "Historical Figures"
   }
 ]

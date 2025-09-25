@@ -74,7 +74,7 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Nomination, Box Office, Inspiration",
     published: true,
-    title: "Movies 2"
+    title: "Movies"
   },
   {
     groups: {
@@ -99,7 +99,7 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Genre, Script, Nationality",
     published: false,
-    title: "Directors 2"
+    title: "Directors"
   },
   {
     groups: {
@@ -124,6 +124,6 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Academy, Era, Color",
     published: true,
-    title: "Movies 3"
+    title: "Movies"
   }
 ]

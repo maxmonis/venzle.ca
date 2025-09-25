@@ -64,7 +64,7 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Religion, Population, Latitude",
     published: true,
-    title: "Countries 2"
+    title: "Countries"
   },
   {
     groups: {
@@ -139,7 +139,7 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Beaches, Trees, Language",
     published: false,
-    title: "Countries 3"
+    title: "Countries"
   },
   {
     groups: {

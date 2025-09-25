@@ -90,7 +90,7 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Name, Band, Grammys",
     published: true,
-    title: "Musicians 2"
+    title: "Musicians"
   },
   {
     groups: {
@@ -110,7 +110,7 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Decade, Debut, Artist",
     published: false,
-    title: "Albums 2"
+    title: "Albums"
   },
   {
     groups: {
@@ -135,7 +135,7 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Decade, Chart, Nationality",
     published: false,
-    title: "Songs 2"
+    title: "Songs"
   },
   {
     groups: {
@@ -160,6 +160,6 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Debut, Era, Grammy",
     published: false,
-    title: "Albums 3"
+    title: "Albums"
   }
 ]

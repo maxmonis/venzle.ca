@@ -49,6 +49,6 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Prize, DOB, Field",
     published: false,
-    title: "Scientists 2"
+    title: "Scientists"
   }
 ]

@@ -40,7 +40,7 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Heroines, Premium, Metropolis",
     published: false,
-    title: "TV Shows 2"
+    title: "TV Shows"
   },
 
   {
@@ -66,6 +66,6 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "City, Format, Network",
     published: false,
-    title: "TV Shows 3"
+    title: "TV Shows"
   }
 ]

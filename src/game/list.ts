@@ -166,7 +166,7 @@ let weekTwo: GameList = [
       "Lives in Water": ["Shrimp", "Lobster", "Newt", "Box Jellyfish"]
     },
     hint: "Food, Friend, Habitat",
-    title: "Animals 2"
+    title: "Animals"
   },
   {
     creator: "Andrea Alcalá Vásquez",
@@ -284,7 +284,7 @@ let weekThree: GameList = [
       ]
     },
     hint: "Feline, Fur, Region",
-    title: "Animals 3"
+    title: "Animals"
   },
   {
     creator: "Andrea Alcalá Vásquez",
@@ -432,7 +432,7 @@ let weekFour: GameList = [
       ]
     },
     hint: "Diet, Reproduction, Habitat",
-    title: "Animals 4"
+    title: "Animals"
   },
   {
     creator: "Andrea Alcalá Vásquez",
@@ -457,7 +457,7 @@ let weekFour: GameList = [
       ]
     },
     hint: "Nationality, Disney, Awards",
-    title: "Entertainment 2"
+    title: "Entertainment"
   },
   {
     groups: {
@@ -548,7 +548,7 @@ let weekFour: GameList = [
       ]
     },
     hint: "Nomination, Box Office, Inspiration",
-    title: "Movies 2"
+    title: "Movies"
   },
   {
     groups: {
@@ -589,7 +589,7 @@ let weekFive: GameList = [
       "No Hooves": ["Elephant", "Camel", "Orangutan", "Raccoon"]
     },
     hint: "Saddle, Region, Feet",
-    title: "Animals 5"
+    title: "Animals"
   },
   {
     groups: {
@@ -608,7 +608,7 @@ let weekFive: GameList = [
       ]
     },
     hint: "Name, Band, Grammys",
-    title: "Musicians 2"
+    title: "Musicians"
   },
   {
     groups: {
@@ -675,7 +675,7 @@ let weekFive: GameList = [
       ]
     },
     hint: "Academy, Era, Color",
-    title: "Movies 3"
+    title: "Movies"
   },
   {
     groups: {
@@ -730,7 +730,7 @@ let weekSix: GameList = [
       "Semi-Aquatic": ["Beaver", "Capybara", "Otter", "Hippopotamus"]
     },
     hint: "Region, Teeth, Habitat",
-    title: "Animals 6"
+    title: "Animals"
   },
   {
     groups: {
@@ -754,7 +754,7 @@ let weekSix: GameList = [
       ]
     },
     hint: "Academy, Marvel, Nationality",
-    title: "Actors 2"
+    title: "Actors"
   },
   {
     groups: {
@@ -792,7 +792,7 @@ let weekSix: GameList = [
       "Touches Equator": ["Indonesia", "Maldives", "Brazil", "Ecuador"]
     },
     hint: "Religion, Population, Latitude",
-    title: "Countries 2"
+    title: "Countries"
   },
   {
     groups: {
@@ -806,7 +806,7 @@ let weekSix: GameList = [
       ]
     },
     hint: "Nationality, Death, Throne",
-    title: "Historical Figures 2"
+    title: "Historical Figures"
   },
   {
     groups: {

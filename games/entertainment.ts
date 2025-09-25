@@ -96,7 +96,7 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Nationality, Disney, Awards",
     published: true,
-    title: "Entertainment 2"
+    title: "Entertainment"
   },
   {
     groups: {
@@ -121,7 +121,7 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Academy, Marvel, Nationality",
     published: true,
-    title: "Actors 2"
+    title: "Actors"
   },
   {
     groups: {
@@ -146,6 +146,6 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Academy, Director, Nationality",
     published: false,
-    title: "Actors 3"
+    title: "Actors"
   }
 ]

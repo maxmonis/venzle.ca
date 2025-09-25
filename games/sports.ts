@@ -175,7 +175,7 @@ export let gameList: Array<GameListItem> = [
     },
     hint: "Russell Trophy, Jordan Trophy, Red Auerbach",
     published: false,
-    title: "Basketball 2"
+    title: "Basketball"
   }
 ]
 
