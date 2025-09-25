@@ -63,7 +63,7 @@ export let gameList: Array<GameListItem> = [
       "Touches Equator": ["Indonesia", "Maldives", "Brazil", "Ecuador"]
     },
     hint: "Religion, Population, Latitude",
-    published: false,
+    published: true,
     title: "Countries 2"
   },
   {

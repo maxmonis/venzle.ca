@@ -722,10 +722,137 @@ let weekFive: GameList = [
   }
 ]
 
+let weekSix: GameList = [
+  {
+    groups: {
+      "Found in North America": ["Beaver", "Mouse", "Otter", "Raccoon"],
+      Rodent: ["Beaver", "Mouse", "Capybara", "Guinea Pig"],
+      "Semi-Aquatic": ["Beaver", "Capybara", "Otter", "Hippopotamus"]
+    },
+    hint: "Region, Teeth, Habitat",
+    title: "Animals 6"
+  },
+  {
+    groups: {
+      "Oscar Winner": [
+        "Anthony Hopkins",
+        "Brie Larson",
+        "Kate Winslet",
+        "Frances McDormand"
+      ],
+      "Appeared in the MCU": [
+        "Anthony Hopkins",
+        "Brie Larson",
+        "Tom Hiddleston",
+        "Chris Evans"
+      ],
+      British: [
+        "Anthony Hopkins",
+        "Kate Winslet",
+        "Tom Hiddleston",
+        "Hugh Grant"
+      ]
+    },
+    hint: "Academy, Marvel, Nationality",
+    title: "Actors 2"
+  },
+  {
+    groups: {
+      Sculpture: [
+        "Mount Rushmore",
+        "Venus de Milo",
+        "Statue of Liberty",
+        "The Thinker"
+      ],
+      "Made of Stone": [
+        "Mount Rushmore",
+        "Venus de Milo",
+        "Great Pyramid of Giza",
+        "Rosetta Stone"
+      ],
+      Commemorative: [
+        "Mount Rushmore",
+        "Statue of Liberty",
+        "Great Pyramid of Giza",
+        "Liberty Bell"
+      ]
+    },
+    hint: "Medium, Material, Memorial",
+    title: "Works of Art"
+  },
+  {
+    groups: {
+      "Majority Muslim": ["Indonesia", "Pakistan", "Maldives", "Afghanistan"],
+      "Population Exceeds 100 Million": [
+        "Indonesia",
+        "Pakistan",
+        "Brazil",
+        "China"
+      ],
+      "Touches Equator": ["Indonesia", "Maldives", "Brazil", "Ecuador"]
+    },
+    hint: "Religion, Population, Latitude",
+    title: "Countries 2"
+  },
+  {
+    groups: {
+      British: ["Charles I", "Queen Victoria", "Anne Boleyn", "Charles Darwin"],
+      Executed: ["Charles I", "Louis XVI", "Anne Boleyn", "Socrates"],
+      Monarch: [
+        "Charles I",
+        "Queen Victoria",
+        "Louis XVI",
+        "Suleiman the Magnificent"
+      ]
+    },
+    hint: "Nationality, Death, Throne",
+    title: "Historical Figures 2"
+  },
+  {
+    groups: {
+      "Appears in a Novel": [
+        "Jay Gatsby",
+        "Atticus Finch",
+        "Tess Durbeyfield",
+        "Elizabeth Bennet"
+      ],
+      Male: ["Jay Gatsby", "Atticus Finch", "Romeo", "Prospero"],
+      "Dies by the End": ["Jay Gatsby", "Tess Durbeyfield", "Romeo", "Ophelia"]
+    },
+    hint: "Book, Gender, Death",
+    title: "Literary Characters"
+  },
+  {
+    groups: {
+      "Won Ballon d'Or": [
+        "Lionel Messi",
+        "Cristiano Ronaldo",
+        "Fabio Cannavaro",
+        "Johan Cruyff"
+      ],
+      "Won Champions League": [
+        "Lionel Messi",
+        "Cristiano Ronaldo",
+        "Andrés Iniesta",
+        "Paolo Maldini"
+      ],
+      "Won World Cup": [
+        "Lionel Messi",
+        "Fabio Cannavaro",
+        "Andrés Iniesta",
+        "Pelé"
+      ]
+    },
+    hint: "MVP, Club, Country",
+    title: "Soccer"
+  }
+]
+
 export let gameList = demo.concat(
   weekOne,
   weekTwo,
   weekThree,
   weekFour,
-  weekFive
+  weekFive,
+  weekSix
 )

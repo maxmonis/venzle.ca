@@ -64,7 +64,7 @@ export let gameList: Array<GameListItem> = [
       "Dies by the End": ["Jay Gatsby", "Tess Durbeyfield", "Romeo", "Ophelia"]
     },
     hint: "Book, Gender, Death",
-    published: false,
+    published: true,
     title: "Literary Characters"
   }
 ]

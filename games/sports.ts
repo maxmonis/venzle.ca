@@ -129,7 +129,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "MVP, Club, Country",
-    published: false,
+    published: true,
     title: "Soccer"
   },
   {

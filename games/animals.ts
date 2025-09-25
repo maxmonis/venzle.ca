@@ -75,7 +75,7 @@ export let gameList: Array<GameListItem> = [
       "Semi-Aquatic": ["Beaver", "Capybara", "Otter", "Hippopotamus"]
     },
     hint: "Region, Teeth, Habitat",
-    published: false,
+    published: true,
     title: "Animals 6"
   },
   {

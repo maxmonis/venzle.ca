@@ -33,7 +33,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Medium, Material, Memorial",
-    published: false,
+    published: true,
     title: "Works of Art"
   },
   {

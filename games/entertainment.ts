@@ -119,8 +119,8 @@ export let gameList: Array<GameListItem> = [
         "Hugh Grant"
       ]
     },
-    hint: "Academy, MCU, Nationality",
-    published: false,
+    hint: "Academy, Marvel, Nationality",
+    published: true,
     title: "Actors 2"
   },
   {
