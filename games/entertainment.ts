@@ -147,5 +147,130 @@ export let gameList: Array<GameListItem> = [
     hint: "Academy, Director, Nationality",
     published: false,
     title: "Actors"
+  },
+  {
+    groups: {
+      "Has Played a Superhero": [
+        "Anne Hathaway",
+        "Zachary Levi",
+        "Christian Bale",
+        "Robert Downey Jr."
+      ],
+      "Born in the 1980s": [
+        "Anne Hathaway",
+        "Zachary Levi",
+        "Joseph Gordon-Levitt",
+        "Emily Blunt"
+      ],
+      "Appeared in a Christopher Nolan Film": [
+        "Anne Hathaway",
+        "Christian Bale",
+        "Joseph Gordon-Levitt",
+        "Michael Caine"
+      ]
+    },
+    hint: "Superhero, DOB, Nolan",
+    published: false,
+    title: "Actors"
+  },
+  {
+    groups: {
+      "Appeared in a Quentin Tarantino film": [
+        "Leonardo DiCaprio",
+        "Christoph Waltz",
+        "Eli Roth",
+        "Michael Madsen"
+      ],
+      "Golden Globe Winner": [
+        "Leonardo DiCaprio",
+        "Christoph Waltz",
+        "Joaquin Phoenix",
+        "Meryl Streep"
+      ],
+      "Born in the 1970s": [
+        "Leonardo DiCaprio",
+        "Eli Roth",
+        "Joaquin Phoenix",
+        "Rachel McAdams"
+      ]
+    },
+    hint: "Tarantino, Globes, DOB",
+    published: false,
+    title: "Actors"
+  },
+  {
+    groups: {
+      "Appeared in a Harry Potter Film": [
+        "Daniel Radcliffe",
+        "Imelda Staunton",
+        "Rupert Grint",
+        "Emma Watson"
+      ],
+      "BAFTA Nominee": [
+        "Daniel Radcliffe",
+        "Imelda Staunton",
+        "Andrew Garfield",
+        "Meryl Streep"
+      ],
+      "Born in the 1980s": [
+        "Daniel Radcliffe",
+        "Rupert Grint",
+        "Andrew Garfield",
+        "Chris Pine"
+      ]
+    },
+    hint: "Potter, BAFTA, DOB",
+    published: false,
+    title: "Actors"
+  },
+  {
+    groups: {
+      "Appeared in a Coen Brothers Film": [
+        "Javier Bardem",
+        "Jeff Bridges",
+        "Josh Brolin",
+        "John Goodman"
+      ],
+      "Academy Award Winner": [
+        "Javier Bardem",
+        "Jeff Bridges",
+        "Forest Whitaker",
+        "Mahershala Ali"
+      ],
+      "Born in the 1960s": [
+        "Javier Bardem",
+        "Josh Brolin",
+        "Forest Whitaker",
+        "Keanu Reeves"
+      ]
+    },
+    hint: "Coens, Academy, DOB",
+    published: false,
+    title: "Actors"
+  },
+  {
+    groups: {
+      "Appeared in a Christopher Nolan Film": [
+        "Christian Bale",
+        "Michael Caine",
+        "Tom Hardy",
+        "Joseph Gordon-Levitt"
+      ],
+      "Golden Globe Winner": [
+        "Christian Bale",
+        "Michael Caine",
+        "Joaquin Phoenix",
+        "Denzel Washington"
+      ],
+      "Born in the 1970s": [
+        "Christian Bale",
+        "Tom Hardy",
+        "Joaquin Phoenix",
+        "Kate Beckinsale"
+      ]
+    },
+    hint: "Nolan, Globes, DOB",
+    published: false,
+    title: "Actors"
   }
 ]
