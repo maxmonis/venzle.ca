@@ -1,6 +1,6 @@
 import type { GameListItem } from "../src/lib/types"
 
-export let gameList: Array<GameListItem> = [
+export let miscellaneous: Array<GameListItem> = [
   {
     groups: {
       Color: ["Orange", "Grape", "Pine", "Purple"],

@@ -1,6 +1,6 @@
 import type { GameListItem } from "../src/lib/types"
 
-export let gameList: Array<GameListItem> = [
+export let nature: Array<GameListItem> = [
   {
     groups: {
       Fragrant: ["Rose", "Carnation", "Jasmine", "Lavender"],

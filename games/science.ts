@@ -1,6 +1,6 @@
 import type { GameListItem } from "../src/lib/types"
 
-export let gameList: Array<GameListItem> = [
+export let scientists: Array<GameListItem> = [
   {
     groups: {
       "Nobel Prize Winner": [
@@ -23,8 +23,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Prize, DOB, Field",
-    published: true,
-    title: "Scientists"
+    published: true
   },
   {
     groups: {
@@ -48,7 +47,6 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Prize, DOB, Field",
-    published: false,
-    title: "Scientists"
+    published: false
   }
 ]

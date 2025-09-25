@@ -13,8 +13,7 @@ export let countries: Array<GameListItem> = [
       ]
     },
     hint: "Government, Latitude, Language",
-    published: true,
-    title: "Countries"
+    published: true
   },
   {
     groups: {
@@ -28,8 +27,7 @@ export let countries: Array<GameListItem> = [
       "Touches Equator": ["Indonesia", "Maldives", "Brazil", "Ecuador"]
     },
     hint: "Religion, Population, Latitude",
-    published: true,
-    title: "Countries"
+    published: true
   },
   {
     groups: {
@@ -38,7 +36,6 @@ export let countries: Array<GameListItem> = [
       "Spanish is Official Language": ["Venezuela", "Cuba", "Peru", "Spain"]
     },
     hint: "Beaches, Trees, Language",
-    published: false,
-    title: "Countries"
+    published: false
   }
 ]

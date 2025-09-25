@@ -1,6 +1,8 @@
 import type { GameListItem } from "lib/types"
 
-type PublishedGame = Omit<GameListItem, "published">
+interface PublishedGame extends Omit<GameListItem, "published" | "title"> {
+  title: string
+}
 type GameList = [
   PublishedGame,
   PublishedGame,

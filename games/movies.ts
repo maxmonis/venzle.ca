@@ -1,6 +1,6 @@
 import type { GameListItem } from "../src/lib/types"
 
-export let gameList: Array<GameListItem> = [
+export let movies: Array<GameListItem> = [
   {
     groups: {
       "Won Best Picture": [
@@ -23,8 +23,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Academy, Century, Inspiration",
-    published: true,
-    title: "Movies"
+    published: true
   },
   {
     groups: {
@@ -48,8 +47,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Nomination, Box Office, Inspiration",
-    published: true,
-    title: "Movies"
+    published: true
   },
   {
     groups: {
@@ -73,8 +71,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Academy, Era, Color",
-    published: true,
-    title: "Movies"
+    published: true
   },
   {
     groups: {
@@ -98,8 +95,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Academy, Decade, Source",
-    published: false,
-    title: "Movies"
+    published: false
   },
   {
     groups: {
@@ -123,8 +119,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Actor, True Story, Decade",
-    published: false,
-    title: "Movies"
+    published: false
   },
   {
     groups: {
@@ -148,8 +143,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Animation, Box Office, Fairy Tale",
-    published: false,
-    title: "Movies"
+    published: false
   },
   {
     groups: {
@@ -173,8 +167,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "War, Academy, Nonfiction",
-    published: false,
-    title: "Movies"
+    published: false
   },
   {
     groups: {
@@ -198,8 +191,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Loops, Decade, Lead",
-    published: false,
-    title: "Movies"
+    published: false
   },
   {
     groups: {
@@ -223,8 +215,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Comics, Capes, Decade",
-    published: false,
-    title: "Movies"
+    published: false
   },
   {
     groups: {
@@ -248,7 +239,6 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Nomination, Director, Recency",
-    published: false,
-    title: "Movies"
+    published: false
   }
 ]

@@ -1,6 +1,6 @@
 import type { GameListItem } from "../src/lib/types"
 
-export let gameList: Array<GameListItem> = [
+export let television: Array<GameListItem> = [
   {
     creator: "Margaret Monis",
     groups: {
@@ -24,8 +24,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Justice, Metropolis, Heroines",
-    published: true,
-    title: "TV Shows"
+    published: true
   },
   {
     groups: {
@@ -49,8 +48,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Animation, Decade, Network",
-    published: false,
-    title: "TV Shows"
+    published: false
   },
   {
     groups: {
@@ -64,8 +62,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Heroines, Network, Metropolis",
-    published: false,
-    title: "TV Shows"
+    published: false
   },
   {
     groups: {
@@ -89,8 +86,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Animation, Rating, Decade",
-    published: false,
-    title: "TV Shows"
+    published: false
   },
   {
     groups: {
@@ -114,8 +110,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "City, Format, Network",
-    published: false,
-    title: "TV Shows"
+    published: false
   },
   {
     groups: {
@@ -134,8 +129,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Genre, Network, Comedian",
-    published: false,
-    title: "TV Shows"
+    published: false
   },
   {
     groups: {
@@ -159,8 +153,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Contests, Decade, UK",
-    published: false,
-    title: "TV Shows"
+    published: false
   },
   {
     groups: {
@@ -184,8 +177,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Century, Network, Source Material",
-    published: false,
-    title: "TV Shows"
+    published: false
   },
   {
     groups: {
@@ -209,7 +201,6 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Police, Decade, Source Material",
-    published: false,
-    title: "TV Shows"
+    published: false
   }
 ]

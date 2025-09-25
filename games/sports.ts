@@ -1,6 +1,6 @@
 import type { GameListItem } from "../src/lib/types"
 
-export let gameList: Array<GameListItem> = [
+export let sports: Array<GameListItem> = [
   {
     groups: {
       "Involves Throwing": ["Baseball", "Football", "Shotput", "Soccer"],

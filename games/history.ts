@@ -1,6 +1,6 @@
 import type { GameListItem } from "../src/lib/types"
 
-export let gameList: Array<GameListItem> = [
+export let history: Array<GameListItem> = [
   {
     groups: {
       "Led a Nation During Wartime": [
