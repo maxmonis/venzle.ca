@@ -103,7 +103,7 @@ export let gameList: Array<GameListItem> = [
       "Oscar Winner": [
         "Anthony Hopkins",
         "Brie Larson",
-        "Gary Oldman",
+        "Kate Winslet",
         "Frances McDormand"
       ],
       "Appeared in the MCU": [
@@ -114,7 +114,7 @@ export let gameList: Array<GameListItem> = [
       ],
       British: [
         "Anthony Hopkins",
-        "Gary Oldman",
+        "Kate Winslet",
         "Tom Hiddleston",
         "Hugh Grant"
       ]
@@ -126,21 +126,21 @@ export let gameList: Array<GameListItem> = [
   {
     groups: {
       "Won an Acting Oscar": [
-        "Anthony Hopkins",
+        "Gary Oldman",
         "Sean Penn",
-        "Colin Firth",
+        "Eddie Redmayne",
         "Julia Roberts"
       ],
       "Has Directed a Feature Film": [
-        "Anthony Hopkins",
+        "Gary Oldman",
         "Sean Penn",
-        "Idris Elba",
+        "Ralph Fiennes",
         "Ben Affleck"
       ],
       British: [
-        "Anthony Hopkins",
-        "Colin Firth",
-        "Idris Elba",
+        "Gary Oldman",
+        "Eddie Redmayne",
+        "Ralph Fiennes",
         "Keira Knightley"
       ]
     },
