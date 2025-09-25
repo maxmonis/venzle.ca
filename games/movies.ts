@@ -75,5 +75,180 @@ export let gameList: Array<GameListItem> = [
     hint: "Academy, Era, Color",
     published: true,
     title: "Movies"
+  },
+  {
+    groups: {
+      "Won Best Picture": [
+        "The English Patient",
+        "Braveheart",
+        "The Godfather",
+        "The Departed"
+      ],
+      "Released in the 1990s": [
+        "The English Patient",
+        "Braveheart",
+        "Fight Club",
+        "Pulp Fiction"
+      ],
+      "Based on a Book": [
+        "The English Patient",
+        "The Godfather",
+        "Fight Club",
+        "Gone Girl"
+      ]
+    },
+    hint: "Academy, Decade, Source",
+    published: false,
+    title: "Movies"
+  },
+  {
+    groups: {
+      "Won Best Actor Oscar": [
+        "Ray",
+        "My Left Foot",
+        "Training Day",
+        "Forrest Gump"
+      ],
+      "Based on a True Story": [
+        "Ray",
+        "My Left Foot",
+        "A Beautiful Mind",
+        "Apollo 13"
+      ],
+      "Released in the 2000s": [
+        "Ray",
+        "Training Day",
+        "A Beautiful Mind",
+        "Eternal Sunshine of the Spotless Mind"
+      ]
+    },
+    hint: "Actor, True Story, Decade",
+    published: false,
+    title: "Movies"
+  },
+  {
+    groups: {
+      "Animated Feature": [
+        "Frozen",
+        "Toy Story 3",
+        "The Princess and the Frog",
+        "The Iron Giant"
+      ],
+      "Grossed over $300M worldwide": [
+        "Frozen",
+        "Toy Story 3",
+        "Cinderella (2015)",
+        "Titanic"
+      ],
+      "Based on a Fairy Tale": [
+        "Frozen",
+        "The Princess and the Frog",
+        "Cinderella (2015)",
+        "Mirror Mirror"
+      ]
+    },
+    hint: "Animation, Box Office, Fairy Tale",
+    published: false,
+    title: "Movies"
+  },
+  {
+    groups: {
+      "Won Best Picture": [
+        "Schindler's List",
+        "The Bridge on the River Kwai",
+        "Argo",
+        "The Artist"
+      ],
+      "Set during World War II": [
+        "Schindler's List",
+        "The Bridge on the River Kwai",
+        "The Imitation Game",
+        "Life Is Beautiful"
+      ],
+      "Based on a True Story": [
+        "Schindler's List",
+        "Argo",
+        "The Imitation Game",
+        "Catch Me If You Can"
+      ]
+    },
+    hint: "War, Academy, Nonfiction",
+    published: false,
+    title: "Movies"
+  },
+  {
+    groups: {
+      "Includes Time Travel": [
+        "Happy Death Day 2U",
+        "Looper",
+        "The Time Traveler's Wife",
+        "Primer"
+      ],
+      "Released after 2010": [
+        "Happy Death Day 2U",
+        "Looper",
+        "The Hunger Games",
+        "The Dark Knight Rises"
+      ],
+      "Has a Female Lead": [
+        "Happy Death Day 2U",
+        "The Time Traveler's Wife",
+        "The Hunger Games",
+        "Alien"
+      ]
+    },
+    hint: "Loops, Decade, Lead",
+    published: false,
+    title: "Movies"
+  },
+  {
+    groups: {
+      "Based on a Comic Book": [
+        "Black Panther",
+        "The Dark Knight",
+        "Scott Pilgrim vs. the World",
+        "Ghost World"
+      ],
+      "Features a Superhero": [
+        "Black Panther",
+        "The Dark Knight",
+        "The Incredibles",
+        "Brightburn"
+      ],
+      "Released in the 2010s": [
+        "Black Panther",
+        "Scott Pilgrim vs. the World",
+        "Brightburn",
+        "Gravity"
+      ]
+    },
+    hint: "Comics, Capes, Decade",
+    published: false,
+    title: "Movies"
+  },
+  {
+    groups: {
+      "Nominated for Best Picture": [
+        "Nomadland",
+        "The Hurt Locker",
+        "La La Land",
+        "Goodfellas"
+      ],
+      "Directed by a Woman": [
+        "Nomadland",
+        "The Hurt Locker",
+        "Wonder Woman",
+        "The Babadook"
+      ],
+      "Released after 2015": [
+        "Nomadland",
+        "La La Land",
+        "Wonder Woman",
+        "Baby Driver"
+      ]
+    },
+    hint: "Nomination, Director, Recency",
+    published: false,
+    title: "Movies"
   }
 ]
