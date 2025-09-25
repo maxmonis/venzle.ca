@@ -1,6 +1,6 @@
 import type { GameListItem } from "../src/lib/types"
 
-export let gameList: Array<GameListItem> = [
+export let directors: Array<GameListItem> = [
   {
     groups: {
       "Won Best Director Oscar": [
@@ -23,8 +23,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Academy, Box Office, Nationality",
-    published: true,
-    title: "Directors"
+    published: true
   },
   {
     groups: {
@@ -48,7 +47,6 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Genre, Script, Nationality",
-    published: false,
-    title: "Directors"
+    published: false
   }
 ]

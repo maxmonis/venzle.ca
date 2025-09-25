@@ -8,8 +8,7 @@ export let albums: Array<GameListItem> = [
       British: ["Spice", "OK Computer", "Led Zeppelin", "Abbey Road"]
     },
     hint: "Decade, Debut, Nationality",
-    published: true,
-    title: "Albums"
+    published: true
   },
   {
     groups: {
@@ -28,8 +27,7 @@ export let albums: Array<GameListItem> = [
       "Female Artist": ["Horses", "Blue", "Suzanne Vega", "Back to Black"]
     },
     hint: "Decade, Debut, Artist",
-    published: false,
-    title: "Albums"
+    published: false
   },
   {
     groups: {
@@ -53,8 +51,7 @@ export let albums: Array<GameListItem> = [
       ]
     },
     hint: "Debut, Era, Grammy",
-    published: false,
-    title: "Albums"
+    published: false
   }
 ]
 
@@ -81,8 +78,7 @@ export let composers: Array<GameListItem> = [
       ]
     },
     hint: "Era, Concertos, Age",
-    published: false,
-    title: "Composers"
+    published: false
   }
 ]
 
@@ -100,8 +96,7 @@ export let musicians: Array<GameListItem> = [
       "Pop Singer": ["Michael Jackson", "Celine Dion", "Lady Gaga", "Dua Lipa"]
     },
     hint: "Sales, Nationality, Genre",
-    published: true,
-    title: "Musicians"
+    published: true
   },
   {
     groups: {
@@ -120,8 +115,7 @@ export let musicians: Array<GameListItem> = [
       ]
     },
     hint: "Name, Band, Grammys",
-    published: true,
-    title: "Musicians"
+    published: true
   }
 ]
 
@@ -143,8 +137,7 @@ export let songs: Array<GameListItem> = [
       ]
     },
     hint: "Title, Peak, Decade",
-    published: true,
-    title: "Songs"
+    published: true
   },
   {
     groups: {
@@ -168,7 +161,6 @@ export let songs: Array<GameListItem> = [
       ]
     },
     hint: "Decade, Chart, Nationality",
-    published: false,
-    title: "Songs"
+    published: false
   }
 ]

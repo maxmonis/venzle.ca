@@ -1,6 +1,6 @@
 import type { GameListItem } from "../src/lib/types"
 
-export let gameList: Array<GameListItem> = [
+export let animals: Array<GameListItem> = [
   {
     creator: "Andrea Alcalá Vásquez",
     groups: {
@@ -9,8 +9,7 @@ export let gameList: Array<GameListItem> = [
       "Does Not Fly": ["Penguin", "Seal", "Ostrich", "Zebra"]
     },
     hint: "Habitat, Feathers, Grounded",
-    published: true,
-    title: "Animals"
+    published: true
   },
   {
     creator: "Hannah Monis",
@@ -20,8 +19,7 @@ export let gameList: Array<GameListItem> = [
       "Lives in Water": ["Shrimp", "Lobster", "Newt", "Box Jellyfish"]
     },
     hint: "Food, Friend, Habitat",
-    published: true,
-    title: "Animals"
+    published: true
   },
   {
     groups: {
@@ -35,8 +33,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Feline, Fur, Region",
-    published: true,
-    title: "Animals"
+    published: true
   },
   {
     groups: {
@@ -50,8 +47,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Diet, Reproduction, Habitat",
-    published: true,
-    title: "Animals"
+    published: true
   },
   {
     groups: {
@@ -65,8 +61,7 @@ export let gameList: Array<GameListItem> = [
       "No Hooves": ["Elephant", "Camel", "Orangutan", "Raccoon"]
     },
     hint: "Saddle, Region, Feet",
-    published: true,
-    title: "Animals"
+    published: true
   },
   {
     groups: {
@@ -75,8 +70,7 @@ export let gameList: Array<GameListItem> = [
       "Semi-Aquatic": ["Beaver", "Capybara", "Otter", "Hippopotamus"]
     },
     hint: "Region, Teeth, Habitat",
-    published: true,
-    title: "Animals"
+    published: true
   },
   {
     groups: {
@@ -85,8 +79,7 @@ export let gameList: Array<GameListItem> = [
       Nocturnal: ["Elf Owl", "Fruit Bat", "Scorpion", "Raccoon"]
     },
     hint: "Wings, Arid, Night",
-    published: false,
-    title: "Animals"
+    published: false
   },
   {
     groups: {
@@ -105,8 +98,7 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "Venom, Eggs, Region",
-    published: false,
-    title: "Animals"
+    published: false
   },
   {
     groups: {
@@ -115,7 +107,6 @@ export let gameList: Array<GameListItem> = [
       "Is Nocturnal": ["Barn Owl", "Kakapo", "Bat", "Hedgehog"]
     },
     hint: "Feathers, Flight, Night",
-    published: false,
-    title: "Animals"
+    published: false
   }
 ]
