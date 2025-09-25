@@ -112,7 +112,7 @@ export let gameList: Array<GameListItem> = [
       "Won Ballon d'Or": [
         "Lionel Messi",
         "Cristiano Ronaldo",
-        "Diego Maradona",
+        "Fabio Cannavaro",
         "Johan Cruyff"
       ],
       "Won Champions League": [
@@ -123,7 +123,7 @@ export let gameList: Array<GameListItem> = [
       ],
       "Won World Cup": [
         "Lionel Messi",
-        "Diego Maradona",
+        "Fabio Cannavaro",
         "Andrés Iniesta",
         "Pelé"
       ]
