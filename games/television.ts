@@ -29,8 +29,33 @@ export let gameList: Array<GameListItem> = [
   },
   {
     groups: {
+      Animated: [
+        "The Simpsons",
+        "SpongeBob SquarePants",
+        "Bob's Burgers",
+        "Avatar: The Last Airbender"
+      ],
+      "Aired in the 1990s": [
+        "The Simpsons",
+        "SpongeBob SquarePants",
+        "The X-Files",
+        "ER"
+      ],
+      "Originally Aired on FOX": [
+        "The Simpsons",
+        "Bob's Burgers",
+        "The X-Files",
+        "Prison Break"
+      ]
+    },
+    hint: "Animation, Decade, Network",
+    published: false,
+    title: "TV Shows"
+  },
+  {
+    groups: {
       "Female Leads": ["Girls", "Insecure", "Broad City", "Charmed"],
-      "On HBO": ["Girls", "Insecure", "Succession", "Westworld"],
+      "Aired On HBO": ["Girls", "Insecure", "Succession", "Westworld"],
       "Set in New York City": [
         "Girls",
         "Broad City",
@@ -38,11 +63,35 @@ export let gameList: Array<GameListItem> = [
         "How I Met Your Mother"
       ]
     },
-    hint: "Heroines, Premium, Metropolis",
+    hint: "Heroines, Network, Metropolis",
     published: false,
     title: "TV Shows"
   },
-
+  {
+    groups: {
+      Animated: [
+        "Rick and Morty",
+        "South Park",
+        "Gravity Falls",
+        "The Flintstones"
+      ],
+      "Contain Mature Content": [
+        "Rick and Morty",
+        "South Park",
+        "Fleabag",
+        "Breaking Bad"
+      ],
+      "Premiered in the 2010s": [
+        "Rick and Morty",
+        "Gravity Falls",
+        "Fleabag",
+        "Young Sheldon"
+      ]
+    },
+    hint: "Animation, Rating, Decade",
+    published: false,
+    title: "TV Shows"
+  },
   {
     groups: {
       "Set in New York City": [
@@ -65,6 +114,101 @@ export let gameList: Array<GameListItem> = [
       ]
     },
     hint: "City, Format, Network",
+    published: false,
+    title: "TV Shows"
+  },
+  {
+    groups: {
+      Sitcom: [
+        "Roseanne",
+        "Happy Days",
+        "The Cosby Show",
+        "The Big Bang Theory"
+      ],
+      "Aired on ABC": ["Roseanne", "Happy Days", "Jimmy Kimmel Live!", "Lost"],
+      "Headlined by a Comedian": [
+        "Roseanne",
+        "The Cosby Show",
+        "Jimmy Kimmel Live!",
+        "The Tonight Show"
+      ]
+    },
+    hint: "Genre, Network, Comedian",
+    published: false,
+    title: "TV Shows"
+  },
+  {
+    groups: {
+      "Competition show": [
+        "The Great British Bake Off",
+        "The Voice (US)",
+        "Strictly Come Dancing",
+        "Survivor"
+      ],
+      "Premiered in the 2010s": [
+        "The Great British Bake Off",
+        "The Voice (US)",
+        "Peaky Blinders",
+        "House of Cards"
+      ],
+      "Produced in the UK": [
+        "The Great British Bake Off",
+        "Strictly Come Dancing",
+        "Peaky Blinders",
+        "Doctor Who"
+      ]
+    },
+    hint: "Contests, Decade, UK",
+    published: false,
+    title: "TV Shows"
+  },
+  {
+    groups: {
+      "Set in the 19th Century": [
+        "Pride and Prejudice (1995)",
+        "Ripper Street",
+        "The Alienist",
+        "Hell on Wheels"
+      ],
+      "Aired on BBC": [
+        "Pride and Prejudice (1995)",
+        "Ripper Street",
+        "Wolf Hall",
+        "Luther"
+      ],
+      "Adapted from a Novel": [
+        "Pride and Prejudice (1995)",
+        "The Alienist",
+        "Wolf Hall",
+        "The Handmaid's Tale"
+      ]
+    },
+    hint: "Century, Network, Source Material",
+    published: false,
+    title: "TV Shows"
+  },
+  {
+    groups: {
+      "Detective Show": [
+        "Bosch",
+        "True Detective",
+        "Inspector Morse",
+        "Columbo"
+      ],
+      "Premiered in the 2010s": [
+        "Bosch",
+        "True Detective",
+        "Outlander",
+        "Black Mirror"
+      ],
+      "Adapted from a Book": [
+        "Bosch",
+        "Inspector Morse",
+        "Outlander",
+        "Band of Brothers"
+      ]
+    },
+    hint: "Police, Decade, Source Material",
     published: false,
     title: "TV Shows"
   }
