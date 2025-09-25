@@ -8,7 +8,7 @@
     <script>
       window.dataLayer = window.dataLayer || []
       function gtag() {
-        dataLayer.push(arguments)
+        if (location.hostname != "localhost") dataLayer.push(arguments)
       }
       gtag("js", new Date())
       gtag("config", "G-4DLVDTG0RZ")
