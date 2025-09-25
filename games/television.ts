@@ -48,7 +48,7 @@ export let television: Array<GameListItem> = [
       ]
     },
     hint: "Animation, Decade, Network",
-    published: false
+    published: true
   },
   {
     groups: {

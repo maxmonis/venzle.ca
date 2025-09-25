@@ -90,22 +90,22 @@ export let miscellaneous: Array<GameListItem> = [
   },
   {
     groups: {
-      "Official language of the United Nations": [
+      "Official Language of the UN": [
         "English",
         "French",
         "Mandarin Chinese",
         "Russian"
       ],
-      "Uses Latin Script": ["English", "French", "Spanish", "Vietnamese"],
-      "More than 200 million native speakers": [
+      "Uses Latin Script": ["English", "French", "Portuguese", "Vietnamese"],
+      "200M+ Native Speakers": [
         "English",
         "Mandarin Chinese",
-        "Spanish",
+        "Portuguese",
         "Hindi"
       ]
     },
-    hint: "UN, Script, Large native population",
-    published: false,
+    hint: "UN, Script, Native Speakers",
+    published: true,
     title: "Languages"
   },
   {

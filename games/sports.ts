@@ -140,7 +140,7 @@ export let sports: Array<GameListItem> = [
         "Figure Skating",
         "Diving"
       ],
-      "Uses a Board": [
+      "Board Sport": [
         "Snowboard Halfpipe",
         "Skateboarding Park",
         "Snowboard Cross",
@@ -154,7 +154,7 @@ export let sports: Array<GameListItem> = [
       ]
     },
     hint: "Scoring, Board, Season",
-    published: false,
+    published: true,
     title: "Olympics"
   },
   {

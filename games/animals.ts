@@ -78,8 +78,8 @@ export let animals: Array<GameListItem> = [
       "Lives in the Desert": ["Elf Owl", "Roadrunner", "Scorpion", "Camel"],
       Nocturnal: ["Elf Owl", "Fruit Bat", "Scorpion", "Raccoon"]
     },
-    hint: "Wings, Arid, Night",
-    published: false
+    hint: "Wings, Habitat, Night",
+    published: true
   },
   {
     groups: {

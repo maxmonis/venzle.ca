@@ -36,6 +36,6 @@ export let countries: Array<GameListItem> = [
       "Spanish is Official Language": ["Venezuela", "Cuba", "Peru", "Spain"]
     },
     hint: "Beaches, Trees, Language",
-    published: false
+    published: true
   }
 ]

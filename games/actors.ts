@@ -72,7 +72,7 @@ export let actors: Array<GameListItem> = [
       ]
     },
     hint: "Academy, Director, Nationality",
-    published: false
+    published: true
   },
   {
     groups: {

@@ -155,6 +155,6 @@ export let artists: Array<GameListItem> = [
       ]
     },
     hint: "Nationality, Easel, Century",
-    published: false
+    published: true
   }
 ]

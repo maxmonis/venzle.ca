@@ -850,11 +850,148 @@ let weekSix: GameList = [
   }
 ]
 
+let weekSeven: GameList = [
+  {
+    groups: {
+      "Can Fly": ["Elf Owl", "Roadrunner", "Fruit Bat", "Swan"],
+      "Lives in the Desert": ["Elf Owl", "Roadrunner", "Scorpion", "Camel"],
+      Nocturnal: ["Elf Owl", "Fruit Bat", "Scorpion", "Raccoon"]
+    },
+    hint: "Wings, Habitat, Night",
+    title: "Animals"
+  },
+  {
+    groups: {
+      Animated: [
+        "The Simpsons",
+        "SpongeBob SquarePants",
+        "Bob's Burgers",
+        "Avatar: The Last Airbender"
+      ],
+      "Aired in the 1990s": [
+        "The Simpsons",
+        "SpongeBob SquarePants",
+        "The X-Files",
+        "ER"
+      ],
+      "Originally Aired on FOX": [
+        "The Simpsons",
+        "Bob's Burgers",
+        "The X-Files",
+        "Prison Break"
+      ]
+    },
+    hint: "Animation, Decade, Network",
+    title: "TV Shows"
+  },
+  {
+    groups: {
+      Spanish: [
+        "Salvador Dalí",
+        "Francisco Goya",
+        "Eduardo Chillida",
+        "Miguel de Cervantes"
+      ],
+      Painter: [
+        "Salvador Dalí",
+        "Francisco Goya",
+        "Jackson Pollock",
+        "Jan van Eyck"
+      ],
+      "Active in the 20th Century": [
+        "Salvador Dalí",
+        "Eduardo Chillida",
+        "Jackson Pollock",
+        "Igor Stravinsky"
+      ]
+    },
+    hint: "Nationality, Easel, Century",
+    title: "Artists"
+  },
+  {
+    groups: {
+      Caribbean: ["Venezuela", "Suriname", "Cuba", "Jamaica"],
+      "Contains Amazon Rainforest": ["Venezuela", "Suriname", "Peru", "Brazil"],
+      "Spanish is Official Language": ["Venezuela", "Cuba", "Peru", "Spain"]
+    },
+    hint: "Beaches, Trees, Language",
+    title: "Countries"
+  },
+  {
+    groups: {
+      "Won an Acting Oscar": [
+        "Gary Oldman",
+        "Sean Penn",
+        "Eddie Redmayne",
+        "Julia Roberts"
+      ],
+      "Has Directed a Feature Film": [
+        "Gary Oldman",
+        "Sean Penn",
+        "Ralph Fiennes",
+        "Ben Affleck"
+      ],
+      British: [
+        "Gary Oldman",
+        "Eddie Redmayne",
+        "Ralph Fiennes",
+        "Keira Knightley"
+      ]
+    },
+    hint: "Academy, Director, Nationality",
+    title: "Actors"
+  },
+  {
+    groups: {
+      "Official Language of the UN": [
+        "English",
+        "French",
+        "Mandarin Chinese",
+        "Russian"
+      ],
+      "Uses Latin Script": ["English", "French", "Portuguese", "Vietnamese"],
+      "200M+ Native Speakers": [
+        "English",
+        "Mandarin Chinese",
+        "Portuguese",
+        "Hindi"
+      ]
+    },
+    hint: "UN, Script, Native Speakers",
+    title: "Languages"
+  },
+  {
+    groups: {
+      "Judged Event": [
+        "Snowboard Halfpipe",
+        "Skateboarding Park",
+        "Figure Skating",
+        "Diving"
+      ],
+      "Board Sport": [
+        "Snowboard Halfpipe",
+        "Skateboarding Park",
+        "Snowboard Cross",
+        "Windsurfing"
+      ],
+      "Winter Sport": [
+        "Snowboard Halfpipe",
+        "Snowboard Cross",
+        "Figure Skating",
+        "Speed Skating"
+      ]
+    },
+    hint: "Scoring, Board, Season",
+    title: "Olympics"
+  }
+]
+
 export let gameList = demo.concat(
   weekOne,
   weekTwo,
   weekThree,
   weekFour,
   weekFive,
-  weekSix
+  weekSix,
+  weekSeven
 )
