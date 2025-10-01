@@ -62,7 +62,7 @@ export let television: Array<GameListItem> = [
       ]
     },
     hint: "Heroines, Network, Metropolis",
-    published: false
+    published: true
   },
   {
     groups: {

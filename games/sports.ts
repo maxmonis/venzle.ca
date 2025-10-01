@@ -159,11 +159,11 @@ export let sports: Array<GameListItem> = [
   },
   {
     groups: {
-      "Won MVP": ["Larry Bird", "Kevin Garnett", "Tim Duncan", "Derrick Rose"],
+      "Won MVP": ["Larry Bird", "Tim Duncan", "Kevin Garnett", "Derrick Rose"],
       "Won Finals MVP": [
         "Larry Bird",
-        "Paul Pierce",
         "Tim Duncan",
+        "Paul Pierce",
         "Andre Iguodala"
       ],
       "Played for Boston Celtics": [
@@ -173,8 +173,8 @@ export let sports: Array<GameListItem> = [
         "Ray Allen"
       ]
     },
-    hint: "Russell Trophy, Jordan Trophy, Red Auerbach",
-    published: false,
+    hint: "Russell Trophy, Jordan Trophy, Beantown",
+    published: true,
     title: "Basketball"
   }
 ]

@@ -98,7 +98,7 @@ export let animals: Array<GameListItem> = [
       ]
     },
     hint: "Venom, Eggs, Region",
-    published: false
+    published: true
   },
   {
     groups: {

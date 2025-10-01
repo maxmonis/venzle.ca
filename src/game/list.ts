@@ -986,6 +986,142 @@ let weekSeven: GameList = [
   }
 ]
 
+let weekEight: GameList = [
+  {
+    groups: {
+      Venomous: [
+        "Inland Taipan",
+        "King Cobra",
+        "Common Death Adder",
+        "Rattlesnake"
+      ],
+      "Lays Eggs": ["Inland Taipan", "King Cobra", "Emu", "Chicken"],
+      "Found in Australia": [
+        "Inland Taipan",
+        "Common Death Adder",
+        "Emu",
+        "Koala"
+      ]
+    },
+    hint: "Venom, Eggs, Region",
+    title: "Animals"
+  },
+  {
+    groups: {
+      "Won Best Picture": [
+        "The English Patient",
+        "Braveheart",
+        "The Godfather",
+        "The Departed"
+      ],
+      "Released in the 1990s": [
+        "The English Patient",
+        "Braveheart",
+        "Fight Club",
+        "Pulp Fiction"
+      ],
+      "Based on a Book": [
+        "The English Patient",
+        "The Godfather",
+        "Fight Club",
+        "Gone Girl"
+      ]
+    },
+    hint: "Academy, Decade, Source",
+    title: "Movies"
+  },
+  {
+    groups: {
+      "UNESCO World Heritage Site": [
+        "Mont-Saint-Michel",
+        "Acropolis of Athens",
+        "Robben Island",
+        "Machu Picchu"
+      ],
+      "Located in Europe": [
+        "Mont-Saint-Michel",
+        "Acropolis of Athens",
+        "Blue Lagoon",
+        "Eiffel Tower"
+      ],
+      "Located on an Island": [
+        "Mont-Saint-Michel",
+        "Robben Island",
+        "Blue Lagoon",
+        "Alcatraz"
+      ]
+    },
+    hint: "UNESCO, Region, Island",
+    title: "Landmarks"
+  },
+  {
+    groups: {
+      "Female Leads": ["Girls", "Insecure", "Broad City", "Charmed"],
+      "Aired On HBO": ["Girls", "Insecure", "Succession", "Westworld"],
+      "Set in New York City": [
+        "Girls",
+        "Broad City",
+        "Succession",
+        "How I Met Your Mother"
+      ]
+    },
+    hint: "Heroines, Network, Metropolis",
+    title: "TV Shows"
+  },
+  {
+    groups: {
+      "Written by Shakespeare": [
+        "The Winter's Tale",
+        "A Midsummer Night's Dream",
+        "King Lear",
+        "Timon of Athens"
+      ],
+      Comedy: [
+        "The Winter's Tale",
+        "A Midsummer Night's Dream",
+        "The King and I",
+        "Noises Off"
+      ],
+      "Features a Royal Family": [
+        "The Winter's Tale",
+        "King Lear",
+        "The King and I",
+        "The Lion in Winter"
+      ]
+    },
+    hint: "Playwright, Tone, Throne",
+    title: "Plays"
+  },
+  {
+    groups: {
+      Philosopher: ["Plato", "Socrates", "Aristotle", "Thales"],
+      "From Athens": ["Plato", "Socrates", "Aristophanes", "Pericles"],
+      "Wrote Surviving Works": ["Plato", "Aristotle", "Aristophanes", "Homer"]
+    },
+    hint: "School, City, Texts",
+    title: "Ancient Greeks"
+  },
+  {
+    groups: {
+      "Won MVP": ["Larry Bird", "Tim Duncan", "Kevin Garnett", "Derrick Rose"],
+      "Won Finals MVP": [
+        "Larry Bird",
+        "Tim Duncan",
+        "Paul Pierce",
+        "Andre Iguodala"
+      ],
+      "Played for Boston Celtics": [
+        "Larry Bird",
+        "Kevin Garnett",
+        "Paul Pierce",
+        "Ray Allen"
+      ]
+    },
+    hint: "Russell Trophy, Jordan Trophy, Beantown",
+    title: "Basketball"
+  }
+]
+
 export let gameList = demo.concat(
   weekOne,
   weekTwo,
@@ -993,5 +1129,6 @@ export let gameList = demo.concat(
   weekFour,
   weekFive,
   weekSix,
-  weekSeven
+  weekSeven,
+  weekEight
 )

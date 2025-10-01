@@ -95,7 +95,7 @@ export let movies: Array<GameListItem> = [
       ]
     },
     hint: "Academy, Decade, Source",
-    published: false
+    published: true
   },
   {
     groups: {

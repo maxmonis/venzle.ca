@@ -48,7 +48,7 @@ export let geography: Array<GameListItem> = [
       ]
     },
     hint: "UNESCO, Region, Island",
-    published: false,
+    published: true,
     title: "Landmarks"
   },
   {

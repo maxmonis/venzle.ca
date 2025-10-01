@@ -55,10 +55,10 @@ export let history: Array<GameListItem> = [
     groups: {
       Philosopher: ["Plato", "Socrates", "Aristotle", "Thales"],
       "From Athens": ["Plato", "Socrates", "Aristophanes", "Pericles"],
-      "Wrote surviving works": ["Plato", "Aristotle", "Aristophanes", "Homer"]
+      "Wrote Surviving Works": ["Plato", "Aristotle", "Aristophanes", "Homer"]
     },
     hint: "School, City, Texts",
-    published: false,
+    published: true,
     title: "Ancient Greeks"
   },
   {

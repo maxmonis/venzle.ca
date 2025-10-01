@@ -69,7 +69,7 @@ export let plays: Array<GameListItem> = [
         "The Lion in Winter"
       ]
     },
-    hint: "Playwright, Tone, Royalty",
-    published: false
+    hint: "Playwright, Tone, Throne",
+    published: true
   }
 ]
