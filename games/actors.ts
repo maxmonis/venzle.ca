@@ -100,7 +100,7 @@ export let actors: Array<GameListItem> = [
   },
   {
     groups: {
-      "Appeared in a Quentin Tarantino film": [
+      "Appeared in a Quentin Tarantino Film": [
         "Leonardo DiCaprio",
         "Christoph Waltz",
         "Eli Roth",
@@ -120,7 +120,7 @@ export let actors: Array<GameListItem> = [
       ]
     },
     hint: "Tarantino, Globes, DOB",
-    published: false
+    published: true
   },
   {
     groups: {

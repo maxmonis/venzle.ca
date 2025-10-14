@@ -48,7 +48,7 @@ export let history: Array<GameListItem> = [
       ]
     },
     hint: "Century, Continent, Uprising",
-    published: false,
+    published: true,
     title: "History"
   },
   {

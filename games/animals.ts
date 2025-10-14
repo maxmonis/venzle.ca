@@ -102,11 +102,11 @@ export let animals: Array<GameListItem> = [
   },
   {
     groups: {
-      "Has Feathers": ["Barn Owl", "Sparrow", "Kakapo", "Ostrich"],
+      "Has Feathers": ["Barn Owl", "Sparrow", "Kākāpō", "Ostrich"],
       "Can Fly": ["Barn Owl", "Sparrow", "Bat", "Dragonfly"],
-      "Is Nocturnal": ["Barn Owl", "Kakapo", "Bat", "Hedgehog"]
+      "Is Nocturnal": ["Barn Owl", "Kākāpō", "Bat", "Hedgehog"]
     },
     hint: "Feathers, Flight, Night",
-    published: false
+    published: true
   }
 ]

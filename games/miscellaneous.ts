@@ -85,7 +85,7 @@ export let miscellaneous: Array<GameListItem> = [
       Tropical: ["Mango", "Pineapple", "Avocado", "Breadfruit"]
     },
     hint: "Sweet, Stone, Climate",
-    published: false,
+    published: true,
     title: "Fruits"
   },
   {

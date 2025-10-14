@@ -176,6 +176,31 @@ export let sports: Array<GameListItem> = [
     hint: "Russell Trophy, Jordan Trophy, Beantown",
     published: true,
     title: "Basketball"
+  },
+  {
+    groups: {
+      "Won Multiple World Series": [
+        "Derek Jeter",
+        "David Ortiz",
+        "Reggie Jackson",
+        "Buster Posey"
+      ],
+      "Never Won MVP": [
+        "Derek Jeter",
+        "David Ortiz",
+        "Alfonso Soriano",
+        "Adrián Beltré"
+      ],
+      "Played for New York Yankees": [
+        "Derek Jeter",
+        "Reggie Jackson",
+        "Alfonso Soriano",
+        "Don Mattingly"
+      ]
+    },
+    hint: "Rings, No MVP, Bronx",
+    published: true,
+    title: "Baseball"
   }
 ]
 

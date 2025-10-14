@@ -1122,6 +1122,152 @@ let weekEight: GameList = [
   }
 ]
 
+export let weekNine: GameList = [
+  {
+    groups: {
+      "Has Feathers": ["Barn Owl", "Sparrow", "Kākāpō", "Ostrich"],
+      "Can Fly": ["Barn Owl", "Sparrow", "Bat", "Dragonfly"],
+      "Is Nocturnal": ["Barn Owl", "Kākāpō", "Bat", "Hedgehog"]
+    },
+    hint: "Feathers, Flight, Night",
+    title: "Animals"
+  },
+  {
+    groups: {
+      "Appeared in a Quentin Tarantino Film": [
+        "Leonardo DiCaprio",
+        "Christoph Waltz",
+        "Eli Roth",
+        "Michael Madsen"
+      ],
+      "Golden Globe Winner": [
+        "Leonardo DiCaprio",
+        "Christoph Waltz",
+        "Joaquin Phoenix",
+        "Meryl Streep"
+      ],
+      "Born in the 1970s": [
+        "Leonardo DiCaprio",
+        "Eli Roth",
+        "Joaquin Phoenix",
+        "Rachel McAdams"
+      ]
+    },
+    hint: "Tarantino, Globes, DOB",
+    title: "Actors"
+  },
+  {
+    groups: {
+      Italian: [
+        "The Creation of Adam",
+        "Lamentation (The Mourning of Christ)",
+        "Mona Lisa",
+        "The Birth of Venus"
+      ],
+      Religious: [
+        "The Creation of Adam",
+        "Lamentation (The Mourning of Christ)",
+        "Isenheim Altarpiece",
+        "Ghent Altarpiece"
+      ],
+      "16th Century": [
+        "The Creation of Adam",
+        "Mona Lisa",
+        "Isenheim Altarpiece",
+        "The Ambassadors"
+      ]
+    },
+    hint: "Country, Faith, Century",
+    title: "Works of Art"
+  },
+  {
+    groups: {
+      "Happened in the 18th Century": [
+        "American Revolution",
+        "Boston Tea Party",
+        "French Revolution",
+        "Cook's First Voyage"
+      ],
+      "Happened in North America": [
+        "American Revolution",
+        "Boston Tea Party",
+        "Mexican Revolution",
+        "California Gold Rush"
+      ],
+      Revolution: [
+        "American Revolution",
+        "Mexican Revolution",
+        "French Revolution",
+        "Russian Revolution"
+      ]
+    },
+    hint: "Century, Continent, Uprising",
+    title: "History"
+  },
+  {
+    groups: {
+      "Won Best Actor Oscar": [
+        "Ray",
+        "My Left Foot",
+        "Training Day",
+        "Forrest Gump"
+      ],
+      "Based on a True Story": [
+        "Ray",
+        "My Left Foot",
+        "A Beautiful Mind",
+        "Apollo 13"
+      ],
+      "Released in the 2000s": [
+        "Ray",
+        "Training Day",
+        "A Beautiful Mind",
+        "Eternal Sunshine of the Spotless Mind"
+      ]
+    },
+    hint: "Actor, True Story, Decade",
+    title: "Movies"
+  },
+  {
+    groups: {
+      "Commonly Used in Desserts": [
+        "Mango",
+        "Cherry",
+        "Pineapple",
+        "Strawberry"
+      ],
+      "Has a Pit": ["Mango", "Cherry", "Avocado", "Olive"],
+      Tropical: ["Mango", "Pineapple", "Avocado", "Breadfruit"]
+    },
+    hint: "Sweet, Stone, Climate",
+    title: "Fruits"
+  },
+  {
+    groups: {
+      "Won Multiple World Series": [
+        "Derek Jeter",
+        "David Ortiz",
+        "Reggie Jackson",
+        "Buster Posey"
+      ],
+      "Never Won MVP": [
+        "Derek Jeter",
+        "David Ortiz",
+        "Alfonso Soriano",
+        "Adrián Beltré"
+      ],
+      "Played for New York Yankees": [
+        "Derek Jeter",
+        "Reggie Jackson",
+        "Alfonso Soriano",
+        "Don Mattingly"
+      ]
+    },
+    hint: "Rings, No MVP, Bronx",
+    title: "Baseball"
+  }
+]
+
 export let gameList = demo.concat(
   weekOne,
   weekTwo,
@@ -1130,5 +1276,6 @@ export let gameList = demo.concat(
   weekFive,
   weekSix,
   weekSeven,
-  weekEight
+  weekEight,
+  weekNine
 )

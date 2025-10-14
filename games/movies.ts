@@ -119,7 +119,7 @@ export let movies: Array<GameListItem> = [
       ]
     },
     hint: "Actor, True Story, Decade",
-    published: false
+    published: true
   },
   {
     groups: {

@@ -47,7 +47,7 @@ export let art: Array<GameListItem> = [
       ]
     },
     hint: "Country, Faith, Century",
-    published: false
+    published: true
   },
   {
     groups: {
