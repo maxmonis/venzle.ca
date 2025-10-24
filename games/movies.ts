@@ -167,7 +167,7 @@ export let movies: Array<GameListItem> = [
       ]
     },
     hint: "War, Academy, Nonfiction",
-    published: false
+    published: true
   },
   {
     groups: {

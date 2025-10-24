@@ -155,7 +155,7 @@ export let miscellaneous: Array<GameListItem> = [
       ]
     },
     hint: "Nationality, Movement, Century",
-    published: false,
+    published: true,
     title: "Philosophers"
   }
 ]

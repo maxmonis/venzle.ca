@@ -161,6 +161,6 @@ export let songs: Array<GameListItem> = [
       ]
     },
     hint: "Decade, Chart, Nationality",
-    published: false
+    published: true
   }
 ]

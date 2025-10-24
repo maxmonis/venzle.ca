@@ -1122,7 +1122,7 @@ let weekEight: GameList = [
   }
 ]
 
-export let weekNine: GameList = [
+let weekNine: GameList = [
   {
     groups: {
       "Has Feathers": ["Barn Owl", "Sparrow", "Kākāpō", "Ostrich"],
@@ -1268,6 +1268,177 @@ export let weekNine: GameList = [
   }
 ]
 
+let weekTen: GameList = [
+  {
+    groups: {
+      "Bird of Prey": [
+        "American Kestrel",
+        "Common Kestrel",
+        "Bald Eagle",
+        "Eurasian Eagle-Owl"
+      ],
+      "Can Hover": [
+        "American Kestrel",
+        "Common Kestrel",
+        "Ruby-throated Hummingbird",
+        "Pied Kingfisher"
+      ],
+      "Native to the Americas": [
+        "American Kestrel",
+        "Bald Eagle",
+        "Ruby-throated Hummingbird",
+        "Blue Jay"
+      ]
+    },
+    hint: "Raptor, Hover, Region",
+    title: "Birds"
+  },
+  {
+    groups: {
+      "Won Best Picture": [
+        "Schindler's List",
+        "The Bridge on the River Kwai",
+        "Argo",
+        "The Artist"
+      ],
+      "Set during World War II": [
+        "Schindler's List",
+        "The Bridge on the River Kwai",
+        "The Imitation Game",
+        "Life Is Beautiful"
+      ],
+      "Based on a True Story": [
+        "Schindler's List",
+        "Argo",
+        "The Imitation Game",
+        "Catch Me If You Can"
+      ]
+    },
+    hint: "War, Academy, Nonfiction",
+    title: "Movies"
+  },
+  {
+    groups: {
+      "Highest Point in its Country": [
+        "Kilimanjaro",
+        "Mount Fuji",
+        "Aconcagua",
+        "Ben Nevis"
+      ],
+      Volcanic: [
+        "Kilimanjaro",
+        "Mount Fuji",
+        "Mount Rainier",
+        "Mount Vesuvius"
+      ],
+      "Over 4,000 Meters Tall": [
+        "Kilimanjaro",
+        "Aconcagua",
+        "Mount Rainier",
+        "Mount Whitney"
+      ]
+    },
+    hint: "National Record, Lava, Height",
+    title: "Mountains"
+  },
+  {
+    groups: {
+      "Released in the 1980s": [
+        "Careless Whisper",
+        "Billie Jean",
+        "Love Will Tear Us Apart",
+        "Blister in the Sun"
+      ],
+      "#1 on Billboard Hot 100": [
+        "Careless Whisper",
+        "Billie Jean",
+        "Rolling in the Deep",
+        "Please Please Please"
+      ],
+      "By a British Artist": [
+        "Careless Whisper",
+        "Love Will Tear Us Apart",
+        "Rolling in the Deep",
+        "Wonderwall"
+      ]
+    },
+    hint: "Decade, Chart, Nationality",
+    title: "Songs"
+  },
+  {
+    groups: {
+      German: [
+        "Martin Heidegger",
+        "Friedrich Nietzsche",
+        "Jürgen Habermas",
+        "Gottfried Wilhelm Leibniz"
+      ],
+      Existentialist: [
+        "Martin Heidegger",
+        "Friedrich Nietzsche",
+        "Jean-Paul Sartre",
+        "Søren Kierkegaard"
+      ],
+      "Major 20th-Century Work": [
+        "Martin Heidegger",
+        "Jürgen Habermas",
+        "Jean-Paul Sartre",
+        "Ludwig Wittgenstein"
+      ]
+    },
+    hint: "Nationality, Movement, Century",
+    title: "Philosophers"
+  },
+  {
+    groups: {
+      Animated: [
+        "Rick and Morty",
+        "South Park",
+        "Gravity Falls",
+        "The Flintstones"
+      ],
+      "Contain Mature Content": [
+        "Rick and Morty",
+        "South Park",
+        "Fleabag",
+        "Breaking Bad"
+      ],
+      "Premiered in the 2010s": [
+        "Rick and Morty",
+        "Gravity Falls",
+        "Fleabag",
+        "Young Sheldon"
+      ]
+    },
+    hint: "Animation, Rating, Decade",
+    title: "TV Shows"
+  },
+  {
+    groups: {
+      "Led League in Assists Per Game": [
+        "LeBron James",
+        "James Harden",
+        "Magic Johnson",
+        "Steve Nash"
+      ],
+      "Led League in Points Per Game": [
+        "LeBron James",
+        "James Harden",
+        "Michael Jordan",
+        "Allen Iverson"
+      ],
+      "Won Finals MVP": [
+        "LeBron James",
+        "Magic Johnson",
+        "Michael Jordan",
+        "Andre Iguodala"
+      ]
+    },
+    hint: "PPG, APG, Finals MVP",
+    title: "Basketball"
+  }
+]
+
 export let gameList = demo.concat(
   weekOne,
   weekTwo,
@@ -1277,5 +1448,6 @@ export let gameList = demo.concat(
   weekSix,
   weekSeven,
   weekEight,
-  weekNine
+  weekNine,
+  weekTen
 )

@@ -93,7 +93,7 @@ export let geography: Array<GameListItem> = [
   },
   {
     groups: {
-      "Highest point in its Country": [
+      "Highest Point in its Country": [
         "Kilimanjaro",
         "Mount Fuji",
         "Aconcagua",
@@ -113,7 +113,7 @@ export let geography: Array<GameListItem> = [
       ]
     },
     hint: "National Record, Lava, Height",
-    published: false,
+    published: true,
     title: "Mountains"
   }
 ]

@@ -201,6 +201,31 @@ export let sports: Array<GameListItem> = [
     hint: "Rings, No MVP, Bronx",
     published: true,
     title: "Baseball"
+  },
+  {
+    groups: {
+      "Led League in Assists Per Game": [
+        "LeBron James",
+        "James Harden",
+        "Magic Johnson",
+        "Steve Nash"
+      ],
+      "Led League in Points Per Game": [
+        "LeBron James",
+        "James Harden",
+        "Michael Jordan",
+        "Allen Iverson"
+      ],
+      "Won Finals MVP": [
+        "LeBron James",
+        "Magic Johnson",
+        "Michael Jordan",
+        "Andre Iguodala"
+      ]
+    },
+    hint: "PPG, APG, Finals MVP",
+    published: true,
+    title: "Basketball"
   }
 ]
 

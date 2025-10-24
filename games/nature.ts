@@ -33,7 +33,7 @@ export let nature: Array<GameListItem> = [
       ]
     },
     hint: "Raptor, Hover, Region",
-    published: false,
+    published: true,
     title: "Birds"
   },
   {
