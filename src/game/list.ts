@@ -13,7 +13,22 @@ type GameList = [
   PublishedGame
 ]
 
-let demo: [PublishedGame] = [
+interface Puzzle<T extends string>
+  extends Omit<GameListItem, "published" | "title"> {
+  title: T
+}
+
+type Week = [
+  Puzzle<"Albums">,
+  Puzzle<"Songs">,
+  Puzzle<"Musicians">,
+  Puzzle<"Actors">,
+  Puzzle<"TV Shows">,
+  Puzzle<"Movies">,
+  Puzzle<"Baseball" | "Basketball" | "Football">
+]
+
+let demo: [PublishedGame | Puzzle<"Demo Puzzle">] = [
   {
     groups: {
       Color: ["Orange", "Grape", "Pine", "Purple"],
@@ -1439,6 +1454,162 @@ let weekTen: GameList = [
   }
 ]
 
+let weekEleven: Week = [
+  {
+    groups: {
+      "Released in the 1970s": [
+        "The Wall",
+        "Physical Graffiti",
+        "The Rise and Fall of Ziggy Stardust",
+        "Rumours"
+      ],
+      "Double Album": [
+        "The Wall",
+        "Physical Graffiti",
+        "Tommy",
+        "The Beatles (White Album)"
+      ],
+      "Concept Album": [
+        "The Wall",
+        "The Rise and Fall of Ziggy Stardust",
+        "Tommy",
+        "Good Kid, M.A.A.D City"
+      ]
+    },
+    hint: "Decade, Length, Theme",
+    title: "Albums"
+  },
+  {
+    groups: {
+      "Released in the 1980s": [
+        "How Will I Know",
+        "Billie Jean",
+        "Fast Car",
+        "In the Air Tonight"
+      ],
+      "#1 on Billboard Hot 100": [
+        "How Will I Know",
+        "Billie Jean",
+        "Rolling in the Deep",
+        "Shape of You"
+      ],
+      "Female Vocalist": [
+        "How Will I Know",
+        "Fast Car",
+        "Rolling in the Deep",
+        "Chandelier"
+      ]
+    },
+    hint: "Decade, Chart, Vocalist",
+    title: "Songs"
+  },
+  {
+    groups: {
+      British: ["John Lennon", "Freddie Mercury", "Brian May", "John Deacon"],
+      "Lead Singer": [
+        "John Lennon",
+        "Freddie Mercury",
+        "Jimi Hendrix",
+        "Beyoncé"
+      ],
+      Guitarist: ["John Lennon", "Brian May", "Jimi Hendrix", "Eddie Van Halen"]
+    },
+    hint: "Nationality, Role, Instrument",
+    title: "Musicians"
+  },
+  {
+    groups: {
+      "Appears in John Wick Universe": [
+        "Keanu Reeves",
+        "Lawrence Fishburne",
+        "Ana de Armas",
+        "Bridget Moynahan"
+      ],
+      "Appears in The Matrix": [
+        "Keanu Reeves",
+        "Lawrence Fishburne",
+        "Hugo Weaving",
+        "Joe Pantoliano"
+      ],
+      "Not American": [
+        "Keanu Reeves",
+        "Ana de Armas",
+        "Hugo Weaving",
+        "Margot Robbie"
+      ]
+    },
+    hint: "Wick, Neo, Nationality",
+    title: "Actors"
+  },
+  {
+    groups: {
+      Spinoff: ["Frasier", "Better Call Saul", "Angel", "The Jeffersons"],
+      "Main Characters are Brothers": [
+        "Frasier",
+        "Better Call Saul",
+        "Everybody Loves Raymond",
+        "Arrested Development"
+      ],
+      "Debuted in the 1990s": [
+        "Frasier",
+        "Angel",
+        "Everybody Loves Raymond",
+        "The X-Files"
+      ]
+    },
+    hint: "Spinoff, Siblings, Decade",
+    title: "TV Shows"
+  },
+  {
+    groups: {
+      "Coen Brothers Film": [
+        "Fargo",
+        "Raising Arizona",
+        "The Big Lebowski",
+        "Inside Llewyn Davis"
+      ],
+      "Features Frances McDormand": [
+        "Fargo",
+        "Raising Arizona",
+        "Primal Fear",
+        "Moonrise Kingdom"
+      ],
+      "Released in the 1990s": [
+        "Fargo",
+        "The Big Lebowski",
+        "Primal Fear",
+        "The Mummy"
+      ]
+    },
+    hint: "Coens, Frances, Decade",
+    title: "Movies"
+  },
+  {
+    groups: {
+      "Won Super Bowl as Coach": [
+        "Tony Dungy",
+        "Mike Ditka",
+        "Chuck Noll",
+        "Don Shula"
+      ],
+      "Won Super Bowl as Player": [
+        "Tony Dungy",
+        "Mike Ditka",
+        "Terry Bradshaw",
+        "Emmitt Smith"
+      ],
+      "Pittsburgh Steeler": [
+        "Tony Dungy",
+        "Chuck Noll",
+        "Terry Bradshaw",
+        "Dermontti Dawson"
+      ]
+    },
+    hint: "Coach, Player, Steel City",
+    title: "Football"
+  }
+]
+
 export let gameList = demo.concat(
   weekOne,
   weekTwo,
@@ -1449,5 +1620,6 @@ export let gameList = demo.concat(
   weekSeven,
   weekEight,
   weekNine,
-  weekTen
+  weekTen,
+  weekEleven
 )
