@@ -1610,6 +1610,177 @@ let weekEleven: Week = [
   }
 ]
 
+let weekTwelve: Week = [
+  {
+    groups: {
+      "#1 on Billboard 200": [
+        "American Idiot",
+        "Nevermind",
+        "Stadium Arcadium",
+        "The Miseducation of Lauryn Hill"
+      ],
+      "By a Trio": [
+        "American Idiot",
+        "Nevermind",
+        "Try!",
+        "Enema of the State"
+      ],
+      "Released in the 2000s": [
+        "American Idiot",
+        "Try!",
+        "Stadium Arcadium",
+        "The College Dropout"
+      ]
+    },
+    hint: "Chart, Trio, Decade",
+    title: "Albums"
+  },
+  {
+    groups: {
+      "Female Vocalist": [
+        "Teenage Dream",
+        "Tik Tok",
+        "Super Bass",
+        "Just Dance"
+      ],
+      "Written by Benny Blanco": [
+        "Teenage Dream",
+        "Tik Tok",
+        "Castle on the Hill",
+        "Don't Trust Me"
+      ],
+      "Released in the 2010s": [
+        "Teenage Dream",
+        "Super Bass",
+        "Castle on the Hill",
+        "DNA"
+      ]
+    },
+    hint: "Gender, Writer, Decade",
+    title: "Songs"
+  },
+  {
+    groups: {
+      "Born in California": [
+        "Kendrick Lamar",
+        "Nipsey Hussle",
+        "Snoop Dogg",
+        "Olivia Rodrigo"
+      ],
+      "Born in the 1980s": [
+        "Kendrick Lamar",
+        "Rihanna",
+        "Nipsey Hussle",
+        "J. Cole"
+      ],
+      "Performed at Super Bowl Halftime": [
+        "Kendrick Lamar",
+        "Snoop Dogg",
+        "Rihanna",
+        "Shakira"
+      ]
+    },
+    hint: "State, DOB, Halftime",
+    title: "Musicians"
+  },
+  {
+    groups: {
+      "Appeared in Superbad": [
+        "Seth Rogen",
+        "Michael Cera",
+        "Bill Hader",
+        "Emma Stone"
+      ],
+      "Appeared in Pineapple Express": [
+        "Seth Rogen",
+        "Bill Hader",
+        "James Franco",
+        "Rosie Perez"
+      ],
+      "Appeared in This is the End": [
+        "Seth Rogen",
+        "Michael Cera",
+        "James Franco",
+        "Paul Rudd"
+      ]
+    },
+    hint: "Superbad, Pineapple, End",
+    title: "Actors"
+  },
+  {
+    groups: {
+      "Set in Philadelphia": [
+        "Abbott Elementary",
+        "It's Always Sunny in Philadelphia",
+        "Boy Meets World",
+        "How to Get Away With Murder"
+      ],
+      "Stars its Creator(s)": [
+        "Abbott Elementary",
+        "It's Always Sunny in Philadelphia",
+        "Welcome Back, Kotter",
+        "Atlanta"
+      ],
+      "Takes Place Largely in School": [
+        "Abbott Elementary",
+        "Boy Meets World",
+        "Welcome Back, Kotter",
+        "Glee"
+      ]
+    },
+    hint: "City, Creator, School",
+    title: "TV Shows"
+  },
+  {
+    groups: {
+      "Set in Boston": [
+        "Good Will Hunting",
+        "The Town",
+        "The Departed",
+        "Spotlight"
+      ],
+      "Stars Ben Affleck": [
+        "Good Will Hunting",
+        "The Town",
+        "The Last Duel",
+        "Gone Girl"
+      ],
+      "Stars Matt Damon": [
+        "Good Will Hunting",
+        "The Departed",
+        "The Last Duel",
+        "The Martian"
+      ]
+    },
+    hint: "City, Ben, Matt",
+    title: "Movies"
+  },
+  {
+    groups: {
+      Japanese: [
+        "Shohei Ohtani",
+        "Ichiro Suzuki",
+        "Hideki Matsui",
+        "Hideo Nomo"
+      ],
+      "30+ Steals in a Season": [
+        "Shohei Ohtani",
+        "Ichiro Suzuki",
+        "Mike Trout",
+        "José Reyes"
+      ],
+      "30+ Homeruns in a Season": [
+        "Shohei Ohtani",
+        "Hideki Matsui",
+        "Mike Trout",
+        "Albert Pujols"
+      ]
+    },
+    hint: "Nationality, Steals, Homers",
+    title: "Baseball"
+  }
+]
+
 export let gameList = demo.concat(
   weekOne,
   weekTwo,
@@ -1621,5 +1792,6 @@ export let gameList = demo.concat(
   weekEight,
   weekNine,
   weekTen,
-  weekEleven
+  weekEleven,
+  weekTwelve
 )
