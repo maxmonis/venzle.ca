@@ -408,7 +408,7 @@ gameEvent.listen(data => {
     saveGame()
     checkGame(true)
     gameChannel.post(game)
-  } else if (typeof data == "number") {
+  } else {
     resetGame()
     game = getGame(data)
     initGame()

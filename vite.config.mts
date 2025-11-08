@@ -4,7 +4,7 @@ import { defineConfig } from "vite"
 import version from "vite-plugin-package-version"
 import tsconfigPaths from "vite-tsconfig-paths"
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
+let __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   build: {
