@@ -19,9 +19,9 @@ interface Puzzle<T extends string>
 }
 
 type Week = [
-  Puzzle<"Albums">,
+  Puzzle<string>,
   Puzzle<"Songs">,
-  Puzzle<"Musicians">,
+  Puzzle<"Bands" | "Musicians">,
   Puzzle<"Actors">,
   Puzzle<"TV Shows">,
   Puzzle<"Movies">,
@@ -1781,6 +1781,167 @@ let weekTwelve: Week = [
   }
 ]
 
+let weekThirteen: Week = [
+  {
+    groups: {
+      "Debut Studio Album": [
+        "The Miseducation of Lauryn Hill",
+        "Are You Experienced",
+        "When We All Fall Asleep, Where Do We Go?",
+        "Parachutes"
+      ],
+      "Released Before 2000": [
+        "The Miseducation of Lauryn Hill",
+        "Are You Experienced",
+        "Rumours",
+        "OK Computer"
+      ],
+      "Won Album of the Year Grammy": [
+        "The Miseducation of Lauryn Hill",
+        "When We All Fall Asleep, Where Do We Go?",
+        "Rumours",
+        "Golden Hour"
+      ]
+    },
+    hint: "Debut, Era, Grammy",
+    title: "Albums"
+  },
+  {
+    groups: {
+      "Title Includes Animal Name": [
+        "I Am the Walrus",
+        "Blackbird",
+        "A Horse with No Name",
+        "War Pigs"
+      ],
+      "By the Beatles": [
+        "I Am the Walrus",
+        "Blackbird",
+        "Penny Lane",
+        "In My Life"
+      ],
+      "Released as a Single": [
+        "I Am the Walrus",
+        "A Horse with No Name",
+        "Penny Lane",
+        "My Generation"
+      ]
+    },
+    hint: "Animal, Band, Single",
+    title: "Songs"
+  },
+  {
+    groups: {
+      "Lead Singer also Bassist": [
+        "The Police",
+        "Rush",
+        "Level 42",
+        "Thin Lizzy"
+      ],
+      Trio: ["The Police", "Rush", "Muse", "Green Day"],
+      British: ["The Police", "Level 42", "Muse", "Arctic Monkeys"]
+    },
+    hint: "Bass, Trio, Nationality",
+    title: "Bands"
+  },
+  {
+    groups: {
+      Australian: [
+        "Heath Ledger",
+        "Cate Blanchett",
+        "Mel Gibson",
+        "Rose Byrne"
+      ],
+      "Won Academy Award for Acting": [
+        "Heath Ledger",
+        "Cate Blanchett",
+        "Chris Cooper",
+        "Anne Hathaway"
+      ],
+      "Appeared in The Patriot": [
+        "Heath Ledger",
+        "Mel Gibson",
+        "Chris Cooper",
+        "Jason Isaacs"
+      ]
+    },
+    hint: "Nationality, Academy, Patriot",
+    title: "Actors"
+  },
+  {
+    groups: {
+      "Set in New York City": [
+        "30 Rock",
+        "Broad City",
+        "Seinfeld",
+        "How I Met Your Mother"
+      ],
+      "Single-Camera": [
+        "30 Rock",
+        "Broad City",
+        "The Office (US)",
+        "Arrested Development"
+      ],
+      "Originally Aired on NBC": [
+        "30 Rock",
+        "Seinfeld",
+        "The Office (US)",
+        "Frasier"
+      ]
+    },
+    hint: "City, Format, Network",
+    title: "TV Shows"
+  },
+  {
+    groups: {
+      "Animated Feature": [
+        "Frozen",
+        "Toy Story 3",
+        "Tangled",
+        "The Iron Giant"
+      ],
+      "Grossed over $1B worldwide": [
+        "Frozen",
+        "Toy Story 3",
+        "Beauty and the Beast (2017)",
+        "Titanic"
+      ],
+      "Fairy Tale": [
+        "Frozen",
+        "Tangled",
+        "Beauty and the Beast (2017)",
+        "Cinderella (2015)"
+      ]
+    },
+    hint: "Animation, Box Office, Fairy Tale",
+    title: "Movies"
+  },
+  {
+    groups: {
+      "Won Triple Crown": [
+        "Ted Williams",
+        "Carl Yastrzemski",
+        "Ty Cobb",
+        "Frank Robinson"
+      ],
+      "Played for Red Sox": [
+        "Ted Williams",
+        "Carl Yastrzemski",
+        "Manny Ramírez",
+        "David Ortiz"
+      ],
+      "Career .300 Hitter": [
+        "Ted Williams",
+        "Ty Cobb",
+        "Manny Ramírez",
+        "Roberto Clemente"
+      ]
+    },
+    hint: "Triple Crown, Boston, Career Average",
+    title: "Baseball"
+  }
+]
+
 export let gameList = demo.concat(
   weekOne,
   weekTwo,
@@ -1793,5 +1954,6 @@ export let gameList = demo.concat(
   weekNine,
   weekTen,
   weekEleven,
-  weekTwelve
+  weekTwelve,
+  weekThirteen
 )

@@ -110,7 +110,7 @@ export let television: Array<GameListItem> = [
       ]
     },
     hint: "City, Format, Network",
-    published: false
+    published: true
   },
   {
     groups: {

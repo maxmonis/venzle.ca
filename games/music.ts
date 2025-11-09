@@ -43,7 +43,7 @@ export let albums: Array<GameListItem> = [
         "Rumours",
         "OK Computer"
       ],
-      "Won Grammy (Album of the Year)": [
+      "Won Album of the Year Grammy": [
         "The Miseducation of Lauryn Hill",
         "When We All Fall Asleep, Where Do We Go?",
         "Rumours",

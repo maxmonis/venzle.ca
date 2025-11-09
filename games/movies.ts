@@ -126,24 +126,24 @@ export let movies: Array<GameListItem> = [
       "Animated Feature": [
         "Frozen",
         "Toy Story 3",
-        "The Princess and the Frog",
+        "Tangled",
         "The Iron Giant"
       ],
-      "Grossed over $300M worldwide": [
+      "Grossed over $1B worldwide": [
         "Frozen",
         "Toy Story 3",
-        "Cinderella (2015)",
+        "Beauty and the Beast (2017)",
         "Titanic"
       ],
-      "Based on a Fairy Tale": [
+      "Fairy Tale": [
         "Frozen",
-        "The Princess and the Frog",
-        "Cinderella (2015)",
-        "Mirror Mirror"
+        "Tangled",
+        "Beauty and the Beast (2017)",
+        "Cinderella (2015)"
       ]
     },
     hint: "Animation, Box Office, Fairy Tale",
-    published: false
+    published: true
   },
   {
     groups: {
