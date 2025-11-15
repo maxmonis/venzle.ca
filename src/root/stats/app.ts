@@ -62,7 +62,10 @@ for (let { guesses, hints, index, status } of [...results].sort(
       activePerfectStreak++
       longestPerfectStreak = Math.max(activePerfectStreak, longestPerfectStreak)
     } else activePerfectStreak = 0
-  } else activeSolvedStreak = 0
+  } else {
+    activeSolvedStreak = 0
+    activePerfectStreak = 0
+  }
   lastIndex = index
 }
 activePerfectStreak = 0
@@ -72,26 +75,33 @@ if (map.has(todayIndex - 1)) {
   let i = todayIndex - 1
   while (map.has(i)) {
     activePlayedStreak++
+    i--
+  }
+  i = todayIndex - 1
+  while (map.has(i)) {
     if (map.get(i)!.status == "solved") activeSolvedStreak++
     else break
     i--
   }
-}
-if (map.has(todayIndex - 1)) {
-  let i = todayIndex - 1
+  i = todayIndex - 1
   while (map.has(i)) {
-    if (map.get(i)!.guesses == 1 && map.get(i)!.hints == 0)
-      activePerfectStreak++
+    let { guesses, hints, status } = map.get(i)!
+    if (status == "solved" && guesses == 1 && hints == 0) activePerfectStreak++
     else break
     i--
   }
 }
 if (todayResult) {
   activePlayedStreak++
-  if (todayResult.status == "solved") activeSolvedStreak++
-  else activeSolvedStreak = 0
-  if (todayResult.guesses == 1 && todayResult.hints == 0) activePerfectStreak++
-  else activePerfectStreak = 0
+  if (todayResult.status == "solved") {
+    activeSolvedStreak++
+    if (todayResult.guesses == 1 && todayResult.hints == 0)
+      activePerfectStreak++
+    else activePerfectStreak = 0
+  } else {
+    activeSolvedStreak = 0
+    activePerfectStreak = 0
+  }
 }
 let stats = {
   averageGuesses: totalPlayed ? totalGuesses / totalPlayed : 0,
@@ -252,44 +262,42 @@ function animateNumber(
   requestAnimationFrame(step)
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  totalsUl.querySelectorAll("li").forEach((li, index) => {
-    let strong = li.querySelector("strong")!
-    let { decimalPlaces, isPercentage, value } = totalsList[index]!
-    animateNumber(strong, value, 1000, isPercentage, decimalPlaces)
-  })
-
-  streaksUl.querySelectorAll("li").forEach((li, index) => {
-    let strong = li.querySelector("strong")!
-    let { value } = streaksList[index]!
-    animateNumber(strong, value, 1000)
-  })
-
-  guessDistributionGraph
-    .querySelectorAll<HTMLElement>(".bar")
-    .forEach((bar, i) => {
-      let barFill = bar.querySelector<HTMLElement>(".bar-fill")!
-      let count = stats.guessDistribution[i + 1] ?? 0
-      setTimeout(
-        () => {
-          barFill.style.width = `calc(${(count / maxCount) * 100}% - ${(count / maxCount) * 1.25}rem)`
-          animateNumber(barFill, count, 1000)
-        },
-        reduceMotion ? 0 : 300
-      )
-    })
-
-  hintDistributionGraph
-    .querySelectorAll<HTMLElement>(".bar")
-    .forEach((bar, i) => {
-      let barFill = bar.querySelector<HTMLElement>(".bar-fill")!
-      let count = stats.hintDistribution[i] ?? 0
-      setTimeout(
-        () => {
-          barFill.style.width = `calc(${(count / maxCount) * 100}% - ${(count / maxCount) * 1.25}rem)`
-          animateNumber(barFill, count, 1000)
-        },
-        reduceMotion ? 0 : 300
-      )
-    })
+totalsUl.querySelectorAll("li").forEach((li, index) => {
+  let strong = li.querySelector("strong")!
+  let { decimalPlaces, isPercentage, value } = totalsList[index]!
+  animateNumber(strong, value, 1000, isPercentage, decimalPlaces)
 })
+
+streaksUl.querySelectorAll("li").forEach((li, index) => {
+  let strong = li.querySelector("strong")!
+  let { value } = streaksList[index]!
+  animateNumber(strong, value, 1000)
+})
+
+guessDistributionGraph
+  .querySelectorAll<HTMLElement>(".bar")
+  .forEach((bar, i) => {
+    let barFill = bar.querySelector<HTMLElement>(".bar-fill")!
+    let count = stats.guessDistribution[i + 1] ?? 0
+    setTimeout(
+      () => {
+        barFill.style.width = `calc(${(count / maxCount) * 100}% - ${(count / maxCount) * 1.25}rem)`
+        animateNumber(barFill, count, 1000)
+      },
+      reduceMotion ? 0 : 300
+    )
+  })
+
+hintDistributionGraph
+  .querySelectorAll<HTMLElement>(".bar")
+  .forEach((bar, i) => {
+    let barFill = bar.querySelector<HTMLElement>(".bar-fill")!
+    let count = stats.hintDistribution[i] ?? 0
+    setTimeout(
+      () => {
+        barFill.style.width = `calc(${(count / maxCount) * 100}% - ${(count / maxCount) * 1.25}rem)`
+        animateNumber(barFill, count, 1000)
+      },
+      reduceMotion ? 0 : 300
+    )
+  })
