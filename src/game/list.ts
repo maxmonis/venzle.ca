@@ -19,13 +19,13 @@ interface Puzzle<T extends string>
 }
 
 type Week = [
-  Puzzle<string>,
-  Puzzle<"Songs">,
-  Puzzle<"Bands" | "Musicians">,
   Puzzle<"Actors">,
-  Puzzle<"TV Shows">,
-  Puzzle<"Movies">,
-  Puzzle<"Baseball" | "Basketball" | "Football">
+  Puzzle<"Songs">,
+  Puzzle<"Animals">,
+  Puzzle<"Movies" | "TV Shows">,
+  Puzzle<"Bands" | "Musicians">,
+  Puzzle<"Baseball" | "Basketball" | "Football">,
+  Puzzle<string>
 ]
 
 let demo: [PublishedGame | Puzzle<"Demo Puzzle">] = [
@@ -49,7 +49,7 @@ let demo: [PublishedGame | Puzzle<"Demo Puzzle">] = [
   // }
 ]
 
-let weekOne: GameList = [
+let week1: GameList = [
   {
     creator: "Andrea Alcalá Vásquez",
     groups: {
@@ -174,7 +174,7 @@ let weekOne: GameList = [
   }
 ]
 
-let weekTwo: GameList = [
+let week2: GameList = [
   {
     creator: "Hannah Monis",
     groups: {
@@ -288,7 +288,7 @@ let weekTwo: GameList = [
   }
 ]
 
-let weekThree: GameList = [
+let week3: GameList = [
   {
     groups: {
       "Big Cat": ["Leopard", "Cheetah", "Tiger", "Puma"],
@@ -436,7 +436,7 @@ let weekThree: GameList = [
   }
 ]
 
-let weekFour: GameList = [
+let week4: GameList = [
   {
     groups: {
       Carnivore: ["Crocodile", "Eagle", "Great White Shark", "Tasmanian Devil"],
@@ -593,7 +593,7 @@ let weekFour: GameList = [
   }
 ]
 
-let weekFive: GameList = [
+let week5: GameList = [
   {
     groups: {
       "Commonly Ridden": ["Elephant", "Water Buffalo", "Camel", "Horse"],
@@ -739,7 +739,7 @@ let weekFive: GameList = [
   }
 ]
 
-let weekSix: GameList = [
+let week6: GameList = [
   {
     groups: {
       "Found in North America": ["Beaver", "Mouse", "Otter", "Raccoon"],
@@ -865,7 +865,7 @@ let weekSix: GameList = [
   }
 ]
 
-let weekSeven: GameList = [
+let week7: GameList = [
   {
     groups: {
       "Can Fly": ["Elf Owl", "Roadrunner", "Fruit Bat", "Swan"],
@@ -1001,7 +1001,7 @@ let weekSeven: GameList = [
   }
 ]
 
-let weekEight: GameList = [
+let week8: GameList = [
   {
     groups: {
       Venomous: [
@@ -1137,7 +1137,7 @@ let weekEight: GameList = [
   }
 ]
 
-let weekNine: GameList = [
+let week9: GameList = [
   {
     groups: {
       "Has Feathers": ["Barn Owl", "Sparrow", "Kākāpō", "Ostrich"],
@@ -1283,7 +1283,7 @@ let weekNine: GameList = [
   }
 ]
 
-let weekTen: GameList = [
+let week10: GameList = [
   {
     groups: {
       "Bird of Prey": [
@@ -1454,7 +1454,7 @@ let weekTen: GameList = [
   }
 ]
 
-let weekEleven: Week = [
+let week11: GameList = [
   {
     groups: {
       "Released in the 1970s": [
@@ -1610,7 +1610,7 @@ let weekEleven: Week = [
   }
 ]
 
-let weekTwelve: Week = [
+let week12: GameList = [
   {
     groups: {
       "#1 on Billboard 200": [
@@ -1781,7 +1781,7 @@ let weekTwelve: Week = [
   }
 ]
 
-let weekThirteen: Week = [
+let week13: GameList = [
   {
     groups: {
       "Debut Studio Album": [
@@ -1942,18 +1942,155 @@ let weekThirteen: Week = [
   }
 ]
 
+let week14: Week = [
+  {
+    groups: {
+      Australian: [
+        "Nicole Kidman",
+        "Mia Wasikowska",
+        "Hugh Jackman",
+        "Chris Hemsworth"
+      ],
+      Female: [
+        "Nicole Kidman",
+        "Mia Wasikowska",
+        "Halle Berry",
+        "Saoirse Ronan"
+      ],
+      "Born in the 1960s": [
+        "Nicole Kidman",
+        "Hugh Jackman",
+        "Halle Berry",
+        "Brad Pitt"
+      ]
+    },
+    hint: "Nationality, Gender, DOB",
+    title: "Actors"
+  },
+  {
+    groups: {
+      "Written by Sia": [
+        "Diamonds",
+        "Sledgehammer (Rihanna song)",
+        "Cheap Thrills",
+        "Pretty Hurts"
+      ],
+      "Originally Performed by Rihanna": [
+        "Diamonds",
+        "Sledgehammer (Rihanna song)",
+        "Umbrella",
+        "Pon de Replay"
+      ],
+      "Billboard Hot 100 #1 Hit": [
+        "Diamonds",
+        "Cheap Thrills",
+        "Umbrella",
+        "Not Like Us"
+      ]
+    },
+    hint: "Writer, Artist, Chart",
+    title: "Songs"
+  },
+  {
+    groups: {
+      "Lives in a Group": ["Orca", "Wolf", "Salmon", "Ant"],
+      Aquatic: ["Orca", "Salmon", "Blue Whale", "Tiger Shark"],
+      Mammal: ["Orca", "Wolf", "Blue Whale", "Moose"]
+    },
+    hint: "Sociality, Habitat, Class",
+    title: "Animals"
+  },
+  {
+    groups: {
+      "Set in New York City": [
+        "The Godfather",
+        "Birdman",
+        "Taxi Driver",
+        "Gangs of New York"
+      ],
+      "Won Best Picture": [
+        "The Godfather",
+        "Birdman",
+        "Gandhi",
+        "Slumdog Millionaire"
+      ],
+      "Released in 20th Century": [
+        "The Godfather",
+        "Taxi Driver",
+        "Gandhi",
+        "Jurassic Park"
+      ]
+    },
+    hint: "City, Academy, Century",
+    title: "Movies"
+  },
+  {
+    groups: {
+      "From the Caribbean": [
+        "Gloria Estefan",
+        "Bad Bunny",
+        "Nicki Minaj",
+        "Bob Marley"
+      ],
+      "Native Spanish Speaker": [
+        "Gloria Estefan",
+        "Bad Bunny",
+        "Rosalía",
+        "Alejandro Sanz"
+      ],
+      Female: ["Gloria Estefan", "Nicki Minaj", "Rosalía", "Billie Eilish"]
+    },
+    hint: "Region, Language, Gender",
+    title: "Musicians"
+  },
+  {
+    groups: {
+      "Duke University": [
+        "Kyrie Irving",
+        "Jayson Tatum",
+        "Carlos Boozer",
+        "Zion Williamson"
+      ],
+      "Boston Celtics": [
+        "Kyrie Irving",
+        "Jayson Tatum",
+        "Isaiah Thomas",
+        "Jaylen Brown"
+      ],
+      "Cleveland Cavaliers": [
+        "Kyrie Irving",
+        "Carlos Boozer",
+        "Isaiah Thomas",
+        "Donovan Mitchell"
+      ]
+    },
+    hint: "Devils, Cs, Cavs",
+    title: "Basketball"
+  },
+  {
+    groups: {
+      Landlocked: ["Switzerland", "Burkina Faso", "Austria", "Bolivia"],
+      "French Speaking": ["Switzerland", "Burkina Faso", "France", "Senegal"],
+      European: ["Switzerland", "Austria", "France", "Spain"]
+    },
+    hint: "Noncoastal, Language, Continent",
+    title: "Countries"
+  }
+]
+
 export let gameList = demo.concat(
-  weekOne,
-  weekTwo,
-  weekThree,
-  weekFour,
-  weekFive,
-  weekSix,
-  weekSeven,
-  weekEight,
-  weekNine,
-  weekTen,
-  weekEleven,
-  weekTwelve,
-  weekThirteen
+  week1,
+  week2,
+  week3,
+  week4,
+  week5,
+  week6,
+  week7,
+  week8,
+  week9,
+  week10,
+  week11,
+  week12,
+  week13,
+  week14
 )
