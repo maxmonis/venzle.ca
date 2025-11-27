@@ -33,48 +33,70 @@ import {
 } from "lib/utils";
 import "./style.css";
 
+// if this is their first visit, show the welcome dialog
 if (!localLoad.get()) {
   showWelcomeDialog();
 }
 
+// store the load time for future use
 localLoad.set(new Date().getTime());
 
+// clear the pathname (vercel redirects to the root route but leaves it intact)
 if (location.pathname != "/") {
   location.replace(location.origin);
 }
 
+// if there's a session index they're playing a practice puzzle
 let game = getGame(sessionIndex.get() ?? todayIndex);
 
 initUI();
 initGame();
 
+/**
+ * Initializes the active puzzle
+ */
 function initGame() {
+  // scroll to the top
   window.scrollTo({
     behavior: "smooth",
     top: 0,
   });
 
+  // initialize text
   pageTitle.textContent = getGameText(game.title, game.index);
   creatorText.textContent = `Created by ${game.creator}`;
 
+  // initialize game state
   initDropzones(game);
   initDraggables(game);
   initHints(game);
   updateGameState();
 
   if (game.index == todayIndex) {
+    // user is playing the daily puzzle
+
+    // ensure there's no session index since it's not a practice puzzle
     sessionIndex.remove();
+
+    // hide the "Back to Today's Puzzle" button
     homeButton.remove();
   } else {
-    main.prepend(homeButton);
+    // user is playing a practice puzzle
+
+    // store the index in session storage
     sessionIndex.set(game.index);
+
+    // add the "Back to Today's Puzzle" button
+    main.prepend(homeButton);
   }
 
   if (game.status != "pending") {
+    // the game has already been either passed or failed
     checkGame(false);
   }
 }
 
+// populate the previous game select with available puzzles
 let selectedGameIndex = sessionIndex.get() ?? todayIndex;
 previousGameSelect.append(
   ...gameList
@@ -91,6 +113,9 @@ previousGameSelect.append(
     .reverse(),
 );
 
+/**
+ * Adds titles to a solved/failed puzzle
+ */
 function appendCircleTitles(titles: [string, string, string]) {
   let keys = ["a", "b", "c"];
 
@@ -106,9 +131,15 @@ function appendCircleTitles(titles: [string, string, string]) {
   );
 }
 
+/**
+ * Checks whether a puzzle is solved, failed, or in progress
+ * @param clicked whether the user has submitted this as a guess or we're just
+ * checking a puzzle which they've now resumed or commenced
+ */
 function checkGame(clicked: boolean) {
   toast.hide();
 
+  // get the most recent guess
   let { currentGuess } = game;
   let guessKeys: Record<"a" | "b" | "c", Array<keyof typeof currentGuess>> = {
     a: ["a", "ab", "abc", "ac"],
@@ -116,6 +147,7 @@ function checkGame(clicked: boolean) {
     c: ["abc", "ac", "bc", "c"],
   };
 
+  // check which circles (if any) are correct
   let groupEntries = Object.entries(game.groups);
   let [titleA] =
     groupEntries.find(([, values]) =>
@@ -131,14 +163,20 @@ function checkGame(clicked: boolean) {
     ) ?? [];
 
   if (titleA && titleB && titleC) {
+    // all three are correct, the puzzle has been solved
+
+    // update text
     pageSubtitle.textContent = "You got it! Congratulations 🥳";
     creatorText.after(pageSubtitle);
 
+    // fill in the titles
     appendCircleTitles([titleA, titleB, titleC]);
 
+    // count the hints and guesses
     let hintCount = Object.values(game.hintsUsed).filter(Boolean).length;
     let guessCount = game.guesses.length;
 
+    // display hint and guess info
     gameSummary.innerHTML =
       guessCount == 1 && hintCount == 0
         ? "First try with no hints, that's a perfect game 😎"
@@ -146,37 +184,43 @@ function checkGame(clicked: boolean) {
             hintCount == 1 ? "" : "s"
           } and ${guessCount} guess${guessCount == 1 ? "" : "es"} 😄`;
 
+    // prompt user to return tomorrow if this is the deaily puzzle
     if (game.index == todayIndex) {
       gameSummary.innerHTML +=
         "<br />Come back tomorrow for a new puzzle!<br />" +
         "<div><a href='./share/'>Share Results</a></div>";
     }
 
+    // display the game summary
+    circleContainer.after(gameSummary);
+
+    // ensure they can no longer update the puzzle
     for (let dropzone of document.querySelectorAll(".dropzone")) {
       dropzone.removeAttribute("data-dnd-value");
       dropzone.removeAttribute("draggable");
     }
-
-    circleContainer.after(gameSummary);
-
     gameControls.remove();
     submitButtonContainer.remove();
     resetButton.remove();
     hintsContainer.remove();
 
+    // check whether they've just clicked submit and won
     if (clicked) {
+      // log event(s)
       window.gtag("event", "puzzle_solve");
-
       if (game.index == todayIndex) {
         window.gtag("event", "daily_puzzle_solve");
       }
 
+      // update and save
       game.status = "solved";
       saveGame();
       updateResults();
 
+      // show confetti
       new Confetti().start();
 
+      // play audio if enabled
       if (localAudio.get()) {
         document.body.append(winAudio);
         winAudio.play();
@@ -186,29 +230,45 @@ function checkGame(clicked: boolean) {
         }, 4000);
       }
     }
+
     return;
   }
 
+  // figure out how many guesses (if any) remain
   let guessCount = game.guesses.length;
   let remainingGuesses = 5 - guessCount;
 
   if (remainingGuesses) {
+    // this is still an active puzzle
+
+    // log event
     if (clicked) {
       window.gtag("event", `incorrect_guess_${guessCount}`);
     }
 
+    // generate remaining guess text
     let guessesTextContent = `${remainingGuesses} guess${
       remainingGuesses == 1 ? "" : "es"
     } remaining`;
 
+    // display text
     guessesText.textContent = guessesTextContent;
 
     if (clicked) {
+      // the user submitted an incorrect answer, let's provide feedback
+
+      // we'll inform the user if a circle or at least the center is correct
       let correctPart = "";
 
       if (getCenter(game) == game.currentGuess.abc) {
+        // the center is correct, let's check if any entire circle is
+
         let allItems = Object.values(game.groups).flatMap((v) => v);
 
+        // verify if any entire circle is correct by checking if the title
+        // exists (meaning the correct four items are in the circle) and the
+        // correct item is in the outermost section (which confirms the whole
+        // circle is valid since we already know the center is also correct)
         if (
           titleA &&
           allItems.filter((item) => item == game.currentGuess.a).length == 1
@@ -225,10 +285,12 @@ function checkGame(clicked: boolean) {
         ) {
           correctPart = "🔴 red circle";
         } else {
+          // if no circle is correct, only the center is
           correctPart = "The center";
         }
       }
 
+      // update the user on their progress with a toast
       toast.show(
         (correctPart
           ? `${correctPart} is correct ✅`
@@ -241,17 +303,21 @@ function checkGame(clicked: boolean) {
       );
     }
   } else {
+    // they failed this puzzle
+
+    // update text
     pageSubtitle.textContent = "Better luck next time!";
     creatorText.after(pageSubtitle);
 
+    // ensure puzzle not actionable
     submitButtonContainer.remove();
     resetButton.remove();
     hintsContainer.remove();
 
+    // fill in the correct answers for them
     let [titleA, valuesA] = groupEntries[0]!;
     let [titleB, valuesB] = groupEntries[1]!;
     let [titleC, valuesC] = groupEntries[2]!;
-
     let solution: typeof game.currentGuess = {
       a: valuesA.find((p) => !valuesB.includes(p) && !valuesC.includes(p))!,
       b: valuesB.find((p) => !valuesA.includes(p) && !valuesC.includes(p))!,
@@ -262,6 +328,7 @@ function checkGame(clicked: boolean) {
       abc: valuesA.find((p) => valuesB.includes(p) && valuesC.includes(p))!,
     };
 
+    // display the answers within the puzzle
     for (let [key, value] of Object.entries(solution)) {
       let dropzone = main.querySelector(`#dropzone-${key}`);
 
@@ -270,25 +337,34 @@ function checkGame(clicked: boolean) {
       }
 
       dropzone.innerHTML = `<span>${value}</span>`;
+
+      // disable dropzone interaction
       dropzone.removeAttribute("data-dnd-value");
       dropzone.removeAttribute("draggable");
     }
 
+    // display the titles in the puzzle
     appendCircleTitles([titleA, titleB, titleC]);
 
+    // add consolation message
     gameSummary.innerHTML = "This was a tough one and you're out of guesses 😔";
+    // ask them to return tomorrow if this was the daily puzzle
     if (game.index == todayIndex) {
       gameSummary.innerHTML += "<br />Come back tomorrow for a new puzzle!";
     }
+    // display the message
     circleContainer.after(gameSummary);
 
     if (clicked) {
-      window.gtag("event", "puzzle_fail");
+      // they just used their final guess and it was wrong
 
+      // log event(s)
+      window.gtag("event", "puzzle_fail");
       if (game.index == todayIndex) {
         window.gtag("event", "daily_puzzle_fail");
       }
 
+      // update and save
       game.status = "failed";
       saveGame();
       updateResults();
@@ -296,11 +372,16 @@ function checkGame(clicked: boolean) {
   }
 }
 
+/**
+ * Clears the puzzle state, removing all items they've dragged into it
+ */
 function clearPuzzle() {
+  // remove all items from the active guess
   for (let key in game.currentGuess) {
     game.currentGuess[key as keyof typeof game.currentGuess] = "";
   }
 
+  // display the initial state
   for (let dropzone of document.querySelectorAll<HTMLElement>(".dropzone")) {
     let dropzoneText = dropzone.textContent;
     let dropzoneValue = dropzone.getAttribute("data-dnd-value");
@@ -309,50 +390,67 @@ function clearPuzzle() {
       continue;
     }
 
+    // reset the dropzone
     dropzone.innerHTML = "";
     dropzone.removeAttribute("data-dnd-value");
     dropzone.removeAttribute("draggable");
 
+    // add it to the initial area
     createDraggable(dropzoneText, dropzoneValue);
   }
 
   updateGameState();
 }
 
+/**
+ * Loads a game using its index, checking for an in-progress state in local
+ * storage if it's the daily puzzle and session storage if it's not
+ */
 function getGame(index: number): Game {
   if (index == todayIndex) {
-    window.gtag("event", "puzzle_resume");
+    // we're loading the daily puzzle
 
+    // log event(s)
+    window.gtag("event", "puzzle_resume");
     if (index == todayIndex) {
       window.gtag("event", "daily_puzzle_resume");
     }
 
+    // check if they have an in progress game in local storage
     let game = localGame.get();
 
+    // make sure it's today's puzzle (not yesterday's, for example)
     if (game && game.index == todayIndex) {
       return game;
     }
   }
 
+  // check if they've played this puzzle during the current session
   let game = sessionGames.get()?.find((g) => g.index == index);
-
   if (game) {
     return game;
   }
 
+  // reload if something's gone wrong and the index is out of range
   if (index >= gameList.length) {
     window.gtag("event", "invalid_puzzle_index");
     index = gameList.length - 1;
   }
 
+  // log event(s)
   window.gtag("event", "puzzle_start");
-
   if (index == todayIndex) {
     window.gtag("event", "daily_puzzle_start");
   }
 
-  let { creator = "Max Monis", ...newGame } = gameList[index]!;
+  // get the game using its index
+  let {
+    // not all puzzles will have a creator
+    creator = "Max Monis",
+    ...newGame
+  } = gameList[index]!;
 
+  // return the new game with initial state
   return {
     ...newGame,
     creator,
@@ -376,16 +474,26 @@ function getGame(index: number): Game {
   };
 }
 
+/**
+ * Generates text for the puzzle select
+ */
 function getGameText(title: string, index: number) {
+  // the first puzzle is the demo and the last one is the daily puzzle
   return `${
     index == 0
-      ? "How to Play"
+      ? // the first puzzle is the demo
+        "How to Play"
       : index == todayIndex
-        ? "Today's Puzzle"
-        : `Puzzle ${index}`
+        ? // the last one is the daily puzzle
+          "Today's Puzzle"
+        : // otherwise we'll just show its number
+          `Puzzle ${index}`
   }: ${title}`;
 }
 
+/**
+ * Clears the game state, resetting the puzzle
+ */
 function resetGame() {
   pageSubtitle.remove();
   gameSummary.remove();
@@ -400,12 +508,17 @@ function resetGame() {
   circleContainer.after(gameControls, hintsContainer);
 }
 
+/**
+ * Saves to local storage if it's the daily puzzle and session storage if not
+ */
 function saveGame() {
   if (game.index == todayIndex) {
+    // it's the daily puzzle, save it in local storage
     localGame.set(game);
     return;
   }
 
+  // update it if it's in session storage already
   let games = sessionGames.get() ?? [];
   let mapped = false;
   games = games.map((g) => {
@@ -417,13 +530,18 @@ function saveGame() {
     return g;
   });
 
+  // otherwise add it to session storage
   if (!mapped) {
     games.push(game);
   }
 
+  // save session state
   sessionGames.set(games);
 }
 
+/**
+ * Shows a welcome dialog which prompts the user to learn to play
+ */
 function showWelcomeDialog() {
   let dialog = document.createElement("dialog");
   let content = document.createElement("div");
@@ -446,6 +564,7 @@ function showWelcomeDialog() {
   link.autofocus = true;
   link.setAttribute("href", "./learn/");
 
+  // close and remove the dialog when CTA clicked
   for (let element of [button, link]) {
     element.addEventListener("click", () => {
       dialog.close();
@@ -460,13 +579,18 @@ function showWelcomeDialog() {
 
   dialog.showModal();
   dialog.addEventListener("keydown", (e) => {
+    // prevent closing when the user hits escape key
     if (e.key == "Escape") {
       e.preventDefault();
     }
   });
 }
 
+/**
+ * Updates the UI to reflect the state of the puzzle
+ */
 function updateGameState() {
+  // update the dropzones
   for (let dropzone of document.querySelectorAll(".dropzone")) {
     let id = dropzone.id.split("-")[1] as keyof typeof game.currentGuess;
 
@@ -476,61 +600,80 @@ function updateGameState() {
   }
 
   if (Object.values(game.currentGuess).every(Boolean)) {
+    // they've filled out the entire puzzle
+
+    // there are no more draggables, they're all in the puzzle
     gameControls.remove();
 
+    // generate and show the guesses text
     let remainingGuesses = 5 - game.guesses.length;
     guessesText.textContent = `${remainingGuesses} guess${
       remainingGuesses == 1 ? "" : "es"
     } remaining`;
 
+    // ensure the submit button is in the UI
     if (!main.contains(submitButtonContainer)) {
       circleContainer.after(submitButtonContainer);
     }
   } else {
+    // they have NOT filled out the entire puzzle
+
+    // ensure the draggables are displayed
     if (!main.contains(gameControls)) {
       circleContainer.after(gameControls);
     }
 
+    // they can't submit since it's incomplete
     submitButtonContainer.remove();
   }
 
   if (!Object.values(game.currentGuess).some(Boolean)) {
+    // nothing to reset if no items in puzzle
     resetButton.remove();
   } else if (!main.contains(resetButton)) {
+    // otherwise show the reset button
     gameControls.after(resetButton);
   }
 
+  // save and update
   saveGame();
   gameChannel.post(game);
 }
 
+/**
+ * Updates the user's stats if they've just completed the daily puzzle
+ */
 function updateResults() {
   if (game.index != todayIndex) {
+    // exit if this was not today's puzzle
     return;
   }
 
+  // add today's game to results and save them in local storage
   let results = localResults.get() ?? [];
-
   results.push({
     hints: Object.values(game.hintsUsed).filter(Boolean).length,
     guesses: game.guesses.length,
     index: game.index,
     status: game.status,
   });
-
   localResults.set(results);
 }
 
+// listen for broadcasts in case the user has multiple tabs open
 gameChannel.listen((data) => {
   if (JSON.stringify(data) == JSON.stringify(game)) {
+    // no diff, we're good
     return;
   }
 
+  // clear UI and show the broadcasted game
   resetGame();
   game = data;
   initGame();
 });
 
+// listen for events
 gameEvent.listen((data) => {
   if (data == "update") {
     updateGameState();
@@ -539,6 +682,7 @@ gameEvent.listen((data) => {
   } else if (data == "reset") {
     clearPuzzle();
   } else if (data == "submit") {
+    // show a toast and prevent submission if the guess is a dupe
     if (
       game.guesses.some(
         (guess) => JSON.stringify(guess) == JSON.stringify(game.currentGuess),
@@ -548,14 +692,17 @@ gameEvent.listen((data) => {
       return;
     }
 
+    // add the new guess
     game.guesses.push({
       ...game.currentGuess,
     });
 
+    // save, check, and broadcast state
     saveGame();
     checkGame(true);
     gameChannel.post(game);
   } else {
+    // data is the index of a newly selected game
     resetGame();
     game = getGame(data);
     initGame();

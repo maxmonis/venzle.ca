@@ -16,6 +16,7 @@ path.setAttribute("stroke", "currentColor");
 
 chevronLeft.appendChild(path);
 
+// when the value of one rem changes, update the size accordingly
 handleResize();
 window.addEventListener("resize", handleResize);
 

@@ -4,10 +4,14 @@ import "./style.css";
 
 initUI();
 
+// -------------------- Stat Calculation --------------------
+
 let main = document.querySelector("main")!;
 
+// get existing results from local storage
 let results = localResults.get() ?? [];
 
+// create a map with each result's index
 let map = new Map<number, (typeof results)[number]>();
 for (let r of results) {
   map.set(r.index, r);
@@ -17,16 +21,12 @@ let activePerfectStreak = 0;
 let activePlayedStreak = 0;
 let activeSolvedStreak = 0;
 
-let guessDistribution: Record<number, number> = {};
-let hintDistribution: Record<number, number> = {};
-
-let lastIndex = -1;
-
 let longestPerfectStreak = 0;
 let longestPlayedStreak = 0;
 let longestSolvedStreak = 0;
 
-let todayResult = map.get(todayIndex);
+let guessDistribution: Record<number, number> = {};
+let hintDistribution: Record<number, number> = {};
 
 let perfectGames = 0;
 let totalGuesses = 0;
@@ -34,66 +34,85 @@ let totalHints = 0;
 let totalPlayed = results.length;
 let totalSolved = 0;
 
+let lastIndex = -1;
+
 for (let { guesses, hints, index, status } of [...results].sort(
   (a, b) => a.index - b.index,
 )) {
+  // update total guess and hint sums
   totalGuesses += guesses;
   totalHints += hints;
 
+  // update guess distribution
   guessDistribution[guesses] ??= 0;
   guessDistribution[guesses]++;
 
+  // update hint distribution
   hintDistribution[hints] ??= 0;
   hintDistribution[hints]++;
 
+  // check if any active streaks need to be reset
   if (index != lastIndex + 1) {
     activePerfectStreak = 0;
     activePlayedStreak = 0;
     activeSolvedStreak = 0;
   }
 
+  // increment played streak
   activePlayedStreak++;
 
+  // update longest played streak if surpassed
   longestPlayedStreak = Math.max(longestPlayedStreak, activePlayedStreak);
 
   if (status == "solved") {
+    // update solved streak and total
     activeSolvedStreak++;
     totalSolved++;
 
+    // update longest solved streak if surpassed
     longestSolvedStreak = Math.max(longestSolvedStreak, activeSolvedStreak);
 
     if (guesses == 1 && hints == 0) {
+      // update perfect streak and total
       perfectGames++;
       activePerfectStreak++;
 
+      // update longest perfect streak if surpassed
       longestPerfectStreak = Math.max(
         activePerfectStreak,
         longestPerfectStreak,
       );
     } else {
+      // reset perfect streak
       activePerfectStreak = 0;
     }
   } else {
+    // reset solved and perfect streaks
     activeSolvedStreak = 0;
     activePerfectStreak = 0;
   }
 
+  // update index
   lastIndex = index;
 }
+
+// reset streaks, these will now be used for current streaks instead of longest
 activePerfectStreak = 0;
 activePlayedStreak = 0;
 activeSolvedStreak = 0;
 
+// check if yesterday's puzzle is in the results
 if (map.has(todayIndex - 1)) {
   let i = todayIndex - 1;
 
+  // calculate the current played streak
   while (map.has(i)) {
     activePlayedStreak++;
     i--;
   }
 
+  // calculate the current solved streak
   i = todayIndex - 1;
-
   while (map.has(i)) {
     if (map.get(i)!.status == "solved") {
       activeSolvedStreak++;
@@ -104,8 +123,8 @@ if (map.has(todayIndex - 1)) {
     i--;
   }
 
+  // calculate the current perfect streak
   i = todayIndex - 1;
-
   while (map.has(i)) {
     let { guesses, hints, status } = map.get(i)!;
     if (status == "solved" && guesses == 1 && hints == 0) {
@@ -118,11 +137,14 @@ if (map.has(todayIndex - 1)) {
   }
 }
 
+// update the stats if today's puzzle has been submitted as well
+let todayResult = map.get(todayIndex);
 if (todayResult) {
   activePlayedStreak++;
 
   if (todayResult.status == "solved") {
     activeSolvedStreak++;
+
     if (todayResult.guesses == 1 && todayResult.hints == 0) {
       activePerfectStreak++;
     } else {
@@ -134,6 +156,7 @@ if (todayResult) {
   }
 }
 
+// final stats
 let stats = {
   averageGuesses: totalPlayed ? totalGuesses / totalPlayed : 0,
   averageHints: totalPlayed ? totalHints / totalPlayed : 0,
@@ -158,6 +181,8 @@ let stats = {
   totalPlayed,
   totalSolved,
 };
+
+// -------------------- Stat Display --------------------
 
 let totalsList = [
   {
@@ -268,6 +293,8 @@ countsSection.append(totalsContainer, streaksContainer);
 
 let graphContainer = document.createElement("section");
 
+// max count is used to ensure a consistent scale in the hint and guess
+// distribution bar graphs which fits inside the available space
 let maxCount = Math.max(
   Math.max(
     ...Object.values(stats.hintDistribution),
@@ -284,6 +311,7 @@ guessHeading.textContent = "Guess Distribution";
 
 guessDistributionGraph.append(guessHeading);
 
+// init at zero since we'll animate in the numbers
 for (let i = 1; i <= 5; i++) {
   let bar = document.createElement("div");
   bar.classList.add("bar");
@@ -310,6 +338,7 @@ hintHeading.textContent = "Hint Distribution";
 
 hintDistributionGraph.append(hintHeading);
 
+// init at zero since we'll animate in the numbers
 for (let i = 0; i <= 3; i++) {
   let bar = document.createElement("div");
   bar.classList.add("bar");
@@ -329,6 +358,12 @@ graphContainer.append(hintDistributionGraph);
 
 main.append(countsSection, graphContainer);
 
+// -------------------- Stat Animation --------------------
+
+/**
+ * Animates the bars of the bar graph from left to right, also showing a
+ * rapidly increasing number at the end from 0 to the end value
+ */
 function animateNumber(
   element: HTMLElement,
   endValue: number,

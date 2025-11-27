@@ -4,6 +4,7 @@ import "./style.css";
 
 initUI();
 
+// link to play the demo puzzle
 let demoLink = document.createElement("a");
 demoLink.textContent = "Play Demo Puzzle";
 demoLink.setAttribute("href", "../");

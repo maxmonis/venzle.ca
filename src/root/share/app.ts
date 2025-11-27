@@ -15,6 +15,7 @@ let main = document.querySelector("main")!;
 
 let storageGame = localGame.get();
 
+// redirect home if today's puzzle hasn't been solved
 if (
   !storageGame ||
   storageGame.status != "solved" ||
@@ -25,6 +26,7 @@ if (
 
 let game = storageGame!;
 
+// display which items (if any) were correct within each guess
 let emojiMap = {
   a: "🟨",
   ab: "🟩",
@@ -36,6 +38,7 @@ let emojiMap = {
 };
 let emojiOrder = ["a", "ab", "b", "bc", "c", "ac", "abc"] as const;
 
+// copying to clipboard includes emojis as well as hint/guess info
 let clipboardText = `${game.title}
 ${Object.values(game.hintsUsed).filter(Boolean).length}/3 hints used
 
@@ -49,9 +52,11 @@ ${game.guesses
   })
   .join("\n")}`;
 
+// display a preview of the clipboard text
 let textContainer = document.createElement("pre");
 textContainer.textContent = clipboardText;
 
+// add the clipboard button
 let copyButton = document.createElement("button");
 copyButton.textContent = "Copy to Clipboard";
 copyButton.addEventListener("click", () => {
@@ -59,6 +64,8 @@ copyButton.addEventListener("click", () => {
   navigator.clipboard.writeText(clipboardText);
   toast.show("Copied to clipboard 😃");
 });
+
+// -------------------- Certificate --------------------
 
 let certificateContainer = document.createElement("div");
 certificateContainer.classList.add("certificate-container");
@@ -71,16 +78,20 @@ certificateCanvasContainer.append(certificateCanvas);
 
 let certificateNameLabel = document.createElement("label");
 certificateNameLabel.textContent = "Your name:";
+
 let certificateNameInput = document.createElement("input");
 certificateNameInput.value = localName.get() ?? "";
 certificateNameInput.autofocus = !localName.get();
 certificateNameInput.required = true;
 certificateNameInput.maxLength = 27;
 
+// little debounce effect here to update the certificate after user types
 let nameInputTimeout: null | ReturnType<typeof setTimeout> = null;
-
 certificateNameInput.addEventListener("input", () => {
-  if (nameInputTimeout) clearTimeout(nameInputTimeout);
+  if (nameInputTimeout) {
+    clearTimeout(nameInputTimeout);
+  }
+
   nameInputTimeout = setTimeout(() => {
     let name = certificateNameInput.value.trim();
 
@@ -99,6 +110,7 @@ downloadForm.classList.add("certificate-form");
 let downloadFormatLabel = document.createElement("label");
 downloadFormatLabel.textContent = "Format:";
 
+// the user can select which format to use to download the certificate
 let downloadFormatSelect = document.createElement("select");
 downloadFormatSelect.append(
   ...imageFormats.map((format) => {
@@ -120,6 +132,7 @@ let downloadButton = document.createElement("button");
 downloadButton.textContent = "Download";
 downloadButton.classList.add("btn");
 
+// handle download on submission
 downloadForm.addEventListener("submit", (e) => {
   e.preventDefault();
   window.gtag("event", "download_certificate_click");
@@ -142,6 +155,9 @@ certificateContainer.append(
   downloadForm,
 );
 
+/**
+ * Adds the certificate to the UI
+ */
 async function appendCertificate(game: Game) {
   await ensureFontsReady();
 
@@ -242,7 +258,9 @@ async function appendCertificate(game: Game) {
   main.append(certificateContainer);
 }
 
-// Draws a green or gold badge with a check mark
+/**
+ * Draws a green or gold badge with a check mark
+ */
 function drawBadge(
   ctx: CanvasRenderingContext2D,
   cx: number,
@@ -252,7 +270,6 @@ function drawBadge(
 ) {
   // circle
   ctx.save();
-
   let gradient = ctx.createRadialGradient(
     cx - r * 0.3,
     cy - r * 0.3,
@@ -263,9 +280,11 @@ function drawBadge(
   );
 
   if (perfect) {
+    // gold badge if they had a perfect game
     gradient.addColorStop(0, "#fcd34d"); // amber-300
     gradient.addColorStop(1, "#f59e0b"); // amber-500
   } else {
+    // green otherwise
     gradient.addColorStop(0, "#34d399"); // emerald-400
     gradient.addColorStop(1, "#059669"); // emerald-600
   }
@@ -304,7 +323,9 @@ function drawBadge(
   ctx.restore();
 }
 
-// Utility: wait for fonts so text metrics are correct
+/**
+ * Utility: wait for fonts so text metrics are correct
+ */
 async function ensureFontsReady() {
   if (!document.fonts.ready) {
     return;
@@ -317,7 +338,9 @@ async function ensureFontsReady() {
   }
 }
 
-// Crisp drawing on HiDPI displays
+/**
+ * Crisp drawing on HiDPI displays
+ */
 function setupHiDPI(canvas: HTMLCanvasElement, height: number, width: number) {
   let dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 3));
 
@@ -332,7 +355,9 @@ function setupHiDPI(canvas: HTMLCanvasElement, height: number, width: number) {
   return ctx;
 }
 
-// Simple text wrapper
+/**
+ * Wraps text to a new line if overflowing
+ */
 function wrapText(
   ctx: CanvasRenderingContext2D,
   text: string,
