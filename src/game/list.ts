@@ -19,13 +19,13 @@ interface Puzzle<T extends string>
 }
 
 type Week = [
+  Puzzle<string>,
   Puzzle<"Actors">,
   Puzzle<"Songs">,
   Puzzle<"Animals">,
   Puzzle<"Movies" | "TV Shows">,
   Puzzle<"Bands" | "Musicians">,
   Puzzle<"Baseball" | "Basketball" | "Football">,
-  Puzzle<string>,
 ];
 
 let demo: [PublishedGame | Puzzle<"Demo Puzzle">] = [
@@ -1947,7 +1947,7 @@ let week13: GameList = [
   },
 ];
 
-let week14: Week = [
+let week14: GameList = [
   {
     groups: {
       Australian: [
@@ -2083,6 +2083,147 @@ let week14: Week = [
   },
 ];
 
+let week15: Week = [
+  {
+    groups: {
+      European: ["London", "Vienna", "Saint Petersburg", "Lyon"],
+      "National Capital": ["London", "Vienna", "Cairo", "Brasília"],
+      "Metro Population over 5 Million": [
+        "London",
+        "Saint Petersburg",
+        "Cairo",
+        "São Paulo",
+      ],
+    },
+    hint: "Continent, Government, Population",
+    title: "Cities",
+  },
+  {
+    groups: {
+      "Oscar Winner": [
+        "Will Smith",
+        "Rami Malek",
+        "Paul McCartney",
+        "Katharine Hepburn",
+      ],
+      "Played the Lead Role in a TV Show": [
+        "Will Smith",
+        "Rami Malek",
+        "Donald Glover",
+        "Larry David",
+      ],
+      "Also a Recording Artist": [
+        "Will Smith",
+        "Paul McCartney",
+        "Donald Glover",
+        "Rihanna",
+      ],
+    },
+    hint: "Academy, Television, Music",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Title Contains a Color": [
+        "Purple Rain",
+        "Blue Monday",
+        "Brown Eyed Girl",
+        "Yellow Submarine",
+      ],
+      "Released in the 1980s": [
+        "Purple Rain",
+        "Blue Monday",
+        "Billie Jean",
+        "Every Breath You Take",
+      ],
+      "By a Solo Artist": [
+        "Purple Rain",
+        "Brown Eyed Girl",
+        "Billie Jean",
+        "Imagine",
+      ],
+    },
+    hint: "Title, Decade, Solo",
+    title: "Songs",
+  },
+  {
+    groups: {
+      Carnivore: ["Ocelot", "Leopard", "Caiman", "Gray Wolf"],
+      "Lives in Trees": ["Ocelot", "Leopard", "Sloth", "Koala"],
+      "Native to South America": ["Ocelot", "Caiman", "Sloth", "Capybara"],
+    },
+    hint: "Diet, Habitat, Continent",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Originally Aired on NBC": [
+        "The Good Place",
+        "Parks and Recreation",
+        "Cheers",
+        "ER",
+      ],
+      "Created by Michael Schur": [
+        "The Good Place",
+        "Parks and Recreation",
+        "A Man on the Inside",
+        "Brooklyn Nine-Nine",
+      ],
+      "Stars Ted Danson": [
+        "The Good Place",
+        "Cheers",
+        "A Man on the Inside",
+        "Damages",
+      ],
+    },
+    hint: "Network, Creator, Star",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      English: ["The Rolling Stones", "Led Zeppelin", "Oasis", "Joy Division"],
+      "Founded in the 1960s": [
+        "The Rolling Stones",
+        "Led Zeppelin",
+        "ZZ Top",
+        "The Velvet Underground",
+      ],
+      "Toured in the 21st Century": [
+        "The Rolling Stones",
+        "ZZ Top",
+        "Oasis",
+        "Pearl Jam",
+      ],
+    },
+    hint: "Nationality, Decade, Longevity",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "Los Angeles Lakers": [
+        "Shaquille O'Neal",
+        "Dwight Howard",
+        "LeBron James",
+        "Anthony Davis",
+      ],
+      "Orlando Magic": [
+        "Shaquille O'Neal",
+        "Dwight Howard",
+        "Victor Oladipo",
+        "Tracy McGrady",
+      ],
+      "Miami Heat": [
+        "Shaquille O'Neal",
+        "LeBron James",
+        "Victor Oladipo",
+        "Dwyane Wade",
+      ],
+    },
+    hint: "Hollywood, Disney World, Vice City",
+    title: "Basketball",
+  },
+];
+
 export let gameList = demo.concat(
   week1,
   week2,
@@ -2098,4 +2239,5 @@ export let gameList = demo.concat(
   week12,
   week13,
   week14,
+  week15,
 );
