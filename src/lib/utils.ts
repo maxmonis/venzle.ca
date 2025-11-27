@@ -1,14 +1,14 @@
-import type { Game, ImageFormat } from "./types"
+import type { Game, ImageFormat } from "./types";
 
-export let imageFormats = ["jpg", "png", "webp"] as const
+export let imageFormats = ["jpg", "png", "webp"] as const;
 
 export let todayIndex = Math.floor(
-  (Date.now() - Date.UTC(2025, 7, 23)) / 86400000
-)
+  (Date.now() - Date.UTC(2025, 7, 23)) / 86400000,
+);
 
 if (import.meta.env.DEV) {
-  let { gameList } = await import("../game/list")
-  todayIndex = gameList.length - 1
+  let { gameList } = await import("../game/list");
+  todayIndex = gameList.length - 1;
 }
 
 class Channel<
@@ -17,19 +17,19 @@ class Channel<
     ? Game
     : K extends "theme"
       ? "audio" | "dark"
-      : never
+      : never,
 > {
-  private readonly channel: BroadcastChannel
+  private readonly channel: BroadcastChannel;
   constructor(key: K) {
-    this.channel = new BroadcastChannel(key)
+    this.channel = new BroadcastChannel(key);
   }
   post(data: T) {
-    this.channel.postMessage(data)
+    this.channel.postMessage(data);
   }
   listen(callback: (data: T) => void) {
-    this.channel.onmessage = e => {
-      callback(e.data)
-    }
+    this.channel.onmessage = (e) => {
+      callback(e.data);
+    };
   }
 }
 
@@ -37,20 +37,20 @@ class Event<
   K extends "game",
   T extends K extends "game"
     ? "reset" | "save" | "submit" | "update" | number
-    : never
+    : never,
 > {
-  private readonly key: `CustomEvent:${K}`
+  private readonly key: `CustomEvent:${K}`;
   constructor(key: K) {
-    this.key = `CustomEvent:${key}`
+    this.key = `CustomEvent:${key}`;
   }
   post(data: T) {
-    document.dispatchEvent(new CustomEvent(this.key, { detail: { data } }))
+    document.dispatchEvent(new CustomEvent(this.key, { detail: { data } }));
   }
   listen(callback: (data: T) => void) {
-    document.addEventListener(this.key, event => {
-      let customEvent = event as CustomEvent
-      callback(customEvent.detail.data)
-    })
+    document.addEventListener(this.key, (event) => {
+      let customEvent = event as CustomEvent;
+      callback(customEvent.detail.data);
+    });
   }
 }
 
@@ -68,58 +68,62 @@ class LocalStorage<
             ? string
             : K extends "results"
               ? Array<{
-                  guesses: number
-                  hints: number
-                  index: number
-                  status: Game["status"]
+                  guesses: number;
+                  hints: number;
+                  index: number;
+                  status: Game["status"];
                 }>
-              : never
+              : never,
 > {
-  private readonly key: K
+  private readonly key: K;
   constructor(key: K) {
-    this.key = key
+    this.key = key;
   }
   get(): T | null {
-    let item = localStorage.getItem(this.key)
-    return item ? JSON.parse(item) : null
+    let item = localStorage.getItem(this.key);
+    return item ? JSON.parse(item) : null;
   }
   set(item: T) {
-    localStorage.setItem(this.key, JSON.stringify(item))
+    localStorage.setItem(this.key, JSON.stringify(item));
   }
 }
 
 class SessionStorage<
   K extends "games" | "index",
-  T extends K extends "games" ? Array<Game> : K extends "index" ? number : never
+  T extends K extends "games"
+    ? Array<Game>
+    : K extends "index"
+      ? number
+      : never,
 > {
-  private readonly key: K
+  private readonly key: K;
   constructor(key: K) {
-    this.key = key
+    this.key = key;
   }
   get(): T | null {
-    let item = sessionStorage.getItem(this.key)
-    return item ? JSON.parse(item) : null
+    let item = sessionStorage.getItem(this.key);
+    return item ? JSON.parse(item) : null;
   }
   set(item: T) {
-    sessionStorage.setItem(this.key, JSON.stringify(item))
+    sessionStorage.setItem(this.key, JSON.stringify(item));
   }
   remove() {
-    sessionStorage.removeItem(this.key)
+    sessionStorage.removeItem(this.key);
   }
 }
 
-export let gameChannel = new Channel("game")
-export let themeChannel = new Channel("theme")
+export let gameChannel = new Channel("game");
+export let themeChannel = new Channel("theme");
 
-export let gameEvent = new Event("game")
+export let gameEvent = new Event("game");
 
-export let localAudio = new LocalStorage("audio")
-export let localDark = new LocalStorage("dark")
-export let localFormat = new LocalStorage("format")
-export let localGame = new LocalStorage("game")
-export let localLoad = new LocalStorage("load")
-export let localName = new LocalStorage("name")
-export let localResults = new LocalStorage("results")
+export let localAudio = new LocalStorage("audio");
+export let localDark = new LocalStorage("dark");
+export let localFormat = new LocalStorage("format");
+export let localGame = new LocalStorage("game");
+export let localLoad = new LocalStorage("load");
+export let localName = new LocalStorage("name");
+export let localResults = new LocalStorage("results");
 
-export let sessionGames = new SessionStorage("games")
-export let sessionIndex = new SessionStorage("index")
+export let sessionGames = new SessionStorage("games");
+export let sessionIndex = new SessionStorage("index");

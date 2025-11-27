@@ -1,14 +1,14 @@
-import type { GameListItem } from "../src/lib/types"
+import type { GameListItem } from "../src/lib/types";
 
 export let albums: Array<GameListItem> = [
   {
     groups: {
       "Released in the 1990s": ["Spice", "Ten", "OK Computer", "Nevermind"],
       "Debut Album": ["Spice", "Ten", "Led Zeppelin", "The Doors"],
-      British: ["Spice", "OK Computer", "Led Zeppelin", "Abbey Road"]
+      British: ["Spice", "OK Computer", "Led Zeppelin", "Abbey Road"],
     },
     hint: "Decade, Debut, Nationality",
-    published: true
+    published: true,
   },
   {
     groups: {
@@ -16,18 +16,18 @@ export let albums: Array<GameListItem> = [
         "Horses",
         "Boston",
         "Blue",
-        "The Dark Side of the Moon"
+        "The Dark Side of the Moon",
       ],
       "Debut Album": [
         "Horses",
         "Boston",
         "Suzanne Vega",
-        "Are You Experienced"
+        "Are You Experienced",
       ],
-      "Female Artist": ["Horses", "Blue", "Suzanne Vega", "Back to Black"]
+      "Female Artist": ["Horses", "Blue", "Suzanne Vega", "Back to Black"],
     },
     hint: "Decade, Debut, Artist",
-    published: false
+    published: false,
   },
   {
     groups: {
@@ -35,25 +35,25 @@ export let albums: Array<GameListItem> = [
         "The Miseducation of Lauryn Hill",
         "Are You Experienced",
         "When We All Fall Asleep, Where Do We Go?",
-        "Parachutes"
+        "Parachutes",
       ],
       "Released Before 2000": [
         "The Miseducation of Lauryn Hill",
         "Are You Experienced",
         "Rumours",
-        "OK Computer"
+        "OK Computer",
       ],
       "Won Album of the Year Grammy": [
         "The Miseducation of Lauryn Hill",
         "When We All Fall Asleep, Where Do We Go?",
         "Rumours",
-        "Golden Hour"
-      ]
+        "Golden Hour",
+      ],
     },
     hint: "Debut, Era, Grammy",
-    published: false
-  }
-]
+    published: false,
+  },
+];
 
 export let composers: Array<GameListItem> = [
   {
@@ -62,25 +62,25 @@ export let composers: Array<GameListItem> = [
         "Frédéric Chopin",
         "Pyotr Ilyich Tchaikovsky",
         "Franz Schubert",
-        "Richard Wagner"
+        "Richard Wagner",
       ],
       "Wrote Piano Concertos": [
         "Frédéric Chopin",
         "Pyotr Ilyich Tchaikovsky",
         "Wolfgang Amadeus Mozart",
-        "Sergei Prokofiev"
+        "Sergei Prokofiev",
       ],
       "Died before 40": [
         "Frédéric Chopin",
         "Franz Schubert",
         "Wolfgang Amadeus Mozart",
-        "Henry Purcell"
-      ]
+        "Henry Purcell",
+      ],
     },
     hint: "Era, Concertos, Age",
-    published: false
-  }
-]
+    published: false,
+  },
+];
 
 export let musicians: Array<GameListItem> = [
   {
@@ -90,13 +90,13 @@ export let musicians: Array<GameListItem> = [
         "Michael Jackson",
         "Eagles",
         "Celine Dion",
-        "Led Zeppelin"
+        "Led Zeppelin",
       ],
       American: ["Michael Jackson", "Eagles", "Lady Gaga", "Kings of Leon"],
-      "Pop Singer": ["Michael Jackson", "Celine Dion", "Lady Gaga", "Dua Lipa"]
+      "Pop Singer": ["Michael Jackson", "Celine Dion", "Lady Gaga", "Dua Lipa"],
     },
     hint: "Sales, Nationality, Genre",
-    published: true
+    published: true,
   },
   {
     groups: {
@@ -105,19 +105,19 @@ export let musicians: Array<GameListItem> = [
         "Beyoncé",
         "Cher",
         "Paul McCartney",
-        "Brandon Flowers"
+        "Brandon Flowers",
       ],
       "Has 10+ Grammy Wins": [
         "Beyoncé",
         "Adele",
         "Paul McCartney",
-        "Stevie Wonder"
-      ]
+        "Stevie Wonder",
+      ],
     },
     hint: "Name, Band, Grammys",
-    published: true
-  }
-]
+    published: true,
+  },
+];
 
 export let songs: Array<GameListItem> = [
   {
@@ -127,17 +127,17 @@ export let songs: Array<GameListItem> = [
         "Believe",
         "Bad",
         "I Will Always Love You",
-        "Hey Jude"
+        "Hey Jude",
       ],
       "Released in the 1990s": [
         "Believe",
         "Linger",
         "Smells Like Teen Spirit",
-        "I Will Always Love You"
-      ]
+        "I Will Always Love You",
+      ],
     },
     hint: "Title, Peak, Decade",
-    published: true
+    published: true,
   },
   {
     groups: {
@@ -145,22 +145,22 @@ export let songs: Array<GameListItem> = [
         "Careless Whisper",
         "Billie Jean",
         "Love Will Tear Us Apart",
-        "Blister in the Sun"
+        "Blister in the Sun",
       ],
       "#1 on Billboard Hot 100": [
         "Careless Whisper",
         "Billie Jean",
         "Rolling in the Deep",
-        "Please Please Please"
+        "Please Please Please",
       ],
       "By a British Artist": [
         "Careless Whisper",
         "Love Will Tear Us Apart",
         "Rolling in the Deep",
-        "Wonderwall"
-      ]
+        "Wonderwall",
+      ],
     },
     hint: "Decade, Chart, Nationality",
-    published: true
-  }
-]
+    published: true,
+  },
+];

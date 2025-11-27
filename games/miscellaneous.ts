@@ -1,15 +1,15 @@
-import type { GameListItem } from "../src/lib/types"
+import type { GameListItem } from "../src/lib/types";
 
 export let miscellaneous: Array<GameListItem> = [
   {
     groups: {
       Color: ["Orange", "Grape", "Pine", "Purple"],
       Fruit: ["Orange", "Grape", "Apple", "Watermelon"],
-      Tree: ["Orange", "Pine", "Apple", "Cedar"]
+      Tree: ["Orange", "Pine", "Apple", "Cedar"],
     },
     hint: "Palette, Food, Bark",
     published: true,
-    title: "Demo Puzzle"
+    title: "Demo Puzzle",
   },
   {
     creator: "Hannah Monis",
@@ -18,14 +18,14 @@ export let miscellaneous: Array<GameListItem> = [
         "French Onion",
         "Coq au Vin",
         "Beer Cheese",
-        "Chicken Marsala"
+        "Chicken Marsala",
       ],
       French: ["French Onion", "Coq au Vin", "Vichyssoise", "Brioche"],
-      Soup: ["French Onion", "Beer Cheese", "Vichyssoise", "Italian Wedding"]
+      Soup: ["French Onion", "Beer Cheese", "Vichyssoise", "Italian Wedding"],
     },
     hint: "Liquor, Nationality, Broth",
     published: true,
-    title: "Food"
+    title: "Food",
   },
   {
     creator: "Paul T",
@@ -34,24 +34,24 @@ export let miscellaneous: Array<GameListItem> = [
         "Aston Martin Vanquish",
         "Jaguar E-Type",
         "Land Rover Series III",
-        "Bentley Bentayga"
+        "Bentley Bentayga",
       ],
       "Two-Door Coupe": [
         "Aston Martin Vanquish",
         "Jaguar E-Type",
         "Ford Mustang Mach 1",
-        "Chevrolet Camaro"
+        "Chevrolet Camaro",
       ],
       "Driven by James Bond": [
         "Aston Martin Vanquish",
         "Ford Mustang Mach 1",
         "Land Rover Series III",
-        "Mercedes-Benz S 300"
-      ]
+        "Mercedes-Benz S 300",
+      ],
     },
     hint: "Nationality, Doors, 007",
     published: true,
-    title: "Cars"
+    title: "Cars",
   },
   {
     groups: {
@@ -60,18 +60,18 @@ export let miscellaneous: Array<GameListItem> = [
         "Elon Musk",
         "Jack Ma",
         "Bernard Arnault",
-        "Roman Abramovich"
+        "Roman Abramovich",
       ],
       "Has Topped Forbes List": [
         "Elon Musk",
         "Bill Gates",
         "Bernard Arnault",
-        "Warren Buffett"
-      ]
+        "Warren Buffett",
+      ],
     },
     hint: "Tech, Nationality, Forbes",
     published: true,
-    title: "Billionaires"
+    title: "Billionaires",
   },
   {
     groups: {
@@ -79,14 +79,14 @@ export let miscellaneous: Array<GameListItem> = [
         "Mango",
         "Cherry",
         "Pineapple",
-        "Strawberry"
+        "Strawberry",
       ],
       "Has a Pit": ["Mango", "Cherry", "Avocado", "Olive"],
-      Tropical: ["Mango", "Pineapple", "Avocado", "Breadfruit"]
+      Tropical: ["Mango", "Pineapple", "Avocado", "Breadfruit"],
     },
     hint: "Sweet, Stone, Climate",
     published: true,
-    title: "Fruits"
+    title: "Fruits",
   },
   {
     groups: {
@@ -94,19 +94,19 @@ export let miscellaneous: Array<GameListItem> = [
         "English",
         "French",
         "Mandarin Chinese",
-        "Russian"
+        "Russian",
       ],
       "Uses Latin Script": ["English", "French", "Portuguese", "Vietnamese"],
       "200M+ Native Speakers": [
         "English",
         "Mandarin Chinese",
         "Portuguese",
-        "Hindi"
-      ]
+        "Hindi",
+      ],
     },
     hint: "UN, Script, Native Speakers",
     published: true,
-    title: "Languages"
+    title: "Languages",
   },
   {
     groups: {
@@ -114,24 +114,24 @@ export let miscellaneous: Array<GameListItem> = [
         "Lockheed SR-71",
         "F-22 Raptor",
         "Boeing 747",
-        "Airbus A320"
+        "Airbus A320",
       ],
       "Used in Military": [
         "Lockheed SR-71",
         "F-22 Raptor",
         "Lockheed C-130 Hercules",
-        "MQ-9 Reaper"
+        "MQ-9 Reaper",
       ],
       "First flown before 1970": [
         "Lockheed SR-71",
         "Boeing 747",
         "Lockheed C-130 Hercules",
-        "Cessna 172"
-      ]
+        "Cessna 172",
+      ],
     },
     hint: "Propulsion, Combat, Debut",
     published: false,
-    title: "Aircraft"
+    title: "Aircraft",
   },
   {
     groups: {
@@ -139,23 +139,23 @@ export let miscellaneous: Array<GameListItem> = [
         "Martin Heidegger",
         "Friedrich Nietzsche",
         "Jürgen Habermas",
-        "Gottfried Wilhelm Leibniz"
+        "Gottfried Wilhelm Leibniz",
       ],
       Existentialist: [
         "Martin Heidegger",
         "Friedrich Nietzsche",
         "Jean-Paul Sartre",
-        "Søren Kierkegaard"
+        "Søren Kierkegaard",
       ],
       "Major 20th-Century Work": [
         "Martin Heidegger",
         "Jürgen Habermas",
         "Jean-Paul Sartre",
-        "Ludwig Wittgenstein"
-      ]
+        "Ludwig Wittgenstein",
+      ],
     },
     hint: "Nationality, Movement, Century",
     published: true,
-    title: "Philosophers"
-  }
-]
+    title: "Philosophers",
+  },
+];

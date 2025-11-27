@@ -1,15 +1,15 @@
-import type { GameListItem } from "../src/lib/types"
+import type { GameListItem } from "../src/lib/types";
 
 export let nature: Array<GameListItem> = [
   {
     groups: {
       Fragrant: ["Rose", "Carnation", "Jasmine", "Lavender"],
       "Common in bouquets": ["Rose", "Carnation", "Orchid", "Baby's Breath"],
-      "Native to Asia": ["Rose", "Jasmine", "Orchid", "Lotus"]
+      "Native to Asia": ["Rose", "Jasmine", "Orchid", "Lotus"],
     },
     hint: "Scent, Floristry, Origin",
     published: false,
-    title: "Flowers"
+    title: "Flowers",
   },
   {
     groups: {
@@ -17,24 +17,24 @@ export let nature: Array<GameListItem> = [
         "American Kestrel",
         "Common Kestrel",
         "Bald Eagle",
-        "Eurasian Eagle-Owl"
+        "Eurasian Eagle-Owl",
       ],
       "Can Hover": [
         "American Kestrel",
         "Common Kestrel",
         "Ruby-throated Hummingbird",
-        "Pied Kingfisher"
+        "Pied Kingfisher",
       ],
       "Native to the Americas": [
         "American Kestrel",
         "Bald Eagle",
         "Ruby-throated Hummingbird",
-        "Blue Jay"
-      ]
+        "Blue Jay",
+      ],
     },
     hint: "Raptor, Hover, Region",
     published: true,
-    title: "Birds"
+    title: "Birds",
   },
   {
     groups: {
@@ -42,19 +42,19 @@ export let nature: Array<GameListItem> = [
         "Perentie",
         "Gila Monster",
         "Blue-tongued Skink",
-        "Green Iguana"
+        "Green Iguana",
       ],
       Venomous: ["Perentie", "Gila Monster", "Inland Taipan", "King Cobra"],
       "Found in Australia": [
         "Perentie",
         "Blue-tongued Skink",
         "Inland Taipan",
-        "Woma Python"
-      ]
+        "Woma Python",
+      ],
     },
     hint: "Limbs, Poison, Region",
     published: false,
-    title: "Reptiles"
+    title: "Reptiles",
   },
   {
     groups: {
@@ -62,19 +62,24 @@ export let nature: Array<GameListItem> = [
         "Tyrannosaurus",
         "Triceratops",
         "Velociraptor",
-        "Argentinosaurus"
+        "Argentinosaurus",
       ],
       "Found in North America": [
         "Tyrannosaurus",
         "Triceratops",
         "Allosaurus",
-        "Stegosaurus"
+        "Stegosaurus",
       ],
-      Carnivore: ["Tyrannosaurus", "Velociraptor", "Allosaurus", "Megalosaurus"]
+      Carnivore: [
+        "Tyrannosaurus",
+        "Velociraptor",
+        "Allosaurus",
+        "Megalosaurus",
+      ],
     },
     hint: "Period, Region, Diet",
     published: false,
-    title: "Dinosaurs"
+    title: "Dinosaurs",
   },
   {
     groups: {
@@ -82,14 +87,14 @@ export let nature: Array<GameListItem> = [
         "Cabbage",
         "Tomato",
         "English Oak",
-        "Bird of Paradise"
+        "Bird of Paradise",
       ],
       "Used as food": ["Cabbage", "Tomato", "Stone Pine", "Ginkgo"],
-      "Native to Europe": ["Cabbage", "English Oak", "Stone Pine", "Yew"]
+      "Native to Europe": ["Cabbage", "English Oak", "Stone Pine", "Yew"],
     },
     hint: "Angiosperm, Edible, Region",
     published: false,
-    title: "Plants"
+    title: "Plants",
   },
   {
     groups: {
@@ -99,22 +104,22 @@ export let nature: Array<GameListItem> = [
         "Common Carp",
         "Atlantic Cod",
         "European Minnow",
-        "Long-snouted Seahorse"
-      ]
+        "Long-snouted Seahorse",
+      ],
     },
     hint: "Taste, Habitat, Continent",
     published: false,
-    title: "Fish"
+    title: "Fish",
   },
   {
     groups: {
       "Experiences Metamorphosis": ["Honeybee", "Butterfly", "Wasp", "Ladybug"],
       "Feeds on Nectar": ["Honeybee", "Butterfly", "Ant", "Moth"],
-      "Lives in Colonies": ["Honeybee", "Wasp", "Ant", "Termite"]
+      "Lives in Colonies": ["Honeybee", "Wasp", "Ant", "Termite"],
     },
     hint: "Evolution, Feeding, Social",
     published: false,
-    title: "Insects"
+    title: "Insects",
   },
   {
     groups: {
@@ -123,12 +128,12 @@ export let nature: Array<GameListItem> = [
         "Hickory",
         "Sweet Chestnut",
         "Pinyon Pine",
-        "Coconut palm"
+        "Coconut palm",
       ],
-      "Native to North America": ["Hickory", "Maple", "Pinyon Pine", "Sequoia"]
+      "Native to North America": ["Hickory", "Maple", "Pinyon Pine", "Sequoia"],
     },
     hint: "Leaves, Nuts, Region",
     published: false,
-    title: "Trees"
-  }
-]
+    title: "Trees",
+  },
+];

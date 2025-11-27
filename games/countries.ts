@@ -1,4 +1,4 @@
-import type { GameListItem } from "../src/lib/types"
+import type { GameListItem } from "../src/lib/types";
 
 export let countries: Array<GameListItem> = [
   {
@@ -9,11 +9,11 @@ export let countries: Array<GameListItem> = [
         "Canada",
         "Australia",
         "USA",
-        "South Africa"
-      ]
+        "South Africa",
+      ],
     },
     hint: "Government, Latitude, Language",
-    published: true
+    published: true,
   },
   {
     groups: {
@@ -22,20 +22,20 @@ export let countries: Array<GameListItem> = [
         "Indonesia",
         "Pakistan",
         "Brazil",
-        "China"
+        "China",
       ],
-      "Touches Equator": ["Indonesia", "Maldives", "Brazil", "Ecuador"]
+      "Touches Equator": ["Indonesia", "Maldives", "Brazil", "Ecuador"],
     },
     hint: "Religion, Population, Latitude",
-    published: true
+    published: true,
   },
   {
     groups: {
       Caribbean: ["Venezuela", "Suriname", "Cuba", "Jamaica"],
       "Contains Amazon Rainforest": ["Venezuela", "Suriname", "Peru", "Brazil"],
-      "Spanish is Official Language": ["Venezuela", "Cuba", "Peru", "Spain"]
+      "Spanish is Official Language": ["Venezuela", "Cuba", "Peru", "Spain"],
     },
     hint: "Beaches, Trees, Language",
-    published: true
-  }
-]
+    published: true,
+  },
+];

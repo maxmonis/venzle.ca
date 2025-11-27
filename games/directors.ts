@@ -1,4 +1,4 @@
-import type { GameListItem } from "../src/lib/types"
+import type { GameListItem } from "../src/lib/types";
 
 export let directors: Array<GameListItem> = [
   {
@@ -7,23 +7,23 @@ export let directors: Array<GameListItem> = [
         "Steven Spielberg",
         "Peter Jackson",
         "Clint Eastwood",
-        "Alfonso Cuarón"
+        "Alfonso Cuarón",
       ],
       "Directed a Film Which Grossed $1B": [
         "Steven Spielberg",
         "Peter Jackson",
         "J. J. Abrams",
-        "David Yates"
+        "David Yates",
       ],
       American: [
         "Steven Spielberg",
         "Clint Eastwood",
         "J. J. Abrams",
-        "Quentin Tarantino"
-      ]
+        "Quentin Tarantino",
+      ],
     },
     hint: "Academy, Box Office, Nationality",
-    published: true
+    published: true,
   },
   {
     groups: {
@@ -31,22 +31,22 @@ export let directors: Array<GameListItem> = [
         "Alex Garland",
         "James Cameron",
         "Ridley Scott",
-        "Paul Verhoeven"
+        "Paul Verhoeven",
       ],
       "Also a Screenwriter": [
         "Alex Garland",
         "James Cameron",
         "Edgar Wright",
-        "Greta Gerwig"
+        "Greta Gerwig",
       ],
       "Born in the United Kingdom": [
         "Alex Garland",
         "Ridley Scott",
         "Edgar Wright",
-        "Ken Loach"
-      ]
+        "Ken Loach",
+      ],
     },
     hint: "Genre, Script, Nationality",
-    published: false
-  }
-]
+    published: false,
+  },
+];

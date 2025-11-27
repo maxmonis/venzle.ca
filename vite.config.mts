@@ -1,10 +1,10 @@
-import { dirname, resolve } from "node:path"
-import { fileURLToPath } from "node:url"
-import { defineConfig } from "vite"
-import version from "vite-plugin-package-version"
-import tsconfigPaths from "vite-tsconfig-paths"
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import { defineConfig } from "vite";
+import version from "vite-plugin-package-version";
+import tsconfigPaths from "vite-tsconfig-paths";
 
-let __dirname = dirname(fileURLToPath(import.meta.url))
+let __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   build: {
@@ -14,16 +14,16 @@ export default defineConfig({
         learn: resolve(__dirname, "src/root/learn/index.html"),
         main: resolve(__dirname, "src/root/index.html"),
         share: resolve(__dirname, "src/root/share/index.html"),
-        stats: resolve(__dirname, "src/root/stats/index.html")
+        stats: resolve(__dirname, "src/root/stats/index.html"),
       },
       output: {
         manualChunks(id) {
-          if (id.includes("game/list")) return "games"
-        }
-      }
-    }
+          if (id.includes("game/list")) return "games";
+        },
+      },
+    },
   },
   plugins: [tsconfigPaths(), version()],
   root: "src/root",
-  server: { open: true }
-})
+  server: { open: true },
+});

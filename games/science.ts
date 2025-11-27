@@ -1,4 +1,4 @@
-import type { GameListItem } from "../src/lib/types"
+import type { GameListItem } from "../src/lib/types";
 
 export let scientists: Array<GameListItem> = [
   {
@@ -7,23 +7,23 @@ export let scientists: Array<GameListItem> = [
         "Albert Einstein",
         "Alexander Fleming",
         "Richard Feynman",
-        "Dorothy Hodgkin"
+        "Dorothy Hodgkin",
       ],
       "Born before 1900": [
         "Albert Einstein",
         "Alexander Fleming",
         "James Clerk Maxwell",
-        "Gregor Mendel"
+        "Gregor Mendel",
       ],
       Physicist: [
         "Albert Einstein",
         "Richard Feynman",
         "James Clerk Maxwell",
-        "Stephen Hawking"
-      ]
+        "Stephen Hawking",
+      ],
     },
     hint: "Prize, DOB, Field",
-    published: true
+    published: true,
   },
   {
     groups: {
@@ -31,22 +31,22 @@ export let scientists: Array<GameListItem> = [
         "Ahmed Zewail",
         "John Bardeen",
         "Marie Curie",
-        "Wilhelm Röntgen"
+        "Wilhelm Röntgen",
       ],
       "Born after 1900": [
         "Ahmed Zewail",
         "John Bardeen",
         "Rosalind Franklin",
-        "Alan Turing"
+        "Alan Turing",
       ],
       Chemist: [
         "Ahmed Zewail",
         "Marie Curie",
         "Rosalind Franklin",
-        "Dmitri Mendeleev"
-      ]
+        "Dmitri Mendeleev",
+      ],
     },
     hint: "Prize, DOB, Field",
-    published: false
-  }
-]
+    published: false,
+  },
+];

@@ -1,4 +1,4 @@
-import type { GameListItem } from "../src/lib/types"
+import type { GameListItem } from "../src/lib/types";
 
 export let actors: Array<GameListItem> = [
   {
@@ -8,23 +8,23 @@ export let actors: Array<GameListItem> = [
         "Daniel Day-Lewis",
         "Rachel Weisz",
         "Tom Hanks",
-        "Emma Stone"
+        "Emma Stone",
       ],
       British: [
         "Daniel Day-Lewis",
         "Rachel Weisz",
         "Hugh Laurie",
-        "Idris Elba"
+        "Idris Elba",
       ],
       "Born in the 1950s": [
         "Daniel Day-Lewis",
         "Tom Hanks",
         "Hugh Laurie",
-        "Bruce Willis"
-      ]
+        "Bruce Willis",
+      ],
     },
     hint: "Academy, Nationality, DOB",
-    published: true
+    published: true,
   },
   {
     groups: {
@@ -32,23 +32,23 @@ export let actors: Array<GameListItem> = [
         "Anthony Hopkins",
         "Brie Larson",
         "Kate Winslet",
-        "Frances McDormand"
+        "Frances McDormand",
       ],
       "Appeared in the MCU": [
         "Anthony Hopkins",
         "Brie Larson",
         "Tom Hiddleston",
-        "Chris Evans"
+        "Chris Evans",
       ],
       British: [
         "Anthony Hopkins",
         "Kate Winslet",
         "Tom Hiddleston",
-        "Hugh Grant"
-      ]
+        "Hugh Grant",
+      ],
     },
     hint: "Academy, Marvel, Nationality",
-    published: true
+    published: true,
   },
   {
     groups: {
@@ -56,23 +56,23 @@ export let actors: Array<GameListItem> = [
         "Gary Oldman",
         "Sean Penn",
         "Eddie Redmayne",
-        "Julia Roberts"
+        "Julia Roberts",
       ],
       "Has Directed a Feature Film": [
         "Gary Oldman",
         "Sean Penn",
         "Ralph Fiennes",
-        "Ben Affleck"
+        "Ben Affleck",
       ],
       British: [
         "Gary Oldman",
         "Eddie Redmayne",
         "Ralph Fiennes",
-        "Keira Knightley"
-      ]
+        "Keira Knightley",
+      ],
     },
     hint: "Academy, Director, Nationality",
-    published: true
+    published: true,
   },
   {
     groups: {
@@ -80,23 +80,23 @@ export let actors: Array<GameListItem> = [
         "Anne Hathaway",
         "Zachary Levi",
         "Christian Bale",
-        "Robert Downey Jr."
+        "Robert Downey Jr.",
       ],
       "Born in the 1980s": [
         "Anne Hathaway",
         "Zachary Levi",
         "Joseph Gordon-Levitt",
-        "Emily Blunt"
+        "Emily Blunt",
       ],
       "Appeared in a Christopher Nolan Film": [
         "Anne Hathaway",
         "Christian Bale",
         "Joseph Gordon-Levitt",
-        "Michael Caine"
-      ]
+        "Michael Caine",
+      ],
     },
     hint: "Superhero, DOB, Nolan",
-    published: false
+    published: false,
   },
   {
     groups: {
@@ -104,23 +104,23 @@ export let actors: Array<GameListItem> = [
         "Leonardo DiCaprio",
         "Christoph Waltz",
         "Eli Roth",
-        "Michael Madsen"
+        "Michael Madsen",
       ],
       "Golden Globe Winner": [
         "Leonardo DiCaprio",
         "Christoph Waltz",
         "Joaquin Phoenix",
-        "Meryl Streep"
+        "Meryl Streep",
       ],
       "Born in the 1970s": [
         "Leonardo DiCaprio",
         "Eli Roth",
         "Joaquin Phoenix",
-        "Rachel McAdams"
-      ]
+        "Rachel McAdams",
+      ],
     },
     hint: "Tarantino, Globes, DOB",
-    published: true
+    published: true,
   },
   {
     groups: {
@@ -128,23 +128,23 @@ export let actors: Array<GameListItem> = [
         "Daniel Radcliffe",
         "Imelda Staunton",
         "Rupert Grint",
-        "Emma Watson"
+        "Emma Watson",
       ],
       "BAFTA Nominee": [
         "Daniel Radcliffe",
         "Imelda Staunton",
         "Andrew Garfield",
-        "Meryl Streep"
+        "Meryl Streep",
       ],
       "Born in the 1980s": [
         "Daniel Radcliffe",
         "Rupert Grint",
         "Andrew Garfield",
-        "Chris Pine"
-      ]
+        "Chris Pine",
+      ],
     },
     hint: "Potter, BAFTA, DOB",
-    published: false
+    published: false,
   },
   {
     groups: {
@@ -152,23 +152,23 @@ export let actors: Array<GameListItem> = [
         "Javier Bardem",
         "Jeff Bridges",
         "Josh Brolin",
-        "John Goodman"
+        "John Goodman",
       ],
       "Academy Award Winner": [
         "Javier Bardem",
         "Jeff Bridges",
         "Forest Whitaker",
-        "Mahershala Ali"
+        "Mahershala Ali",
       ],
       "Born in the 1960s": [
         "Javier Bardem",
         "Josh Brolin",
         "Forest Whitaker",
-        "Keanu Reeves"
-      ]
+        "Keanu Reeves",
+      ],
     },
     hint: "Coens, Academy, DOB",
-    published: false
+    published: false,
   },
   {
     groups: {
@@ -176,22 +176,22 @@ export let actors: Array<GameListItem> = [
         "Christian Bale",
         "Michael Caine",
         "Tom Hardy",
-        "Joseph Gordon-Levitt"
+        "Joseph Gordon-Levitt",
       ],
       "Golden Globe Winner": [
         "Christian Bale",
         "Michael Caine",
         "Joaquin Phoenix",
-        "Denzel Washington"
+        "Denzel Washington",
       ],
       "Born in the 1970s": [
         "Christian Bale",
         "Tom Hardy",
         "Joaquin Phoenix",
-        "Kate Beckinsale"
-      ]
+        "Kate Beckinsale",
+      ],
     },
     hint: "Nolan, Globes, DOB",
-    published: false
-  }
-]
+    published: false,
+  },
+];

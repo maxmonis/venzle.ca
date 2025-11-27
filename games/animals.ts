@@ -1,4 +1,4 @@
-import type { GameListItem } from "../src/lib/types"
+import type { GameListItem } from "../src/lib/types";
 
 export let animals: Array<GameListItem> = [
   {
@@ -6,20 +6,20 @@ export let animals: Array<GameListItem> = [
     groups: {
       Aquatic: ["Penguin", "Duck", "Seal", "Flying Fish"],
       Bird: ["Penguin", "Duck", "Ostrich", "Eagle"],
-      "Does Not Fly": ["Penguin", "Seal", "Ostrich", "Zebra"]
+      "Does Not Fly": ["Penguin", "Seal", "Ostrich", "Zebra"],
     },
     hint: "Habitat, Feathers, Grounded",
-    published: true
+    published: true,
   },
   {
     creator: "Hannah Monis",
     groups: {
       "Commonly Eaten": ["Shrimp", "Rabbit", "Lobster", "Cow"],
       "Often Kept as Pet": ["Shrimp", "Rabbit", "Newt", "Dog"],
-      "Lives in Water": ["Shrimp", "Lobster", "Newt", "Box Jellyfish"]
+      "Lives in Water": ["Shrimp", "Lobster", "Newt", "Box Jellyfish"],
     },
     hint: "Food, Friend, Habitat",
-    published: true
+    published: true,
   },
   {
     groups: {
@@ -29,11 +29,11 @@ export let animals: Array<GameListItem> = [
         "Leopard",
         "Tiger",
         "Spotted Deer",
-        "Indian Rhinoceros"
-      ]
+        "Indian Rhinoceros",
+      ],
     },
     hint: "Feline, Fur, Region",
-    published: true
+    published: true,
   },
   {
     groups: {
@@ -43,11 +43,11 @@ export let animals: Array<GameListItem> = [
         "Crocodile",
         "Great White Shark",
         "Sea Turtle",
-        "Manatee"
-      ]
+        "Manatee",
+      ],
     },
     hint: "Diet, Reproduction, Habitat",
-    published: true
+    published: true,
   },
   {
     groups: {
@@ -56,30 +56,30 @@ export let animals: Array<GameListItem> = [
         "Elephant",
         "Water Buffalo",
         "Orangutan",
-        "Bornean Bearded Pig"
+        "Bornean Bearded Pig",
       ],
-      "No Hooves": ["Elephant", "Camel", "Orangutan", "Raccoon"]
+      "No Hooves": ["Elephant", "Camel", "Orangutan", "Raccoon"],
     },
     hint: "Saddle, Region, Feet",
-    published: true
+    published: true,
   },
   {
     groups: {
       "Found in North America": ["Beaver", "Mouse", "Otter", "Raccoon"],
       Rodent: ["Beaver", "Mouse", "Capybara", "Guinea Pig"],
-      "Semi-Aquatic": ["Beaver", "Capybara", "Otter", "Hippopotamus"]
+      "Semi-Aquatic": ["Beaver", "Capybara", "Otter", "Hippopotamus"],
     },
     hint: "Region, Teeth, Habitat",
-    published: true
+    published: true,
   },
   {
     groups: {
       "Can Fly": ["Elf Owl", "Roadrunner", "Fruit Bat", "Swan"],
       "Lives in the Desert": ["Elf Owl", "Roadrunner", "Scorpion", "Camel"],
-      Nocturnal: ["Elf Owl", "Fruit Bat", "Scorpion", "Raccoon"]
+      Nocturnal: ["Elf Owl", "Fruit Bat", "Scorpion", "Raccoon"],
     },
     hint: "Wings, Habitat, Night",
-    published: true
+    published: true,
   },
   {
     groups: {
@@ -87,26 +87,26 @@ export let animals: Array<GameListItem> = [
         "Inland Taipan",
         "King Cobra",
         "Common Death Adder",
-        "Rattlesnake"
+        "Rattlesnake",
       ],
       "Lays Eggs": ["Inland Taipan", "King Cobra", "Emu", "Chicken"],
       "Found in Australia": [
         "Inland Taipan",
         "Common Death Adder",
         "Emu",
-        "Koala"
-      ]
+        "Koala",
+      ],
     },
     hint: "Venom, Eggs, Region",
-    published: true
+    published: true,
   },
   {
     groups: {
       "Has Feathers": ["Barn Owl", "Sparrow", "Kākāpō", "Ostrich"],
       "Can Fly": ["Barn Owl", "Sparrow", "Bat", "Dragonfly"],
-      "Is Nocturnal": ["Barn Owl", "Kākāpō", "Bat", "Hedgehog"]
+      "Is Nocturnal": ["Barn Owl", "Kākāpō", "Bat", "Hedgehog"],
     },
     hint: "Feathers, Flight, Night",
-    published: true
-  }
-]
+    published: true,
+  },
+];

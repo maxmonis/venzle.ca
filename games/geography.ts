@@ -1,4 +1,4 @@
-import type { GameListItem } from "../src/lib/types"
+import type { GameListItem } from "../src/lib/types";
 
 export let geography: Array<GameListItem> = [
   {
@@ -7,24 +7,24 @@ export let geography: Array<GameListItem> = [
         "Taj Mahal",
         "Great Wall of China",
         "Petra",
-        "Colosseum"
+        "Colosseum",
       ],
       "Completed After 1400 AD": [
         "Taj Mahal",
         "Great Wall of China",
         "Machu Picchu",
-        "Christ the Redeemer"
+        "Christ the Redeemer",
       ],
       "Name is not Translated": [
         "Taj Mahal",
         "Petra",
         "Machu Picchu",
-        "Chichén Itzá"
-      ]
+        "Chichén Itzá",
+      ],
     },
     hint: "Region, Completion, Name",
     published: true,
-    title: "Wonders of the World"
+    title: "Wonders of the World",
   },
   {
     groups: {
@@ -32,24 +32,24 @@ export let geography: Array<GameListItem> = [
         "Mont-Saint-Michel",
         "Acropolis of Athens",
         "Robben Island",
-        "Machu Picchu"
+        "Machu Picchu",
       ],
       "Located in Europe": [
         "Mont-Saint-Michel",
         "Acropolis of Athens",
         "Blue Lagoon",
-        "Eiffel Tower"
+        "Eiffel Tower",
       ],
       "Located on an Island": [
         "Mont-Saint-Michel",
         "Robben Island",
         "Blue Lagoon",
-        "Alcatraz"
-      ]
+        "Alcatraz",
+      ],
     },
     hint: "UNESCO, Region, Island",
     published: true,
-    title: "Landmarks"
+    title: "Landmarks",
   },
   {
     groups: {
@@ -59,12 +59,12 @@ export let geography: Array<GameListItem> = [
         "Danube",
         "Southern Bug",
         "Kizilirmak",
-        "Sakarya"
-      ]
+        "Sakarya",
+      ],
     },
     hint: "Region, Length, Black Sea",
     published: false,
-    title: "Rivers"
+    title: "Rivers",
   },
   {
     groups: {
@@ -72,24 +72,24 @@ export let geography: Array<GameListItem> = [
         "Brooklyn Bridge",
         "St. Patrick's Cathedral",
         "Manhattan Bridge",
-        "One World Trade Center"
+        "One World Trade Center",
       ],
       "Completed in the 19th Century": [
         "Brooklyn Bridge",
         "St. Patrick's Cathedral",
         "Prospect Park",
-        "Bronx Zoo"
+        "Bronx Zoo",
       ],
       Bridge: [
         "Brooklyn Bridge",
         "Manhattan Bridge",
         "Hell Gate Bridge",
-        "Verrazzano-Narrows Bridge"
-      ]
+        "Verrazzano-Narrows Bridge",
+      ],
     },
     hint: "Burough, Century, Bridge",
     title: "New York City Landmarks",
-    published: false
+    published: false,
   },
   {
     groups: {
@@ -97,23 +97,23 @@ export let geography: Array<GameListItem> = [
         "Kilimanjaro",
         "Mount Fuji",
         "Aconcagua",
-        "Ben Nevis"
+        "Ben Nevis",
       ],
       Volcanic: [
         "Kilimanjaro",
         "Mount Fuji",
         "Mount Rainier",
-        "Mount Vesuvius"
+        "Mount Vesuvius",
       ],
       "Over 4,000 Meters Tall": [
         "Kilimanjaro",
         "Aconcagua",
         "Mount Rainier",
-        "Mount Whitney"
-      ]
+        "Mount Whitney",
+      ],
     },
     hint: "National Record, Lava, Height",
     published: true,
-    title: "Mountains"
-  }
-]
+    title: "Mountains",
+  },
+];

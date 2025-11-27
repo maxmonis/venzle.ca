@@ -1,4 +1,4 @@
-import type { GameListItem } from "../src/lib/types"
+import type { GameListItem } from "../src/lib/types";
 
 export let history: Array<GameListItem> = [
   {
@@ -7,24 +7,24 @@ export let history: Array<GameListItem> = [
         "Abraham Lincoln",
         "Winston Churchill",
         "Czar Nicholas II",
-        "Joseph Stalin"
+        "Joseph Stalin",
       ],
       "Killed with a Firearm": [
         "Abraham Lincoln",
         "Mahatma Gandhi",
         "Czar Nicholas II",
-        "Franz Ferdinand"
+        "Franz Ferdinand",
       ],
       "Appears on Modern Currency": [
         "Abraham Lincoln",
         "Mahatma Gandhi",
         "Winston Churchill",
-        "Thomas Jefferson"
-      ]
+        "Thomas Jefferson",
+      ],
     },
     hint: "War, Death, Money",
     published: true,
-    title: "Historical Figures"
+    title: "Historical Figures",
   },
   {
     groups: {
@@ -32,34 +32,34 @@ export let history: Array<GameListItem> = [
         "American Revolution",
         "Boston Tea Party",
         "French Revolution",
-        "Cook's First Voyage"
+        "Cook's First Voyage",
       ],
       "Happened in North America": [
         "American Revolution",
         "Boston Tea Party",
         "Mexican Revolution",
-        "California Gold Rush"
+        "California Gold Rush",
       ],
       Revolution: [
         "American Revolution",
         "Mexican Revolution",
         "French Revolution",
-        "Russian Revolution"
-      ]
+        "Russian Revolution",
+      ],
     },
     hint: "Century, Continent, Uprising",
     published: true,
-    title: "History"
+    title: "History",
   },
   {
     groups: {
       Philosopher: ["Plato", "Socrates", "Aristotle", "Thales"],
       "From Athens": ["Plato", "Socrates", "Aristophanes", "Pericles"],
-      "Wrote Surviving Works": ["Plato", "Aristotle", "Aristophanes", "Homer"]
+      "Wrote Surviving Works": ["Plato", "Aristotle", "Aristophanes", "Homer"],
     },
     hint: "School, City, Texts",
     published: true,
-    title: "Ancient Greeks"
+    title: "Ancient Greeks",
   },
   {
     groups: {
@@ -67,24 +67,24 @@ export let history: Array<GameListItem> = [
         "Hungarian Revolution",
         "Cuban Revolution",
         "Treaty of Rome",
-        "Korean War"
+        "Korean War",
       ],
       "Political Revolution": [
         "Hungarian Revolution",
         "Cuban Revolution",
         "Russian Revolution",
-        "Chinese Communist Revolution"
+        "Chinese Communist Revolution",
       ],
       "Happened in Europe": [
         "Hungarian Revolution",
         "Treaty of Rome",
         "Russian Revolution",
-        "Creation of Berlin Wall"
-      ]
+        "Creation of Berlin Wall",
+      ],
     },
     hint: "Decade, Uprising, Region",
     published: true,
-    title: "20th Century History"
+    title: "20th Century History",
   },
   {
     groups: {
@@ -92,24 +92,24 @@ export let history: Array<GameListItem> = [
         "Julius Caesar",
         "Cicero",
         "Pliny the Elder",
-        "Virgil"
+        "Virgil",
       ],
       "Held the Consulship": [
         "Julius Caesar",
         "Cicero",
         "Scipio Africanus",
-        "Cato the Younger"
+        "Cato the Younger",
       ],
       "Major Military Commander": [
         "Julius Caesar",
         "Scipio Africanus",
         "Pliny the Elder",
-        "Pompey the Great"
-      ]
+        "Pompey the Great",
+      ],
     },
     hint: "Text, Office, General",
     published: false,
-    title: "Ancient Romans"
+    title: "Ancient Romans",
   },
   {
     groups: {
@@ -117,24 +117,24 @@ export let history: Array<GameListItem> = [
         "Richard Nixon",
         "Joe Biden",
         "Theodore Roosevelt",
-        "Thomas Jefferson"
+        "Thomas Jefferson",
       ],
       "Born in the 20th Century": [
         "Richard Nixon",
         "Joe Biden",
         "Ronald Reagan",
-        "Barack Obama"
+        "Barack Obama",
       ],
       Republican: [
         "Richard Nixon",
         "Theodore Roosevelt",
         "Ronald Reagan",
-        "Abraham Lincoln"
-      ]
+        "Abraham Lincoln",
+      ],
     },
     hint: "VP, DOB, Party",
     published: true,
-    title: "US Presidents"
+    title: "US Presidents",
   },
   {
     groups: {
@@ -144,11 +144,11 @@ export let history: Array<GameListItem> = [
         "Charles I",
         "Queen Victoria",
         "Louis XVI",
-        "Suleiman the Magnificent"
-      ]
+        "Suleiman the Magnificent",
+      ],
     },
     hint: "Nationality, Death, Throne",
     published: true,
-    title: "Historical Figures"
-  }
-]
+    title: "Historical Figures",
+  },
+];

@@ -1,4 +1,4 @@
-import type { GameListItem } from "../src/lib/types"
+import type { GameListItem } from "../src/lib/types";
 
 export let literature: Array<GameListItem> = [
   {
@@ -8,24 +8,24 @@ export let literature: Array<GameListItem> = [
         "Charlotte Brontë",
         "J. K. Rowling",
         "Charles Dickens",
-        "Ian McEwan"
+        "Ian McEwan",
       ],
       Female: [
         "Charlotte Brontë",
         "J. K. Rowling",
         "Louisa May Alcott",
-        "Margaret Atwood"
+        "Margaret Atwood",
       ],
       "Active in the 19th Century": [
         "Charlotte Brontë",
         "Charles Dickens",
         "Louisa May Alcott",
-        "Jules Verne"
-      ]
+        "Jules Verne",
+      ],
     },
     hint: "Nationality, Gender, Century",
     published: true,
-    title: "Authors"
+    title: "Authors",
   },
   {
     groups: {
@@ -33,24 +33,24 @@ export let literature: Array<GameListItem> = [
         "Little Women",
         "Adventures of Huckleberry Finn",
         "Jane Eyre",
-        "Crime and Punishment"
+        "Crime and Punishment",
       ],
       "Set in the United States": [
         "Little Women",
         "Adventures of Huckleberry Finn",
         "Beloved",
-        "The Great Gatsby"
+        "The Great Gatsby",
       ],
       "Written by a Woman": [
         "Little Women",
         "Jane Eyre",
         "Beloved",
-        "Mrs Dalloway"
-      ]
+        "Mrs Dalloway",
+      ],
     },
     hint: "Century, Setting, Author",
     published: true,
-    title: "Literature"
+    title: "Literature",
   },
   {
     groups: {
@@ -58,13 +58,13 @@ export let literature: Array<GameListItem> = [
         "Jay Gatsby",
         "Atticus Finch",
         "Tess Durbeyfield",
-        "Elizabeth Bennet"
+        "Elizabeth Bennet",
       ],
       Male: ["Jay Gatsby", "Atticus Finch", "Romeo", "Prospero"],
-      "Dies by the End": ["Jay Gatsby", "Tess Durbeyfield", "Romeo", "Ophelia"]
+      "Dies by the End": ["Jay Gatsby", "Tess Durbeyfield", "Romeo", "Ophelia"],
     },
     hint: "Book, Gender, Death",
     published: true,
-    title: "Literary Characters"
-  }
-]
+    title: "Literary Characters",
+  },
+];
