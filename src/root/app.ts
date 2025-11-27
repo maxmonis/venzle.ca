@@ -99,14 +99,28 @@ function initGame() {
 // populate the previous game select with available puzzles
 let selectedGameIndex = sessionIndex.get() ?? todayIndex;
 previousGameSelect.append(
-  ...gameList
-    .slice(0, todayIndex + 1)
-    .map((game, index) => {
+  ...[
+    // add the demo puzzle
+    { ...gameList[0]!, index: 0 },
+
+    // add practice puzzles
+    ...gameList
+      .slice(0, todayIndex + 1)
+      .map((game, index) => {
+        return {
+          ...game,
+          index,
+        };
+      })
+      // include only the previous week's puzzles
+      .slice(-7),
+  ]
+    .map((game) => {
       let option = document.createElement("option");
 
-      option.selected = index == selectedGameIndex;
-      option.textContent = getGameText(game.title, index);
-      option.value = index.toString();
+      option.selected = game.index == selectedGameIndex;
+      option.textContent = getGameText(game.title, game.index);
+      option.value = game.index.toString();
 
       return option;
     })

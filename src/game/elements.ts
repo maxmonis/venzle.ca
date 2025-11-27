@@ -46,9 +46,8 @@ previousGameContainer.classList.add("previous-game-container");
 
 let previousGameText = document.createElement("p");
 previousGameText.textContent =
-  "You can practice for the daily puzzle by playing any previous puzzle." +
-  " These practice rounds do not impact your stats.";
-
+  "You can practice for the daily puzzle by playing any puzzle from the " +
+  "previous week. These practice rounds do not impact your stats.";
 let previousGameLabel = document.createElement("label");
 previousGameLabel.textContent = "Available Puzzles:";
 
