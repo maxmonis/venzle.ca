@@ -2,6 +2,9 @@ import type { Game } from "lib/types";
 import { gameEvent } from "lib/utils";
 import { hintsContainer } from "./elements";
 
+/**
+ * Gets the item which is in the center of the puzzle
+ */
 export function getCenter(game: Game) {
   let values = Object.values(game.groups);
 
@@ -10,6 +13,9 @@ export function getCenter(game: Game) {
     .find((value) => values.every((v) => v.includes(value)))!;
 }
 
+/**
+ * Initializes the puzzle's hint state
+ */
 export function initHints(game: Game) {
   hintsContainer.append(
     ...(["a", "b"] as const).map((key) => {
@@ -21,11 +27,13 @@ export function initHints(game: Game) {
           ? `Hint A: ${getCenter(game)} is in the center`
           : `Hint B: ${game.hint}`;
 
+      // if they've used the hint we just need to show its text
       if (game.hintsUsed[key]) {
         hint.append(hintText);
         return hint;
       }
 
+      // otherwise we need to initially show its button
       let hintButton = document.createElement("button");
       hintButton.classList.add("hint-button");
 
@@ -53,8 +61,12 @@ export function initHints(game: Game) {
   appendBonusHint(game);
 }
 
+/**
+ * Adds the bonus hint, but only if both initial hints have been used
+ */
 function appendBonusHint(game: Game) {
   if (!game.hintsUsed.a || !game.hintsUsed.b) {
+    // don't add the bonus hint, they haven't used both initial hints
     return;
   }
 
@@ -72,8 +84,11 @@ function appendBonusHint(game: Game) {
   )}`;
 
   if (game.hintsUsed.c) {
+    // they've used the hint, display its text
     bonusHint.append(bonusHintText);
   } else {
+    // they haven't used the hint, display its button
+
     let bonusHintButton = document.createElement("button");
     bonusHintButton.classList.add("hint-button");
     bonusHintButton.textContent =
