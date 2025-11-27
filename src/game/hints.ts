@@ -4,6 +4,7 @@ import { hintsContainer } from "./elements";
 
 export function getCenter(game: Game) {
   let values = Object.values(game.groups);
+
   return values
     .flatMap((v) => v)
     .find((value) => values.every((v) => v.includes(value)))!;
@@ -14,39 +15,52 @@ export function initHints(game: Game) {
     ...(["a", "b"] as const).map((key) => {
       let hint = document.createElement("div");
       let hintText = document.createElement("p");
+
       hintText.textContent =
         key == "a"
           ? `Hint A: ${getCenter(game)} is in the center`
           : `Hint B: ${game.hint}`;
+
       if (game.hintsUsed[key]) {
         hint.append(hintText);
         return hint;
       }
+
       let hintButton = document.createElement("button");
       hintButton.classList.add("hint-button");
+
       hintButton.textContent =
         key == "a"
           ? "Hint A: Click here to reveal who's in the center"
           : "Hint B: Click here to reveal clues about the categories";
+
       hintButton.addEventListener("click", () => {
         window.gtag("event", `hint_${key}_click`);
+
         game.hintsUsed[key] = true;
         gameEvent.post("save");
+
         hintButton.remove();
         hint.append(hintText);
         appendBonusHint(game);
       });
+
       hint.append(hintButton);
       return hint;
     }),
   );
+
   appendBonusHint(game);
 }
 
 function appendBonusHint(game: Game) {
-  if (!game.hintsUsed.a || !game.hintsUsed.b) return;
+  if (!game.hintsUsed.a || !game.hintsUsed.b) {
+    return;
+  }
+
   let bonusHint = document.createElement("div");
   let bonusHintText = document.createElement("p");
+
   let groupKeys = Object.keys(game.groups);
   bonusHintText.textContent = `Bonus Hint: the categories are ${groupKeys.reduce(
     (acc, key, i) => {
@@ -56,20 +70,27 @@ function appendBonusHint(game: Game) {
     },
     "",
   )}`;
-  if (game.hintsUsed.c) bonusHint.append(bonusHintText);
-  else {
+
+  if (game.hintsUsed.c) {
+    bonusHint.append(bonusHintText);
+  } else {
     let bonusHintButton = document.createElement("button");
     bonusHintButton.classList.add("hint-button");
     bonusHintButton.textContent =
       "Still stuck? Click here to reveal the categories";
+
     bonusHintButton.addEventListener("click", () => {
       window.gtag("event", "hint_c_click");
+
       game.hintsUsed.c = true;
       gameEvent.post("save");
+
       bonusHintButton.remove();
       bonusHint.append(bonusHintText);
     });
+
     bonusHint.append(bonusHintButton);
   }
+
   hintsContainer.append(bonusHint);
 }

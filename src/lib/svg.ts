@@ -13,6 +13,7 @@ path.setAttribute("stroke-linecap", "round");
 path.setAttribute("stroke-linejoin", "round");
 path.setAttribute("stroke-width", "2");
 path.setAttribute("stroke", "currentColor");
+
 chevronLeft.appendChild(path);
 
 handleResize();
@@ -20,6 +21,7 @@ window.addEventListener("resize", handleResize);
 
 function handleResize() {
   let size = `${rem == 16 ? 24 : (rem / 16) * 24}px`;
+
   chevronLeft.setAttribute("height", size);
   chevronLeft.setAttribute("width", size);
 }

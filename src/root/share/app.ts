@@ -14,12 +14,15 @@ initUI();
 let main = document.querySelector("main")!;
 
 let storageGame = localGame.get();
+
 if (
   !storageGame ||
   storageGame.status != "solved" ||
   storageGame.index != todayIndex
-)
+) {
   location.replace("../");
+}
+
 let game = storageGame!;
 
 let emojiMap = {
@@ -73,22 +76,29 @@ certificateNameInput.value = localName.get() ?? "";
 certificateNameInput.autofocus = !localName.get();
 certificateNameInput.required = true;
 certificateNameInput.maxLength = 27;
+
 let nameInputTimeout: null | ReturnType<typeof setTimeout> = null;
+
 certificateNameInput.addEventListener("input", () => {
   if (nameInputTimeout) clearTimeout(nameInputTimeout);
   nameInputTimeout = setTimeout(() => {
     let name = certificateNameInput.value.trim();
-    if (!name || name == localName.get()) return;
-    localName.set(name);
-    appendCertificate(game);
+
+    if (name && name != localName.get()) {
+      localName.set(name);
+      appendCertificate(game);
+    }
   }, 1000);
 });
+
 certificateNameLabel.append(certificateNameInput);
 
 let downloadForm = document.createElement("form");
 downloadForm.classList.add("certificate-form");
+
 let downloadFormatLabel = document.createElement("label");
 downloadFormatLabel.textContent = "Format:";
+
 let downloadFormatSelect = document.createElement("select");
 downloadFormatSelect.append(
   ...imageFormats.map((format) => {
@@ -99,24 +109,31 @@ downloadFormatSelect.append(
     return option;
   }),
 );
+
 downloadFormatSelect.addEventListener("change", () => {
   localFormat.set(downloadFormatSelect.value as ImageFormat);
 });
+
 downloadFormatLabel.append(downloadFormatSelect);
+
 let downloadButton = document.createElement("button");
 downloadButton.textContent = "Download";
 downloadButton.classList.add("btn");
+
 downloadForm.addEventListener("submit", (e) => {
   e.preventDefault();
   window.gtag("event", "download_certificate_click");
   let format = downloadFormatSelect.value as ImageFormat;
+
   let a = document.createElement("a");
   a.href = certificateCanvas.toDataURL(`image/${format}`);
   a.download = `certificate.${format}`;
   a.click();
   a.remove();
+
   toast.show("Certificate downloaded 😁");
 });
+
 downloadForm.append(downloadFormatLabel, downloadButton);
 
 certificateContainer.append(
@@ -235,6 +252,7 @@ function drawBadge(
 ) {
   // circle
   ctx.save();
+
   let gradient = ctx.createRadialGradient(
     cx - r * 0.3,
     cy - r * 0.3,
@@ -243,6 +261,7 @@ function drawBadge(
     cy,
     r,
   );
+
   if (perfect) {
     gradient.addColorStop(0, "#fcd34d"); // amber-300
     gradient.addColorStop(1, "#f59e0b"); // amber-500
@@ -250,6 +269,7 @@ function drawBadge(
     gradient.addColorStop(0, "#34d399"); // emerald-400
     gradient.addColorStop(1, "#059669"); // emerald-600
   }
+
   ctx.fillStyle = gradient;
   ctx.beginPath();
   ctx.arc(cx, cy, r, 0, Math.PI * 2);
@@ -274,6 +294,7 @@ function drawBadge(
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
   ctx.strokeStyle = "white";
+
   ctx.beginPath();
   ctx.moveTo(cx - r * 0.45, cy + r * 0.05);
   ctx.lineTo(cx - r * 0.12, cy + r * 0.35);
@@ -285,7 +306,10 @@ function drawBadge(
 
 // Utility: wait for fonts so text metrics are correct
 async function ensureFontsReady() {
-  if (!document.fonts.ready) return;
+  if (!document.fonts.ready) {
+    return;
+  }
+
   try {
     await document.fonts.ready;
   } catch {
@@ -296,12 +320,15 @@ async function ensureFontsReady() {
 // Crisp drawing on HiDPI displays
 function setupHiDPI(canvas: HTMLCanvasElement, height: number, width: number) {
   let dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 3));
+
   canvas.width = Math.round(width * dpr);
   canvas.height = Math.round(height * dpr);
   canvas.style.width = `${width}px`;
   canvas.style.height = `${height}px`;
+
   let ctx = canvas.getContext("2d")!;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
   return ctx;
 }
 
@@ -317,18 +344,30 @@ function wrapText(
   let words = text.split(/\s+/);
   let line = "";
   let newY = y;
+
   for (let i = 0; i < words.length; i++) {
     let word = words[i];
     let test = line ? line + " " + word : word;
-    if (!test) return newY;
+
+    if (!test) {
+      return newY;
+    }
+
     let { width } = ctx.measureText(test);
+
     if (width > maxWidth && i && word) {
       ctx.fillText(line, x, y);
       newY += lineHeight;
       line = word;
-    } else line = test;
+    } else {
+      line = test;
+    }
   }
-  if (line) ctx.fillText(line, x, y);
+
+  if (line) {
+    ctx.fillText(line, x, y);
+  }
+
   return newY;
 }
 

@@ -26,9 +26,14 @@ homeButton.classList.add("home-button");
 homeButton.append(chevronLeft, "Back to Today's Puzzle");
 homeButton.addEventListener("click", () => {
   window.gtag("event", "home_button_click");
+
   let [todayOption, ...options] = previousGameSelect.querySelectorAll("option");
   todayOption!.selected = true;
-  for (let option of options) option.selected = false;
+
+  for (let option of options) {
+    option.selected = false;
+  }
+
   gameEvent.post(Number(todayOption!.value));
 });
 
@@ -38,17 +43,21 @@ export let pageTitle = document.createElement("h1");
 
 export let previousGameContainer = document.createElement("div");
 previousGameContainer.classList.add("previous-game-container");
+
 let previousGameText = document.createElement("p");
 previousGameText.textContent =
   "You can practice for the daily puzzle by playing any previous puzzle." +
   " These practice rounds do not impact your stats.";
+
 let previousGameLabel = document.createElement("label");
 previousGameLabel.textContent = "Available Puzzles:";
+
 export let previousGameSelect = document.createElement("select");
 previousGameSelect.addEventListener("change", () => {
   window.gtag("event", "previous_game_select");
   gameEvent.post(Number(previousGameSelect.value));
 });
+
 previousGameLabel.append(previousGameSelect);
 previousGameContainer.append(previousGameText, previousGameLabel);
 

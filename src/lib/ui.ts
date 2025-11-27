@@ -21,13 +21,16 @@ let dark = localDark.get() ?? defaultDark;
 
 let audioToggle = document.createElement("button");
 audioToggle.title = "Toggle audio";
+
 let darkToggle = document.createElement("button");
 darkToggle.title = "Toggle dark mode";
 
 audioToggle.addEventListener("click", () => {
   audio = !audio;
+
   localAudio.set(audio);
   applyAudio();
+
   themeChannel.post("audio");
 });
 
@@ -37,8 +40,10 @@ function applyAudio() {
 
 darkToggle.addEventListener("click", () => {
   dark = !dark;
+
   localDark.set(dark);
   applyDark();
+
   themeChannel.post("dark");
 });
 
@@ -82,27 +87,35 @@ function domReady(callback: () => void) {
 
 domReady(() => {
   document.body.style.cssText = "";
+
   let spinner = new Spinner(40);
-  for (let link of document.querySelectorAll("a"))
-    if (link.getAttribute("href")?.startsWith("."))
+
+  for (let link of document.querySelectorAll("a")) {
+    if (link.getAttribute("href")?.startsWith(".")) {
       link.addEventListener("click", () => {
         document.body.style.pointerEvents = "none";
+
         setTimeout(() => {
           document.body.innerHTML = "";
           document.body.append(spinner);
         }, 300);
       });
+    }
+  }
 });
 
 function reloadPage() {
   window.gtag("event", "reload_page");
   document.body.style.pointerEvents = "none";
+
   let seconds = 3;
   toast.show(`New puzzle available! Reloading in ${seconds}...`);
+
   let interval = setInterval(() => {
     seconds--;
     toast.textContent = `New puzzle available! Reloading in ${seconds}...`;
   }, 1200);
+
   setTimeout(() => {
     clearInterval(interval);
     location.reload();

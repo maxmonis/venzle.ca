@@ -11,4 +11,5 @@ demoLink.addEventListener("click", () => {
   window.gtag("event", "demo_puzzle_click");
   sessionIndex.set(0);
 });
+
 document.querySelector("main")!.append(demoLink);
