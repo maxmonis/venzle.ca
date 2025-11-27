@@ -6,7 +6,11 @@ export interface Game {
   groups: Record<string, [string, string, string, string]>;
   guesses: Array<Guess>;
   hint: string;
-  hintsUsed: { a: boolean; b: boolean; c: boolean };
+  hintsUsed: {
+    a: boolean;
+    b: boolean;
+    c: boolean;
+  };
   index: number;
   status: "failed" | "pending" | "solved";
   title: string;

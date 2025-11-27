@@ -42,7 +42,9 @@ if (!isTouchScreen) {
         );
       }
     },
-    { passive: false },
+    {
+      passive: false,
+    },
   );
 }
 
@@ -186,7 +188,9 @@ function makeElementDraggable(
         e.preventDefault();
         draggedElement = element;
       },
-      { passive: false },
+      {
+        passive: false,
+      },
     );
 }
 

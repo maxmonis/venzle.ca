@@ -44,7 +44,10 @@ initUI();
 initGame();
 
 function initGame() {
-  window.scrollTo({ behavior: "smooth", top: 0 });
+  window.scrollTo({
+    behavior: "smooth",
+    top: 0,
+  });
   pageTitle.textContent = getGameText(game.title, game.index);
   creatorText.textContent = `Created by ${game.creator}`;
   initDropzones(game);
@@ -185,7 +188,9 @@ function checkGame(clicked: boolean) {
           : "That's not the answer but keep trying!") +
           "<br />You have " +
           guessesTextContent,
-        { duration: correctPart ? 5000 : 3000 },
+        {
+          duration: correctPart ? 5000 : 3000,
+        },
       );
     }
   } else {
@@ -272,7 +277,11 @@ function getGame(index: number): Game {
       c: "",
     },
     guesses: [],
-    hintsUsed: { a: false, b: false, c: false },
+    hintsUsed: {
+      a: false,
+      b: false,
+      c: false,
+    },
     index,
     status: "pending",
   };
@@ -404,7 +413,9 @@ gameEvent.listen((data) => {
       toast.show("You already guessed that 😅<br />Please try again");
       return;
     }
-    game.guesses.push({ ...game.currentGuess });
+    game.guesses.push({
+      ...game.currentGuess,
+    });
     saveGame();
     checkGame(true);
     gameChannel.post(game);

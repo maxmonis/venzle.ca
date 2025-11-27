@@ -125,21 +125,60 @@ let stats = {
 };
 
 let totalsList = [
-  { value: stats.totalPlayed, text: "Played" },
-  { value: stats.totalSolved, text: "Solved" },
-  { value: stats.perfectGames, text: "Perfect" },
-  { value: stats.successRate, text: "Win Rate", isPercentage: true },
-  { value: stats.averageGuesses, text: "Avg Guesses", decimalPlaces: 1 },
-  { value: stats.averageHints, text: "Avg Hints", decimalPlaces: 1 },
+  {
+    value: stats.totalPlayed,
+    text: "Played",
+  },
+  {
+    value: stats.totalSolved,
+    text: "Solved",
+  },
+  {
+    value: stats.perfectGames,
+    text: "Perfect",
+  },
+  {
+    value: stats.successRate,
+    text: "Win Rate",
+    isPercentage: true,
+  },
+  {
+    value: stats.averageGuesses,
+    text: "Avg Guesses",
+    decimalPlaces: 1,
+  },
+  {
+    value: stats.averageHints,
+    text: "Avg Hints",
+    decimalPlaces: 1,
+  },
 ];
 
 let streaksList = [
-  { value: stats.activePlayedStreak, text: "Active Played" },
-  { value: stats.activeSolvedStreak, text: "Active Solved" },
-  { value: stats.activePerfectStreak, text: "Active Perfect" },
-  { value: stats.longestPlayedStreak, text: "Best Played" },
-  { value: stats.longestSolvedStreak, text: "Best Solved" },
-  { value: stats.longestPerfectStreak, text: "Best Perfect" },
+  {
+    value: stats.activePlayedStreak,
+    text: "Active Played",
+  },
+  {
+    value: stats.activeSolvedStreak,
+    text: "Active Solved",
+  },
+  {
+    value: stats.activePerfectStreak,
+    text: "Active Perfect",
+  },
+  {
+    value: stats.longestPlayedStreak,
+    text: "Best Played",
+  },
+  {
+    value: stats.longestSolvedStreak,
+    text: "Best Solved",
+  },
+  {
+    value: stats.longestPerfectStreak,
+    text: "Best Perfect",
+  },
 ];
 
 let countsSection = document.createElement("section");

@@ -214,9 +214,9 @@ async function appendCertificate(game: Game) {
   ctx.font = `500 32px "Brush Script", "Bradley Hand", "Freestyle Script", serif`;
   ctx.fillText(game.creator, width * 0.325, footerY - 36);
   ctx.fillText(
-    new Intl.DateTimeFormat(undefined, { dateStyle: "long" }).format(
-      new Date(),
-    ),
+    new Intl.DateTimeFormat(undefined, {
+      dateStyle: "long",
+    }).format(new Date()),
     width * 0.675,
     footerY - 36,
   );

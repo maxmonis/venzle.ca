@@ -44,7 +44,13 @@ class Event<
     this.key = `CustomEvent:${key}`;
   }
   post(data: T) {
-    document.dispatchEvent(new CustomEvent(this.key, { detail: { data } }));
+    document.dispatchEvent(
+      new CustomEvent(this.key, {
+        detail: {
+          data,
+        },
+      }),
+    );
   }
   listen(callback: (data: T) => void) {
     document.addEventListener(this.key, (event) => {

@@ -25,5 +25,7 @@ export default defineConfig({
   },
   plugins: [tsconfigPaths(), version()],
   root: "src/root",
-  server: { open: true },
+  server: {
+    open: true,
+  },
 });
