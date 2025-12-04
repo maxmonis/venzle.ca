@@ -2224,6 +2224,162 @@ let week15: Week = [
   },
 ];
 
+let week16: Week = [
+  {
+    groups: {
+      "Lived Before the Common Era": [
+        "Alexander the Great",
+        "Socrates",
+        "Tutankhamun",
+        "Confucius",
+      ],
+      European: [
+        "Alexander the Great",
+        "Socrates",
+        "Charlemagne",
+        "Marco Polo",
+      ],
+      "Ruled an Empire": [
+        "Alexander the Great",
+        "Tutankhamun",
+        "Charlemagne",
+        "Genghis Khan",
+      ],
+    },
+    hint: "Era, Continent, Throne",
+    title: "Historical Figures",
+  },
+  {
+    groups: {
+      "Appeared in Pirates of the Caribbean": [
+        "Zoe Saldaña",
+        "Stellan Skarsgård",
+        "Johnny Depp",
+        "Keira Knightley",
+      ],
+      "Appeared in the MCU": [
+        "Zoe Saldaña",
+        "Stellan Skarsgård",
+        "Scarlett Johansson",
+        "Florence Pugh",
+      ],
+      American: [
+        "Zoe Saldaña",
+        "Johnny Depp",
+        "Scarlett Johansson",
+        "Jennifer Aniston",
+      ],
+    },
+    hint: "Black Pearl, Stan Lee, Nationality",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Title Includes Bird(s)": [
+        "Free Bird",
+        "Three Little Birds",
+        "Surfin' Bird",
+        "I'm Like a Bird",
+      ],
+      "Released in the 1970s": [
+        "Free Bird",
+        "Three Little Birds",
+        "Hotel California",
+        "T.N.T.",
+      ],
+      American: [
+        "Free Bird",
+        "Surfin' Bird",
+        "Hotel California",
+        "Black Hole Sun",
+      ],
+    },
+    hint: "Title, Decade, Nationality",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "No Legs": ["Rattlesnake", "Black Mamba", "Slug", "Electric Eel"],
+      Venomous: ["Rattlesnake", "Black Mamba", "Black Widow", "Platypus"],
+      "Found in North America": [
+        "Rattlesnake",
+        "Black Widow",
+        "Slug",
+        "Coyote",
+      ],
+    },
+    hint: "Limbless, Toxic, Continent",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Set in Outer Space": [
+        "Alien",
+        "The Martian",
+        "2001: A Space Odyssey",
+        "Avatar",
+      ],
+      "Directed by Ridley Scott": [
+        "Alien",
+        "The Martian",
+        "Blade Runner",
+        "Kingdom of Heaven",
+      ],
+      "Released in the 20th Century": [
+        "Alien",
+        "2001: A Space Odyssey",
+        "Blade Runner",
+        "The Terminator",
+      ],
+    },
+    hint: "Setting, Director, Century",
+    title: "Movies",
+  },
+  {
+    groups: {
+      "From Texas": [
+        "Willie Nelson",
+        "Buddy Holly",
+        "George Strait",
+        "Stevie Ray Vaughn",
+      ],
+      "Born in the 1930s": [
+        "Willie Nelson",
+        "Buddy Holly",
+        "Frankie Valli",
+        "Elvis Presley",
+      ],
+      "Active in the 21st Century": [
+        "Willie Nelson",
+        "George Strait",
+        "Frankie Valli",
+        "Mariah Carey",
+      ],
+    },
+    hint: "State, Decade, Longevity",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Heisman Trophy Winner": [
+        "Marcus Allen",
+        "Roger Staubach",
+        "Barry Sanders",
+        "Herschel Walker",
+      ],
+      "Super Bowl MVP": [
+        "Marcus Allen",
+        "Roger Staubach",
+        "Kurt Warner",
+        "Cooper Kupp",
+      ],
+      "NFL MVP": ["Marcus Allen", "Barry Sanders", "Kurt Warner", "Matt Ryan"],
+    },
+    hint: "Awards (one college, two pro)",
+    title: "Football",
+  },
+];
+
 export let gameList = demo.concat(
   week1,
   week2,
@@ -2240,4 +2396,5 @@ export let gameList = demo.concat(
   week13,
   week14,
   week15,
+  week16,
 );
