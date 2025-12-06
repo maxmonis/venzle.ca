@@ -2380,6 +2380,142 @@ let week16: Week = [
   },
 ];
 
+let week17: Week = [
+  {
+    groups: {
+      "Touches the Atlantic Ocean": ["Colombia", "Canada", "Spain", "Portugal"],
+      "Touches the Pacific Ocean": ["Colombia", "Canada", "Ecuador", "Japan"],
+      "Spanish is Official Language": [
+        "Colombia",
+        "Spain",
+        "Ecuador",
+        "Paraguay",
+      ],
+    },
+    hint: "Two Oceans, One Language",
+    title: "Countries",
+  },
+  {
+    groups: {
+      "From Africa": [
+        "Charlize Theron",
+        "Lupita Nyong'o",
+        "Sharlto Copley",
+        "Djimon Hounsou",
+      ],
+      "Oscar Winner": [
+        "Charlize Theron",
+        "Lupita Nyong'o",
+        "Octavia Spencer",
+        "Mikey Madison",
+      ],
+      "Born in the 1970s": [
+        "Charlize Theron",
+        "Sharlto Copley",
+        "Octavia Spencer",
+        "Melissa McCarthy",
+      ],
+    },
+    hint: "Continent, Academy, Decade",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "About New York": [
+        "Empire State of Mind",
+        "New York City Cops",
+        "N.Y. State of Mind",
+        "New York State of Mind",
+      ],
+      "Released in the 2000s": [
+        "Empire State of Mind",
+        "New York City Cops",
+        "Homecoming",
+        "No One",
+      ],
+      Rap: [
+        "Empire State of Mind",
+        "N.Y. State of Mind",
+        "Homecoming",
+        "California Love",
+      ],
+    },
+    hint: "City, Decade, Genre",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Has Shell": ["Tortoise", "Armadillo", "Sea Turtle", "Snail"],
+      Quadruped: ["Tortoise", "Armadillo", "Elephant", "Mouse"],
+      "50+ Year Natural Lifespan": [
+        "Tortoise",
+        "Sea Turtle",
+        "Elephant",
+        "Cockatoo",
+      ],
+    },
+    hint: "Armor, Feet, Age",
+    title: "Animals",
+  },
+  {
+    groups: {
+      British: ["Luther", "Sherlock", "Peaky Blinders", "Fleabag"],
+      "Main Character is a Detective": [
+        "Luther",
+        "Sherlock",
+        "Columbo",
+        "True Detective",
+      ],
+      "Also Movie(s)": ["Luther", "Peaky Blinders", "Columbo", "M*A*S*H"],
+    },
+    hint: "Country, Investigation, Film",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      "British Lead Vocalist(s)": ["Cream", "Muse", "The Beatles", "Blur"],
+      "Three-Piece": [
+        "Cream",
+        "Muse",
+        "The Jimi Hendrix Experience",
+        "Blink-182",
+      ],
+      "Broke Up Before 1975": [
+        "Cream",
+        "The Beatles",
+        "The Jimi Hendrix Experience",
+        "Creedence Clearwater Revival",
+      ],
+    },
+    hint: "Nationality, Members, Breakup",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "Won MVP": [
+        "Clayton Kershaw",
+        "Justin Verlander",
+        "Bob Gibson",
+        "Rollie Fingers",
+      ],
+      "Played in the 21st Century": [
+        "Clayton Kershaw",
+        "Justin Verlander",
+        "Adam Wainwright",
+        "Max Scherzer",
+      ],
+      "Played for Only One Team": [
+        "Clayton Kershaw",
+        "Bob Gibson",
+        "Adam Wainwright",
+        "Jim Palmer",
+      ],
+    },
+    hint: "Award, Century, Lifer",
+    title: "Baseball",
+  },
+];
+
 export let gameList = demo.concat(
   week1,
   week2,
@@ -2397,4 +2533,5 @@ export let gameList = demo.concat(
   week14,
   week15,
   week16,
+  week17,
 );
