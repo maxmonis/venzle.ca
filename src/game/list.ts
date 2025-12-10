@@ -2516,6 +2516,152 @@ let week17: Week = [
   },
 ];
 
+let week18: Week = [
+  {
+    groups: {
+      "Home to an MLB Team": ["Chicago", "Toronto", "Kansas City", "San Diego"],
+      "Home to an NBA Team": [
+        "Chicago",
+        "Toronto",
+        "Indianapolis",
+        "San Antonio",
+      ],
+      "Home to an NFL Team": [
+        "Chicago",
+        "Kansas City",
+        "Indianapolis",
+        "Green Bay",
+      ],
+    },
+    hint: "Baseball, Basketball, Football",
+    title: "Cities",
+  },
+  {
+    groups: {
+      "Married an Athlete": [
+        "Hailee Steinfeld",
+        "Hilary Duff",
+        "Kate Upton",
+        "Eva Longoria",
+      ],
+      "Also a Recording Artist": [
+        "Hailee Steinfeld",
+        "Hilary Duff",
+        "Ariana Grande",
+        "Cher",
+      ],
+      "Born in the 1990s": [
+        "Hailee Steinfeld",
+        "Kate Upton",
+        "Ariana Grande",
+        "Saoirse Ronan",
+      ],
+    },
+    hint: "Husband, Music, Decade",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Released in the 1980s": [
+        "Time After Time",
+        "Let's Go Crazy",
+        "Gloria",
+        "Don't Stop Believin'",
+      ],
+      "Billboard Hot 100 #1 Hit": [
+        "Time After Time",
+        "Let's Go Crazy",
+        "Good 4 U",
+        "Humble",
+      ],
+      "Female Lead Vocalist": [
+        "Time After Time",
+        "Gloria",
+        "Good 4 U",
+        "You Oughta Know",
+      ],
+    },
+    hint: "Decade, Chart, Gender",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Looney Toons Character": [
+        "Duck",
+        "Frog",
+        "Roadrunner",
+        "Tasmanian Devil",
+      ],
+      "Lives in Water": ["Duck", "Frog", "Pelican", "Porpoise"],
+      Bird: ["Duck", "Roadrunner", "Pelican", "Peregrine Falcon"],
+    },
+    hint: "Warner Bros, Habitat, Feathers",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Features Talking Animals": [
+        "Babe",
+        "Dolittle",
+        "The Lion King",
+        "Bambi",
+      ],
+      "Live Action Film": ["Babe", "Dolittle", "The Piano", "Poor Things"],
+      "Released in the 1990s": [
+        "Babe",
+        "The Lion King",
+        "The Piano",
+        "The Iron Giant",
+      ],
+    },
+    hint: "Anthropomorphic, Animation, Decade",
+    title: "Movies",
+  },
+  {
+    groups: {
+      "Has Famous Parent": [
+        "Miley Cyrus",
+        "Robin Thicke",
+        "Liza Minelli",
+        "Ziggy Marley",
+      ],
+      "Has Billboard Hot 100 #1 Hit(s)": [
+        "Miley Cyrus",
+        "Robin Thicke",
+        "Dolly Parton",
+        "Elton John",
+      ],
+      Female: ["Miley Cyrus", "Liza Minelli", "Dolly Parton", "Patti Smith"],
+    },
+    hint: "Lineage, Chart, Gender",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Won MVP": [
+        "Giannis Antetokounmpo",
+        "Steph Curry",
+        "David Robinson",
+        "Steve Nash",
+      ],
+      "Won Finals MVP": [
+        "Giannis Antetokounmpo",
+        "Steph Curry",
+        "Kawhi Leonard",
+        "Tony Parker",
+      ],
+      "Won DPOY": [
+        "Giannis Antetokounmpo",
+        "David Robinson",
+        "Kawhi Leonard",
+        "Draymond Green",
+      ],
+    },
+    hint: "Three Awards",
+    title: "Basketball",
+  },
+];
+
 export let gameList = demo.concat(
   week1,
   week2,
@@ -2534,4 +2680,5 @@ export let gameList = demo.concat(
   week15,
   week16,
   week17,
+  week18,
 );
