@@ -1,5 +1,5 @@
 import { initUI, reduceMotion } from "lib/ui";
-import { localResults, todayIndex } from "lib/utils";
+import { localGames, localResults, todayIndex } from "lib/utils";
 import "./style.css";
 
 initUI();
@@ -8,14 +8,29 @@ initUI();
 
 let main = document.querySelector("main")!;
 
-// get existing results from local storage
+// some browsers may still include this deprecated data
 let results = localResults.get() ?? [];
 
-// create a map with each result's index
-let map = new Map<number, (typeof results)[number]>();
-for (let r of results) {
-  map.set(r.index, r);
-}
+// get existing games from local storage
+let games = localGames.get() ?? [];
+
+// update results with game data
+results = results.concat(
+  games.flatMap(({ guesses, hintsUsed, index, status }) => {
+    if (status == "pending" || results.some((r) => r.index == index)) {
+      return [];
+    }
+
+    return {
+      guesses: guesses.length,
+      hints: Object.values(hintsUsed).filter(Boolean).length,
+      index,
+      status,
+    };
+  }),
+);
+
+results.sort((a, b) => a.index - b.index);
 
 let activePerfectStreak = 0;
 let activePlayedStreak = 0;
@@ -36,9 +51,14 @@ let totalSolved = 0;
 
 let lastIndex = -1;
 
-for (let { guesses, hints, index, status } of [...results].sort(
-  (a, b) => a.index - b.index,
-)) {
+// create a map with each result's index
+let map = new Map<number, (typeof results)[number]>();
+
+for (let result of results) {
+  map.set(result.index, result);
+
+  let { guesses, hints, index, status } = result;
+
   // update total guess and hint sums
   totalGuesses += guesses;
   totalHints += hints;

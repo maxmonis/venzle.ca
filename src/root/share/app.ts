@@ -3,8 +3,9 @@ import { initUI, toast } from "lib/ui";
 import {
   imageFormats,
   localFormat,
-  localGame,
+  localGames,
   localName,
+  sessionIndex,
   todayIndex,
 } from "lib/utils";
 import "./style.css";
@@ -13,14 +14,13 @@ initUI();
 
 let main = document.querySelector("main")!;
 
-let storageGame = localGame.get();
+let index = sessionIndex.get() ?? todayIndex;
 
-// redirect home if today's puzzle hasn't been solved
-if (
-  !storageGame ||
-  storageGame.status != "solved" ||
-  storageGame.index != todayIndex
-) {
+let games = localGames.get() ?? [];
+let storageGame = games.find((g) => g.index == index && g.status == "solved");
+
+// redirect home if puzzle hasn't been solved
+if (!storageGame) {
   location.replace("../");
 }
 
@@ -39,7 +39,7 @@ let emojiMap = {
 let emojiOrder = ["a", "ab", "b", "bc", "c", "ac", "abc"] as const;
 
 // copying to clipboard includes emojis as well as hint/guess info
-let clipboardText = `${game.title}
+let clipboardText = `Puzzle ${game.index}: ${game.title}
 ${Object.values(game.hintsUsed).filter(Boolean).length}/3 hints used
 
 ${game.guesses
@@ -61,7 +61,7 @@ let copyButton = document.createElement("button");
 copyButton.textContent = "Copy to Clipboard";
 copyButton.addEventListener("click", () => {
   window.gtag("event", "copy_to_clipboard_click");
-  navigator.clipboard.writeText(clipboardText);
+  navigator.clipboard.writeText("Venzle\n" + clipboardText);
   toast.show("Copied to clipboard 😃");
 });
 
@@ -196,7 +196,7 @@ async function appendCertificate(game: Game) {
   cursorY += 96;
 
   ctx.font = `400 40px "Georgia", "Times New Roman", serif`;
-  ctx.fillText("solved today's puzzle", centerX, cursorY);
+  ctx.fillText(`solved puzzle ${index}`, centerX, cursorY);
   cursorY += 72;
 
   ctx.font = `italic 700 72px "Georgia", "Times New Roman", serif`;
@@ -249,7 +249,7 @@ async function appendCertificate(game: Game) {
   ctx.fillText(
     new Intl.DateTimeFormat(undefined, {
       dateStyle: "long",
-    }).format(new Date()),
+    }).format(game.timestamp ? new Date(game.timestamp) : new Date()),
     width * 0.675,
     footerY - 36,
   );

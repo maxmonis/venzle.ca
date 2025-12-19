@@ -13,6 +13,7 @@ export interface Game {
   };
   index: number;
   status: "failed" | "pending" | "solved";
+  timestamp?: number;
   title: string;
 }
 

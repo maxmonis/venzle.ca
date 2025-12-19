@@ -44,10 +44,6 @@ export let pageTitle = document.createElement("h1");
 export let previousGameContainer = document.createElement("div");
 previousGameContainer.classList.add("previous-game-container");
 
-let previousGameText = document.createElement("p");
-previousGameText.textContent =
-  "You can practice for the daily puzzle by playing any puzzle from the " +
-  "previous week. These practice rounds do not impact your stats.";
 let previousGameLabel = document.createElement("label");
 previousGameLabel.textContent = "Available Puzzles:";
 
@@ -58,7 +54,7 @@ previousGameSelect.addEventListener("change", () => {
 });
 
 previousGameLabel.append(previousGameSelect);
-previousGameContainer.append(previousGameText, previousGameLabel);
+previousGameContainer.append(previousGameLabel);
 
 export let resetButton = document.createElement("button");
 resetButton.classList.add("reset-button");

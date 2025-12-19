@@ -24,10 +24,8 @@ import {
   gameChannel,
   gameEvent,
   localAudio,
-  localGame,
+  localGames,
   localLoad,
-  localResults,
-  sessionGames,
   sessionIndex,
   todayIndex,
 } from "lib/utils";
@@ -98,29 +96,26 @@ function initGame() {
 
 // populate the previous game select with available puzzles
 let selectedGameIndex = sessionIndex.get() ?? todayIndex;
-previousGameSelect.append(
-  ...[
-    // add the demo puzzle
-    { ...gameList[0]!, index: 0 },
 
-    // add practice puzzles
-    ...gameList
-      .slice(0, todayIndex + 1)
-      .map((game, index) => {
-        return {
-          ...game,
-          index,
-        };
-      })
-      // include only the previous week's puzzles
-      .slice(-7),
-  ]
-    .map((game) => {
+// we'll add ✅ or ❌ next to completed puzzles
+let games = localGames.get() ?? [];
+
+previousGameSelect.append(
+  ...gameList
+    .slice(0, todayIndex + 1)
+    .map((game, index) => {
       let option = document.createElement("option");
 
-      option.selected = game.index == selectedGameIndex;
-      option.textContent = getGameText(game.title, game.index);
-      option.value = game.index.toString();
+      option.selected = index == selectedGameIndex;
+      option.value = index.toString();
+
+      option.textContent = getGameText(game.title, index);
+      let status = games.find(
+        (g) => g.index == index && g.status != "pending",
+      )?.status;
+      if (status) {
+        option.textContent += status == "failed" ? " ❌" : " ✅";
+      }
 
       return option;
     })
@@ -198,12 +193,7 @@ function checkGame(clicked: boolean) {
             hintCount == 1 ? "" : "s"
           } and ${guessCount} guess${guessCount == 1 ? "" : "es"} 😄`;
 
-    // prompt user to return tomorrow if this is the deaily puzzle
-    if (game.index == todayIndex) {
-      gameSummary.innerHTML +=
-        "<br />Come back tomorrow for a new puzzle!<br />" +
-        "<div><a href='./share/'>Share Results</a></div>";
-    }
+    gameSummary.innerHTML += "<div><a href='./share/'>Share Results</a></div>";
 
     // display the game summary
     circleContainer.after(gameSummary);
@@ -229,7 +219,6 @@ function checkGame(clicked: boolean) {
       // update and save
       game.status = "solved";
       saveGame();
-      updateResults();
 
       // show confetti
       new Confetti().start();
@@ -362,11 +351,6 @@ function checkGame(clicked: boolean) {
 
     // add consolation message
     gameSummary.innerHTML = "This was a tough one and you're out of guesses 😔";
-    // ask them to return tomorrow if this was the daily puzzle
-    if (game.index == todayIndex) {
-      gameSummary.innerHTML += "<br />Come back tomorrow for a new puzzle!";
-    }
-    // display the message
     circleContainer.after(gameSummary);
 
     if (clicked) {
@@ -381,7 +365,6 @@ function checkGame(clicked: boolean) {
       // update and save
       game.status = "failed";
       saveGame();
-      updateResults();
     }
   }
 }
@@ -429,24 +412,16 @@ function getGame(index: number): Game {
     if (index == todayIndex) {
       window.gtag("event", "daily_puzzle_resume");
     }
-
-    // check if they have an in progress game in local storage
-    let game = localGame.get();
-
-    // make sure it's today's puzzle (not yesterday's, for example)
-    if (game && game.index == todayIndex) {
-      return game;
-    }
   }
 
-  // check if they've played this puzzle during the current session
-  let game = sessionGames.get()?.find((g) => g.index == index);
+  // check if they've played this puzzle
+  let game = localGames.get()?.find((g) => g.index == index);
   if (game) {
     return game;
   }
 
-  // reload if something's gone wrong and the index is out of range
-  if (index >= gameList.length) {
+  if (!gameList[index]) {
+    // something's gone wrong and the index is out of range
     window.gtag("event", "invalid_puzzle_index");
     index = gameList.length - 1;
   }
@@ -492,16 +467,12 @@ function getGame(index: number): Game {
  * Generates text for the puzzle select
  */
 function getGameText(title: string, index: number) {
-  // the first puzzle is the demo and the last one is the daily puzzle
   return `${
     index == 0
       ? // the first puzzle is the demo
         "How to Play"
-      : index == todayIndex
-        ? // the last one is the daily puzzle
-          "Today's Puzzle"
-        : // otherwise we'll just show its number
-          `Puzzle ${index}`
+      : // otherwise we'll just show its number
+        `Puzzle ${index}`
   }: ${title}`;
 }
 
@@ -523,17 +494,16 @@ function resetGame() {
 }
 
 /**
- * Saves to local storage if it's the daily puzzle and session storage if not
+ * Saves to local storage
  */
 function saveGame() {
-  if (game.index == todayIndex) {
-    // it's the daily puzzle, save it in local storage
-    localGame.set(game);
-    return;
+  // ensure there's a timestamp if the game is not pending
+  if (game.status != "pending" && !game.timestamp) {
+    game.timestamp = new Date().getTime();
   }
 
-  // update it if it's in session storage already
-  let games = sessionGames.get() ?? [];
+  // update it if it's in local storage already
+  let games = localGames.get() ?? [];
   let mapped = false;
   games = games.map((g) => {
     if (g.index == game.index) {
@@ -544,13 +514,13 @@ function saveGame() {
     return g;
   });
 
-  // otherwise add it to session storage
+  // otherwise add it to local storage
   if (!mapped) {
     games.push(game);
   }
 
-  // save session state
-  sessionGames.set(games);
+  // save state
+  localGames.set(games);
 }
 
 /**
@@ -652,26 +622,6 @@ function updateGameState() {
   // save and update
   saveGame();
   gameChannel.post(game);
-}
-
-/**
- * Updates the user's stats if they've just completed the daily puzzle
- */
-function updateResults() {
-  if (game.index != todayIndex) {
-    // exit if this was not today's puzzle
-    return;
-  }
-
-  // add today's game to results and save them in local storage
-  let results = localResults.get() ?? [];
-  results.push({
-    hints: Object.values(game.hintsUsed).filter(Boolean).length,
-    guesses: game.guesses.length,
-    index: game.index,
-    status: game.status,
-  });
-  localResults.set(results);
 }
 
 // listen for broadcasts in case the user has multiple tabs open
