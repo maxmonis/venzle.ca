@@ -2662,6 +2662,132 @@ let week18: Week = [
   },
 ];
 
+let week19: Week = [
+  {
+    groups: {
+      African: ["Niger", "Uganda", "Senegal", "Nigeria"],
+      Landlocked: ["Niger", "Uganda", "Laos", "Hungary"],
+      "Former French Colony": ["Niger", "Senegal", "Laos", "Vietnam"],
+    },
+    hint: "Continent, Geography, History",
+    title: "Countries",
+  },
+  {
+    groups: {
+      "Brother is Also a Famous Actor": [
+        "Owen Wilson",
+        "Chris Hemsworth",
+        "Joan Cusack",
+        "Maggie Gyllenhaal",
+      ],
+      Male: ["Owen Wilson", "Chris Hemsworth", "Daniel Craig", "Ryan Gosling"],
+      "Born in the 1960s": [
+        "Owen Wilson",
+        "Joan Cusack",
+        "Daniel Craig",
+        "Marisa Tomei",
+      ],
+    },
+    hint: "Sibling, Gender, Decade",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Won Grammy(s)": ["Royals", "Uptown Funk", "Fast Car", "Michelle"],
+      "Released in the 2010s": [
+        "Royals",
+        "Uptown Funk",
+        "Call Me Maybe",
+        "Gangnam Style",
+      ],
+      "By a Female Artist": [
+        "Royals",
+        "Fast Car",
+        "Call Me Maybe",
+        "True Colors",
+      ],
+    },
+    hint: "Award, Decade, Gender",
+    title: "Songs",
+  },
+  {
+    groups: {
+      Mammal: ["Thylacine", "Tiger", "Kangaroo", "Elephant"],
+      "Has Stripes": ["Thylacine", "Tiger", "Tiger Snake", "Coral Snake"],
+      "Found in Australia": ["Thylacine", "Kangaroo", "Tiger Snake", "Emu"],
+    },
+    hint: "Class, Appearance, Continent",
+    title: "Animals",
+  },
+  {
+    groups: {
+      Sitcom: [
+        "Friends",
+        "3rd Rock From the Sun",
+        "All in the Family",
+        "Sanford and Son",
+      ],
+      "Originally Aired on NBC": [
+        "Friends",
+        "3rd Rock From the Sun",
+        "Law & Order",
+        "ER",
+      ],
+      "Set in New York City": [
+        "Friends",
+        "All in the Family",
+        "Law & Order",
+        "Gossip Girl",
+      ],
+    },
+    hint: "Genre, Network, City",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      British: ["Coldplay", "Spice Girls", "The Cure", "The Beatles"],
+      "Formed in the 1990s": [
+        "Coldplay",
+        "Spice Girls",
+        "Weezer",
+        "Backstreet Boys",
+      ],
+      "Alternative Rock": [
+        "Coldplay",
+        "The Cure",
+        "Weezer",
+        "Red Hot Chili Peppers",
+      ],
+    },
+    hint: "Nationality, Decade, Genre",
+    title: "Bands",
+  },
+  {
+    groups: {
+      Quarterback: [
+        "Tom Brady",
+        "Patrick Mahomes",
+        "Drew Bledsoe",
+        "Dan Marino",
+      ],
+      "Won Multiple Super Bowls": [
+        "Tom Brady",
+        "Patrick Mahomes",
+        "Rob Gronkowski",
+        "Travis Kelce",
+      ],
+      "Played for New England": [
+        "Tom Brady",
+        "Drew Bledsoe",
+        "Rob Gronkowski",
+        "Randy Moss",
+      ],
+    },
+    hint: "Position, Rings, Team",
+    title: "Football",
+  },
+];
+
 export let gameList = demo.concat(
   week1,
   week2,
@@ -2681,4 +2807,5 @@ export let gameList = demo.concat(
   week16,
   week17,
   week18,
+  week19,
 );
