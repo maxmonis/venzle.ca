@@ -8,6 +8,12 @@ export let toast = new Toast();
 document.querySelector<HTMLElement>(".site-logo")!.title =
   `Venzle v${import.meta.env.PACKAGE_VERSION}`;
 
+let copyrightYear = document.querySelector(".copyright-year")!;
+copyrightYear.textContent = copyrightYear.textContent!.replace(
+  "2025",
+  `2025-${new Date().getFullYear()}`,
+);
+
 let mediaQueryList = matchMedia("(prefers-reduced-motion: reduce)");
 export let reduceMotion = mediaQueryList.matches;
 mediaQueryList.addEventListener("change", (e) => {
