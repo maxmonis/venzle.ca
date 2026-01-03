@@ -2788,6 +2788,157 @@ let week19: Week = [
   },
 ];
 
+let week20: Week = [
+  {
+    groups: {
+      "Head of State": [
+        "Marcus Aurelius",
+        "Napoleon",
+        "John Adams",
+        "Queen Elizabeth II",
+      ],
+      "Military Commander": [
+        "Marcus Aurelius",
+        "Napoleon",
+        "Sun Tzu",
+        "Douglas MacArthur",
+      ],
+      "Influential Thinker": [
+        "Marcus Aurelius",
+        "John Adams",
+        "Sun Tzu",
+        "Aristotle",
+      ],
+    },
+    hint: "Leader, Soldier, Philosopher",
+    title: "Historical Figures",
+  },
+  {
+    groups: {
+      "Oscar Winner": [
+        "Jamie Foxx",
+        "Jared Leto",
+        "Helen Hunt",
+        "Geoffrey Rush",
+      ],
+      "Recording Artist": [
+        "Jamie Foxx",
+        "Jared Leto",
+        "Reba McEntire",
+        "Dean Martin",
+      ],
+      "Starred in a Sitcom": [
+        "Jamie Foxx",
+        "Helen Hunt",
+        "Reba McEntire",
+        "Matthew Perry",
+      ],
+    },
+    hint: "Academy, Music, Situational Comedy",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Released in the 1990s": [
+        "My Heart Will Go On",
+        "Tears in Heaven",
+        "Ice Ice Baby",
+        "Champagne Supernova",
+      ],
+      "Won Grammy(s)": [
+        "My Heart Will Go On",
+        "Tears in Heaven",
+        "Bad Guy",
+        "Get Lucky",
+      ],
+      "#1 on Billboard Hot 100": [
+        "My Heart Will Go On",
+        "Ice Ice Baby",
+        "Bad Guy",
+        "Texas Hold 'Em",
+      ],
+    },
+    hint: "Decade, Award, Chart",
+    title: "Songs",
+  },
+  {
+    groups: {
+      Mammal: ["Platypus", "Echidna", "Dolphin", "Baboon"],
+      "Lays Eggs": ["Platypus", "Echidna", "Salmon", "Turkey"],
+      Aquatic: ["Platypus", "Dolphin", "Salmon", "Shark"],
+    },
+    hint: "Class, Reproduction, Habitat",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Won Best Picture Oscar": [
+        "The Sound of Music",
+        "Chicago",
+        "Schindler's List",
+        "Crash",
+      ],
+      Musical: [
+        "The Sound of Music",
+        "Chicago",
+        "Les Misérables",
+        "La La Land",
+      ],
+      "Set in Europe": [
+        "The Sound of Music",
+        "Schindler's List",
+        "Les Misérables",
+        "Midnight in Paris",
+      ],
+    },
+    hint: "Academy, Genre, Continent",
+    title: "Movies",
+  },
+  {
+    groups: {
+      "Grammy Winner": [
+        "Jacob Collier",
+        "Alicia Keys",
+        "Dua Lipa",
+        "Shania Twain",
+      ],
+      "Pianist/Keyboardist": [
+        "Jacob Collier",
+        "Alicia Keys",
+        "Rick Wakeman",
+        "Liberace",
+      ],
+      British: ["Jacob Collier", "Dua Lipa", "Rick Wakeman", "Sid Vicious"],
+    },
+    hint: "Award, Instrument, Nationality",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Played for the Yankees": [
+        "Derek Jeter",
+        "Lou Gehrig",
+        "Hideki Matsui",
+        "Orlando Hernández",
+      ],
+      "Hall of Famer": [
+        "Derek Jeter",
+        "Lou Gehrig",
+        "Sandy Koufax",
+        "Carl Yastrzemski",
+      ],
+      "Won World Series MVP": [
+        "Derek Jeter",
+        "Hideki Matsui",
+        "Sandy Koufax",
+        "David Freese",
+      ],
+    },
+    hint: "NY, HOF, WS MVP",
+    title: "Baseball",
+  },
+];
+
 export let gameList = demo.concat(
   week1,
   week2,
@@ -2808,4 +2959,5 @@ export let gameList = demo.concat(
   week17,
   week18,
   week19,
+  week20,
 );
