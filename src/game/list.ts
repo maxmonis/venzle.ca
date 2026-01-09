@@ -2939,6 +2939,147 @@ let week20: Week = [
   },
 ];
 
+let week21: Week = [
+  {
+    groups: {
+      "National Capital": ["Lisbon", "Tokyo", "Madrid", "Ottawa"],
+      "Located on the Coast": ["Lisbon", "Tokyo", "Barcelona", "Miami"],
+      European: ["Lisbon", "Madrid", "Barcelona", "Munich"],
+    },
+    hint: "Government, Shoreline, Continent",
+    title: "Cities",
+  },
+  {
+    groups: {
+      "Oscar Nominee": [
+        "Sean Connery",
+        "James McAvoy",
+        "Henry Fonda",
+        "Melissa McCarthy",
+      ],
+      Scottish: ["Sean Connery", "James McAvoy", "Brian Cox", "Karen Gillan"],
+      "Born Before 1950": [
+        "Sean Connery",
+        "Brian Cox",
+        "Henry Fonda",
+        "Jayne Mansfield",
+      ],
+    },
+    hint: "Academy Nod, Nationality, DOB",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Released in the 1990s": [
+        "Vision of Love",
+        "Lovefool",
+        "Kiss from a Rose",
+        "When I Come Around",
+      ],
+      'Title Includes "Love"': [
+        "Vision of Love",
+        "Lovefool",
+        "Crazy in Love",
+        "And I Love Her",
+      ],
+      "Won Grammy(s)": [
+        "Vision of Love",
+        "Kiss from a Rose",
+        "Crazy in Love",
+        "Leave the Door Open",
+      ],
+    },
+    hint: "Decade, Title, Award",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Namesake of Superhero/Villain": [
+        "Wolverine",
+        "Black Widow",
+        "Black Panther",
+        "Penguin",
+      ],
+      "Found in North America": [
+        "Wolverine",
+        "Black Widow",
+        "Opossum",
+        "Garter Snake",
+      ],
+      Mammal: ["Wolverine", "Black Panther", "Opossum", "Lemur"],
+    },
+    hint: "Marvel/DC, Continent, Class",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Animated Series": [
+        "Bob's Burgers",
+        "South Park",
+        "X-Men: The Animated Series",
+        "Avatar: The Last Airbender",
+      ],
+      Sitcom: [
+        "Bob's Burgers",
+        "South Park",
+        "Married... with Children",
+        "Newhart",
+      ],
+      "Aired on Fox": [
+        "Bob's Burgers",
+        "X-Men: The Animated Series",
+        "Married... with Children",
+        "24",
+      ],
+    },
+    hint: "Animation, Genre, Network",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      "Member(s) Named John": [
+        "The Beatles",
+        "Creedence Clearwater Revival",
+        "Queen",
+        "Led Zeppelin",
+      ],
+      "Broke Up in the 1970s": [
+        "The Beatles",
+        "Creedence Clearwater Revival",
+        "Faces",
+        "Derek and the Dominos",
+      ],
+      "Knighted Member(s)": ["The Beatles", "Queen", "Faces", "The Kinks"],
+    },
+    hint: "John, Breakup, Knighthood",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "NCAA Champion": [
+        "Kareem Abdul-Jabbar",
+        "Richard Hamilton",
+        "Carmelo Anthony",
+        "Patrick Ewing",
+      ],
+      "NBA Champion": [
+        "Kareem Abdul-Jabbar",
+        "Richard Hamilton",
+        "Kevin Durant",
+        "Jrue Holiday",
+      ],
+      "NBA Scoring Champ": [
+        "Kareem Abdul-Jabbar",
+        "Carmelo Anthony",
+        "Kevin Durant",
+        "George Gervin",
+      ],
+    },
+    hint: "March Madness, Finals, PPG",
+    title: "Basketball",
+  },
+];
+
 export let gameList = demo.concat(
   week1,
   week2,
@@ -2960,4 +3101,5 @@ export let gameList = demo.concat(
   week18,
   week19,
   week20,
+  week21,
 );
