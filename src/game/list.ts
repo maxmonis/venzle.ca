@@ -3080,6 +3080,308 @@ let week21: Week = [
   },
 ];
 
+let week22: Week = [
+  {
+    groups: {
+      "EU Member": ["Spain", "Austria", "Poland", "Hungary"],
+      "Uses the Euro": ["Spain", "Austria", "Montenegro", "Kosovo"],
+      "Not Landlocked": ["Spain", "Poland", "Montenegro", "Norway"],
+    },
+    hint: "Union, Currency, Coastline",
+    title: "Countries",
+  },
+  {
+    groups: {
+      "Child Actor": [
+        "Jodie Foster",
+        "Drew Barrymore",
+        "Christian Bale",
+        "Jonathan Lipnicki",
+      ],
+      Female: [
+        "Jodie Foster",
+        "Drew Barrymore",
+        "Octavia Spencer",
+        "Kristen Wiig",
+      ],
+      "Oscar Winner": [
+        "Jodie Foster",
+        "Octavia Spencer",
+        "Christian Bale",
+        "Christopher Plummer",
+      ],
+    },
+    hint: "Childhood, Gender, Academy",
+    title: "Actors",
+  },
+  {
+    groups: {
+      Motown: [
+        "What's Going On",
+        "Touch Me in the Morning",
+        "Ain't Too Proud to Beg",
+        "Heat Wave",
+      ],
+      "Released in the 1970s": [
+        "What's Going On",
+        "Touch Me in the Morning",
+        "Dream On",
+        "It's Too Late",
+      ],
+      "Male Vocalist(s)": [
+        "What's Going On",
+        "Ain't Too Proud to Beg",
+        "Dream On",
+        "Sweet Child o' Mine",
+      ],
+    },
+    hint: "Label, Decade, Gender",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Can Fly": [
+        "Ghost Bat",
+        "Common Vampire Bat",
+        "Sulphur-crested Cockatoo",
+        "Bald Eagle",
+      ],
+      Nocturnal: ["Ghost Bat", "Common Vampire Bat", "Bilby", "Raccoon"],
+      "Found in Australia": [
+        "Ghost Bat",
+        "Sulphur-crested Cockatoo",
+        "Bilby",
+        "Red Kangaroo",
+      ],
+    },
+    hint: "Wings, Night, Continent",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Features Dinosaurs": [
+        "The Land Before Time",
+        "The Good Dinosaur",
+        "The Flintstones",
+        "Jurassic World",
+      ],
+      Animated: [
+        "The Land Before Time",
+        "The Good Dinosaur",
+        "An American Tail",
+        "The Wild Robot",
+      ],
+      "Released in the 20th Century": [
+        "The Land Before Time",
+        "The Flintstones",
+        "An American Tail",
+        "Uncle Buck",
+      ],
+    },
+    hint: "Prehistoric, Drawn, Century",
+    title: "Movies",
+  },
+  {
+    groups: {
+      Australian: ["Sia", "Kylie Minogue", "Andy Gibb", "Kevin Parker"],
+      Female: ["Sia", "Kylie Minogue", "Tiffany", "Sarah McLachlan"],
+      "Has Billboard Hot 100 Number 1 Hit(s)": [
+        "Sia",
+        "Andy Gibb",
+        "Tiffany",
+        "50 Cent",
+      ],
+    },
+    hint: "Nationality, Gender, Charts",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Wide Receiver": [
+        "Michael Irvin",
+        "Andre Johnson",
+        "Dez Bryant",
+        "Steve Smith Sr.",
+      ],
+      "Played for Miami Hurricanes": [
+        "Michael Irvin",
+        "Andre Johnson",
+        "Russell Maryland",
+        "Sean Taylor",
+      ],
+      "Played for Dallas Cowboys": [
+        "Michael Irvin",
+        "Dez Bryant",
+        "Russell Maryland",
+        "Tony Romo",
+      ],
+    },
+    hint: "Position, College, Pro Team",
+    title: "Football",
+  },
+];
+
+let week23: Week = [
+  {
+    groups: {
+      "Occurred in Europe": [
+        "Franco-Prussian War",
+        "Battle of the Somme",
+        "Treaty of Berlin",
+        "Fall of the Berlin Wall",
+      ],
+      "Armed Conflict": [
+        "Franco-Prussian War",
+        "Battle of the Somme",
+        "American Civil War",
+        "Korean War",
+      ],
+      "19th Century": [
+        "Franco-Prussian War",
+        "Treaty of Berlin",
+        "American Civil War",
+        "Meiji Restoration",
+      ],
+    },
+    hint: "Continent, Violence, Century",
+    title: "Historical Events",
+  },
+  {
+    groups: {
+      "Named Sam/Samuel": [
+        "Samuel L. Jackson",
+        "Sam Neill",
+        "Sam Rockwell",
+        "Sam Worthington",
+      ],
+      "Born in the 1940s": [
+        "Samuel L. Jackson",
+        "Sam Neill",
+        "Diane Keaton",
+        "Helen Mirren",
+      ],
+      American: [
+        "Samuel L. Jackson",
+        "Sam Rockwell",
+        "Diane Keaton",
+        "Zac Efron",
+      ],
+    },
+    hint: "Name, Decade, Nationality",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Written by Max Martin": [
+        "Can't Feel My Face",
+        "I Want it That Way",
+        "I Kissed a Girl",
+        "...Baby One More Time",
+      ],
+      "Male Vocalist(s)": [
+        "Can't Feel My Face",
+        "I Want it That Way",
+        "Take Me to Church",
+        "Don't Dream It's Over",
+      ],
+      "Released in 21st Century": [
+        "Can't Feel My Face",
+        "I Kissed a Girl",
+        "Take Me to Church",
+        "Birds of a Feather",
+      ],
+    },
+    hint: "Songwriter, Gender, Century",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Has Shell": [
+        "Freshwater Snail",
+        "Painted Turtle",
+        "Abalone",
+        "Tortoise",
+      ],
+      "Lives in Freshwater": [
+        "Freshwater Snail",
+        "Painted Turtle",
+        "Leech",
+        "Pike",
+      ],
+      Invertebrate: ["Freshwater Snail", "Abalone", "Leech", "Earthworm"],
+    },
+    hint: "Armor, Habitat, Backbone",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Features Allison Janney": [
+        "The Diplomat",
+        "The West Wing",
+        "Palm Royale",
+        "Mom",
+      ],
+      "Features Bradley Whitford": [
+        "The Diplomat",
+        "The West Wing",
+        "The Handmaid's Tale",
+        "Valley of the Boom",
+      ],
+      "Originally Aired on Streaming Service": [
+        "The Diplomat",
+        "Palm Royale",
+        "The Handmaid's Tale",
+        "Stranger Things",
+      ],
+    },
+    hint: "Janney, Whitford, Streamer",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      "Name Includes Color": [
+        "Pink Floyd",
+        "Simply Red",
+        "Redbone",
+        "The White Stripes",
+      ],
+      British: ["Pink Floyd", "Simply Red", "The Yardbirds", "Coldplay"],
+      "Formed in the 1960s": [
+        "Pink Floyd",
+        "Redbone",
+        "The Yardbirds",
+        "Steppenwolf",
+      ],
+    },
+    hint: "Name, Nationality, Decade",
+    title: "Bands",
+  },
+  {
+    groups: {
+      Pitcher: [
+        "Roger Clemens",
+        "Curt Schilling",
+        "Mike Mussina",
+        "Jack Morris",
+      ],
+      "Played for Red Sox": [
+        "Roger Clemens",
+        "Curt Schilling",
+        "Johnny Damon",
+        "Dustin Pedroia",
+      ],
+      "Played for Yankees": [
+        "Roger Clemens",
+        "Johnny Damon",
+        "Mike Mussina",
+        "Jorge Posada",
+      ],
+    },
+    hint: "Position, Boston, New York",
+    title: "Baseball",
+  },
+];
+
 export let gameList = demo.concat(
   week1,
   week2,
@@ -3102,4 +3404,6 @@ export let gameList = demo.concat(
   week19,
   week20,
   week21,
+  week22,
+  week23,
 );
