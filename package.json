@@ -20,5 +20,5 @@
     "prod": "npm run build && vite preview --host"
   },
   "type": "module",
-  "version": "0.3.3"
+  "version": "0.3.4"
 }
