@@ -3382,6 +3382,157 @@ let week23: Week = [
   },
 ];
 
+let week24: Week = [
+  {
+    groups: {
+      "Invented in the 19th Century": [
+        "Steamboat",
+        "Bicycle",
+        "Typewriter",
+        "Dynamite",
+      ],
+      "Used for Transportation": [
+        "Steamboat",
+        "Bicycle",
+        "Airplane",
+        "Sailboat",
+      ],
+      "American Inventor(s)": [
+        "Steamboat",
+        "Typewriter",
+        "Airplane",
+        "Television",
+      ],
+    },
+    hint: "Century, Purpose, Nationality",
+    title: "Inventions",
+  },
+  {
+    groups: {
+      "Won Acting Academy Award(s)": [
+        "Matthew McConaughey",
+        "Anne Hathaway",
+        "Robert De Niro",
+        "Kate Winslet",
+      ],
+      "Appeared in Christopher Nolan Film(s)": [
+        "Matthew McConaughey",
+        "Anne Hathaway",
+        "Matt Damon",
+        "Cillian Murphy",
+      ],
+      "Appeared in Martin Scorsese Film(s)": [
+        "Matthew McConaughey",
+        "Robert De Niro",
+        "Matt Damon",
+        "Joe Pesci",
+      ],
+    },
+    hint: "Academy, Nolan, Scorsese",
+    title: "Actors",
+  },
+  {
+    title: "Songs",
+    groups: {
+      "Written by Original Performer": [
+        "50 Ways to Leave Your Lover",
+        "Set Fire to the Rain",
+        "Wild World",
+        "Adia",
+      ],
+      "Billboard Hot 100 #1 Hit": [
+        "50 Ways to Leave Your Lover",
+        "Set Fire to the Rain",
+        "Half-Breed",
+        "Genie in a Bottle",
+      ],
+      "Released in the 1970s": [
+        "50 Ways to Leave Your Lover",
+        "Half-Breed",
+        "Wild World",
+        "Summer Nights",
+      ],
+    },
+    hint: "Writer, Chart, Decade",
+  },
+  {
+    groups: {
+      "Can Fly": ["Swallow", "Pigeon", "Monarch Butterfly", "Housefly"],
+      Bird: ["Swallow", "Pigeon", "Emperor Penguin", "Kiwi"],
+      Migratory: ["Swallow", "Monarch Butterfly", "Emperor Penguin", "Caribou"],
+    },
+    hint: "Flight, Feathers, Travel",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Won Best Picture": [
+        "The Return of the King",
+        "The English Patient",
+        "Birdman",
+        "Gladiator",
+      ],
+      "Based on a Novel": [
+        "The Return of the King",
+        "The English Patient",
+        "The Hunger Games",
+        "Jurassic Park",
+      ],
+      "Released in the 21st Century": [
+        "The Return of the King",
+        "Birdman",
+        "The Hunger Games",
+        "Inception",
+      ],
+    },
+    hint: "Academy, Source, Century",
+    title: "Movies",
+  },
+  {
+    groups: {
+      American: ["Miles Davis", "Yo-Yo Ma", "Ella Fitzgerald", "Madonna"],
+      Instrumentalist: [
+        "Miles Davis",
+        "Yo-Yo Ma",
+        "Oscar Peterson",
+        "Ravi Shankar",
+      ],
+      "Jazz Performer": [
+        "Miles Davis",
+        "Ella Fitzgerald",
+        "Oscar Peterson",
+        "Michael Bublé",
+      ],
+    },
+    hint: "Nationality, Instruments, Genra",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Coached By Phil Jackson": [
+        "Michael Jordan",
+        "Kobe Bryant",
+        "Dennis Rodman",
+        "Pau Gasol",
+      ],
+      "Won NBA MVP": [
+        "Michael Jordan",
+        "Kobe Bryant",
+        "Giannis Antetokounmpo",
+        "Dirk Nowitzki",
+      ],
+      "Won Defensive Player of the Year": [
+        "Michael Jordan",
+        "Dennis Rodman",
+        "Giannis Antetokounmpo",
+        "Dikembe Mutumbo",
+      ],
+    },
+    hint: "Coach, MVP, DPOY",
+    title: "Basketball",
+  },
+];
+
 export let gameList = demo.concat(
   week1,
   week2,
@@ -3406,4 +3557,5 @@ export let gameList = demo.concat(
   week21,
   week22,
   week23,
+  week24,
 );
