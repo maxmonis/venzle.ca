@@ -3533,6 +3533,152 @@ let week24: Week = [
   },
 ];
 
+let week25: Week = [
+  {
+    groups: {
+      "US President": [
+        "Abraham Lincoln",
+        "John F Kennedy",
+        "Franklin Delano Roosevelt",
+        "Jimmy Carter",
+      ],
+      Assassinated: [
+        "Abraham Lincoln",
+        "John F Kennedy",
+        "Julius Caesar",
+        "Archduke Franz Ferdinand",
+      ],
+      "Wartime Leader": [
+        "Abraham Lincoln",
+        "Franklin Delano Roosevelt",
+        "Julius Caesar",
+        "Genghis Khan",
+      ],
+    },
+    hint: "Title, Death, Conflict",
+    title: "World Leaders",
+  },
+  {
+    groups: {
+      "Appeared in Ocean's Eleven": [
+        "George Clooney",
+        "Topher Grace",
+        "Matt Damon",
+        "Julia Roberts",
+      ],
+      "Began Career on Television": [
+        "George Clooney",
+        "Topher Grace",
+        "Mark Strong",
+        "Bryan Cranston",
+      ],
+      "Appeared in Syriana": [
+        "George Clooney",
+        "Matt Damon",
+        "Mark Strong",
+        "Amanda Peet",
+      ],
+    },
+    hint: "Ocean's Eleven, Syriana, TV",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Title Includes Place Name": [
+        "Sweet Home Alabama",
+        "I'm Shipping Up to Boston",
+        "London Calling",
+        "It's a Long Way to Tipperary",
+      ],
+      American: [
+        "Sweet Home Alabama",
+        "I'm Shipping Up to Boston",
+        "Superstition",
+        "What Was I Made For?",
+      ],
+      "Released in the 1970s": [
+        "Sweet Home Alabama",
+        "London Calling",
+        "Superstition",
+        "Dancing Queen",
+      ],
+    },
+    hint: "Title, Nationality, Decade",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Has More Than Four Limbs": ["Ladybug", "King Crab", "Spider", "Octopus"],
+      "Has a Shell": ["Ladybug", "King Crab", "Armadillo", "Sea Turtle"],
+      "Lives on Land": ["Ladybug", "Spider", "Armadillo", "Squirrel"],
+    },
+    hint: "Limbs, Armor, Habitat",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "About Doctors": ["Scrubs", "ER", "House", "Doogie Howser, M.D."],
+      "Originally Aired on NBC": [
+        "Scrubs",
+        "ER",
+        "30 Rock",
+        "Saturday Night Live",
+      ],
+      "Debuted in the 21st Century": ["Scrubs", "House", "30 Rock", "Insecure"],
+    },
+    hint: "Hospital, Network, Century",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      "Super Bowl Halftime Performer": [
+        "Tom Petty and the Heartbreakers",
+        "Maroon 5",
+        "U2",
+        "Coldplay",
+      ],
+      American: [
+        "Tom Petty and the Heartbreakers",
+        "Maroon 5",
+        "Van Halen",
+        "Soundgarden",
+      ],
+      "Formed in the 1970s": [
+        "Tom Petty and the Heartbreakers",
+        "U2",
+        "Van Halen",
+        "The Cure",
+      ],
+    },
+    hint: "Halftime, Nationality, Decade",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "Won Super Bowl as Player": [
+        "Mike Ditka",
+        "Tony Dungy",
+        "Troy Aikman",
+        "Reggie White",
+      ],
+      "Won Super Bowl as Coach": [
+        "Mike Ditka",
+        "Tony Dungy",
+        "Jimmy Johnson",
+        "Andy Reid",
+      ],
+      "Won Super Bowl with Cowboys": [
+        "Mike Ditka",
+        "Troy Aikman",
+        "Jimmy Johnson",
+        "Jerry Jones",
+      ],
+    },
+    hint: "Coach, Player, Dallas",
+    title: "Football",
+  },
+];
+
 export let gameList = demo.concat(
   week1,
   week2,
@@ -3558,4 +3704,5 @@ export let gameList = demo.concat(
   week22,
   week23,
   week24,
+  week25,
 );
