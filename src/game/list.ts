@@ -3679,6 +3679,142 @@ let week25: Week = [
   },
 ];
 
+let week26: Week = [
+  {
+    groups: {
+      "Northern Hemisphere": ["Mongolia", "Kazakhstan", "Ukraine", "Canada"],
+      Landlocked: ["Mongolia", "Kazakhstan", "Botswana", "Bolivia"],
+      "Capital is Largest City": ["Mongolia", "Ukraine", "Botswana", "Chile"],
+    },
+    hint: "Latitude, Landlocked, Largest/Capital",
+    title: "Countries",
+  },
+  {
+    groups: {
+      "From Mainland Europe": [
+        "Javier Bardem",
+        "Marion Cotillard",
+        "Jean-Claude Van Damme",
+        "Brigitte Bardot",
+      ],
+      "Won Acting Oscar(s)": [
+        "Javier Bardem",
+        "Marion Cotillard",
+        "Russell Crowe",
+        "Anna Paquin",
+      ],
+      Male: [
+        "Javier Bardem",
+        "Jean-Claude Van Damme",
+        "Russell Crowe",
+        "Bruce Lee",
+      ],
+    },
+    hint: "Continent, Academy, Gender",
+    title: "Actors",
+  },
+  {
+    groups: {
+      Spanglish: [
+        "Hips Don't Lie",
+        "I Know You Want Me (Calle Ocho)",
+        "La Isla Bonita",
+        "Livin' la Vida Loca",
+      ],
+      "Released in the 21st Century": [
+        "Hips Don't Lie",
+        "I Know You Want Me (Calle Ocho)",
+        "New Rules",
+        "No Role Modelz",
+      ],
+      "Female Vocalist": [
+        "Hips Don't Lie",
+        "La Isla Bonita",
+        "New Rules",
+        "Love Is a Battlefield",
+      ],
+    },
+    hint: "Bilingual, Century, Gender",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Has Opposable Digits": [
+        "African Chameleon",
+        "Koala",
+        "Gorilla",
+        "Orangutan",
+      ],
+      "Has Claws": ["African Chameleon", "Koala", "Lion", "Lynx"],
+      "Found in Africa": ["African Chameleon", "Gorilla", "Lion", "Wildebeest"],
+    },
+    hint: "Thumbs, Claws, Continent",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Won Best Picture Oscar": [
+        "The English Patient",
+        "Slumdog Millionaire",
+        "Casablanca",
+        "Everything Everywhere All at Once",
+      ],
+      "Based on a Novel": [
+        "The English Patient",
+        "Slumdog Millionaire",
+        "Atonement",
+        "The Constant Gardener",
+      ],
+      "Set During WWII": [
+        "The English Patient",
+        "Casablanca",
+        "Atonement",
+        "Pearl Harbor",
+      ],
+    },
+    hint: "Academy, Novel, War",
+    title: "Movies",
+  },
+  {
+    groups: {
+      "Lead Singer": [
+        "Phil Collins",
+        "Don Henley",
+        "Ozzie Osbourne",
+        "Steven Tyler",
+      ],
+      Drummer: ["Phil Collins", "Don Henley", "John Bonham", "Neil Peart"],
+      British: ["Phil Collins", "John Bonham", "Ozzie Osbourne", "Brian May"],
+    },
+    hint: "Vocals, Instrument, Nationality",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Led League in Homeruns": [
+        "Willie Mays",
+        "Ty Cobb",
+        "Johnny Bench",
+        "Harmon Killebrew",
+      ],
+      "Led League in Steals": [
+        "Willie Mays",
+        "Ty Cobb",
+        "Lou Brock",
+        "Vince Coleman",
+      ],
+      "Won World Series": [
+        "Willie Mays",
+        "Johnny Bench",
+        "Lou Brock",
+        "Chase Utley",
+      ],
+    },
+    hint: "Homers, Steals, Championship",
+    title: "Baseball",
+  },
+];
+
 export let gameList = demo.concat(
   week1,
   week2,
@@ -3705,4 +3841,5 @@ export let gameList = demo.concat(
   week23,
   week24,
   week25,
+  week26,
 );
