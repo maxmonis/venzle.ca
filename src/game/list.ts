@@ -3815,6 +3815,157 @@ let week26: Week = [
   },
 ];
 
+let week27: Week = [
+  {
+    groups: {
+      Series: [
+        "A Song of Ice and Fire",
+        "The Hunger Games",
+        "The Chronicles of Narnia",
+        "Harry Potter",
+      ],
+      "American Author": [
+        "A Song of Ice and Fire",
+        "The Hunger Games",
+        "The Grapes of Wrath",
+        "The Help",
+      ],
+      "Male Author": [
+        "A Song of Ice and Fire",
+        "The Chronicles of Narnia",
+        "The Grapes of Wrath",
+        "A Brief History of Time",
+      ],
+    },
+    hint: "Saga, Nationality, Gender",
+    title: "Books",
+  },
+  {
+    groups: {
+      "Known for Activism": [
+        "Jane Fonda",
+        "Leonardo DiCaprio",
+        "Emma Watson",
+        "Ed Begley Jr.",
+      ],
+      "Acting Oscar Winner": [
+        "Jane Fonda",
+        "Leonardo DiCaprio",
+        "Mikey Madison",
+        "Laurence Olivier",
+      ],
+      Female: ["Jane Fonda", "Emma Watson", "Mikey Madison", "Anna Faris"],
+    },
+    hint: "Activist, Academy, Gender",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Teenage Performer": [
+        "Drivers License",
+        "Baby",
+        "Over the Rainbow",
+        "Uptight (Everything's Alright)",
+      ],
+      "Female Singer": [
+        "Drivers License",
+        "Over the Rainbow",
+        "Rehab",
+        "I Say a Little Prayer",
+      ],
+      "Released in 21st Century": [
+        "Drivers License",
+        "Baby",
+        "Rehab",
+        "Grenade",
+      ],
+    },
+    hint: "Age, Gender, Century",
+    title: "Songs",
+  },
+  {
+    groups: {
+      Red: ["Northern Cardinal", "Red Fox", "Scarlet Ibis", "Red Panda"],
+      "Found in North America": [
+        "Northern Cardinal",
+        "Red Fox",
+        "Seagull",
+        "Eastern Cottontail",
+      ],
+      "Can Fly": [
+        "Northern Cardinal",
+        "Scarlet Ibis",
+        "Seagull",
+        "Andean Condor",
+      ],
+    },
+    hint: "Color, Continent, Flight",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Primarily Set in Europe": [
+        "Dark",
+        "Emily in Paris",
+        "La Piovra",
+        "Killing Eve",
+      ],
+      "Originally Not in English": [
+        "Dark",
+        "Squid Game",
+        "La Piovra",
+        "Dragon Ball Z",
+      ],
+      "Debuted on Netflix": ["Dark", "Emily in Paris", "Squid Game", "Ozark"],
+    },
+    hint: "Continent, Language, Streamer",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      "Formed in the 21st Century": [
+        "BTS",
+        "Blackpink",
+        "Arctic Monkeys",
+        "Paramore",
+      ],
+      "Primary Language is Not English": [
+        "BTS",
+        "Blackpink",
+        "Soda Stereo",
+        "Nena",
+      ],
+      "Male Singer(s)": ["BTS", "Soda Stereo", "Arctic Monkeys", "INXS"],
+    },
+    hint: "Century, Language, Gender",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "Assist Champ": [
+        "Jerry West",
+        "Steve Nash",
+        "Isiah Thomas",
+        "John Stockton",
+      ],
+      "Los Angeles Laker": [
+        "Jerry West",
+        "Steve Nash",
+        "James Worthy",
+        "Elgin Baylor",
+      ],
+      "NBA Finals MVP": [
+        "Jerry West",
+        "James Worthy",
+        "Isiah Thomas",
+        "John Havlicek",
+      ],
+    },
+    hint: "APG, LAL, Finals",
+    title: "Basketball",
+  },
+];
+
 export let gameList = demo.concat(
   week1,
   week2,
@@ -3842,4 +3993,5 @@ export let gameList = demo.concat(
   week24,
   week25,
   week26,
+  week27,
 );
