@@ -3966,6 +3966,167 @@ let week27: Week = [
   },
 ];
 
+let week28: Week = [
+  {
+    groups: {
+      "Occurred in the 21st Century": [
+        "Hurricane Katrina",
+        "2004 Indian Ocean Tsunami",
+        "September 11 Attacks",
+        "Brexit",
+      ],
+      "Occurred in North America": [
+        "Hurricane Katrina",
+        "1906 San Francisco Earthquake",
+        "September 11 Attacks",
+        "War of 1812",
+      ],
+      "Natural Disaster": [
+        "Hurricane Katrina",
+        "1906 San Francisco Earthquake",
+        "2004 Indian Ocean Tsunami",
+        "Destruction of Pompeii",
+      ],
+    },
+    hint: "Century, Continent, Act of God",
+    title: "Historical Events",
+  },
+  {
+    groups: {
+      "Born in the 1980s": [
+        "Lindsay Lohan",
+        "Chis Evans",
+        "Emily Blunt",
+        "Andrew Garfield",
+      ],
+      American: [
+        "Lindsay Lohan",
+        "Chis Evans",
+        "Julianne Moore",
+        "Nicolas Cage",
+      ],
+      Female: [
+        "Lindsay Lohan",
+        "Emily Blunt",
+        "Julianne Moore",
+        "Cate Blanchett",
+      ],
+    },
+    hint: "Decade, Nationality, Gender",
+    title: "Actors",
+  },
+  {
+    groups: {
+      'Title Includes "Heaven"': [
+        "Stairway to Heaven",
+        "Heaven Is a Place on Earth",
+        "Locked Out of Heaven",
+        "Inside Your Heaven",
+      ],
+      "Released in the 20th Century": [
+        "Stairway to Heaven",
+        "Heaven Is a Place on Earth",
+        "Need You Tonight",
+        "I Have Nothing",
+      ],
+      "Male Vocalist(s)": [
+        "Stairway to Heaven",
+        "Locked Out of Heaven",
+        "Need You Tonight",
+        "Someone You Loved",
+      ],
+    },
+    hint: "Title, Century, Gender",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Eats Mammals": ["Grizzly Bear", "Chimpanzee", "Lynx", "Tiger"],
+      "Eats Plants": ["Grizzly Bear", "Chimpanzee", "Bison", "Giraffe"],
+      "Found in North America": [
+        "Grizzly Bear",
+        "Lynx",
+        "Bison",
+        "Little Brown Bat",
+      ],
+    },
+    hint: "Meat, Plants, Continent",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Won Best Picture Oscar": [
+        "Platoon",
+        "Annie Hall",
+        "The Hurt Locker",
+        "Anora",
+      ],
+      "Set in the 20th Century": [
+        "Platoon",
+        "Annie Hall",
+        "Full Metal Jacket",
+        "Some Like It Hot",
+      ],
+      "War Film": [
+        "Platoon",
+        "The Hurt Locker",
+        "Full Metal Jacket",
+        "American Sniper",
+      ],
+    },
+    hint: "Academy, Century, Genre",
+    title: "Movies",
+  },
+  {
+    groups: {
+      "Name or Surname is Michael": [
+        "Michael Jackson",
+        "George Michael",
+        "Michael Bublé",
+        "Michael Hutchence",
+      ],
+      "Successful in Group and Solo": [
+        "Michael Jackson",
+        "George Michael",
+        "Diana Ross",
+        "Harry Styles",
+      ],
+      "North American": [
+        "Michael Jackson",
+        "Michael Bublé",
+        "Diana Ross",
+        "Doechii",
+      ],
+    },
+    hint: "Name, Group/Solo, Continent",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Super Bowl MVP": [
+        "Drew Brees",
+        "John Elway",
+        "Steve Young",
+        "Nick Foles",
+      ],
+      "Led League in Passing Yards": [
+        "Drew Brees",
+        "John Elway",
+        "Dan Marino",
+        "Matt Schaub",
+      ],
+      "Led League in Passing Touchdowns": [
+        "Drew Brees",
+        "Steve Young",
+        "Dan Marino",
+        "Carson Palmer",
+      ],
+    },
+    hint: "SB MVP, Yardage, Touchdowns",
+    title: "Football",
+  },
+];
+
 export let gameList = demo.concat(
   week1,
   week2,
@@ -3994,4 +4155,5 @@ export let gameList = demo.concat(
   week25,
   week26,
   week27,
+  week28,
 );
