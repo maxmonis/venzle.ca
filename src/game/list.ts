@@ -4127,6 +4127,142 @@ let week28: Week = [
   },
 ];
 
+let week29: Week = [
+  {
+    groups: {
+      "Runs on Rails": [
+        "Subway Train",
+        "Electric Freight Train",
+        "Commuter Train",
+        "Rail Handcar",
+      ],
+      "Powered by Electricity": [
+        "Subway Train",
+        "Electric Freight Train",
+        "Electric Bus",
+        "Electric Scooter",
+      ],
+      "Public Transit": [
+        "Subway Train",
+        "Commuter Train",
+        "Electric Bus",
+        "Ferry",
+      ],
+    },
+    hint: "Rails, Power, Passengers",
+    title: "Modes of Transportation",
+  },
+  {
+    groups: {
+      Canadian: ["Rachel McAdams", "Ryan Gosling", "Sandra Oh", "Jim Carrey"],
+      "Appeared in The Notebook": [
+        "Rachel McAdams",
+        "Ryan Gosling",
+        "Gena Rowlands",
+        "James Garner",
+      ],
+      Female: ["Rachel McAdams", "Sandra Oh", "Gena Rowlands", "Isla Fisher"],
+    },
+    hint: "Nationality, Notebook, Gender",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Male and Female Singers": [
+        "APT.",
+        "I Remember Everything",
+        "Finesse",
+        "Endless Love",
+      ],
+      "Released in the 2020s": [
+        "APT.",
+        "I Remember Everything",
+        "I Just Might",
+        "Espresso",
+      ],
+      "Features Bruno Mars": ["APT.", "Finesse", "I Just Might", "Grenade"],
+    },
+    hint: "Collaboration, Decade, Artist",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Fits in a Mailbox": [
+        "Hummingbird",
+        "Fruit Bat",
+        "Vole",
+        "Elephant Shrew",
+      ],
+      Migrates: ["Hummingbird", "Fruit Bat", "Humpback Whale", "Wildebeest"],
+      "Found in North America": [
+        "Hummingbird",
+        "Humpback Whale",
+        "Vole",
+        "Moose",
+      ],
+    },
+    hint: "Size, Migration, Continent",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Features Milo Ventimiglia": [
+        "Heroes",
+        "This Is Us",
+        "Gilmore Girls",
+        "The Company You Keep",
+      ],
+      "Originally Aired on NBC": [
+        "Heroes",
+        "This Is Us",
+        "My Name is Earl",
+        "The Golden Girls",
+      ],
+      "Debuted in 2000s": [
+        "Heroes",
+        "Gilmore Girls",
+        "My Name is Earl",
+        "Chappelle's Show",
+      ],
+    },
+    hint: "Star, Network, Decade",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      American: ["Hanson", "Jackson 5", "Linkin Park", "Grateful Dead"],
+      "Includes Brothers": ["Hanson", "Jackson 5", "Oasis", "The Kinks"],
+      "Founded in 1990s": ["Hanson", "Oasis", "Linkin Park", "Coldplay"],
+    },
+    hint: "Nationality, Siblings, Decade",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "3000 Career Hits": [
+        "Albert Pujols",
+        "Eddie Murray",
+        "Adrian Beltré",
+        "Rickey Henderson",
+      ],
+      "500 Career Homeruns": [
+        "Albert Pujols",
+        "Eddie Murray",
+        "Manny Ramírez",
+        "Mark McGwire",
+      ],
+      Dominican: [
+        "Albert Pujols",
+        "Adrian Beltré",
+        "Manny Ramírez",
+        "Pedro Martínez",
+      ],
+    },
+    hint: "Hits, Homers, Nationality",
+    title: "Baseball",
+  },
+];
+
 export let gameList = demo.concat(
   week1,
   week2,
@@ -4156,4 +4292,5 @@ export let gameList = demo.concat(
   week26,
   week27,
   week28,
+  week29,
 );
