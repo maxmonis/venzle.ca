@@ -4263,6 +4263,157 @@ let week29: Week = [
   },
 ];
 
+let week30: Week = [
+  {
+    groups: {
+      "Larger Than a Grapefruit": [
+        "Basketball",
+        "10 Pin Bowling Ball",
+        "Football",
+        "Bean Bag Chair",
+      ],
+      Spherical: [
+        "Basketball",
+        "10 Pin Bowling Ball",
+        "Ping Pong Ball",
+        "Billiards Ball",
+      ],
+      Hollow: ["Basketball", "Football", "Ping Pong Ball", "Ring Box"],
+    },
+    hint: "Size, Shape, Density",
+    title: "Objects",
+  },
+  {
+    groups: {
+      "Named Christopher": [
+        "Chris Pine",
+        "Christopher Walken",
+        "Chris Hemsworth",
+        "Christopher Plummer",
+      ],
+      American: [
+        "Chris Pine",
+        "Christopher Walken",
+        "Emile Hirsch",
+        "Marlon Brando",
+      ],
+      "Born in the 1980s": [
+        "Chris Pine",
+        "Chris Hemsworth",
+        "Emile Hirsch",
+        "Priyanka Chopra",
+      ],
+    },
+    hint: "Name, Nationality, Decade",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Released Posthumously": [
+        "Hypnotize",
+        "A Change Is Gonna Come",
+        "What I Got",
+        "Love Will Tear Us Apart",
+      ],
+      "By a Solo Artist": [
+        "Hypnotize",
+        "A Change Is Gonna Come",
+        "Fantasy",
+        "No Tears Left to Cry",
+      ],
+      "Released in the 1990s": [
+        "Hypnotize",
+        "What I Got",
+        "Fantasy",
+        "Even Flow",
+      ],
+    },
+    hint: "Death, Solo, Decade",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Has Multiple Stomachs": ["Giraffe", "Ostrich", "Yak", "Kangaroo"],
+      "Found in Africa": ["Giraffe", "Ostrich", "Hyena", "Shoebill"],
+      "Has Four Legs": ["Giraffe", "Yak", "Hyena", "Coyote"],
+    },
+    hint: "Stomachs, Continent, Legs",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Based on a Musical": [
+        "Grease",
+        "Chicago",
+        "The Sound of Music",
+        "Sweeney Todd",
+      ],
+      "Set in the USA": [
+        "Grease",
+        "Chicago",
+        "In the Heat of the Night",
+        "Burn After Reading",
+      ],
+      "Released in the 20th Century": [
+        "Grease",
+        "The Sound of Music",
+        "In the Heat of the Night",
+        "Seven Samurai",
+      ],
+    },
+    hint: "Musical, Country, Century",
+    title: "Movies",
+  },
+  {
+    groups: {
+      "Famous Before Adulthood": [
+        "Billie Eilish",
+        "Olivia Rodrigo",
+        "Donny Osmond",
+        "Justin Bieber",
+      ],
+      "From California": [
+        "Billie Eilish",
+        "Olivia Rodrigo",
+        "Brian Wilson",
+        "Snoop Dogg",
+      ],
+      "Collaborated with Sibling(s)": [
+        "Billie Eilish",
+        "Brian Wilson",
+        "Donny Osmond",
+        "Angus Young",
+      ],
+    },
+    hint: "Youth, State, Siblings",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Scored 70+ Points in a Game": [
+        "Wilt Chamberlain",
+        "David Robinson",
+        "Elgin Baylor",
+        "Damian Lillard",
+      ],
+      "NBA Champion": [
+        "Wilt Chamberlain",
+        "David Robinson",
+        "Willis Reed",
+        "Robert Parish",
+      ],
+      "Played in the 1960s": [
+        "Wilt Chamberlain",
+        "Elgin Baylor",
+        "Willis Reed",
+        "Lenny Wilkens",
+      ],
+    },
+    hint: "70+, Ring, Decade",
+    title: "Basketball",
+  },
+];
+
 export let gameList = demo.concat(
   week1,
   week2,
@@ -4293,4 +4444,5 @@ export let gameList = demo.concat(
   week27,
   week28,
   week29,
+  week30,
 );
