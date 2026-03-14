@@ -3995,13 +3995,13 @@ let week28: Week = [
     groups: {
       "Born in the 1980s": [
         "Lindsay Lohan",
-        "Chis Evans",
+        "Chris Evans",
         "Emily Blunt",
         "Andrew Garfield",
       ],
       American: [
         "Lindsay Lohan",
-        "Chis Evans",
+        "Chris Evans",
         "Julianne Moore",
         "Nicolas Cage",
       ],
