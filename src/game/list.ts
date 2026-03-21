@@ -4414,6 +4414,147 @@ let week30: Week = [
   },
 ];
 
+let week31: Week = [
+  {
+    groups: {
+      "Contains Cheese": [
+        "Lasagna",
+        "Cheese Soufflé",
+        "Caprese Salad",
+        "Cheeseburger",
+      ],
+      "Is Baked": ["Lasagna", "Cheese Soufflé", "Focaccia", "Peach Pie"],
+      "From Italy": ["Lasagna", "Caprese Salad", "Focaccia", "Minestrone"],
+    },
+    hint: "Dairy, Oven, Country",
+    title: "Foods",
+  },
+  {
+    groups: {
+      "Named Jennifer": [
+        "Jennifer Connelly",
+        "Jennifer Hudson",
+        "Jennifer Garner",
+        "Jennifer Coolidge",
+      ],
+      "Academy Award Winner": [
+        "Jennifer Connelly",
+        "Jennifer Hudson",
+        "Mahershala Ali",
+        "Meryl Streep",
+      ],
+      "Born in the 1970s": [
+        "Jennifer Connelly",
+        "Jennifer Garner",
+        "Mahershala Ali",
+        "Liv Tyler",
+      ],
+    },
+    hint: "Name, Academy, Decade",
+    title: "Actors",
+  },
+  {
+    groups: {
+      Duet: [
+        "Under Pressure",
+        "Don't Go Breaking My Heart",
+        "Endless Love",
+        "Shallow",
+      ],
+      "By British Artist(s)": [
+        "Under Pressure",
+        "Don't Go Breaking My Heart",
+        "Careless Whisper",
+        "Easy on Me",
+      ],
+      "Released in the 1980s": [
+        "Under Pressure",
+        "Endless Love",
+        "Careless Whisper",
+        "Sweet Child o' Mine",
+      ],
+    },
+    hint: "Collaboration, Country, Decade",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Can Fly": [
+        "Barn Owl",
+        "Flying Fox",
+        "Bald Eagle",
+        "African Grey Parrot",
+      ],
+      Nocturnal: ["Barn Owl", "Flying Fox", "Raccoon", "Aye-aye"],
+      "Found in North America": ["Barn Owl", "Bald Eagle", "Raccoon", "Bison"],
+    },
+    hint: "Flight, Night, Continent",
+    title: "Animals",
+  },
+  {
+    groups: {
+      Sitcom: ["Seinfeld", "How I Met Your Mother", "Frasier", "The Office"],
+      "Set in New York City": [
+        "Seinfeld",
+        "How I Met Your Mother",
+        "Law & Order",
+        "Gossip Girl",
+      ],
+      "Aired in the 1990s": [
+        "Seinfeld",
+        "Frasier",
+        "Law & Order",
+        "The X-Files",
+      ],
+    },
+    hint: "Genre, City, Decade",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      "Won Best New Artist Grammy": [
+        "Alessia Cara",
+        "Michael Bublé",
+        "Billie Eilish",
+        "Norah Jones",
+      ],
+      Canadian: ["Alessia Cara", "Michael Bublé", "The Weeknd", "Shania Twain"],
+      "Released Debut Album in the 2010s": [
+        "Alessia Cara",
+        "Billie Eilish",
+        "The Weeknd",
+        "Post Malone",
+      ],
+    },
+    hint: "Debut Award, Nationality, Debut Decade",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "NBA MVP": [
+        "Michael Jordan",
+        "Bill Russell",
+        "Derrick Rose",
+        "Charles Barkley",
+      ],
+      "NBA Champion": [
+        "Michael Jordan",
+        "Bill Russell",
+        "Scottie Pippen",
+        "Joe Dumars",
+      ],
+      "Played for the Bulls": [
+        "Michael Jordan",
+        "Derrick Rose",
+        "Scottie Pippen",
+        "Carlos Boozer",
+      ],
+    },
+    hint: "MVP, Ring, Team",
+    title: "Basketball",
+  },
+];
+
 export let gameList = demo.concat(
   week1,
   week2,
@@ -4445,4 +4586,5 @@ export let gameList = demo.concat(
   week28,
   week29,
   week30,
+  week31,
 );
