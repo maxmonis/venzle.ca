@@ -4512,46 +4512,207 @@ let week31: Week = [
   },
   {
     groups: {
-      "Won Best New Artist Grammy": [
-        "Alessia Cara",
-        "Michael Bublé",
-        "Billie Eilish",
-        "Norah Jones",
+      "From California": [
+        "Black Eyed Peas",
+        "Incubus",
+        "Red Hot Chili Peppers",
+        "The Beach Boys",
       ],
-      Canadian: ["Alessia Cara", "Michael Bublé", "The Weeknd", "Shania Twain"],
-      "Released Debut Album in the 2010s": [
-        "Alessia Cara",
-        "Billie Eilish",
-        "The Weeknd",
-        "Post Malone",
+      "Formed in the 1990s": [
+        "Black Eyed Peas",
+        "Incubus",
+        "The White Stripes",
+        "Coldplay",
+      ],
+      "Name Includes a Color": [
+        "Black Eyed Peas",
+        "Red Hot Chili Peppers",
+        "The White Stripes",
+        "Blue Oyster Cult",
       ],
     },
-    hint: "Debut Award, Nationality, Debut Decade",
+    hint: "State, Decade, Name",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "Won Super Bowl MVP": [
+        "Aaron Rodgers",
+        "Marcus Allen",
+        "Julian Edelman",
+        "Doug Williams",
+      ],
+      "Won League MVP": [
+        "Aaron Rodgers",
+        "Marcus Allen",
+        "Adrian Peterson",
+        "Barry Sanders",
+      ],
+      "Played in the 2010s": [
+        "Aaron Rodgers",
+        "Julian Edelman",
+        "Adrian Peterson",
+        "Larry Fitzgerald",
+      ],
+    },
+    hint: "SB MVP, League MVP, Decade",
+    title: "Football",
+  },
+];
+
+let week32: Week = [
+  {
+    groups: {
+      "Powered by Electricity": [
+        "Toaster",
+        "Blender",
+        "Space Heater",
+        "Electric Toothbrush",
+      ],
+      "Used in the Kitchen": [
+        "Toaster",
+        "Blender",
+        "Gas Stove Burner",
+        "Cutting Board",
+      ],
+      "Has a Heating Element": [
+        "Toaster",
+        "Space Heater",
+        "Gas Stove Burner",
+        "Charcoal Grill",
+      ],
+    },
+    hint: "Power, Cooking, Heat",
+    title: "Appliances",
+  },
+  {
+    groups: {
+      "Appeared in Star Wars": [
+        "Alec Guinness",
+        "Natalie Portman",
+        "Ewan McGregor",
+        "Harrison Ford",
+      ],
+      "Academy Award Winner": [
+        "Alec Guinness",
+        "Natalie Portman",
+        "Kate Winslet",
+        "Denzel Washington",
+      ],
+      "Born in the UK": [
+        "Alec Guinness",
+        "Ewan McGregor",
+        "Kate Winslet",
+        "Idris Elba",
+      ],
+    },
+    hint: "Franchise, Academy, Country",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Won Record of the Year Grammy": [
+        "Tears in Heaven",
+        "All I Wanna Do",
+        "Stay With Me",
+        "Bad Guy",
+      ],
+      "Released in the 1990s": [
+        "Tears in Heaven",
+        "All I Wanna Do",
+        "Wonderwall",
+        "Smells Like Teen Spirit",
+      ],
+      "By a British Artist": [
+        "Tears in Heaven",
+        "Stay With Me",
+        "Wonderwall",
+        "Hey Jude",
+      ],
+    },
+    hint: "Award, Decade, Country",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Is a Reptile": ["Sea Snake", "Alligator", "King Cobra", "Tortoise"],
+      "Lives in Water": [
+        "Sea Snake",
+        "Alligator",
+        "Blue-Ringed Octopus",
+        "Dolphin",
+      ],
+      Venomous: [
+        "Sea Snake",
+        "King Cobra",
+        "Blue-Ringed Octopus",
+        "Black Widow",
+      ],
+    },
+    hint: "Class, Habitat, Defense",
+    title: "Animals",
+  },
+  {
+    groups: {
+      Animated: ["The Lion King", "The Iron Giant", "Frozen", "Spirited Away"],
+      "Released in the 1990s": [
+        "The Lion King",
+        "The Iron Giant",
+        "The Parent Trap",
+        "Fight Club",
+      ],
+      "Disney Film": [
+        "The Lion King",
+        "Frozen",
+        "The Parent Trap",
+        "Pirates of the Caribbean",
+      ],
+    },
+    hint: "Style, Decade, Studio",
+    title: "Movies",
+  },
+  {
+    groups: {
+      Canadian: [
+        "Barenaked Ladies",
+        "Alanis Morissette",
+        "Arcade Fire",
+        "Justin Bieber",
+      ],
+      "Debuted in the 1990s": [
+        "Barenaked Ladies",
+        "Alanis Morissette",
+        "Radiohead",
+        "Britney Spears",
+      ],
+      Band: ["Barenaked Ladies", "Arcade Fire", "Radiohead", "Imagine Dragons"],
+    },
+    hint: "Country, Decade, Group",
     title: "Musicians",
   },
   {
     groups: {
-      "NBA MVP": [
-        "Michael Jordan",
-        "Bill Russell",
-        "Derrick Rose",
-        "Charles Barkley",
+      "World Series MVP": [
+        "Reggie Jackson",
+        "Hideki Matsui",
+        "Johnny Bench",
+        "Liván Hernández",
       ],
-      "NBA Champion": [
-        "Michael Jordan",
-        "Bill Russell",
-        "Scottie Pippen",
-        "Joe Dumars",
+      "Played for the Yankees": [
+        "Reggie Jackson",
+        "Hideki Matsui",
+        "Whitey Ford",
+        "Brett Gardner",
       ],
-      "Played for the Bulls": [
-        "Michael Jordan",
-        "Derrick Rose",
-        "Scottie Pippen",
-        "Carlos Boozer",
+      "Hall of Famer": [
+        "Reggie Jackson",
+        "Johnny Bench",
+        "Whitey Ford",
+        "Ken Griffey Jr.",
       ],
     },
-    hint: "MVP, Ring, Team",
-    title: "Basketball",
+    hint: "WS MVP, Team, Hall",
+    title: "Baseball",
   },
 ];
 
@@ -4587,4 +4748,5 @@ export let gameList = demo.concat(
   week29,
   week30,
   week31,
+  week32,
 );
