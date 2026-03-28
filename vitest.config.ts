@@ -8,8 +8,8 @@ export default defineConfig({
   plugins: [tsconfigPaths()],
   test: {
     coverage: {
-      exclude: ["src/**/*.d.ts", "src/test"],
-      include: ["src/**/*.ts"],
+      exclude: ["src/**/*.d.ts", "src/.puzzles/**", "src/test"],
+      include: ["**/*.ts"],
       provider: "v8",
       reporter: ["text", "html"],
       thresholds: {

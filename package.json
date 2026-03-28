@@ -8,6 +8,7 @@
     "jsdom": "^29.0.1",
     "prettier": "^3.6.2",
     "prettier-plugin-organize-imports": "^4.2.0",
+    "tsx": "^4.21.0",
     "typescript": "~5.8.3",
     "vite": "^7.1.2",
     "vite-plugin-package-version": "^1.1.0",
@@ -17,11 +18,12 @@
   "name": "venzle.ca",
   "private": true,
   "scripts": {
-    "build": "tsc && vite build --emptyOutDir",
-    "dev": "vite --host",
+    "build": "tsx build.ts && tsc && vite build --emptyOutDir",
+    "dev": "tsx build.ts && vite --host",
     "lint": "prettier --write --ignore-path .gitignore .",
+    "postinstall": "tsx build.ts",
     "prod": "npm run build && vite preview --host",
-    "test": "vitest run --coverage"
+    "test": "tsx build.ts && vitest run --coverage"
   },
   "type": "module",
   "version": "0.3.13"

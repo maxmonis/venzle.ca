@@ -18,7 +18,10 @@ export default defineConfig({
       },
       output: {
         manualChunks(id) {
-          if (id.includes("game/list")) return "games";
+          let match = id.match(/\.puzzles\/list\.chunk(\d+)\.ts$/);
+          if (match) {
+            return `puzzles-${match[1]}`;
+          }
         },
       },
     },

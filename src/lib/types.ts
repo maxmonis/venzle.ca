@@ -29,5 +29,11 @@ interface Guess {
 
 export type ImageFormat = (typeof imageFormats)[number];
 
+export interface Puzzle<T extends string>
+  extends Pick<Game, "groups" | "hint"> {
+  creator?: string;
+  title: T;
+}
+
 // Runtime marker for coverage in test environment.
 export let __types = true;

@@ -16,7 +16,6 @@ import {
   winAudio,
 } from "game/elements";
 import { getCenter, initHints } from "game/hints";
-import { gameList } from "game/list";
 import { Confetti } from "htm-elements";
 import type { Game } from "lib/types";
 import { initUI, toast } from "lib/ui";
@@ -29,6 +28,7 @@ import {
   sessionIndex,
   todayIndex,
 } from "lib/utils";
+import { puzzles } from "../.puzzles/list";
 import "./style.css";
 
 // if this is their first visit, show the welcome dialog
@@ -101,7 +101,7 @@ let selectedGameIndex = sessionIndex.get() ?? todayIndex;
 let games = localGames.get() ?? [];
 
 previousGameSelect.append(
-  ...gameList
+  ...puzzles
     .slice(0, todayIndex + 1)
     .map((game, index) => {
       let option = document.createElement("option");
@@ -418,10 +418,10 @@ function getGame(index: number): Game {
     return game;
   }
 
-  if (!gameList[index]) {
+  if (!puzzles[index]) {
     // something's gone wrong and the index is out of range
     window.gtag("event", "invalid_puzzle_index");
-    index = gameList.length - 1;
+    index = puzzles.length - 1;
   }
 
   // log event(s)
@@ -435,7 +435,7 @@ function getGame(index: number): Game {
     // not all puzzles will have a creator
     creator = "Max Monis",
     ...newGame
-  } = gameList[index]!;
+  } = puzzles[index]!;
 
   // return the new game with initial state
   return {

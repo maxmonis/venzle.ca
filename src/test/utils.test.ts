@@ -15,9 +15,23 @@ describe("lib/utils", () => {
 
   it("clamps todayIndex when beyond game list", async () => {
     setSystemTime(new Date(Date.UTC(2100, 0, 1)));
-    let { gameList } = await import("game/list");
+    let { puzzles } = await import("../.puzzles/list");
     let utils = await import("lib/utils");
-    expect(utils.todayIndex).toBe(gameList.length - 1);
+    expect(utils.todayIndex).toBe(puzzles.length - 1);
+  });
+
+  it("exposes a populated generated game list", async () => {
+    let puzzlesModule = await import("../.puzzles/list");
+
+    expect(Array.isArray(puzzlesModule.puzzles)).toBe(true);
+    expect(puzzlesModule.puzzles.length).toBeGreaterThan(0);
+  });
+
+  it("keeps the source puzzle list in sync with the generated list", async () => {
+    let generatedModule = await import("../.puzzles/list");
+    let sourceModule = await import("../game/list");
+
+    expect(sourceModule.puzzles).toEqual(generatedModule.puzzles);
   });
 
   it("computes todayIndex at zero on launch date", async () => {

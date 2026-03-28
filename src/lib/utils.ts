@@ -1,4 +1,4 @@
-import { gameList } from "../game/list";
+import { puzzleCount } from "../.puzzles/list.meta";
 import type { Game, ImageFormat } from "./types";
 
 export let imageFormats = ["jpg", "png", "webp"] as const;
@@ -7,7 +7,7 @@ export let todayIndex = Math.floor(
   (Date.now() - Date.UTC(2025, 7, 23)) / 86400000,
 );
 
-let finalIndex = gameList.length - 1;
+let finalIndex = puzzleCount - 1;
 
 if (todayIndex > finalIndex) {
   todayIndex = finalIndex;

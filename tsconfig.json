@@ -22,5 +22,5 @@
     "useDefineForClassFields": true,
     "verbatimModuleSyntax": true
   },
-  "include": ["src", "vite.config.mts"]
+  "include": ["build.ts", "src", "vite.config.mts"]
 }

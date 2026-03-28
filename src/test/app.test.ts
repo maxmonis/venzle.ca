@@ -1,6 +1,6 @@
-import { gameList } from "game/list";
 import type { Game } from "lib/types";
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import { puzzles } from "../.puzzles/list";
 
 let trackedListeners: Array<{
   type: string;
@@ -81,7 +81,7 @@ function seedGame(
 }
 
 function baseGame(index: number): Game {
-  let entry = gameList[index]!;
+  let entry = puzzles[index]!;
   return {
     creator: entry.creator ?? "Max Monis",
     currentGuess: {
@@ -147,7 +147,7 @@ describe("root/app", () => {
     document.querySelector(".circle-container")?.append(extraDropzone);
 
     // partial update
-    let solution = computeSolution(gameList[0]!.groups);
+    let solution = computeSolution(puzzles[0]!.groups);
     fillDropzones({ a: solution.a });
     gameEvent.post("update");
 
@@ -189,7 +189,7 @@ describe("root/app", () => {
   });
 
   it("shows yellow circle feedback", async () => {
-    let solution = computeSolution(gameList[0]!.groups);
+    let solution = computeSolution(puzzles[0]!.groups);
 
     seedGame(0, {
       currentGuess: {
@@ -216,7 +216,7 @@ describe("root/app", () => {
   });
 
   it("shows blue circle feedback", async () => {
-    let solution = computeSolution(gameList[0]!.groups);
+    let solution = computeSolution(puzzles[0]!.groups);
 
     seedGame(0, {
       currentGuess: {
@@ -243,7 +243,7 @@ describe("root/app", () => {
   });
 
   it("shows red circle feedback", async () => {
-    let solution = computeSolution(gameList[0]!.groups);
+    let solution = computeSolution(puzzles[0]!.groups);
 
     seedGame(0, {
       currentGuess: {
@@ -270,7 +270,7 @@ describe("root/app", () => {
   });
 
   it("shows center-only feedback", async () => {
-    let solution = computeSolution(gameList[0]!.groups);
+    let solution = computeSolution(puzzles[0]!.groups);
 
     seedGame(0, {
       currentGuess: {
@@ -323,7 +323,7 @@ describe("root/app", () => {
 
   it("submits a correct guess and marks solved", async () => {
     localStorage.setItem("audio", "true");
-    let solution = computeSolution(gameList[0]!.groups);
+    let solution = computeSolution(puzzles[0]!.groups);
 
     seedGame(0, {
       currentGuess: solution,
@@ -346,7 +346,7 @@ describe("root/app", () => {
 
   it("submits a correct practice guess without daily event", async () => {
     sessionStorage.setItem("index", "1");
-    let solution = computeSolution(gameList[1]!.groups);
+    let solution = computeSolution(puzzles[1]!.groups);
 
     seedGame(1, {
       currentGuess: solution,
@@ -361,7 +361,7 @@ describe("root/app", () => {
   });
 
   it("submits a correct guess with a hint used", async () => {
-    let solution = computeSolution(gameList[0]!.groups);
+    let solution = computeSolution(puzzles[0]!.groups);
     seedGame(0, {
       currentGuess: solution,
       hintsUsed: { a: true, b: false, c: false },
@@ -487,7 +487,7 @@ describe("root/app", () => {
   });
 
   it("blocks duplicate guesses", async () => {
-    let solution = computeSolution(gameList[0]!.groups);
+    let solution = computeSolution(puzzles[0]!.groups);
     seedGame(0, {
       currentGuess: { ...solution },
       guesses: [{ ...solution }],
@@ -518,7 +518,7 @@ describe("root/app", () => {
   });
 
   it("renders a solved game from storage with hints", async () => {
-    let solution = computeSolution(gameList[0]!.groups);
+    let solution = computeSolution(puzzles[0]!.groups);
     seedGame(0, {
       currentGuess: solution,
       guesses: [

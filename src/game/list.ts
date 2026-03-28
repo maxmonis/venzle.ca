@@ -1,11 +1,6 @@
-import type { Game } from "lib/types";
+import type { Puzzle } from "lib/types";
 
-interface Puzzle<T extends string> extends Pick<Game, "groups" | "hint"> {
-  creator?: string;
-  title: T;
-}
-
-type GameList = [
+type UnstructuredWeek = [
   Puzzle<string>,
   Puzzle<string>,
   Puzzle<string>,
@@ -46,7 +41,7 @@ let demo: [Puzzle<string> | Puzzle<"Demo Puzzle">] = [
   // }
 ];
 
-let week1: GameList = [
+let week1: UnstructuredWeek = [
   {
     creator: "Andrea Alcalá Vásquez",
     groups: {
@@ -171,7 +166,7 @@ let week1: GameList = [
   },
 ];
 
-let week2: GameList = [
+let week2: UnstructuredWeek = [
   {
     creator: "Hannah Monis",
     groups: {
@@ -285,7 +280,7 @@ let week2: GameList = [
   },
 ];
 
-let week3: GameList = [
+let week3: UnstructuredWeek = [
   {
     groups: {
       "Big Cat": ["Leopard", "Cheetah", "Tiger", "Puma"],
@@ -433,7 +428,7 @@ let week3: GameList = [
   },
 ];
 
-let week4: GameList = [
+let week4: UnstructuredWeek = [
   {
     groups: {
       Carnivore: ["Crocodile", "Eagle", "Great White Shark", "Tasmanian Devil"],
@@ -590,7 +585,7 @@ let week4: GameList = [
   },
 ];
 
-let week5: GameList = [
+let week5: UnstructuredWeek = [
   {
     groups: {
       "Commonly Ridden": ["Elephant", "Water Buffalo", "Camel", "Horse"],
@@ -736,7 +731,7 @@ let week5: GameList = [
   },
 ];
 
-let week6: GameList = [
+let week6: UnstructuredWeek = [
   {
     groups: {
       "Found in North America": ["Beaver", "Mouse", "Otter", "Raccoon"],
@@ -862,7 +857,7 @@ let week6: GameList = [
   },
 ];
 
-let week7: GameList = [
+let week7: UnstructuredWeek = [
   {
     groups: {
       "Can Fly": ["Elf Owl", "Roadrunner", "Fruit Bat", "Swan"],
@@ -998,7 +993,7 @@ let week7: GameList = [
   },
 ];
 
-let week8: GameList = [
+let week8: UnstructuredWeek = [
   {
     groups: {
       Venomous: [
@@ -1134,7 +1129,7 @@ let week8: GameList = [
   },
 ];
 
-let week9: GameList = [
+let week9: UnstructuredWeek = [
   {
     groups: {
       "Has Feathers": ["Barn Owl", "Sparrow", "Kākāpō", "Ostrich"],
@@ -1280,7 +1275,7 @@ let week9: GameList = [
   },
 ];
 
-let week10: GameList = [
+let week10: UnstructuredWeek = [
   {
     groups: {
       "Bird of Prey": [
@@ -1451,7 +1446,7 @@ let week10: GameList = [
   },
 ];
 
-let week11: GameList = [
+let week11: UnstructuredWeek = [
   {
     groups: {
       "Released in the 1970s": [
@@ -1612,7 +1607,7 @@ let week11: GameList = [
   },
 ];
 
-let week12: GameList = [
+let week12: UnstructuredWeek = [
   {
     groups: {
       "#1 on Billboard 200": [
@@ -1783,7 +1778,7 @@ let week12: GameList = [
   },
 ];
 
-let week13: GameList = [
+let week13: UnstructuredWeek = [
   {
     groups: {
       "Debut Studio Album": [
@@ -1944,7 +1939,7 @@ let week13: GameList = [
   },
 ];
 
-let week14: GameList = [
+let week14: UnstructuredWeek = [
   {
     groups: {
       Australian: [
@@ -4713,7 +4708,7 @@ let week32: Week = [
   },
 ];
 
-export let gameList = demo.concat(
+export let puzzles = demo.concat(
   week1,
   week2,
   week3,
