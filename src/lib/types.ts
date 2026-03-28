@@ -17,12 +17,6 @@ export interface Game {
   title: string;
 }
 
-export interface GameListItem extends Pick<Game, "groups" | "hint"> {
-  creator?: string;
-  published: boolean;
-  title?: string;
-}
-
 interface Guess {
   a: string;
   ab: string;

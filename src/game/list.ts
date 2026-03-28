@@ -1,22 +1,19 @@
-import type { GameListItem } from "lib/types";
+import type { Game } from "lib/types";
 
-interface PublishedGame extends Omit<GameListItem, "published" | "title"> {
-  title: string;
-}
-type GameList = [
-  PublishedGame,
-  PublishedGame,
-  PublishedGame,
-  PublishedGame,
-  PublishedGame,
-  PublishedGame,
-  PublishedGame,
-];
-
-interface Puzzle<T extends string>
-  extends Omit<GameListItem, "published" | "title"> {
+interface Puzzle<T extends string> extends Pick<Game, "groups" | "hint"> {
+  creator?: string;
   title: T;
 }
+
+type GameList = [
+  Puzzle<string>,
+  Puzzle<string>,
+  Puzzle<string>,
+  Puzzle<string>,
+  Puzzle<string>,
+  Puzzle<string>,
+  Puzzle<string>,
+];
 
 type Week = [
   Puzzle<string>,
@@ -28,7 +25,7 @@ type Week = [
   Puzzle<"Baseball" | "Basketball" | "Football">,
 ];
 
-let demo: [PublishedGame | Puzzle<"Demo Puzzle">] = [
+let demo: [Puzzle<string> | Puzzle<"Demo Puzzle">] = [
   {
     groups: {
       Color: ["Orange", "Grape", "Pine", "Purple"],
