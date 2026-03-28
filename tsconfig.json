@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowImportingTsExtensions": true,
     "allowJs": false,
-    "erasableSyntaxOnly": true,
+    "erasableSyntaxOnly": false,
     "baseUrl": "./src",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",

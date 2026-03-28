@@ -1,12 +1,12 @@
-main {
+body[data-route="share"] main {
   animation: fadeIn 500ms forwards;
 }
 
-.certificate-container {
+body[data-route="share"] .certificate-container {
   margin-block-start: 2rem;
 }
 
-.certificate-canvas-container {
+body[data-route="share"] .certificate-canvas-container {
   aspect-ratio: 3 / 4;
   border-style: solid;
   height: auto;
@@ -15,18 +15,18 @@ main {
   width: 100%;
 }
 
-.certificate-canvas-container canvas {
+body[data-route="share"] .certificate-canvas-container canvas {
   display: block;
   height: 100%;
   object-fit: contain;
   width: 100%;
 }
 
-.dark .certificate-canvas-container {
+body[data-route="share"].dark .certificate-canvas-container {
   border-style: none;
 }
 
-.certificate-form {
+body[data-route="share"] .certificate-form {
   align-items: flex-end;
   display: flex;
   flex-wrap: nowrap;
@@ -46,7 +46,7 @@ main {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  main {
+  body[data-route="share"] main {
     animation: none;
   }
 }

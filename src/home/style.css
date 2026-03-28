@@ -1,23 +1,23 @@
 @import "../style/puzzle.css";
 
-.creator-text {
+body[data-route="home"] .creator-text {
   color: var(--gray);
   font-size: 0.875rem;
 }
 
-.game-controls {
+body[data-route="home"] .game-controls {
   align-items: center;
   display: flex;
   flex-direction: column;
 }
 
-.game-controls > p {
+body[data-route="home"] .game-controls > p {
   font-size: 0.875rem;
   margin-block: 0.25rem;
   text-align: center;
 }
 
-.draggables {
+body[data-route="home"] .draggables {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -25,28 +25,29 @@
   max-width: 27rem;
 }
 
-[draggable="true"] {
+body[data-route="home"] [draggable="true"] {
   background-color: white;
   border-color: var(--dark);
   border-style: solid;
   cursor: grab;
   font-size: 0.875rem;
 }
-.dropzone.dragover {
+
+body[data-route="home"] .dropzone.dragover {
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.reset-button {
+body[data-route="home"] .reset-button {
   color: var(--red);
   margin-block-start: 0.5rem;
 }
 
-.guesses-text {
+body[data-route="home"] .guesses-text {
   margin-block: 0.5rem;
   text-align: center;
 }
 
-.hints-container {
+body[data-route="home"] .hints-container {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -56,7 +57,7 @@
   text-align: center;
 }
 
-.previous-game-container {
+body[data-route="home"] .previous-game-container {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -65,25 +66,25 @@
   width: 100%;
 }
 
-.previous-game-container p {
+body[data-route="home"] .previous-game-container p {
   color: var(--gray);
   font-size: 0.875rem;
 }
 
-.game-summary {
+body[data-route="home"] .game-summary {
   margin-block-start: 3rem;
 }
 
-.game-summary > div {
+body[data-route="home"] .game-summary > div {
   margin: 0.5rem auto 0;
   width: fit-content;
 }
 
-.home-button {
+body[data-route="home"] .home-button {
   margin: -1rem auto 0.5rem -0.25rem;
 }
 
-dialog {
+body[data-route="home"] dialog {
   border-radius: 1rem;
   border-style: solid;
   margin: 20vh auto;
@@ -92,25 +93,25 @@ dialog {
   width: min(calc(100vw - 2.5rem), 30rem);
 }
 
-dialog::backdrop {
+body[data-route="home"] dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-dialog,
-dialog > div {
+body[data-route="home"] dialog,
+body[data-route="home"] dialog > div {
   border-radius: 1rem;
 }
 
-dialog > div {
+body[data-route="home"] dialog > div {
   padding: 1.25rem;
 }
 
-dialog h1 {
+body[data-route="home"] dialog h1 {
   font-size: 1.125rem;
   margin-block-end: 0.5rem;
 }
 
-.dialog-cta-container {
+body[data-route="home"] .dialog-cta-container {
   display: flex;
   flex-wrap: wrap;
   gap: 0.25rem 1.25rem;
@@ -118,15 +119,17 @@ dialog h1 {
   margin-block-start: 0.5rem;
 }
 
-.dialog-cta-container > a {
+body[data-route="home"] .dialog-cta-container > a {
   padding: 0.75rem;
 }
 
-.red-text {
+body[data-route="home"] .red-text {
   color: var(--red);
 }
 
-main :not(:where(.circle-container *, .previous-game-container *)) {
+body[data-route="home"]
+  main
+  :not(:where(.circle-container *, .previous-game-container *)) {
   animation: fadeIn 300ms forwards;
 }
 
@@ -143,7 +146,9 @@ main :not(:where(.circle-container *, .previous-game-container *)) {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  main :not(:where(.circle-container *, .previous-game-container *)) {
+  body[data-route="home"]
+    main
+    :not(:where(.circle-container *, .previous-game-container *)) {
     animation: none;
   }
 }

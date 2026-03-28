@@ -1,14 +1,14 @@
-h2 {
+body[data-route="stats"] h2 {
   margin-block: 0;
 }
 
-h3 {
+body[data-route="stats"] h3 {
   font-size: var(--h3);
   margin-block: 0 0.5rem;
   text-align: center;
 }
 
-section {
+body[data-route="stats"] section {
   animation: fadeInUp 600ms ease-out forwards;
   display: flex;
   flex-wrap: wrap;
@@ -18,7 +18,7 @@ section {
   width: 100%;
 }
 
-.stats-summary {
+body[data-route="stats"] .stats-summary {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -26,7 +26,7 @@ section {
   max-width: 20rem;
 }
 
-.stats-summary li {
+body[data-route="stats"] .stats-summary li {
   background-color: color-mix(in oklab, var(--gray) 20%, transparent);
   border-radius: 1rem;
   display: flex;
@@ -37,11 +37,11 @@ section {
   width: 6.25rem;
 }
 
-.stats-summary li strong {
+body[data-route="stats"] .stats-summary li strong {
   font-size: 1.25rem;
 }
 
-.distribution {
+body[data-route="stats"] .distribution {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -63,18 +63,18 @@ section {
   }
 }
 
-.bar {
+body[data-route="stats"] .bar {
   align-items: center;
   display: flex;
   gap: 0.25rem;
 }
 
-.bar span {
+body[data-route="stats"] .bar span {
   text-align: center;
   width: 1.5rem;
 }
 
-.bar-fill {
+body[data-route="stats"] .bar-fill {
   background: var(--bg-blue);
   border-radius: 0.25rem;
   color: var(--light);
@@ -86,11 +86,11 @@ section {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  section {
+  body[data-route="stats"] section {
     animation: none;
   }
 
-  .bar-fill {
+  body[data-route="stats"] .bar-fill {
     transition: none;
   }
 }

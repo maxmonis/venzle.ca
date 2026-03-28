@@ -2,12 +2,7 @@ import type { Game } from "lib/types";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 function setupBaseDom() {
-  document.body.innerHTML = `
-    <div class="site-logo"></div>
-    <div class="copyright-year">2025</div>
-    <footer></footer>
-    <main></main>
-  `;
+  document.body.innerHTML = "<main></main>";
 }
 
 function seedSolvedGame(index = 0, overrides: Partial<Game> = {}) {
@@ -58,28 +53,15 @@ describe("root/share/app", () => {
   });
 
   it("redirects if no solved game exists", async () => {
-    let replace = vi.fn();
-    Object.defineProperty(window, "location", {
-      configurable: true,
-      value: {
-        origin: "http://localhost",
-        pathname: "/",
-        reload: vi.fn(),
-        replace,
-      },
-      writable: true,
-    });
+    let navigate = vi.fn();
+    let { mountSharePage } = await import("share/app");
 
-    try {
-      await import("root/share/app");
-    } catch {
-      // expected since the module continues without a solved game
-    }
-    expect(replace).toHaveBeenCalledWith("../");
+    mountSharePage(document.querySelector("main")!, navigate);
+
+    expect(navigate).toHaveBeenCalledWith("/", { replace: true });
   });
 
   it("renders share UI and clipboard text", async () => {
-    setupBaseDom();
     seedSolvedGame(0, {
       guesses: [
         {
@@ -102,64 +84,41 @@ describe("root/share/app", () => {
       value: 4,
     });
 
-    await import("root/share/app");
+    let navigate = vi.fn();
+    let { mountSharePage } = await import("share/app");
+
+    mountSharePage(document.querySelector("main")!, navigate);
     await Promise.resolve();
     await Promise.resolve();
     await new Promise((resolve) => setTimeout(resolve, 0));
 
-    let pre = document.querySelector("pre")!;
-    expect(pre.textContent).toContain("Puzzle 0");
+    expect(document.querySelector("pre")?.textContent).toContain("Puzzle 0");
 
     let copyButton = Array.from(document.querySelectorAll("button")).find(
-      (el) => el.textContent == "Copy to Clipboard",
+      (element) => element.textContent == "Copy to Clipboard",
     )!;
     copyButton.dispatchEvent(new Event("click"));
     expect(navigator.clipboard.writeText).toHaveBeenCalled();
 
-    let downloadForm = document.querySelector("form")!;
-    downloadForm.dispatchEvent(new Event("submit"));
+    let formatSelect = document.querySelector<HTMLSelectElement>("select")!;
+    formatSelect.value = "webp";
+    formatSelect.dispatchEvent(new Event("change"));
+    expect(JSON.parse(localStorage.getItem("format") || "null")).toBe("webp");
 
-    let canvas = document.querySelector("canvas")!;
-    expect(canvas).toBeTruthy();
-  });
-
-  it("renders a perfect badge", async () => {
-    setupBaseDom();
-    seedSolvedGame(0, {
-      guesses: [
-        {
-          a: "A1",
-          ab: "A2",
-          abc: "A3",
-          ac: "A4",
-          b: "B1",
-          bc: "B2",
-          c: "C1",
-        },
-      ],
-      hintsUsed: { a: false, b: false, c: false },
-    });
-    sessionStorage.setItem("index", "0");
-    Object.defineProperty(window, "devicePixelRatio", {
-      configurable: true,
-      value: 0,
-    });
-
-    await import("root/share/app");
-    await Promise.resolve();
-    await Promise.resolve();
-    await new Promise((resolve) => setTimeout(resolve, 0));
-    let canvas = document.querySelector("canvas")!;
-    expect(canvas).toBeTruthy();
+    document.querySelector("form")?.dispatchEvent(new Event("submit"));
+    expect(document.querySelector("canvas")).toBeTruthy();
+    expect(navigate).not.toHaveBeenCalled();
   });
 
   it("debounces certificate name input", async () => {
-    setupBaseDom();
     seedSolvedGame(0);
     sessionStorage.setItem("index", "0");
 
     vi.useFakeTimers();
-    await import("root/share/app");
+    let navigate = vi.fn();
+    let { mountSharePage } = await import("share/app");
+
+    let cleanup = mountSharePage(document.querySelector("main")!, navigate);
 
     let input = document.querySelector<HTMLInputElement>("input")!;
     input.value = "Case";
@@ -172,43 +131,50 @@ describe("root/share/app", () => {
     await Promise.resolve();
 
     expect(JSON.parse(localStorage.getItem("name") || "null")).toBe("Casey");
+    cleanup?.();
+  });
 
-    input.value = "Casey";
-    input.dispatchEvent(new Event("input"));
-    vi.runAllTimers();
+  it("skips certificate updates for blank or unchanged names", async () => {
+    seedSolvedGame(0);
+    sessionStorage.setItem("index", "0");
+    localStorage.setItem("name", JSON.stringify("Casey"));
+
+    vi.useFakeTimers();
+    let navigate = vi.fn();
+    let { mountSharePage } = await import("share/app");
+    let cleanup = mountSharePage(document.querySelector("main")!, navigate);
+
+    let input = document.querySelector<HTMLInputElement>("input")!;
 
     input.value = "   ";
     input.dispatchEvent(new Event("input"));
     vi.runAllTimers();
+    await Promise.resolve();
+    expect(JSON.parse(localStorage.getItem("name") || "null")).toBe("Casey");
+
+    input.value = "Casey";
+    input.dispatchEvent(new Event("input"));
+    vi.runAllTimers();
+    await Promise.resolve();
+    expect(JSON.parse(localStorage.getItem("name") || "null")).toBe("Casey");
+
+    cleanup?.();
+  });
+
+  it("cleans up without a pending debounce timer", async () => {
+    seedSolvedGame(0);
+    sessionStorage.setItem("index", "0");
+
+    let navigate = vi.fn();
+    let { mountSharePage } = await import("share/app");
+    let cleanup = mountSharePage(document.querySelector("main")!, navigate);
+
+    cleanup?.();
+    expect(navigate).not.toHaveBeenCalled();
   });
 
   it("handles font readiness edge cases", async () => {
-    setupBaseDom();
-    seedSolvedGame(0, {
-      guesses: [
-        {
-          a: "A1",
-          ab: "A2",
-          abc: "A3",
-          ac: "A4",
-          b: "B1",
-          bc: "B2",
-          c: "C1",
-        },
-        {
-          a: "A1",
-          ab: "A2",
-          abc: "A3",
-          ac: "A4",
-          b: "B1",
-          bc: "B2",
-          c: "C1",
-        },
-      ],
-      hintsUsed: { a: true, b: true, c: true },
-      timestamp: 0,
-      title: "",
-    });
+    seedSolvedGame(0);
     sessionStorage.setItem("index", "0");
 
     let rejected = Promise.reject(new Error("fail"));
@@ -223,21 +189,33 @@ describe("root/share/app", () => {
     let errorSpy = vi
       .spyOn(console, "error")
       .mockImplementation(() => undefined);
-    await import("root/share/app");
+
+    let navigate = vi.fn();
+    let { mountSharePage } = await import("share/app");
+    mountSharePage(document.querySelector("main")!, navigate);
+
     await Promise.resolve();
     expect(errorSpy).toHaveBeenCalled();
     errorSpy.mockRestore();
-
-    let select = document.querySelector("select")!;
-    select.value = "png";
-    select.dispatchEvent(new Event("change"));
   });
 
-  it("skips font waiting when fonts API missing", async () => {
-    setupBaseDom();
-    seedSolvedGame(0);
+  it("renders a perfect badge and skips font waiting when fonts are missing", async () => {
+    seedSolvedGame(0, {
+      guesses: [
+        {
+          a: "A1",
+          ab: "A2",
+          abc: "A3",
+          ac: "A4",
+          b: "B1",
+          bc: "B2",
+          c: "C1",
+        },
+      ],
+      hintsUsed: { a: false, b: false, c: false },
+      title: "",
+    });
     sessionStorage.setItem("index", "0");
-
     Object.defineProperty(document, "fonts", {
       value: {
         ready: null,
@@ -245,10 +223,70 @@ describe("root/share/app", () => {
       writable: true,
     });
 
-    await import("root/share/app");
+    let navigate = vi.fn();
+    let { mountSharePage } = await import("share/app");
+    mountSharePage(document.querySelector("main")!, navigate);
+
     await Promise.resolve();
     await Promise.resolve();
-    let canvas = document.querySelector("canvas")!;
-    expect(canvas).toBeTruthy();
+
+    expect(document.querySelector("canvas")).toBeTruthy();
+  });
+
+  it("renders plural certificate text and falls back to the current date", async () => {
+    seedSolvedGame(0, {
+      guesses: [
+        {
+          a: "A1",
+          ab: "A2",
+          abc: "A3",
+          ac: "A4",
+          b: "B1",
+          bc: "B2",
+          c: "C1",
+        },
+        {
+          a: "A1",
+          ab: "A2",
+          abc: "A3",
+          ac: "A4",
+          b: "B1",
+          bc: "B2",
+          c: "C1",
+        },
+      ],
+      hintsUsed: { a: true, b: true, c: false },
+      timestamp: undefined,
+    });
+    sessionStorage.setItem("index", "0");
+
+    let navigate = vi.fn();
+    let { mountSharePage } = await import("share/app");
+    mountSharePage(document.querySelector("main")!, navigate);
+
+    await Promise.resolve();
+    await Promise.resolve();
+
+    expect(document.querySelector("canvas")).toBeTruthy();
+  });
+
+  it("falls back to a 1x scale when devicePixelRatio is falsy", async () => {
+    seedSolvedGame(0);
+    sessionStorage.setItem("index", "0");
+    Object.defineProperty(window, "devicePixelRatio", {
+      configurable: true,
+      value: 0,
+    });
+
+    let navigate = vi.fn();
+    let { mountSharePage } = await import("share/app");
+    mountSharePage(document.querySelector("main")!, navigate);
+
+    await Promise.resolve();
+    await Promise.resolve();
+
+    let canvas = document.querySelector("canvas");
+    expect(canvas?.width).toBe(1200);
+    expect(canvas?.height).toBe(1600);
   });
 });

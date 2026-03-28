@@ -5,8 +5,6 @@ function setupBaseDom() {
     <div class="site-logo"></div>
     <div class="copyright-year">2025</div>
     <footer></footer>
-    <a class="local-link" href="./foo">Local</a>
-    <a class="external-link" href="/bar">External</a>
   `;
   document.documentElement.style.fontSize = "16px";
 }
@@ -19,15 +17,8 @@ describe("lib/ui and lib/svg", () => {
     setupBaseDom();
   });
 
-  it("initializes UI, toggles theme/audio, and handles resize + reload", async () => {
-    vi.useFakeTimers();
-    Object.defineProperty(document, "readyState", {
-      configurable: true,
-      value: "loading",
-    });
+  it("initializes UI and toggles theme/audio", async () => {
     let ui = await import("lib/ui");
-    let { toast } = ui;
-
     ui.initUI();
 
     let toggleContainer = document.querySelector(".theme-toggle-container")!;
@@ -43,20 +34,66 @@ describe("lib/ui and lib/svg", () => {
 
     darkToggle?.dispatchEvent(new Event("click"));
     expect(document.body.classList.contains("dark")).toBe(true);
+  });
 
-    // trigger theme channel updates
-    let broadcaster = new BroadcastChannel("theme");
-    broadcaster.postMessage("audio");
-    broadcaster.postMessage("dark");
-    let Broadcast = window.BroadcastChannel as unknown as {
-      channels?: Map<
-        string,
-        Set<{ onmessage: ((event: MessageEvent) => void) | null }>
-      >;
-    };
-    Broadcast.channels?.get("theme")?.forEach((channel) => {
-      channel.onmessage?.({ data: "dark" } as MessageEvent);
-    });
+  it("updates svg size on resize", async () => {
+    let ui = await import("lib/ui");
+    ui.initUI();
+    let svg = await import("lib/svg");
+
+    expect(svg.chevronLeft.getAttribute("height")).toBe("24px");
+
+    document.documentElement.style.fontSize = "20px";
+    window.dispatchEvent(new Event("resize"));
+
+    expect(ui.rem).toBe(20);
+    expect(svg.chevronLeft.getAttribute("height")).toBe("30px");
+  });
+
+  it("handles theme channel updates", async () => {
+    localStorage.setItem("audio", "true");
+    localStorage.removeItem("dark");
+
+    let ui = await import("lib/ui");
+    let utils = await import("lib/utils");
+    ui.initUI();
+
+    let channel = (
+      utils.themeChannel as unknown as {
+        channel?: { onmessage?: (e: MessageEvent) => void };
+      }
+    ).channel;
+
+    channel?.onmessage?.({ data: "audio" } as MessageEvent);
+    channel?.onmessage?.({ data: "dark" } as MessageEvent);
+    channel?.onmessage?.({ data: "noop" } as MessageEvent);
+
+    let toggleContainer = document.querySelector(".theme-toggle-container")!;
+    let [darkToggle, audioToggle] = Array.from(
+      toggleContainer.querySelectorAll("button"),
+    );
+
+    expect(audioToggle?.innerText).toBe("🔊");
+    expect(darkToggle?.innerText).toBeTruthy();
+    expect(document.body.style.cssText).toBe("");
+  });
+
+  it("supports reinitialization without site chrome", async () => {
+    let ui = await import("lib/ui");
+
+    ui.initUI();
+    document.body.innerHTML = "";
+    ui.initUI();
+
+    expect(document.querySelector(".theme-toggle-container")).toBeNull();
+  });
+
+  it("updates reduced motion and schedules the midnight reload", async () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date(Date.UTC(2025, 7, 23, 23, 59, 59)));
+
+    let ui = await import("lib/ui");
+    ui.initUI();
 
     let matchMediaMap = (
       globalThis as typeof globalThis & {
@@ -69,83 +106,13 @@ describe("lib/ui and lib/svg", () => {
     matchMediaMap?.["(prefers-reduced-motion: reduce)"]?.dispatchEvent({
       matches: true,
     } as MediaQueryListEvent);
-    let utils = await import("lib/utils");
-    let channel = (
-      utils.themeChannel as unknown as {
-        channel?: { onmessage?: (e: MessageEvent) => void };
-      }
-    ).channel;
-    expect(channel).toBeTruthy();
-    channel?.onmessage?.({ data: "dark" } as MessageEvent);
+
     expect(ui.reduceMotion).toBe(true);
 
-    // trigger DOMContentLoaded for domReady block
-    document.dispatchEvent(new Event("DOMContentLoaded"));
+    vi.advanceTimersByTime(4500);
+    let { toast } = await import("lib/ui");
 
-    // simulate clicking a local link to show spinner
-    let link = document.querySelector<HTMLAnchorElement>(".local-link")!;
-    link.dispatchEvent(new Event("click"));
-    vi.runAllTimers();
-
-    expect(document.body.style.pointerEvents).toBe("none");
-    expect(document.body.innerHTML).not.toBe("");
-
-    vi.runAllTimers();
     expect(toast.show).toHaveBeenCalled();
-  });
-
-  it("updates svg size on resize", async () => {
-    setupBaseDom();
-    let ui = await import("lib/ui");
-    let svg = await import("lib/svg");
-
-    expect(svg.chevronLeft.getAttribute("height")).toBe("24px");
-
-    document.documentElement.style.fontSize = "20px";
-    window.dispatchEvent(new Event("resize"));
-
-    expect(ui.rem).toBe(20);
-    expect(svg.chevronLeft.getAttribute("height")).toBe("30px");
-  });
-
-  it("runs domReady immediately when document is complete", async () => {
-    setupBaseDom();
-    Object.defineProperty(document, "readyState", {
-      configurable: true,
-      value: "complete",
-    });
-    document.body.style.cssText = "color: red;";
-
-    await import("lib/ui");
-
-    expect(document.body.style.cssText).toBe("");
-  });
-
-  it("handles theme channel audio and default dark", async () => {
-    setupBaseDom();
-    localStorage.setItem("audio", "true");
-    localStorage.removeItem("dark");
-
-    let ui = await import("lib/ui");
-    let utils = await import("lib/utils");
-
-    let channel = (
-      utils.themeChannel as unknown as {
-        channel?: { onmessage?: (e: MessageEvent) => void };
-      }
-    ).channel;
-
-    channel?.onmessage?.({ data: "audio" } as MessageEvent);
-    channel?.onmessage?.({ data: "noop" } as MessageEvent);
-    channel?.onmessage?.({ data: "dark" } as MessageEvent);
-
-    let toggleContainer = document.querySelector(".theme-toggle-container")!;
-    let [darkToggle, audioToggle] = Array.from(
-      toggleContainer.querySelectorAll("button"),
-    );
-
-    expect(audioToggle?.innerText).toBe("🔊");
-    expect(darkToggle?.innerText).toBe("🌞");
-    expect(ui.reduceMotion).toBe(false);
+    expect(location.reload).toHaveBeenCalled();
   });
 });

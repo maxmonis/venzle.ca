@@ -32,8 +32,16 @@ class Channel<
   }
 
   listen(callback: (data: T) => void) {
-    this.channel.onmessage = (e) => {
+    let listener = (e: MessageEvent) => {
       callback(e.data);
+    };
+
+    this.channel.onmessage = listener;
+
+    return () => {
+      if (this.channel.onmessage == listener) {
+        this.channel.onmessage = null;
+      }
     };
   }
 }
@@ -61,10 +69,16 @@ class Event<
   }
 
   listen(callback: (data: T) => void) {
-    document.addEventListener(this.key, (event) => {
+    let listener = (event: globalThis.Event) => {
       let customEvent = event as CustomEvent;
       callback(customEvent.detail.data);
-    });
+    };
+
+    document.addEventListener(this.key, listener);
+
+    return () => {
+      document.removeEventListener(this.key, listener);
+    };
   }
 }
 

@@ -2,15 +2,7 @@ import type { Game } from "lib/types";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 function setupGameDom() {
-  document.body.innerHTML = `
-    <div class="site-logo"></div>
-    <div class="copyright-year">2025</div>
-    <footer></footer>
-    <header></header>
-    <main></main>
-    <div class="circle-container"></div>
-    <div class="game-controls"></div>
-  `;
+  document.body.innerHTML = "<main></main>";
 }
 
 function sampleGame(): Game {
@@ -48,12 +40,14 @@ describe("game/elements and game/hints", () => {
   it("wires element events and hints", async () => {
     let { gameEvent } = await import("lib/utils");
     let received: Array<unknown> = [];
-    gameEvent.listen((data) => {
+    let stopListening = gameEvent.listen((data) => {
       received.push(data);
     });
 
-    let elements = await import("game/elements");
+    let { createGameElements } = await import("game/elements");
     let { initHints } = await import("game/hints");
+
+    let elements = createGameElements(document.querySelector("main")!);
 
     elements.previousGameSelect.append(
       ...[0, 1].map((i) => {
@@ -66,17 +60,22 @@ describe("game/elements and game/hints", () => {
 
     elements.previousGameSelect.value = "1";
     elements.previousGameSelect.dispatchEvent(new Event("change"));
-
     elements.resetButton.dispatchEvent(new Event("click"));
-    let submitButton = elements.submitButtonContainer.querySelector("button")!;
-    submitButton.dispatchEvent(new Event("click"));
+    elements.submitButtonContainer
+      .querySelector("button")
+      ?.dispatchEvent(new Event("click"));
     elements.homeButton.dispatchEvent(new Event("click"));
 
+    expect(received).toContain(1);
     expect(received).toContain("reset");
     expect(received).toContain("submit");
+    expect(received).toContain(0);
 
     let game = sampleGame();
-    initHints(game);
+    initHints({
+      game,
+      hintsContainer: elements.hintsContainer,
+    });
 
     let hintButtons = Array.from(
       document.querySelectorAll<HTMLButtonElement>(".hint-button"),
@@ -90,19 +89,29 @@ describe("game/elements and game/hints", () => {
       document.querySelectorAll<HTMLButtonElement>(".hint-button")[0];
     bonusButton?.dispatchEvent(new Event("click"));
 
-    expect(game.hintsUsed.a).toBe(true);
-    expect(game.hintsUsed.b).toBe(true);
-    expect(game.hintsUsed.c).toBe(true);
+    expect(game.hintsUsed).toEqual({ a: true, b: true, c: true });
+    stopListening();
   });
 
   it("renders used hints immediately", async () => {
+    let { createGameElements } = await import("game/elements");
     let { initHints } = await import("game/hints");
     let game = sampleGame();
     game.hintsUsed = { a: true, b: true, c: true };
 
-    initHints(game);
-    let buttons = document.querySelectorAll(".hint-button");
-    expect(buttons.length).toBe(0);
+    let elements = createGameElements(document.querySelector("main")!);
+
+    initHints({
+      game,
+      hintsContainer: elements.hintsContainer,
+    });
+    initHints({
+      game,
+      hintsContainer: elements.hintsContainer,
+    });
+
+    expect(document.querySelectorAll(".hint-button").length).toBe(0);
+    expect(document.querySelectorAll("[data-hint='bonus']").length).toBe(1);
   });
 });
 
@@ -128,16 +137,19 @@ describe("game/dnd (mouse)", () => {
   });
 
   it("handles drag and drop updates", async () => {
-    let { initDropzones, initDraggables, createDraggable } = await import(
-      "game/dnd"
-    );
-    let { circleContainer, draggables } = await import("game/elements");
+    let { createGameElements } = await import("game/elements");
+    let { createDndController } = await import("game/dnd");
+
+    let elements = createGameElements(document.querySelector("main")!);
+    let dnd = createDndController({
+      circleContainer: elements.circleContainer,
+      draggables: elements.draggables,
+    });
 
     let game = sampleGame();
-    initDropzones(game);
-    initDraggables(game);
+    dnd.initDropzones(game);
+    dnd.initDraggables(game);
 
-    // dragend with no dragged element
     let dragEndNoElement = new Event("dragend") as DragEvent;
     Object.defineProperty(dragEndNoElement, "clientX", { value: 0 });
     Object.defineProperty(dragEndNoElement, "clientY", { value: 0 });
@@ -147,8 +159,8 @@ describe("game/dnd (mouse)", () => {
       document.querySelectorAll<HTMLElement>(".dropzone"),
     );
     for (let i = 0; i < dropzones.length; i++) {
-      let dz = dropzones[i]!;
-      dz.getBoundingClientRect = () =>
+      let dropzone = dropzones[i]!;
+      dropzone.getBoundingClientRect = () =>
         ({
           bottom: 50,
           left: i * 100,
@@ -157,17 +169,10 @@ describe("game/dnd (mouse)", () => {
         }) as DOMRect;
     }
 
-    // cover document dragover preventDefault
     let documentDragOver = new Event("dragover", { cancelable: true });
     document.dispatchEvent(documentDragOver);
     expect(documentDragOver.defaultPrevented).toBe(true);
 
-    // cover dropzone dragover preventDefault
-    let dragOver = new Event("dragover", { cancelable: true });
-    dropzones[0]?.dispatchEvent(dragOver);
-    expect(dragOver.defaultPrevented).toBe(true);
-
-    // cover dragenter/dragleave
     let dragEnter = new Event("dragenter", { cancelable: true });
     dropzones[0]?.dispatchEvent(dragEnter);
     expect(dropzones[0]?.classList.contains("dragover")).toBe(true);
@@ -176,7 +181,11 @@ describe("game/dnd (mouse)", () => {
     dropzones[0]?.dispatchEvent(dragLeave);
     expect(dropzones[0]?.classList.contains("dragover")).toBe(false);
 
-    circleContainer.getBoundingClientRect = () =>
+    let dropzoneDragOver = new Event("dragover", { cancelable: true });
+    dropzones[0]?.dispatchEvent(dropzoneDragOver);
+    expect(dropzoneDragOver.defaultPrevented).toBe(true);
+
+    elements.circleContainer.getBoundingClientRect = () =>
       ({
         bottom: 400,
         left: 0,
@@ -184,8 +193,12 @@ describe("game/dnd (mouse)", () => {
         top: 0,
       }) as DOMRect;
 
-    createDraggable("A1", "A1");
-    let draggable = draggables.querySelector<HTMLElement>("div")!;
+    dnd.createDraggable("A1", "A1");
+    let draggable = elements.draggables
+      .querySelectorAll<HTMLElement>("div")
+      .item(
+        elements.draggables.querySelectorAll<HTMLElement>("div").length - 1,
+      )!;
 
     let dragStart = new Event("dragstart") as DragEvent;
     Object.defineProperty(dragStart, "dataTransfer", {
@@ -195,176 +208,161 @@ describe("game/dnd (mouse)", () => {
     });
     draggable.dispatchEvent(dragStart);
 
-    // cover dragstart early return when no dataTransfer
-    let dragStartNoTransfer = new Event("dragstart") as DragEvent;
-    draggable.dispatchEvent(dragStartNoTransfer);
-
-    // cover early return when dragged element has no text/value
-    draggable.textContent = "";
-    draggable.removeAttribute("data-dnd-value");
-    let dragEndEarly = new Event("dragend") as DragEvent;
-    Object.defineProperty(dragEndEarly, "clientX", { value: 10 });
-    Object.defineProperty(dragEndEarly, "clientY", { value: 10 });
-    document.dispatchEvent(dragEndEarly);
-
-    // restore and drag again
-    draggable.textContent = "A1";
-    draggable.setAttribute("data-dnd-value", "A1");
+    draggable.dispatchEvent(new Event("dragstart"));
 
     let dragEnd = new Event("dragend") as DragEvent;
     Object.defineProperty(dragEnd, "clientX", { value: 10 });
     Object.defineProperty(dragEnd, "clientY", { value: 10 });
     document.dispatchEvent(dragEnd);
 
-    // drop into dropzone
     expect(dropzones[0]?.getAttribute("data-dnd-value")).toBe("A1");
+    dnd.cleanup();
+  });
 
-    // move from one dropzone to another (occupied)
-    dropzones[1]!.setAttribute("data-dnd-value", "B1");
-    dropzones[1]!.textContent = "B1";
+  it("covers occupied and invalid drag branches", async () => {
+    let { createGameElements } = await import("game/elements");
+    let { createDndController } = await import("game/dnd");
 
-    let dragStartMove = new Event("dragstart") as DragEvent;
-    Object.defineProperty(dragStartMove, "dataTransfer", {
+    let elements = createGameElements(document.querySelector("main")!);
+    let dnd = createDndController({
+      circleContainer: elements.circleContainer,
+      draggables: elements.draggables,
+    });
+
+    let game = sampleGame();
+    game.currentGuess.a = "A1";
+    game.currentGuess.b = "B1";
+    dnd.initDropzones(game);
+
+    let dropzoneA = document.querySelector<HTMLElement>("#dropzone-a")!;
+    let dropzoneB = document.querySelector<HTMLElement>("#dropzone-b")!;
+
+    dropzoneA.getBoundingClientRect = () =>
+      ({ bottom: 50, left: 0, right: 50, top: 0 }) as DOMRect;
+    dropzoneB.getBoundingClientRect = () =>
+      ({ bottom: 50, left: 100, right: 150, top: 0 }) as DOMRect;
+    elements.circleContainer.getBoundingClientRect = () =>
+      ({ bottom: 400, left: 0, right: 400, top: 0 }) as DOMRect;
+
+    let dragStart = new Event("dragstart") as DragEvent;
+    Object.defineProperty(dragStart, "dataTransfer", {
       value: {
         setDragImage: vi.fn(),
       },
     });
-    dropzones[0]?.dispatchEvent(dragStartMove);
+    dropzoneA.dispatchEvent(dragStart);
 
-    let dragEndMove = new Event("dragend") as DragEvent;
-    Object.defineProperty(dragEndMove, "clientX", { value: 110 });
-    Object.defineProperty(dragEndMove, "clientY", { value: 10 });
-    document.dispatchEvent(dragEndMove);
+    let dragEndToOccupied = new Event("dragend") as DragEvent;
+    Object.defineProperty(dragEndToOccupied, "clientX", { value: 110 });
+    Object.defineProperty(dragEndToOccupied, "clientY", { value: 10 });
+    document.dispatchEvent(dragEndToOccupied);
 
-    // move from one dropzone to another (unoccupied)
-    let dragStartMoveEmpty = new Event("dragstart") as DragEvent;
-    Object.defineProperty(dragStartMoveEmpty, "dataTransfer", {
+    expect(dropzoneA.getAttribute("data-dnd-value")).toBe("B1");
+    expect(dropzoneB.getAttribute("data-dnd-value")).toBe("A1");
+
+    let dropzoneAb = document.querySelector<HTMLElement>("#dropzone-ab")!;
+    dropzoneAb.getBoundingClientRect = () =>
+      ({ bottom: 50, left: 200, right: 250, top: 0 }) as DOMRect;
+
+    let dragStartToEmpty = new Event("dragstart") as DragEvent;
+    Object.defineProperty(dragStartToEmpty, "dataTransfer", {
       value: {
         setDragImage: vi.fn(),
       },
     });
-    dropzones[1]?.dispatchEvent(dragStartMoveEmpty);
-    let dragEndMoveEmpty = new Event("dragend") as DragEvent;
-    Object.defineProperty(dragEndMoveEmpty, "clientX", { value: 210 });
-    Object.defineProperty(dragEndMoveEmpty, "clientY", { value: 10 });
-    document.dispatchEvent(dragEndMoveEmpty);
+    dropzoneB.dispatchEvent(dragStartToEmpty);
 
-    // reset for outside-drag coverage
-    dropzones[0]!.setAttribute("data-dnd-value", "A1");
-    dropzones[0]!.textContent = "A1";
+    let dragEndToEmpty = new Event("dragend") as DragEvent;
+    Object.defineProperty(dragEndToEmpty, "clientX", { value: 210 });
+    Object.defineProperty(dragEndToEmpty, "clientY", { value: 10 });
+    document.dispatchEvent(dragEndToEmpty);
 
-    // drag from dropzone to outside (Y bounds)
-    let dragStartOutsideY = new Event("dragstart") as DragEvent;
-    Object.defineProperty(dragStartOutsideY, "dataTransfer", {
-      value: {
-        setDragImage: vi.fn(),
-      },
-    });
-    dropzones[0]?.dispatchEvent(dragStartOutsideY);
-    let dragEndOutsideY = new Event("dragend") as DragEvent;
-    Object.defineProperty(dragEndOutsideY, "clientX", { value: 10 });
-    Object.defineProperty(dragEndOutsideY, "clientY", { value: -10 });
-    document.dispatchEvent(dragEndOutsideY);
+    expect(dropzoneB.getAttribute("data-dnd-value")).toBeNull();
+    expect(dropzoneAb.getAttribute("data-dnd-value")).toBe("A1");
 
-    // reset and drag from dropzone to outside (Y bottom bounds)
-    dropzones[0]!.setAttribute("data-dnd-value", "A1");
-    dropzones[0]!.textContent = "A1";
-    let dragStartOutsideBottom = new Event("dragstart") as DragEvent;
-    Object.defineProperty(dragStartOutsideBottom, "dataTransfer", {
-      value: {
-        setDragImage: vi.fn(),
-      },
-    });
-    dropzones[0]?.dispatchEvent(dragStartOutsideBottom);
-    let dragEndOutsideBottom = new Event("dragend") as DragEvent;
-    Object.defineProperty(dragEndOutsideBottom, "clientX", { value: 10 });
-    Object.defineProperty(dragEndOutsideBottom, "clientY", { value: 500 });
-    document.dispatchEvent(dragEndOutsideBottom);
-
-    // drag from draggables to an occupied dropzone
-    dropzones[1]!.setAttribute("data-dnd-value", "B1");
-    dropzones[1]!.textContent = "B1";
-    createDraggable("C1", "C1");
-    let allDraggables = draggables.querySelectorAll<HTMLElement>("div");
-    let newDraggable = allDraggables[allDraggables.length - 1]!;
-    let dragStartNew = new Event("dragstart") as DragEvent;
-    Object.defineProperty(dragStartNew, "dataTransfer", {
-      value: {
-        setDragImage: vi.fn(),
-      },
-    });
-    newDraggable.dispatchEvent(dragStartNew);
-    let dragEndIntoOccupied = new Event("dragend") as DragEvent;
-    Object.defineProperty(dragEndIntoOccupied, "clientX", { value: 110 });
-    Object.defineProperty(dragEndIntoOccupied, "clientY", { value: 10 });
-    document.dispatchEvent(dragEndIntoOccupied);
-
-    // drag from dropzone to outside circle
-    let dragStart2 = new Event("dragstart") as DragEvent;
-    Object.defineProperty(dragStart2, "dataTransfer", {
-      value: {
-        setDragImage: vi.fn(),
-      },
-    });
-    dropzones[0]?.dispatchEvent(dragStart2);
-
-    let dragEnd2 = new Event("dragend") as DragEvent;
-    Object.defineProperty(dragEnd2, "clientX", { value: 999 });
-    Object.defineProperty(dragEnd2, "clientY", { value: 999 });
-    document.dispatchEvent(dragEnd2);
-
-    // drag from dropzone to inside circle but not a dropzone
-    dropzones[0]!.setAttribute("data-dnd-value", "A1");
-    dropzones[0]!.textContent = "A1";
-    let dragStartInside = new Event("dragstart") as DragEvent;
-    Object.defineProperty(dragStartInside, "dataTransfer", {
-      value: {
-        setDragImage: vi.fn(),
-      },
-    });
-    dropzones[0]?.dispatchEvent(dragStartInside);
-    let dragEndInside = new Event("dragend") as DragEvent;
-    Object.defineProperty(dragEndInside, "clientX", { value: 70 });
-    Object.defineProperty(dragEndInside, "clientY", { value: 10 });
-    document.dispatchEvent(dragEndInside);
-    expect(dropzones[0]?.getAttribute("data-dnd-value")).toBe("A1");
-
-    // drag from draggables to empty dropzone
-    createDraggable("D1", "D1");
-    let emptyDropzone = dropzones[2]!;
-    emptyDropzone.textContent = "";
-    emptyDropzone.removeAttribute("data-dnd-value");
-    let emptyDrag = draggables.querySelectorAll<HTMLElement>("div");
-    let emptyDraggable = emptyDrag[emptyDrag.length - 1]!;
-    let dragStartEmpty = new Event("dragstart") as DragEvent;
-    Object.defineProperty(dragStartEmpty, "dataTransfer", {
-      value: {
-        setDragImage: vi.fn(),
-      },
-    });
-    emptyDraggable.dispatchEvent(dragStartEmpty);
-    let dragEndEmpty = new Event("dragend") as DragEvent;
-    Object.defineProperty(dragEndEmpty, "clientX", { value: 210 });
-    Object.defineProperty(dragEndEmpty, "clientY", { value: 10 });
-    document.dispatchEvent(dragEndEmpty);
-
-    // drag from draggables to outside any dropzone
-    createDraggable("E1", "E1");
-    let outsideDraggables = draggables.querySelectorAll<HTMLElement>("div");
-    let outsideDraggable = outsideDraggables[outsideDraggables.length - 1]!;
     let dragStartOutside = new Event("dragstart") as DragEvent;
     Object.defineProperty(dragStartOutside, "dataTransfer", {
       value: {
         setDragImage: vi.fn(),
       },
     });
-    outsideDraggable.dispatchEvent(dragStartOutside);
+    dropzoneA.dispatchEvent(dragStartOutside);
+
     let dragEndOutside = new Event("dragend") as DragEvent;
-    Object.defineProperty(dragEndOutside, "clientX", { value: 70 });
-    Object.defineProperty(dragEndOutside, "clientY", { value: 60 });
+    Object.defineProperty(dragEndOutside, "clientX", { value: 500 });
+    Object.defineProperty(dragEndOutside, "clientY", { value: 500 });
     document.dispatchEvent(dragEndOutside);
 
-    expect(draggables.children.length).toBeGreaterThan(0);
+    expect(dropzoneA.getAttribute("data-dnd-value")).toBeNull();
+    expect(elements.draggables.textContent).toContain("B1");
+
+    let dragStartInsidePuzzle = new Event("dragstart") as DragEvent;
+    Object.defineProperty(dragStartInsidePuzzle, "dataTransfer", {
+      value: {
+        setDragImage: vi.fn(),
+      },
+    });
+    dropzoneAb.dispatchEvent(dragStartInsidePuzzle);
+
+    let dragEndInsidePuzzle = new Event("dragend") as DragEvent;
+    Object.defineProperty(dragEndInsidePuzzle, "clientX", { value: 300 });
+    Object.defineProperty(dragEndInsidePuzzle, "clientY", { value: 300 });
+    document.dispatchEvent(dragEndInsidePuzzle);
+
+    expect(dropzoneAb.getAttribute("data-dnd-value")).toBe("A1");
+
+    dnd.createDraggable("C1", "C1");
+    let draggable = elements.draggables.lastElementChild as HTMLElement;
+
+    let dragStartFromDraggables = new Event("dragstart") as DragEvent;
+    Object.defineProperty(dragStartFromDraggables, "dataTransfer", {
+      value: {
+        setDragImage: vi.fn(),
+      },
+    });
+    draggable.dispatchEvent(dragStartFromDraggables);
+
+    let dragEndIntoOccupied = new Event("dragend") as DragEvent;
+    Object.defineProperty(dragEndIntoOccupied, "clientX", { value: 210 });
+    Object.defineProperty(dragEndIntoOccupied, "clientY", { value: 10 });
+    document.dispatchEvent(dragEndIntoOccupied);
+
+    expect(elements.draggables.textContent).toContain("A1");
+
+    dnd.createDraggable("D1", "D1");
+    let noDropTarget = elements.draggables.lastElementChild as HTMLElement;
+
+    let dragStartNoDropzone = new Event("dragstart") as DragEvent;
+    Object.defineProperty(dragStartNoDropzone, "dataTransfer", {
+      value: {
+        setDragImage: vi.fn(),
+      },
+    });
+    noDropTarget.dispatchEvent(dragStartNoDropzone);
+
+    let dragEndNoDropzone = new Event("dragend") as DragEvent;
+    Object.defineProperty(dragEndNoDropzone, "clientX", { value: 500 });
+    Object.defineProperty(dragEndNoDropzone, "clientY", { value: 500 });
+    document.dispatchEvent(dragEndNoDropzone);
+
+    expect(elements.draggables.textContent).toContain("D1");
+
+    let dragStartInvalid = new Event("dragstart") as DragEvent;
+    Object.defineProperty(dragStartInvalid, "dataTransfer", {
+      value: {
+        setDragImage: vi.fn(),
+      },
+    });
+    dropzoneB.dispatchEvent(dragStartInvalid);
+    dropzoneB.textContent = "";
+    dropzoneB.removeAttribute("data-dnd-value");
+
+    let dragEndInvalid = new Event("dragend") as DragEvent;
+    Object.defineProperty(dragEndInvalid, "clientX", { value: 10 });
+    Object.defineProperty(dragEndInvalid, "clientY", { value: 10 });
+    document.dispatchEvent(dragEndInvalid);
+
+    dnd.cleanup();
   });
 });
 
@@ -387,19 +385,17 @@ describe("game/dnd (touch)", () => {
   });
 
   it("handles touch drag movements", async () => {
-    let { initDropzones, createDraggable } = await import("game/dnd");
-    let { draggables } = await import("game/elements");
+    let { createGameElements } = await import("game/elements");
+    let { createDndController } = await import("game/dnd");
 
-    let game = sampleGame();
-    initDropzones(game);
-    createDraggable("A1", "A1");
+    let elements = createGameElements(document.querySelector("main")!);
+    let dnd = createDndController({
+      circleContainer: elements.circleContainer,
+      draggables: elements.draggables,
+    });
 
-    // touchend with no dragged element or touch
-    document.dispatchEvent(
-      Object.assign(new Event("touchend"), {
-        changedTouches: [],
-      }),
-    );
+    dnd.initDropzones(sampleGame());
+    dnd.createDraggable("A1", "A1");
 
     let firstDropzone = document.querySelector<HTMLElement>(".dropzone")!;
     firstDropzone.getBoundingClientRect = () =>
@@ -410,23 +406,7 @@ describe("game/dnd (touch)", () => {
         top: 0,
       }) as DOMRect;
 
-    let draggable = draggables.querySelector<HTMLElement>("div")!;
-    // touchmove with no dragged element
-    document.dispatchEvent(
-      Object.assign(new Event("touchmove"), {
-        touches: [{ clientX: 1, clientY: 1 }],
-      }),
-    );
-
-    // touchstart when draggable attribute is missing
-    draggable.removeAttribute("draggable");
-    let touchStartNoDrag = new Event("touchstart") as TouchEvent;
-    Object.defineProperty(touchStartNoDrag, "touches", {
-      value: [{ clientX: 2, clientY: 2 }],
-    });
-    draggable.dispatchEvent(touchStartNoDrag);
-    draggable.setAttribute("draggable", "true");
-
+    let draggable = elements.draggables.querySelector<HTMLElement>("div")!;
     let touchStart = new Event("touchstart") as TouchEvent;
     Object.defineProperty(touchStart, "touches", {
       value: [{ clientX: 5, clientY: 5 }],
@@ -438,6 +418,7 @@ describe("game/dnd (touch)", () => {
       value: [{ clientX: 15, clientY: 15 }],
     });
     document.dispatchEvent(touchMove);
+
     expect(draggable.style.position).toBe("fixed");
     expect(firstDropzone.classList.contains("dragover")).toBe(true);
 
@@ -446,5 +427,46 @@ describe("game/dnd (touch)", () => {
       value: [{ clientX: 15, clientY: 15 }],
     });
     document.dispatchEvent(touchEnd);
+    dnd.cleanup();
+  });
+
+  it("covers touch guard branches", async () => {
+    let { createGameElements } = await import("game/elements");
+    let { createDndController } = await import("game/dnd");
+
+    let elements = createGameElements(document.querySelector("main")!);
+    let dnd = createDndController({
+      circleContainer: elements.circleContainer,
+      draggables: elements.draggables,
+    });
+
+    dnd.initDropzones(sampleGame());
+    dnd.createDraggable("A1", "A1");
+
+    let draggable = elements.draggables.querySelector<HTMLElement>("div")!;
+    draggable.removeAttribute("draggable");
+
+    let touchStart = new Event("touchstart", { cancelable: true }) as TouchEvent;
+    Object.defineProperty(touchStart, "touches", {
+      value: [{ clientX: 5, clientY: 5 }],
+    });
+    draggable.dispatchEvent(touchStart);
+    expect(touchStart.defaultPrevented).toBe(false);
+
+    let touchMove = new Event("touchmove", { cancelable: true }) as TouchEvent;
+    Object.defineProperty(touchMove, "touches", {
+      value: [{ clientX: 10, clientY: 10 }],
+    });
+    document.dispatchEvent(touchMove);
+    expect(touchMove.defaultPrevented).toBe(false);
+
+    let touchEnd = new Event("touchend", { cancelable: true }) as TouchEvent;
+    Object.defineProperty(touchEnd, "changedTouches", {
+      value: [{ clientX: 10, clientY: 10 }],
+    });
+    document.dispatchEvent(touchEnd);
+    expect(touchEnd.defaultPrevented).toBe(false);
+
+    dnd.cleanup();
   });
 });

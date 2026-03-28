@@ -1,55 +1,12 @@
 import type { Game } from "lib/types";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { puzzles } from "../.puzzles/list";
 
-let trackedListeners: Array<{
-  type: string;
-  listener: EventListenerOrEventListenerObject;
-}> = [];
-
-let originalAddEventListener = document.addEventListener.bind(document);
-let originalRemoveEventListener = document.removeEventListener.bind(document);
-
-document.addEventListener = ((
-  type: string,
-  listener: EventListenerOrEventListenerObject,
-  options?: boolean | AddEventListenerOptions,
-) => {
-  trackedListeners.push({
-    listener,
-    type,
-  });
-  return originalAddEventListener(type, listener, options);
-}) as typeof document.addEventListener;
-
-function clearTrackedListeners() {
-  for (let { type, listener } of trackedListeners) {
-    originalRemoveEventListener(type, listener);
-  }
-  trackedListeners = [];
-}
+let cleanup: undefined | (() => void);
 
 function setupDom() {
-  document.body.innerHTML = `
-    <div class="site-logo"></div>
-    <div class="copyright-year">2025</div>
-    <footer></footer>
-    <header></header>
-    <main>
-      <div class="circle-container"></div>
-      <div class="game-controls"></div>
-    </main>
-  `;
+  document.body.innerHTML = "<main></main>";
   document.documentElement.style.fontSize = "16px";
-}
-
-function setLocation(pathname = "/") {
-  Object.assign(window.location, {
-    origin: "http://localhost",
-    pathname,
-    reload: vi.fn(),
-    replace: vi.fn(),
-  });
 }
 
 function computeSolution(
@@ -58,8 +15,8 @@ function computeSolution(
   let values = Object.values(groups);
   let [aVals, bVals, cVals] = values;
   let center = values
-    .flatMap((v) => v)
-    .find((value) => values.every((v) => v.includes(value)))!;
+    .flatMap((value) => value)
+    .find((value) => values.every((group) => group.includes(value)))!;
 
   return {
     a: aVals!.find((p) => !bVals!.includes(p) && !cVals!.includes(p))!,
@@ -106,10 +63,18 @@ function baseGame(index: number): Game {
 function fillDropzones(values: Record<string, string>) {
   for (let [key, value] of Object.entries(values)) {
     let dropzone = document.querySelector<HTMLElement>(`#dropzone-${key}`);
-    if (!dropzone) continue;
+    if (!dropzone) {
+      continue;
+    }
+
     dropzone.setAttribute("data-dnd-value", value);
     dropzone.textContent = value;
   }
+}
+
+async function mountHomePage() {
+  let { mountHomePage } = await import("home/app");
+  cleanup = mountHomePage(document.querySelector("main")!);
 }
 
 describe("root/app", () => {
@@ -117,9 +82,7 @@ describe("root/app", () => {
     vi.resetModules();
     localStorage.clear();
     sessionStorage.clear();
-    clearTrackedListeners();
     setupDom();
-    setLocation("/");
     Object.defineProperty(window, "gtag", {
       value: vi.fn(),
       writable: true,
@@ -128,64 +91,44 @@ describe("root/app", () => {
     vi.setSystemTime(new Date(Date.UTC(2025, 7, 23)));
   });
 
+  afterEach(() => {
+    cleanup?.();
+    cleanup = undefined;
+  });
+
   it("shows welcome dialog and handles update/reset", async () => {
-    await import("root/app");
+    await mountHomePage();
 
     let dialog = document.querySelector("dialog")!;
     expect(dialog).toBeTruthy();
 
     dialog.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" }));
-    dialog.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
-    let skip = dialog.querySelector("button")!;
-    skip.dispatchEvent(new Event("click"));
+    dialog.querySelector("button")?.dispatchEvent(new Event("click"));
 
     let { gameEvent } = await import("lib/utils");
 
-    let extraDropzone = document.createElement("div");
-    extraDropzone.id = "dropzone-extra";
-    extraDropzone.classList.add("dropzone");
-    document.querySelector(".circle-container")?.append(extraDropzone);
-
-    // partial update
     let solution = computeSolution(puzzles[0]!.groups);
-    fillDropzones({ a: solution.a });
-    gameEvent.post("update");
-
-    // full update
     fillDropzones(solution);
     gameEvent.post("update");
 
-    // make one dropzone empty to cover clearPuzzle continue path
-    let dz = document.querySelector<HTMLElement>("#dropzone-a");
-    dz?.removeAttribute("data-dnd-value");
-    dz!.textContent = "";
+    let dropzone = document.querySelector<HTMLElement>("#dropzone-a");
+    dropzone?.removeAttribute("data-dnd-value");
+    if (dropzone) {
+      dropzone.textContent = "";
+    }
 
     gameEvent.post("reset");
     gameEvent.post("save");
+
+    expect(JSON.parse(localStorage.getItem("games") || "[]").length).toBe(1);
   });
 
   it("skips welcome dialog on repeat visit", async () => {
     localStorage.setItem("load", JSON.stringify(Date.now()));
 
-    await import("root/app");
+    await mountHomePage();
 
     expect(document.querySelector("dialog")).toBeNull();
-  });
-
-  it("handles missing games storage", async () => {
-    let originalGetItem = Storage.prototype.getItem;
-    let getItemSpy = vi
-      .spyOn(Storage.prototype, "getItem")
-      .mockImplementation(function (this: Storage, key: string) {
-        if (key == "games") {
-          return null;
-        }
-        return originalGetItem.call(this, key);
-      });
-
-    await import("root/app");
-
-    getItemSpy.mockRestore();
   });
 
   it("shows yellow circle feedback", async () => {
@@ -203,12 +146,11 @@ describe("root/app", () => {
       },
     });
 
-    await import("root/app");
+    await mountHomePage();
     let { gameEvent } = await import("lib/utils");
     let { toast } = await import("lib/ui");
 
     gameEvent.post("submit");
-    expect(toast.show).toHaveBeenCalled();
     let lastCall = (
       toast.show as unknown as { mock: { calls: Array<Array<unknown>> } }
     ).mock.calls.at(-1);
@@ -230,12 +172,11 @@ describe("root/app", () => {
       },
     });
 
-    await import("root/app");
+    await mountHomePage();
     let { gameEvent } = await import("lib/utils");
     let { toast } = await import("lib/ui");
 
     gameEvent.post("submit");
-    expect(toast.show).toHaveBeenCalled();
     let lastCall = (
       toast.show as unknown as { mock: { calls: Array<Array<unknown>> } }
     ).mock.calls.at(-1);
@@ -257,12 +198,11 @@ describe("root/app", () => {
       },
     });
 
-    await import("root/app");
+    await mountHomePage();
     let { gameEvent } = await import("lib/utils");
     let { toast } = await import("lib/ui");
 
     gameEvent.post("submit");
-    expect(toast.show).toHaveBeenCalled();
     let lastCall = (
       toast.show as unknown as { mock: { calls: Array<Array<unknown>> } }
     ).mock.calls.at(-1);
@@ -284,12 +224,11 @@ describe("root/app", () => {
       },
     });
 
-    await import("root/app");
+    await mountHomePage();
     let { gameEvent } = await import("lib/utils");
     let { toast } = await import("lib/ui");
 
     gameEvent.post("submit");
-    expect(toast.show).toHaveBeenCalled();
     let lastCall = (
       toast.show as unknown as { mock: { calls: Array<Array<unknown>> } }
     ).mock.calls.at(-1);
@@ -309,12 +248,11 @@ describe("root/app", () => {
       },
     });
 
-    await import("root/app");
+    await mountHomePage();
     let { gameEvent } = await import("lib/utils");
     let { toast } = await import("lib/ui");
 
     gameEvent.post("submit");
-    expect(toast.show).toHaveBeenCalled();
     let lastCall = (
       toast.show as unknown as { mock: { calls: Array<Array<unknown>> } }
     ).mock.calls.at(-1);
@@ -329,48 +267,14 @@ describe("root/app", () => {
       currentGuess: solution,
     });
 
-    await import("root/app");
+    await mountHomePage();
     let { gameEvent } = await import("lib/utils");
-
-    let extraDropzone = document.createElement("div");
-    extraDropzone.className = "dropzone";
-    extraDropzone.setAttribute("data-dnd-value", "extra");
-    document.querySelector(".circle-container")?.append(extraDropzone);
 
     gameEvent.post("submit");
     let stored = JSON.parse(localStorage.getItem("games") || "[]")[0];
     expect(stored.status).toBe("solved");
 
     vi.runAllTimers();
-  });
-
-  it("submits a correct practice guess without daily event", async () => {
-    sessionStorage.setItem("index", "1");
-    let solution = computeSolution(puzzles[1]!.groups);
-
-    seedGame(1, {
-      currentGuess: solution,
-    });
-
-    await import("root/app");
-    let { gameEvent } = await import("lib/utils");
-
-    gameEvent.post("submit");
-
-    expect(window.gtag).toHaveBeenCalledWith("event", "puzzle_solve");
-  });
-
-  it("submits a correct guess with a hint used", async () => {
-    let solution = computeSolution(puzzles[0]!.groups);
-    seedGame(0, {
-      currentGuess: solution,
-      hintsUsed: { a: true, b: false, c: false },
-    });
-
-    await import("root/app");
-    let { gameEvent } = await import("lib/utils");
-
-    gameEvent.post("submit");
   });
 
   it("shows singular remaining guess text", async () => {
@@ -397,7 +301,7 @@ describe("root/app", () => {
       }),
     });
 
-    await import("root/app");
+    await mountHomePage();
     let { gameEvent } = await import("lib/utils");
     let { toast } = await import("lib/ui");
 
@@ -427,63 +331,14 @@ describe("root/app", () => {
     });
     localStorage.setItem("games", JSON.stringify([game]));
 
-    await import("root/app");
+    await mountHomePage();
     let { gameEvent } = await import("lib/utils");
 
-    // remove a dropzone to cover missing element branch
     document.querySelector("#dropzone-abc")?.remove();
-
     gameEvent.post("submit");
+
     expect(window.gtag).toHaveBeenCalledWith("event", "puzzle_fail");
     expect(window.gtag).toHaveBeenCalledWith("event", "daily_puzzle_fail");
-  });
-
-  it("fails a practice puzzle without daily event", async () => {
-    sessionStorage.setItem("index", "1");
-    let game = baseGame(1);
-    game.currentGuess = {
-      a: "x",
-      ab: "y",
-      abc: "wrong",
-      ac: "z",
-      b: "m",
-      bc: "n",
-      c: "o",
-    };
-    game.guesses = Array.from({ length: 4 }, (_, i) => {
-      return {
-        ...game.currentGuess,
-        a: `x${i}`,
-      };
-    });
-    localStorage.setItem("games", JSON.stringify([game]));
-
-    await import("root/app");
-    let { gameEvent } = await import("lib/utils");
-
-    gameEvent.post("submit");
-    expect(window.gtag).toHaveBeenCalledWith("event", "puzzle_fail");
-  });
-
-  it("renders a non-pending game without click feedback", async () => {
-    seedGame(0, {
-      status: "solved",
-      currentGuess: {
-        a: "x",
-        ab: "y",
-        abc: "wrong",
-        ac: "z",
-        b: "m",
-        bc: "n",
-        c: "o",
-      },
-      guesses: [],
-    });
-
-    await import("root/app");
-
-    let guessesText = document.querySelector(".guesses-text");
-    expect(guessesText).toBeTruthy();
   });
 
   it("blocks duplicate guesses", async () => {
@@ -493,7 +348,7 @@ describe("root/app", () => {
       guesses: [{ ...solution }],
     });
 
-    await import("root/app");
+    await mountHomePage();
     let { gameEvent } = await import("lib/utils");
     let { toast } = await import("lib/ui");
 
@@ -504,53 +359,149 @@ describe("root/app", () => {
     expect(toast.show).toHaveBeenCalled();
   });
 
-  it("handles practice puzzle and invalid index selection", async () => {
+  it("handles practice puzzle selection and broadcasts", async () => {
     sessionStorage.setItem("index", "1");
-    await import("root/app");
+
+    await mountHomePage();
 
     let stored = JSON.parse(localStorage.getItem("games") || "[]")[0];
-    let bc = new BroadcastChannel("game");
-    bc.postMessage(stored);
-    bc.postMessage({ ...stored, index: stored.index + 1 });
+    let channel = new BroadcastChannel("game");
+    channel.postMessage(stored);
+    channel.postMessage({ ...stored, index: stored.index + 1 });
 
     let { gameEvent } = await import("lib/utils");
     gameEvent.post(9999);
+
+    expect(document.querySelector(".home-button")).toBeTruthy();
   });
 
-  it("renders a solved game from storage with hints", async () => {
+  it("renders solved and failed games from storage", async () => {
     let solution = computeSolution(puzzles[0]!.groups);
     seedGame(0, {
       currentGuess: solution,
-      guesses: [
-        {
-          ...solution,
-        },
-        {
-          ...solution,
-        },
-      ],
+      guesses: [{ ...solution }],
+      hintsUsed: { a: true, b: false, c: false },
+      status: "solved",
+    });
+
+    await mountHomePage();
+    expect(document.querySelector(".game-summary")).toBeTruthy();
+
+    cleanup?.();
+    cleanup = undefined;
+    setupDom();
+    localStorage.clear();
+
+    let failedGame = baseGame(0);
+    failedGame.status = "failed";
+    failedGame.guesses = new Array(5).fill({
+      ...failedGame.currentGuess,
+    });
+    localStorage.setItem("games", JSON.stringify([failedGame]));
+
+    await mountHomePage();
+    expect(document.querySelector(".game-summary")?.textContent).toContain(
+      "out of guesses",
+    );
+  });
+
+  it("renders plural solved summary text from storage", async () => {
+    let solution = computeSolution(puzzles[0]!.groups);
+    seedGame(0, {
+      currentGuess: solution,
+      guesses: [{ ...solution }, { ...solution }],
       hintsUsed: { a: true, b: true, c: false },
       status: "solved",
     });
 
-    await import("root/app");
+    await mountHomePage();
+    expect(document.querySelector(".game-summary")?.textContent).toContain(
+      "You used 2 hints and 2 guesses",
+    );
   });
 
-  it("renders a failed game from storage", async () => {
-    let game = baseGame(0);
-    game.status = "failed";
-    game.guesses = new Array(5).fill({
-      ...game.currentGuess,
+  it("covers non-daily solved and failed branches from storage", async () => {
+    sessionStorage.setItem("index", "1");
+
+    let solution = computeSolution(puzzles[1]!.groups);
+    seedGame(1, {
+      currentGuess: solution,
     });
-    seedGame(0, game);
 
-    await import("root/app");
+    await mountHomePage();
+    let { gameEvent } = await import("lib/utils");
+    gameEvent.post("submit");
+
+    expect(window.gtag).toHaveBeenCalledWith("event", "puzzle_solve");
+    expect(window.gtag).not.toHaveBeenCalledWith("event", "daily_puzzle_solve");
+    expect(document.querySelector("audio")).toBeNull();
+
+    cleanup?.();
+    cleanup = undefined;
+    setupDom();
+    localStorage.clear();
+    sessionStorage.setItem("index", "1");
+
+    let failedGame = baseGame(1);
+    failedGame.currentGuess = {
+      a: "x",
+      ab: "y",
+      abc: "wrong",
+      ac: "z",
+      b: "m",
+      bc: "n",
+      c: "o",
+    };
+    failedGame.guesses = Array.from({ length: 4 }, (_, i) => {
+      return {
+        ...failedGame.currentGuess,
+        a: `x${i}`,
+      };
+    });
+    localStorage.setItem("games", JSON.stringify([failedGame]));
+
+    await mountHomePage();
+    let utils = await import("lib/utils");
+    utils.gameEvent.post("submit");
+
+    expect(window.gtag).toHaveBeenCalledWith("event", "puzzle_fail");
+    expect(window.gtag).not.toHaveBeenCalledWith("event", "daily_puzzle_fail");
   });
 
-  it("redirects when pathname is not root", async () => {
-    setLocation("/foo");
-    await import("root/app");
+  it("covers passive dialog and puzzle state update branches", async () => {
+    let game = baseGame(0);
+    game.status = "solved";
+    game.currentGuess = {
+      a: "wrong-a",
+      ab: "",
+      abc: "",
+      ac: "",
+      b: "",
+      bc: "",
+      c: "",
+    };
+    game.guesses = [{ ...game.currentGuess }];
+    localStorage.setItem("games", JSON.stringify([game]));
 
-    expect(window.location.replace).toHaveBeenCalled();
+    await mountHomePage();
+
+    let dialog = document.querySelector("dialog");
+    dialog?.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
+
+    let bogusDropzone = document.createElement("div");
+    bogusDropzone.id = "dropzone-missing";
+    bogusDropzone.className = "dropzone";
+    bogusDropzone.setAttribute("data-dnd-value", "bogus");
+    document.querySelector("main")?.append(bogusDropzone);
+
+    let { gameEvent } = await import("lib/utils");
+    gameEvent.post("update");
+    gameEvent.post("save");
+
+    let resetButton = document.querySelector(".reset-button");
+    expect(resetButton).toBeTruthy();
+
+    gameEvent.post("update");
+    expect(document.querySelector(".reset-button")).toBe(resetButton);
   });
 });

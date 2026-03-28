@@ -1,6 +1,10 @@
 import type { Game } from "lib/types";
 import { gameEvent } from "lib/utils";
-import { hintsContainer } from "./elements";
+
+interface HintOptions {
+  game: Game;
+  hintsContainer: HTMLElement;
+}
 
 /**
  * Gets the item which is in the center of the puzzle
@@ -9,14 +13,14 @@ export function getCenter(game: Game) {
   let values = Object.values(game.groups);
 
   return values
-    .flatMap((v) => v)
-    .find((value) => values.every((v) => v.includes(value)))!;
+    .flatMap((value) => value)
+    .find((value) => values.every((group) => group.includes(value)))!;
 }
 
 /**
  * Initializes the puzzle's hint state
  */
-export function initHints(game: Game) {
+export function initHints({ game, hintsContainer }: HintOptions) {
   hintsContainer.append(
     ...(["a", "b"] as const).map((key) => {
       let hint = document.createElement("div");
@@ -50,7 +54,7 @@ export function initHints(game: Game) {
 
         hintButton.remove();
         hint.append(hintText);
-        appendBonusHint(game);
+        appendBonusHint({ game, hintsContainer });
       });
 
       hint.append(hintButton);
@@ -58,19 +62,25 @@ export function initHints(game: Game) {
     }),
   );
 
-  appendBonusHint(game);
+  appendBonusHint({ game, hintsContainer });
 }
 
 /**
  * Adds the bonus hint, but only if both initial hints have been used
  */
-function appendBonusHint(game: Game) {
+function appendBonusHint({ game, hintsContainer }: HintOptions) {
   if (!game.hintsUsed.a || !game.hintsUsed.b) {
     // don't add the bonus hint, they haven't used both initial hints
     return;
   }
 
+  if (hintsContainer.querySelector("[data-hint='bonus']")) {
+    return;
+  }
+
   let bonusHint = document.createElement("div");
+  bonusHint.dataset.hint = "bonus";
+
   let bonusHintText = document.createElement("p");
 
   let groupKeys = Object.keys(game.groups);
@@ -88,7 +98,6 @@ function appendBonusHint(game: Game) {
     bonusHint.append(bonusHintText);
   } else {
     // they haven't used the hint, display its button
-
     let bonusHintButton = document.createElement("button");
     bonusHintButton.classList.add("hint-button");
     bonusHintButton.textContent =

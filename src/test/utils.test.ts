@@ -73,6 +73,26 @@ describe("lib/utils", () => {
     expect(received).toBe("dark");
   });
 
+  it("does not clear a replaced channel listener", async () => {
+    let utils = await import("lib/utils");
+
+    let stopFirst = utils.themeChannel.listen(() => undefined);
+    let stopSecond = utils.themeChannel.listen(() => undefined);
+
+    stopFirst();
+
+    let channel = (
+      utils.themeChannel as unknown as {
+        channel?: { onmessage?: unknown };
+      }
+    ).channel;
+
+    expect(channel?.onmessage).not.toBeNull();
+
+    stopSecond();
+    expect(channel?.onmessage).toBeNull();
+  });
+
   it("posts and receives custom events", async () => {
     let utils = await import("lib/utils");
     let received: string | null = null;
