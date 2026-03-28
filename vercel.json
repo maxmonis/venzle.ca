@@ -1,4 +1,15 @@
 {
+  "headers": [
+    {
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, max-age=31536000, immutable"
+        }
+      ],
+      "source": "/assets/(.*)"
+    }
+  ],
   "rewrites": [
     {
       "destination": "/",
