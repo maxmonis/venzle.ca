@@ -375,7 +375,7 @@ function wrapText(
     let test = line ? line + " " + word : word;
 
     if (!test) {
-      return newY;
+      continue;
     }
 
     let { width } = ctx.measureText(test);

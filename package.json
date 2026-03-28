@@ -4,12 +4,15 @@
   },
   "devDependencies": {
     "@types/node": "^24.3.0",
+    "@vitest/coverage-v8": "^4.1.0",
+    "jsdom": "^29.0.1",
     "prettier": "^3.6.2",
     "prettier-plugin-organize-imports": "^4.2.0",
     "typescript": "~5.8.3",
     "vite": "^7.1.2",
     "vite-plugin-package-version": "^1.1.0",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^4.1.0"
   },
   "name": "venzle.ca",
   "private": true,
@@ -17,7 +20,8 @@
     "build": "tsc && vite build --emptyOutDir",
     "dev": "vite --host",
     "lint": "prettier --write --ignore-path .gitignore .",
-    "prod": "npm run build && vite preview --host"
+    "prod": "npm run build && vite preview --host",
+    "test": "vitest run --coverage"
   },
   "type": "module",
   "version": "0.3.13"

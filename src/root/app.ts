@@ -409,9 +409,7 @@ function getGame(index: number): Game {
 
     // log event(s)
     window.gtag("event", "puzzle_resume");
-    if (index == todayIndex) {
-      window.gtag("event", "daily_puzzle_resume");
-    }
+    window.gtag("event", "daily_puzzle_resume");
   }
 
   // check if they've played this puzzle

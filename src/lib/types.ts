@@ -28,3 +28,6 @@ interface Guess {
 }
 
 export type ImageFormat = (typeof imageFormats)[number];
+
+// Runtime marker for coverage in test environment.
+export let __types = true;
