@@ -4708,6 +4708,157 @@ let week32: Week = [
   },
 ];
 
+let week33: Week = [
+  {
+    groups: {
+      "National Capital": ["Copenhagen", "Paris", "Havana", "Mexico City"],
+      "In Europe": ["Copenhagen", "Paris", "Barcelona", "Munich"],
+      "On a Coast": ["Copenhagen", "Havana", "Barcelona", "Miami"],
+    },
+    hint: "Capital, Continent, Coast",
+    title: "Cities",
+  },
+  {
+    groups: {
+      "Appeared in the MCU": [
+        "Robert Downey Jr.",
+        "Michael Douglas",
+        "Paul Rudd",
+        "Chris Evans",
+      ],
+      "Academy Award Winner": [
+        "Robert Downey Jr.",
+        "Michael Douglas",
+        "George Clooney",
+        "Meryl Streep",
+      ],
+      "Born in the 1960s": [
+        "Robert Downey Jr.",
+        "Paul Rudd",
+        "George Clooney",
+        "Keanu Reeves",
+      ],
+    },
+    hint: "Marvel, Academy, Decade",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Won Record of the Year Grammy": [
+        "What's Love Got to Do with It",
+        "Rosanna",
+        "Flowers",
+        "Uptown Funk",
+      ],
+      "Released in the 1980s": [
+        "What's Love Got to Do with It",
+        "Rosanna",
+        "Like a Virgin",
+        "Take on Me",
+      ],
+      "By a Solo Female Artist": [
+        "What's Love Got to Do with It",
+        "Like a Virgin",
+        "Flowers",
+        "Bad Romance",
+      ],
+    },
+    hint: "Grammy, Decade, Artist",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Can Fly": [
+        "Grey-headed Flying Fox",
+        "Kookaburra",
+        "Little Brown Bat",
+        "Bald Eagle",
+      ],
+      "Found in Australia": [
+        "Grey-headed Flying Fox",
+        "Kookaburra",
+        "Kangaroo",
+        "Frilled Lizard",
+      ],
+      "Is a Mammal": [
+        "Grey-headed Flying Fox",
+        "Little Brown Bat",
+        "Kangaroo",
+        "Elephant",
+      ],
+    },
+    hint: "Flight, Country, Class",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Premiered in the 1990s": [
+        "Futurama",
+        "King of the Hill",
+        "Friends",
+        "ER",
+      ],
+      Animated: [
+        "Futurama",
+        "King of the Hill",
+        "Central Park",
+        "Bob's Burgers",
+      ],
+      "Set in New York City": [
+        "Futurama",
+        "Friends",
+        "Central Park",
+        "Gossip Girl",
+      ],
+    },
+    hint: "Decade, Style, City",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      British: ["The Clash", "Queen", "The Smiths", "Radiohead"],
+      "Formed in the 1970s": [
+        "The Clash",
+        "Queen",
+        "The Cars",
+        "Talking Heads",
+      ],
+      "Name Includes 'The'": [
+        "The Clash",
+        "The Smiths",
+        "The Cars",
+        "The Strokes",
+      ],
+    },
+    hint: "Country, Decade, Name",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "Won NBA MVP": [
+        "Steve Nash",
+        "Shaquille O'Neal",
+        "Dirk Nowitzki",
+        "Allen Iverson",
+      ],
+      "Played for the Lakers": [
+        "Steve Nash",
+        "Shaquille O'Neal",
+        "Pau Gasol",
+        "Derek Fisher",
+      ],
+      International: [
+        "Steve Nash",
+        "Dirk Nowitzki",
+        "Pau Gasol",
+        "Manu Ginobili",
+      ],
+    },
+    hint: "MVP, Team, Nationality",
+    title: "Basketball",
+  },
+];
+
 export let puzzles = demo.concat(
   week1,
   week2,
@@ -4741,4 +4892,5 @@ export let puzzles = demo.concat(
   week30,
   week31,
   week32,
+  week33,
 );
