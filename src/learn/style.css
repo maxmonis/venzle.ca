@@ -19,39 +19,44 @@ body[data-route="learn"] main > a {
 }
 
 body[data-route="learn"] .circle-container {
+  --learn-circle-duration: 500ms;
+  --learn-circle-a-delay: 250ms;
+  --learn-circle-b-delay: 500ms;
+  --learn-circle-c-delay: 750ms;
+  --learn-content-delay: calc(
+    var(--learn-circle-c-delay) + var(--learn-circle-duration)
+  );
   margin-block: 1rem 2rem;
   text-align: center;
 }
 
 body[data-route="learn"] .circle {
-  animation: slideIn 500ms forwards;
+  animation: slideIn var(--learn-circle-duration) forwards;
 }
 
 body[data-route="learn"] .circle-a {
-  animation-delay: 250ms;
+  animation-delay: var(--learn-circle-a-delay);
   transform: translate(-100vw, 0);
 }
 
 body[data-route="learn"] .circle-b {
-  animation-delay: 500ms;
+  animation-delay: var(--learn-circle-b-delay);
   transform: translate(100vw, 0);
 }
 
 body[data-route="learn"] .circle-c {
-  animation-delay: 750ms;
+  animation-delay: var(--learn-circle-c-delay);
   transform: translate(0, 100vh);
 }
 
 body[data-route="learn"] .circle-title,
 body[data-route="learn"] .dropzone {
-  animation: fadeIn 4s forwards;
+  animation: fadeIn 450ms ease-out var(--learn-content-delay) forwards;
+  opacity: 0;
 }
 
 @keyframes fadeIn {
   0% {
-    opacity: 0;
-  }
-  90% {
     opacity: 0;
   }
   100% {
@@ -70,6 +75,7 @@ body[data-route="learn"] .dropzone {
   body[data-route="learn"] .circle-title,
   body[data-route="learn"] .dropzone {
     animation: none;
+    opacity: 1;
   }
 
   body[data-route="learn"] .circle-a,
