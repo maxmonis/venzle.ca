@@ -55,28 +55,29 @@ let mountStatsPage = vi.fn((main: HTMLElement) => {
 vi.mock("lib/ui", () => {
   return {
     initUI,
+    rem: 16,
   };
 });
 
-vi.mock("root/app", () => {
+vi.mock(import("../home/app"), () => {
   return {
     mountHomePage,
   };
 });
 
-vi.mock("learn/app", () => {
+vi.mock(import("../learn/app"), () => {
   return {
     mountLearnPage,
   };
 });
 
-vi.mock("share/app", () => {
+vi.mock(import("../share/app"), () => {
   return {
     mountSharePage,
   };
 });
 
-vi.mock("stats/app", () => {
+vi.mock(import("../stats/app"), () => {
   return {
     mountStatsPage,
   };
