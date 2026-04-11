@@ -4859,6 +4859,157 @@ let week33: Week = [
   },
 ];
 
+let week34: Week = [
+  {
+    groups: {
+      "Hand Tool": ["Pruning Shears", "Pocket Knife", "Rake", "Hammer"],
+      "Has Blade(s)": [
+        "Pruning Shears",
+        "Pocket Knife",
+        "Riding Mower",
+        "Paper Cutter",
+      ],
+      "Used in Gardening": [
+        "Pruning Shears",
+        "Rake",
+        "Riding Mower",
+        "Garden Hose",
+      ],
+    },
+    hint: "Tool, Sharp, Garden",
+    title: "Objects",
+  },
+  {
+    groups: {
+      "Appeared in Batman Film(s)": [
+        "Nicole Kidman",
+        "Michael Keaton",
+        "Heath Ledger",
+        "Christian Bale",
+      ],
+      "Emmy Winner": [
+        "Nicole Kidman",
+        "Michael Keaton",
+        "Hugh Jackman",
+        "Jeremy Strong",
+      ],
+      Australian: [
+        "Nicole Kidman",
+        "Heath Ledger",
+        "Hugh Jackman",
+        "Isla Fisher",
+      ],
+    },
+    hint: "Gotham, TV Award, Nationality",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Title Includes a Woman's Name": [
+        "Mandy",
+        "Jolene",
+        "Delilah",
+        "Rosanna",
+      ],
+      "Released in the 1970s": ["Mandy", "Jolene", "American Pie", "Le Freak"],
+      "By a Male Solo Artist": [
+        "Mandy",
+        "Delilah",
+        "American Pie",
+        "Confessions Part II",
+      ],
+    },
+    hint: "Title, Decade, Artist",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Has Feathers": ["Puffin", "Toucan", "Penguin", "Ostrich"],
+      "Can Fly": ["Puffin", "Toucan", "Big Brown Bat", "Tsetse Fly"],
+      "Lives in Cold Climates": [
+        "Puffin",
+        "Penguin",
+        "Big Brown Bat",
+        "Polar Bear",
+      ],
+    },
+    hint: "Feathers, Flight, Climate",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Based on a Novel": [
+        "The Martian",
+        "The Rainmaker",
+        "The Notebook",
+        "The Godfather",
+      ],
+      "Features Matt Damon": [
+        "The Martian",
+        "The Rainmaker",
+        "Air",
+        "Good Will Hunting",
+      ],
+      "Released in the 21st Century": [
+        "The Martian",
+        "The Notebook",
+        "Air",
+        "Avatar",
+      ],
+    },
+    hint: "Book, Actor, Century",
+    title: "Movies",
+  },
+  {
+    groups: {
+      "Hosted Saturday Night Live": [
+        "Taylor Swift",
+        "Harry Styles",
+        "Drake",
+        "Dolly Parton",
+      ],
+      "Won Album of the Year Grammy": [
+        "Taylor Swift",
+        "Harry Styles",
+        "Kacey Musgraves",
+        "Lauryn Hill",
+      ],
+      "Born in the 1980s": [
+        "Taylor Swift",
+        "Drake",
+        "Kacey Musgraves",
+        "Rihanna",
+      ],
+    },
+    hint: "SNL, Grammy, Decade",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Won NFL MVP": [
+        "John Elway",
+        "Aaron Rodgers",
+        "Terrell Davis",
+        "Adrian Peterson",
+      ],
+      Quarterback: [
+        "John Elway",
+        "Aaron Rodgers",
+        "Russell Wilson",
+        "Philip Rivers",
+      ],
+      "Played for the Broncos": [
+        "John Elway",
+        "Terrell Davis",
+        "Russell Wilson",
+        "DeMarcus Ware",
+      ],
+    },
+    hint: "MVP, Position, Team",
+    title: "Football",
+  },
+];
+
 export let puzzles = demo.concat(
   week1,
   week2,
@@ -4893,4 +5044,5 @@ export let puzzles = demo.concat(
   week31,
   week32,
   week33,
+  week34,
 );
