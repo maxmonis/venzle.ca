@@ -5010,6 +5010,127 @@ let week34: Week = [
   },
 ];
 
+let week35: Week = [
+  {
+    groups: {
+      "Island Nation": ["Japan", "United Kingdom", "Philippines", "Madagascar"],
+      "G7 Member": ["Japan", "United Kingdom", "Canada", "Italy"],
+      "Borders the Pacific Ocean": ["Japan", "Philippines", "Canada", "Chile"],
+    },
+    hint: "Island, G7, Ocean",
+    title: "Countries",
+  },
+  {
+    groups: {
+      "Appeared in Christopher Nolan Film(s)": [
+        "Emily Blunt",
+        "Tom Hardy",
+        "Anne Hathaway",
+        "Morgan Freeman",
+      ],
+      British: ["Emily Blunt", "Tom Hardy", "Tom Hiddleston", "Hugh Grant"],
+      "Born in the 1980s": [
+        "Emily Blunt",
+        "Anne Hathaway",
+        "Tom Hiddleston",
+        "Chris Evans",
+      ],
+    },
+    hint: "Director, Nationality, Decade",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "One-Word Title": ["Photograph", "Royals", "Yellow", "Believe"],
+      "Released in the 2010s": [
+        "Photograph",
+        "Royals",
+        "Someone Like You",
+        "Ocean Eyes",
+      ],
+      "By a British Artist": [
+        "Photograph",
+        "Yellow",
+        "Someone Like You",
+        "Man I Need",
+      ],
+    },
+    hint: "Title, Decade, Nationality",
+    title: "Songs",
+  },
+  {
+    groups: {
+      Venomous: [
+        "Black Mamba",
+        "Deathstalker Scorpion",
+        "Rattlesnake",
+        "Sydney Funnel-Web Spider",
+      ],
+      "Found in Africa": [
+        "Black Mamba",
+        "Deathstalker Scorpion",
+        "Nile Crocodile",
+        "Hippopotamus",
+      ],
+      "Has Scales": ["Black Mamba", "Rattlesnake", "Nile Crocodile", "Iguana"],
+    },
+    hint: "Toxic, Continent, Skin",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Medical Drama": ["Grey's Anatomy", "The Good Doctor", "House", "ER"],
+      "Aired on ABC": ["Grey's Anatomy", "The Good Doctor", "Lost", "Scandal"],
+      "Premiered in the 2000s": [
+        "Grey's Anatomy",
+        "House",
+        "Lost",
+        "Breaking Bad",
+      ],
+    },
+    hint: "Medicine, Network, Decade",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      British: ["the xx", "Pet Shop Boys", "Arctic Monkeys", "Oasis"],
+      Duo: ["the xx", "Pet Shop Boys", "MGMT", "Hall & Oates"],
+      "Formed in the 2000s": [
+        "the xx",
+        "Arctic Monkeys",
+        "MGMT",
+        "Imagine Dragons",
+      ],
+    },
+    hint: "Nationality, Size, Decade",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "Won MVP": [
+        "Alex Rodriguez",
+        "Cal Ripken, Jr.",
+        "Mike Trout",
+        "Aaron Judge",
+      ],
+      "Played Shortstop": [
+        "Alex Rodriguez",
+        "Cal Ripken, Jr.",
+        "Derek Jeter",
+        "Ozzie Smith",
+      ],
+      "Played for the Yankees": [
+        "Alex Rodriguez",
+        "Derek Jeter",
+        "Aaron Judge",
+        "Mariano Rivera",
+      ],
+    },
+    hint: "MVP, Position, Team",
+    title: "Baseball",
+  },
+];
+
 export let puzzles = demo.concat(
   week1,
   week2,
@@ -5045,4 +5166,5 @@ export let puzzles = demo.concat(
   week32,
   week33,
   week34,
+  week35,
 );
