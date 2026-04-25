@@ -5131,6 +5131,333 @@ let week35: Week = [
   },
 ];
 
+let week36: Week = [
+  {
+    groups: {
+      "By a British Author": [
+        "Emma",
+        "Great Expectations",
+        "Bridget Jones's Diary",
+        "1984",
+      ],
+      "Published in the 1800s": [
+        "Emma",
+        "Great Expectations",
+        "Heidi",
+        "Moby-Dick",
+      ],
+      "Features a Female Protagonist": [
+        "Emma",
+        "Bridget Jones's Diary",
+        "Heidi",
+        "Divergent",
+      ],
+    },
+    hint: "Country, Century, Heroine",
+    title: "Books",
+  },
+  {
+    groups: {
+      "Appeared in Wes Anderson Film(s)": [
+        "Tilda Swinton",
+        "Ben Stiller",
+        "Adrien Brody",
+        "Jason Schwartzman",
+      ],
+      "Born in the 1960s": [
+        "Tilda Swinton",
+        "Ben Stiller",
+        "Halle Berry",
+        "Meg Ryan",
+      ],
+      "Won Oscar(s) for Acting": [
+        "Tilda Swinton",
+        "Adrien Brody",
+        "Halle Berry",
+        "Hilary Swank",
+      ],
+    },
+    hint: "Director, Decade, Academy",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "By a Female Solo Artist": [
+        "Un-Break My Heart",
+        "Criminal",
+        "Flowers",
+        "Complicated",
+      ],
+      "Released in the 1990s": [
+        "Un-Break My Heart",
+        "Criminal",
+        "I Don't Want to Miss a Thing",
+        "Semi-Charmed Life",
+      ],
+      "Billboard Hot 100 #1 Hit": [
+        "Un-Break My Heart",
+        "Flowers",
+        "I Don't Want to Miss a Thing",
+        "As It Was",
+      ],
+    },
+    hint: "Gender, Decade, Chart",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Has Stripes": [
+        "Striped Dolphin",
+        "Zebra",
+        "Clownfish",
+        "Striped Whipsnake",
+      ],
+      "Aquatic/Semiaquatic": [
+        "Striped Dolphin",
+        "Otter",
+        "Clownfish",
+        "Alligator",
+      ],
+      "Is a Mammal": ["Striped Dolphin", "Zebra", "Otter", "Gorilla"],
+    },
+    hint: "Pattern, Water, Class",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Directed by Steven Spielberg": [
+        "Saving Private Ryan",
+        "Bridge of Spies",
+        "Amistad",
+        "Jaws",
+      ],
+      "Features Tom Hanks": [
+        "Saving Private Ryan",
+        "Bridge of Spies",
+        "You've Got Mail",
+        "Captain Phillips",
+      ],
+      "Released in the 1990s": [
+        "Saving Private Ryan",
+        "Amistad",
+        "You've Got Mail",
+        "The Sixth Sense",
+      ],
+    },
+    hint: "Director, Actor, Decade",
+    title: "Movies",
+  },
+  {
+    groups: {
+      Canadian: [
+        "Gord Downie",
+        "Tegan Quin",
+        "Sarah McLachlan",
+        "Nelly Furtado",
+      ],
+      "In Successful Band(s)": [
+        "Gord Downie",
+        "Tegan Quin",
+        "Dave Grohl",
+        "Hayley Williams",
+      ],
+      "Born in the 1960s": [
+        "Gord Downie",
+        "Sarah McLachlan",
+        "Dave Grohl",
+        "Whitney Houston",
+      ],
+    },
+    hint: "Nationality, Group, Decade",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Won NBA Rookie of the Year": [
+        "Wilt Chamberlain",
+        "Chris Webber",
+        "Oscar Robertson",
+        "Blake Griffin",
+      ],
+      "Played for the Warriors": [
+        "Wilt Chamberlain",
+        "Chris Webber",
+        "Stephen Curry",
+        "Klay Thompson",
+      ],
+      "Named NBA MVP": [
+        "Wilt Chamberlain",
+        "Oscar Robertson",
+        "Stephen Curry",
+        "Nikola Jokic",
+      ],
+    },
+    hint: "ROY, Team, MVP",
+    title: "Basketball",
+  },
+];
+
+let week37: Week = [
+  {
+    groups: {
+      "In the Caribbean": [
+        "Martinique",
+        "Saint Martin",
+        "Montserrat",
+        "Grand Cayman",
+      ],
+      "Part of France": ["Martinique", "Saint Martin", "Réunion", "Corsica"],
+      Volcanic: ["Martinique", "Montserrat", "Réunion", "Santorini"],
+    },
+    hint: "Sea, Country, Lava",
+    title: "Islands",
+  },
+  {
+    groups: {
+      "Appeared in Star Wars Film(s)": [
+        "Oscar Isaac",
+        "Natalie Portman",
+        "Max von Sydow",
+        "Daisy Ridley",
+      ],
+      "Appeared in Marvel Film(s)": [
+        "Oscar Isaac",
+        "Natalie Portman",
+        "Josh Brolin",
+        "Simu Liu",
+      ],
+      "Appeared in Dune Film(s)": [
+        "Oscar Isaac",
+        "Max von Sydow",
+        "Josh Brolin",
+        "Rebecca Ferguson",
+      ],
+    },
+    hint: "Sith, MCU, Arrakis",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "By a Band": [
+        "Waterloo Sunset",
+        "Carry On Wayward Son",
+        "Rio",
+        "Mr. Brightside",
+      ],
+      "Released Before 1980": [
+        "Waterloo Sunset",
+        "Carry On Wayward Son",
+        "Viva Las Vegas",
+        "Rocket Man",
+      ],
+      "Title References a Place": [
+        "Waterloo Sunset",
+        "Rio",
+        "Viva Las Vegas",
+        "Budapest",
+      ],
+    },
+    hint: "Group, Era, Place",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Climbs Trees": [
+        "American Black Bear",
+        "Kinkajou",
+        "Bobcat",
+        "Tree Pangolin",
+      ],
+      Omnivore: [
+        "American Black Bear",
+        "Kinkajou",
+        "Nine-banded Armadillo",
+        "Wild Boar",
+      ],
+      "Native to the United States": [
+        "American Black Bear",
+        "Bobcat",
+        "Nine-banded Armadillo",
+        "Pronghorn",
+      ],
+    },
+    hint: "Climbing, Diet, Region",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Set in Outer Space": [
+        "Foundation",
+        "The Expanse",
+        "For All Mankind",
+        "Battlestar Galactica",
+      ],
+      "Based on a Novel": [
+        "Foundation",
+        "The Expanse",
+        "Silo",
+        "Normal People",
+      ],
+      "Premiered on Apple TV+": [
+        "Foundation",
+        "For All Mankind",
+        "Silo",
+        "Ted Lasso",
+      ],
+    },
+    hint: "Space, Book, Streamer",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      "Formed in California": [
+        "The Beach Boys",
+        "Haim",
+        "Metallica",
+        "Incubus",
+      ],
+      "Includes Siblings": [
+        "The Beach Boys",
+        "Haim",
+        "Bee Gees",
+        "Jonas Brothers",
+      ],
+      "Rock and Roll Hall of Famers": [
+        "The Beach Boys",
+        "Metallica",
+        "Bee Gees",
+        "Nirvana",
+      ],
+    },
+    hint: "State, Family, HOF",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "Played at Notre Dame": [
+        "Joe Montana",
+        "Tim Brown",
+        "Joe Theismann",
+        "Raghib Ismail",
+      ],
+      "Hall of Famer": [
+        "Joe Montana",
+        "Tim Brown",
+        "Terry Bradshaw",
+        "Randy Moss",
+      ],
+      Quarterback: [
+        "Joe Montana",
+        "Joe Theismann",
+        "Terry Bradshaw",
+        "Bernie Kosar",
+      ],
+    },
+    hint: "School, Hall, Position",
+    title: "Football",
+  },
+];
+
 export let puzzles = demo.concat(
   week1,
   week2,
@@ -5167,4 +5494,6 @@ export let puzzles = demo.concat(
   week33,
   week34,
   week35,
+  week36,
+  week37,
 );
