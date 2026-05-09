@@ -5458,6 +5458,157 @@ let week37: Week = [
   },
 ];
 
+let week38: Week = [
+  {
+    groups: {
+      "Flows Through National Capital(s)": [
+        "Danube",
+        "Seine",
+        "Nile",
+        "Potomac River",
+      ],
+      "In Europe": ["Danube", "Seine", "Volga", "Rhine"],
+      "Longer Than 2,000 Kilometers": ["Danube", "Nile", "Volga", "Yangtze"],
+    },
+    hint: "Capital, Continent, Length",
+    title: "Rivers",
+  },
+  {
+    groups: {
+      "Appeared in Harry Potter Film(s)": [
+        "Jim Broadbent",
+        "Natalia Tena",
+        "Daniel Radcliffe",
+        "Emma Watson",
+      ],
+      "Appeared in Game of Thrones": [
+        "Jim Broadbent",
+        "Natalia Tena",
+        "Peter Dinklage",
+        "Emilia Clarke",
+      ],
+      Male: [
+        "Jim Broadbent",
+        "Daniel Radcliffe",
+        "Peter Dinklage",
+        "Josh Brolin",
+      ],
+    },
+    hint: "Hogwarts, Westeros, Gender",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Has a Four-Word Title": [
+        "A Whole New World",
+        "I See the Light",
+        "Take My Breath Away",
+        "Can You Feel It",
+      ],
+      "From an Animated Film": [
+        "A Whole New World",
+        "I See the Light",
+        "Let It Go",
+        "We Don't Talk About Bruno",
+      ],
+      "Won Best Original Song Oscar": [
+        "A Whole New World",
+        "Take My Breath Away",
+        "Let It Go",
+        "Skyfall",
+      ],
+    },
+    hint: "Title, Animation, Academy",
+    title: "Songs",
+  },
+  {
+    groups: {
+      Reptile: [
+        "Radiated Tortoise",
+        "Desert Tortoise",
+        "Hawksbill Sea Turtle",
+        "Common Snapping Turtle",
+      ],
+      Herbivore: [
+        "Radiated Tortoise",
+        "Desert Tortoise",
+        "Mountain Gorilla",
+        "Horse",
+      ],
+      Endangered: [
+        "Radiated Tortoise",
+        "Hawksbill Sea Turtle",
+        "Mountain Gorilla",
+        "African Wild Dog",
+      ],
+    },
+    hint: "Class, Diet, Population",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Directed by Christopher Nolan": [
+        "The Dark Knight Rises",
+        "Batman Begins",
+        "Dunkirk",
+        "Memento",
+      ],
+      "Based on Comic Books": [
+        "The Dark Knight Rises",
+        "Batman Begins",
+        "Venom",
+        "Superman Returns",
+      ],
+      "Features Tom Hardy": [
+        "The Dark Knight Rises",
+        "Dunkirk",
+        "Venom",
+        "Mad Max: Fury Road",
+      ],
+    },
+    hint: "Director, Source, Actor",
+    title: "Movies",
+  },
+  {
+    groups: {
+      American: ["Lionel Richie", "H.E.R.", "Billy Joel", "Kelsea Ballerini"],
+      "Oscar Winner": ["Lionel Richie", "H.E.R.", "Annie Lennox", "Sam Smith"],
+      "Rock and Roll Hall of Famer": [
+        "Lionel Richie",
+        "Billy Joel",
+        "Annie Lennox",
+        "Peter Gabriel",
+      ],
+    },
+    hint: "Nationality, Academy, HOF",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Won Gold Glove(s)": [
+        "Thurman Munson",
+        "Salvador Perez",
+        "Carlos Correa",
+        "Andrelton Simmons",
+      ],
+      Catcher: [
+        "Thurman Munson",
+        "Salvador Perez",
+        "Mike Piazza",
+        "Jason Varitek",
+      ],
+      "Won Rookie of the Year": [
+        "Thurman Munson",
+        "Carlos Correa",
+        "Mike Piazza",
+        "Ryan Howard",
+      ],
+    },
+    hint: "Defense, Position, ROY",
+    title: "Baseball",
+  },
+];
+
 export let puzzles = demo.concat(
   week1,
   week2,
@@ -5496,4 +5647,5 @@ export let puzzles = demo.concat(
   week35,
   week36,
   week37,
+  week38,
 );
