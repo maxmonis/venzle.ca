@@ -5609,6 +5609,167 @@ let week38: Week = [
   },
 ];
 
+let week39: Week = [
+  {
+    groups: {
+      Stratovolcano: [
+        "Mount Fuji",
+        "Kilimanjaro",
+        "Mount Pinatubo",
+        "Mount St. Helens",
+      ],
+      "Highest Point in its Country": [
+        "Mount Fuji",
+        "Kilimanjaro",
+        "Mount Everest",
+        "Denali",
+      ],
+      "In Asia": [
+        "Mount Fuji",
+        "Mount Pinatubo",
+        "Mount Everest",
+        "Annapurna I",
+      ],
+    },
+    hint: "Volcano, High Point, Asia",
+    title: "Peaks",
+  },
+  {
+    groups: {
+      "Appeared in Musical Film(s)": [
+        "Lady Gaga",
+        "Zendaya",
+        "Ariana DeBose",
+        "Zac Efron",
+      ],
+      "Appeared in Superhero Film(s)": [
+        "Lady Gaga",
+        "Zendaya",
+        "Jamie Foxx",
+        "Tom Holland",
+      ],
+      "Academy Award Winner": [
+        "Lady Gaga",
+        "Ariana DeBose",
+        "Jamie Foxx",
+        "Olivia Colman",
+      ],
+    },
+    hint: "Musical, Hero, Academy",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "By a British Artist": [
+        "Hello",
+        "Levitating",
+        "Every Breath You Take",
+        "Wonderwall",
+      ],
+      "Won Song of the Year Grammy": [
+        "Hello",
+        "Every Breath You Take",
+        "We Are Young",
+        "Beautiful Day",
+      ],
+      "Released in the 2010s": [
+        "Hello",
+        "Levitating",
+        "We Are Young",
+        "Blinding Lights",
+      ],
+    },
+    hint: "Nationality, Grammy, Decade",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Can Fly": [
+        "Lesser Nighthawk",
+        "Tawny Owl",
+        "Gila Woodpecker",
+        "Bald Eagle",
+      ],
+      Nocturnal: ["Lesser Nighthawk", "Tawny Owl", "Fennec Fox", "Aye-aye"],
+      "Lives in the Desert": [
+        "Lesser Nighthawk",
+        "Gila Woodpecker",
+        "Fennec Fox",
+        "Camel",
+      ],
+    },
+    hint: "Flight, Night, Desert",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Set in High School": [
+        "13 Reasons Why",
+        "Sex Education",
+        "Pretty Little Liars",
+        "Saved by the Bell",
+      ],
+      "Aired on Netflix": [
+        "13 Reasons Why",
+        "Sex Education",
+        "A Series of Unfortunate Events",
+        "Stranger Things",
+      ],
+      "Based on a Book": [
+        "13 Reasons Why",
+        "Pretty Little Liars",
+        "A Series of Unfortunate Events",
+        "Big Little Lies",
+      ],
+    },
+    hint: "School, Netflix, Book",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      "Formed in New York": [
+        "The Ramones",
+        "The Strokes",
+        "Blondie",
+        "Talking Heads",
+      ],
+      'Name Includes "The"': [
+        "The Ramones",
+        "The Strokes",
+        "The Clash",
+        "The Smiths",
+      ],
+      "Punk Band": ["The Ramones", "Blondie", "The Clash", "Bad Religion"],
+    },
+    hint: "New York, The, Punk",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "NBA MVP": [
+        "Michael Jordan",
+        "Bill Russell",
+        "Derrick Rose",
+        "Charles Barkley",
+      ],
+      "NBA Champion": [
+        "Michael Jordan",
+        "Bill Russell",
+        "Scottie Pippen",
+        "Joe Dumars",
+      ],
+      "Played for the Bulls": [
+        "Michael Jordan",
+        "Derrick Rose",
+        "Scottie Pippen",
+        "Carlos Boozer",
+      ],
+    },
+    hint: "MVP, Ring, Team",
+    title: "Basketball",
+  },
+];
+
 export let puzzles = demo.concat(
   week1,
   week2,
@@ -5648,4 +5809,5 @@ export let puzzles = demo.concat(
   week36,
   week37,
   week38,
+  week39,
 );
