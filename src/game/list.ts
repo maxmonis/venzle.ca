@@ -5770,6 +5770,162 @@ let week39: Week = [
   },
 ];
 
+let week40: Week = [
+  {
+    groups: {
+      "In Africa": [
+        "Kalahari Desert",
+        "Sahara Desert",
+        "Namib Desert",
+        "Danakil Desert",
+      ],
+      "Area Exceeds 200,000 Square Miles": [
+        "Kalahari Desert",
+        "Sahara Desert",
+        "Patagonian Desert",
+        "Arabian Desert",
+      ],
+      "In the Southern Hemisphere": [
+        "Kalahari Desert",
+        "Namib Desert",
+        "Patagonian Desert",
+        "Simpson Desert",
+      ],
+    },
+    hint: "Continent, Size, Hemisphere",
+    title: "Deserts",
+  },
+  {
+    groups: {
+      "Hosted Saturday Night Live": [
+        "Tom Hanks",
+        "John Goodman",
+        "Ben Stiller",
+        "Emma Stone",
+      ],
+      "Appeared in a Pixar Film": [
+        "Tom Hanks",
+        "John Goodman",
+        "Bonnie Hunt",
+        "Tim Allen",
+      ],
+      "Directed a Feature Film": [
+        "Tom Hanks",
+        "Ben Stiller",
+        "Bonnie Hunt",
+        "Greta Gerwig",
+      ],
+    },
+    hint: "SNL, Pixar, Director",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "By a Band or Duo": [
+        "Get Lucky",
+        "Radioactive",
+        "Mrs. Robinson",
+        "Dream On",
+      ],
+      "Released in the 2010s": [
+        "Get Lucky",
+        "Radioactive",
+        "This is America",
+        "Someone You Loved",
+      ],
+      "Won Record of the Year Grammy": [
+        "Get Lucky",
+        "Mrs. Robinson",
+        "This is America",
+        "Beat It",
+      ],
+    },
+    hint: "Group, Decade, Grammy",
+    title: "Songs",
+  },
+  {
+    groups: {
+      Mammal: ["Platypus", "Dolphin", "Echidna", "Elephant"],
+      "Aquatic / Semi-Aquatic": ["Platypus", "Dolphin", "Duck", "Salmon"],
+      "Has a Beak": ["Platypus", "Echidna", "Duck", "Toucan"],
+    },
+    hint: "Mammal, Water, Beak",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Stars Leonardo DiCaprio": [
+        "The Aviator",
+        "The Departed",
+        "Catch Me If You Can",
+        "Inception",
+      ],
+      "Directed by Martin Scorsese": [
+        "The Aviator",
+        "The Departed",
+        "Goodfellas",
+        "Kundun",
+      ],
+      "Based on a True Story": [
+        "The Aviator",
+        "Catch Me If You Can",
+        "Goodfellas",
+        "Apollo 13",
+      ],
+    },
+    hint: "Leo, Scorsese, True Story",
+    title: "Movies",
+  },
+  {
+    groups: {
+      "Also an Actor": [
+        "Cher",
+        "Justin Timberlake",
+        "Barbra Streisand",
+        "Jennifer Lopez",
+      ],
+      "Won an Academy Award": [
+        "Cher",
+        "Barbra Streisand",
+        "Trent Reznor",
+        "Sam Smith",
+      ],
+      "Rose to Fame in a Group or Duo": [
+        "Cher",
+        "Justin Timberlake",
+        "Trent Reznor",
+        "George Michael",
+      ],
+    },
+    hint: "Acting, Academy, Group",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Won AP Offensive Player of the Year": [
+        "Cooper Kupp",
+        "Michael Thomas",
+        "Marshall Faulk",
+        "LaDainian Tomlinson",
+      ],
+      "Played Wide Receiver": [
+        "Cooper Kupp",
+        "Michael Thomas",
+        "Torry Holt",
+        "Larry Fitzgerald",
+      ],
+      "Played for the Rams": [
+        "Cooper Kupp",
+        "Marshall Faulk",
+        "Torry Holt",
+        "Aaron Donald",
+      ],
+    },
+    hint: "Award, Receiver, Rams",
+    title: "Football",
+  },
+];
+
 export let puzzles = demo.concat(
   week1,
   week2,
@@ -5810,4 +5966,5 @@ export let puzzles = demo.concat(
   week37,
   week38,
   week39,
+  week40,
 );
