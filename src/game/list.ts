@@ -5926,6 +5926,142 @@ let week40: Week = [
   },
 ];
 
+let week41: Week = [
+  {
+    groups: {
+      "In California": ["Yosemite", "Redwood", "Sequoia", "Joshua Tree"],
+      "World Heritage Site": [
+        "Yosemite",
+        "Redwood",
+        "Yellowstone",
+        "Grand Canyon",
+      ],
+      "Established Before 1900": [
+        "Yosemite",
+        "Sequoia",
+        "Yellowstone",
+        "Mount Rainier",
+      ],
+    },
+    hint: "State, UNESCO, Year",
+    title: "National Parks",
+  },
+  {
+    groups: {
+      "Appeared in The Office (US)": [
+        "Steve Carell",
+        "Will Ferrell",
+        "Mindy Kaling",
+        "Rainn Wilson",
+      ],
+      "Appeared in Anchorman": [
+        "Steve Carell",
+        "Will Ferrell",
+        "Paul Rudd",
+        "Christina Applegate",
+      ],
+      "Appeared in The 40-Year-Old Virgin": [
+        "Steve Carell",
+        "Mindy Kaling",
+        "Paul Rudd",
+        "Katherine Heigl",
+      ],
+    },
+    hint: "Scranton, San Diego, Smart Tech",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "By a Canadian Artist": ["Heaven", "One Dance", "Up!", "Summer of '69"],
+      "Billboard Hot 100 #1 Hit": [
+        "Heaven",
+        "One Dance",
+        "Royals",
+        "Uptown Funk",
+      ],
+      "One-Word Title": ["Heaven", "Up!", "Royals", "Imagine"],
+    },
+    hint: "Nationality, Chart, Title",
+    title: "Songs",
+  },
+  {
+    groups: {
+      Carnivore: ["Spotted Hyena", "Lion", "Jaguar", "Polar Bear"],
+      "Native to Africa": [
+        "Spotted Hyena",
+        "Lion",
+        "Giraffe",
+        "African Elephant",
+      ],
+      "Spotted Coat": ["Spotted Hyena", "Jaguar", "Giraffe", "Dalmatian"],
+    },
+    hint: "Diet, Continent, Pattern",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Cooking Competition": [
+        "Hell's Kitchen",
+        "MasterChef",
+        "Top Chef",
+        "Nailed It!",
+      ],
+      "Features Gordon Ramsay": [
+        "Hell's Kitchen",
+        "MasterChef",
+        "Kitchen Nightmares",
+        "Hotel Hell",
+      ],
+      "Premiered in the 2000s": [
+        "Hell's Kitchen",
+        "Top Chef",
+        "Kitchen Nightmares",
+        "The Apprentice",
+      ],
+    },
+    hint: "Contest, Chef, Decade",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      "Formed in Seattle": ["Nirvana", "Pearl Jam", "Mudhoney", "Fleet Foxes"],
+      "Rock and Roll Hall of Famers": [
+        "Nirvana",
+        "Pearl Jam",
+        "Metallica",
+        "The Doors",
+      ],
+      "One-Word Name": ["Nirvana", "Mudhoney", "Metallica", "Chumbawamba"],
+    },
+    hint: "City, HOF, Name",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "New York Yankee": [
+        "CC Sabathia",
+        "Roger Clemens",
+        "Andy Pettitte",
+        "Mariano Rivera",
+      ],
+      "Cy Young Award Winner": [
+        "CC Sabathia",
+        "Roger Clemens",
+        "Clayton Kershaw",
+        "Greg Maddux",
+      ],
+      "Left-Handed Pitcher": [
+        "CC Sabathia",
+        "Andy Pettitte",
+        "Clayton Kershaw",
+        "Dontrelle Willis",
+      ],
+    },
+    hint: "Team, Award, Handedness",
+    title: "Baseball",
+  },
+];
+
 export let puzzles = demo.concat(
   week1,
   week2,
@@ -5967,4 +6103,5 @@ export let puzzles = demo.concat(
   week38,
   week39,
   week40,
+  week41,
 );
