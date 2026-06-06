@@ -6062,6 +6062,147 @@ let week41: Week = [
   },
 ];
 
+let week42: Week = [
+  {
+    groups: {
+      "In North America": ["Canada", "United States", "Belize", "Mexico"],
+      "G7 Member": ["Canada", "United States", "United Kingdom", "Japan"],
+      "Commonwealth Realm": ["Canada", "Belize", "United Kingdom", "Australia"],
+    },
+    hint: "Continent, Summit, Crown",
+    title: "Countries",
+  },
+  {
+    groups: {
+      "From Asia": [
+        "Michelle Yeoh",
+        "Priyanka Chopra Jonas",
+        "Haing S. Ngor",
+        "Jackie Chan",
+      ],
+      Female: [
+        "Michelle Yeoh",
+        "Priyanka Chopra Jonas",
+        "Brie Larson",
+        "Kate Bosworth",
+      ],
+      "Won Acting Oscar(s)": [
+        "Michelle Yeoh",
+        "Haing S. Ngor",
+        "Brie Larson",
+        "Eddie Redmayne",
+      ],
+    },
+    hint: "Continent, Gender, Academy",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "By a Female Solo Artist": [
+        "Black Horse and the Cherry Tree",
+        "Toxic",
+        "Red",
+        "Jolene",
+      ],
+      "Released in the 2000s": [
+        "Black Horse and the Cherry Tree",
+        "Toxic",
+        "Yellow",
+        "Wake Me Up When September Ends",
+      ],
+      "Title Contains Color(s)": [
+        "Black Horse and the Cherry Tree",
+        "Red",
+        "Yellow",
+        "White Room",
+      ],
+    },
+    hint: "Gender, Decade, Hue",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Weighs 100+ Kilos": [
+        "Cow",
+        "Giant Bluefin Tuna",
+        "Rhinoceros",
+        "Sperm Whale",
+      ],
+      "Commonly Eaten": [
+        "Cow",
+        "Giant Bluefin Tuna",
+        "Chicken",
+        "Sockeye Salmon",
+      ],
+      "Lives on Land": ["Cow", "Chicken", "Rhinoceros", "Squirrel"],
+    },
+    hint: "Weight, Food, Habitat",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Stars Ryan Gosling": [
+        "Project Hail Mary",
+        "First Man",
+        "Barbie",
+        "Drive",
+      ],
+      "Involves Outer Space": [
+        "Project Hail Mary",
+        "First Man",
+        "Avatar: Fire and Ash",
+        "Interstellar",
+      ],
+      "Released in the 2020s": [
+        "Project Hail Mary",
+        "Barbie",
+        "Avatar: Fire and Ash",
+        "Hamnet",
+      ],
+    },
+    hint: "Star, Space, Decade",
+    title: "Movies",
+  },
+  {
+    groups: {
+      Canadian: ["Joni Mitchell", "Alessia Cara", "Neil Young", "The Weeknd"],
+      Female: ["Joni Mitchell", "Alessia Cara", "Tina Turner", "Taylor Swift"],
+      "Active in the 20th Century": [
+        "Joni Mitchell",
+        "Neil Young",
+        "Tina Turner",
+        "Bob Dylan",
+      ],
+    },
+    hint: "Nationality, Gender, Century",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Played for 76ers": [
+        "Charles Barkley",
+        "Moses Malone",
+        "Allen Iverson",
+        "Maurice Cheeks",
+      ],
+      "Rebounding Champion": [
+        "Charles Barkley",
+        "Moses Malone",
+        "Hassan Whiteside",
+        "Bill Laimbeer",
+      ],
+      "Never Won a Championship": [
+        "Charles Barkley",
+        "Allen Iverson",
+        "Hassan Whiteside",
+        "Karl Malone",
+      ],
+    },
+    hint: "Team, Boards, No Rings",
+    title: "Basketball",
+  },
+];
+
 export let puzzles = demo.concat(
   week1,
   week2,
@@ -6104,4 +6245,5 @@ export let puzzles = demo.concat(
   week39,
   week40,
   week41,
+  week42,
 );
