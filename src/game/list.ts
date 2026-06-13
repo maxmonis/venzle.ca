@@ -6203,6 +6203,167 @@ let week42: Week = [
   },
 ];
 
+let week43: Week = [
+  {
+    groups: {
+      "National Capital": ["Wellington", "Copenhagen", "Santiago", "Warsaw"],
+      "Located on a Harbour": [
+        "Wellington",
+        "Copenhagen",
+        "Sydney",
+        "Barcelona",
+      ],
+      "South of the Equator": [
+        "Wellington",
+        "Sydney",
+        "Santiago",
+        "Johannesburg",
+      ],
+    },
+    hint: "Federal, Port, Latitude",
+    title: "Cities",
+  },
+  {
+    groups: {
+      "Alliterative Name": [
+        "Mandy Moore",
+        "Gal Gadot",
+        "Doris Day",
+        "Charlie Chaplin",
+      ],
+      "Born in the 1980s": [
+        "Mandy Moore",
+        "Gal Gadot",
+        "Leighton Meester",
+        "Jessica Biel",
+      ],
+      "Also a Recording Artist": [
+        "Mandy Moore",
+        "Doris Day",
+        "Leighton Meester",
+        "Bing Crosby",
+      ],
+    },
+    hint: "Alliteration, Decade, Music",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Title Includes a Place": [
+        "Sweet Home Alabama",
+        "Chattanooga Choo Choo",
+        "L.A. Woman",
+        "Last Train to Clarksville",
+      ],
+      "Also the Name of a Movie": [
+        "Sweet Home Alabama",
+        "Chattanooga Choo Choo",
+        "Iron Man",
+        "Stand by Me",
+      ],
+      "Released in the 1970s": [
+        "Sweet Home Alabama",
+        "L.A. Woman",
+        "Iron Man",
+        "Moonshadow",
+      ],
+    },
+    hint: "Place, Film, Decade",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Has Four Limbs": ["Chipmunk", "Bonobo", "American Bison", "Elephant"],
+      "Strong Climber": [
+        "Chipmunk",
+        "Bonobo",
+        "Amazon Tree Boa",
+        "Paradise Tree Snake",
+      ],
+      "Found in the Americas": [
+        "Chipmunk",
+        "American Bison",
+        "Amazon Tree Boa",
+        "Piranha",
+      ],
+    },
+    hint: "Limbs, Trees, Continent",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Historical Drama": [
+        "Downton Abbey",
+        "Upstairs, Downstairs",
+        "The Gilded Age",
+        "Roots",
+      ],
+      "Set in England": [
+        "Downton Abbey",
+        "Upstairs, Downstairs",
+        "Broadchurch",
+        "Fawlty Towers",
+      ],
+      "Premiered in the 21st Century": [
+        "Downton Abbey",
+        "The Gilded Age",
+        "Broadchurch",
+        "The Studio",
+      ],
+    },
+    hint: "Period, Country, Century",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      "From New England": [
+        "The Cars",
+        "Aerosmith",
+        "New Kids on the Block",
+        "Dropkick Murphys",
+      ],
+      "Formed in the 1970s": [
+        "The Cars",
+        "Aerosmith",
+        "The Cure",
+        "Electric Light Orchestra",
+      ],
+      'Name Includes "the"': [
+        "The Cars",
+        "New Kids on the Block",
+        "The Cure",
+        "The Trashmen",
+      ],
+    },
+    hint: "Region, Decade, Name",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "Super Bowl Champion": [
+        "Aaron Donald",
+        "Joe Greene",
+        "Matthew Stafford",
+        "Johnny Unitas",
+      ],
+      "Defensive Player of the Year": [
+        "Aaron Donald",
+        "Joe Greene",
+        "J. J. Watt",
+        "Alan Page",
+      ],
+      "Active in the 21st Century": [
+        "Aaron Donald",
+        "J. J. Watt",
+        "Matthew Stafford",
+        "LaDainian Tomlinson",
+      ],
+    },
+    hint: "Ring, DPOY, Century",
+    title: "Football",
+  },
+];
+
 export let puzzles = demo.concat(
   week1,
   week2,
@@ -6246,4 +6407,5 @@ export let puzzles = demo.concat(
   week40,
   week41,
   week42,
+  week43,
 );
