@@ -54,6 +54,14 @@ Create a compiled version of `src` in `dist`:
 npm run build
 ```
 
+## Versioning
+
+This project uses CalVer. To bump the version, run:
+
+```bash
+npm run bump
+```
+
 ## Project Structure
 
 The basic structure is as follows:

@@ -19,6 +19,7 @@
   "private": true,
   "scripts": {
     "build": "tsx build.ts && tsc && vite build --emptyOutDir",
+    "bump": "npm version $(date '+%Y.%-m.%-d')",
     "dev": "tsx build.ts && vite --host",
     "lint": "prettier --write --ignore-path .gitignore .",
     "postinstall": "tsx build.ts",
