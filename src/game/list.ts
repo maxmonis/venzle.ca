@@ -6364,6 +6364,162 @@ let week43: Week = [
   },
 ];
 
+let week44: Week = [
+  {
+    groups: {
+      "Doesn't Touch the Equator": [
+        "Oceania",
+        "Antarctica",
+        "North America",
+        "Europe",
+      ],
+      "Doesn't Contain G7": [
+        "Oceania",
+        "Antarctica",
+        "South America",
+        "Africa",
+      ],
+      "Touches the Pacific Ocean": [
+        "Oceania",
+        "North America",
+        "South America",
+        "Asia",
+      ],
+    },
+    hint: "Equator, G7, Pacific",
+    title: "Continents",
+  },
+  {
+    groups: {
+      Irish: [
+        "Saoirse Ronan",
+        "Jessie Buckley",
+        "Domnhall Gleeson",
+        "Barry Keoghan",
+      ],
+      Female: [
+        "Saoirse Ronan",
+        "Jessie Buckley",
+        "Julie Walters",
+        "Viola Davis",
+      ],
+      "Appeared in Brooklyn": [
+        "Saoirse Ronan",
+        "Domnhall Gleeson",
+        "Julie Walters",
+        "Jim Broadbent",
+      ],
+    },
+    hint: "Nationality, Gender, Brooklyn",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "From an Animated Film": [
+        "Can You Feel the Love Tonight",
+        "Colors of the Wind",
+        "Circle of Life",
+        "When She Loved Me",
+      ],
+      "Won Best Original Song Oscar": [
+        "Can You Feel the Love Tonight",
+        "Colors of the Wind",
+        "I'm Gonna Love Me Again",
+        "Naatu Naatu",
+      ],
+      "By Elton John": [
+        "Can You Feel the Love Tonight",
+        "Circle of Life",
+        "I'm Gonna Love Me Again",
+        "Tiny Dancer",
+      ],
+    },
+    hint: "Disney/Pixar, Academy, Elton",
+    title: "Songs",
+  },
+  {
+    groups: {
+      Primate: ["Indri", "Ring-tailed Lemur", "Western Gorilla", "Mandrill"],
+      "Native to Madagascar": [
+        "Indri",
+        "Ring-tailed Lemur",
+        "Madagascar Fish Eagle",
+        "Fossa",
+      ],
+      "Critically Endangered": [
+        "Indri",
+        "Western Gorilla",
+        "Madagascar Fish Eagle",
+        "Vaquita",
+      ],
+    },
+    hint: "Order, Country, Status",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Pixar Film": ["Up", "Inside Out", "Cars", "A Bug's Life"],
+      "Won Best Animated Feature Oscar": [
+        "Up",
+        "Inside Out",
+        "Rango",
+        "The Boy and the Heron",
+      ],
+      "One-Word Title": ["Up", "Cars", "Rango", "Anastasia"],
+    },
+    hint: "Studio, Academy, Title",
+    title: "Movies",
+  },
+  {
+    groups: {
+      "Born in Georgia": [
+        "Ray Charles",
+        "Blind Willie McTell",
+        "Little Richard",
+        "Luke Bryan",
+      ],
+      "Blind or Visually Impaired": [
+        "Ray Charles",
+        "Blind Willie McTell",
+        "Stevie Wonder",
+        "Andrea Bocelli",
+      ],
+      "Grammy Lifetime Achievement Award": [
+        "Ray Charles",
+        "Little Richard",
+        "Stevie Wonder",
+        "Patsy Cline",
+      ],
+    },
+    hint: "State, Vision, Grammy",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Played for Braves": [
+        "Freddie Freeman",
+        "Ronald Acuña Jr.",
+        "Fred McGriff",
+        "Andruw Jones",
+      ],
+      "Most Valuable Player Winner": [
+        "Freddie Freeman",
+        "Ronald Acuña Jr.",
+        "Justin Morneau",
+        "Ken Griffey Jr.",
+      ],
+      "First Baseman": [
+        "Freddie Freeman",
+        "Fred McGriff",
+        "Justin Morneau",
+        "John Olerud",
+      ],
+    },
+    hint: "Team, MVP, Position",
+    title: "Baseball",
+  },
+];
+
 export let puzzles = demo.concat(
   week1,
   week2,
@@ -6408,4 +6564,5 @@ export let puzzles = demo.concat(
   week41,
   week42,
   week43,
+  week44,
 );
