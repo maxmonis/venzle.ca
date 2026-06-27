@@ -6520,6 +6520,142 @@ let week44: Week = [
   },
 ];
 
+let week45: Week = [
+  {
+    groups: {
+      "Gas Giant": ["Saturn", "Jupiter", "Uranus", "Neptune"],
+      "Classical Planet": ["Saturn", "Jupiter", "Mars", "Mercury"],
+      "Name has <7 Letters": ["Saturn", "Uranus", "Mars", "Earth"],
+    },
+    hint: "Gas, Classical, Letters",
+    title: "Planets",
+  },
+  {
+    groups: {
+      "Appeared in The Big Lebowski": [
+        "Philip Seymour Hoffman",
+        "Julianne Moore",
+        "John Goodman",
+        "Tara Reid",
+      ],
+      "Appeared in Boogie Nights": [
+        "Philip Seymour Hoffman",
+        "Julianne Moore",
+        "Burt Reynolds",
+        "Heather Graham",
+      ],
+      Male: [
+        "Philip Seymour Hoffman",
+        "John Goodman",
+        "Burt Reynolds",
+        "Robin Williams",
+      ],
+    },
+    hint: "Coens, PTA, Gender",
+    title: "Actors",
+  },
+  {
+    groups: {
+      'Title Contains "Love"': [
+        "Love to Love You Baby",
+        "Love You Like a Love Song",
+        "Baby Love",
+        "Love Story",
+      ],
+      'Title Contains "You"': [
+        "Love to Love You Baby",
+        "Love You Like a Love Song",
+        "Baby It's You",
+        "You Really Got Me",
+      ],
+      'Title Contains "Baby"': [
+        "Love to Love You Baby",
+        "Baby Love",
+        "Baby It's You",
+        "Baby Got Back",
+      ],
+    },
+    hint: "Love, You, Baby",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Name Starts With D": ["Donkey", "Deer", "Dog", "Dugong"],
+      "Has Hooves": ["Donkey", "Deer", "Sheep", "Giraffe"],
+      Domesticated: ["Donkey", "Dog", "Sheep", "Chicken"],
+    },
+    hint: "Name, Feet, Farm",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Name Includes Number(s)": [
+        "60 Minutes",
+        "Hawaii Five-O",
+        "3rd Rock from the Sun",
+        "21 Jump Street",
+      ],
+      "Originally Aired on CBS": [
+        "60 Minutes",
+        "Hawaii Five-O",
+        "Everybody Loves Raymond",
+        "The Good Wife",
+      ],
+      "On the Air in 2000": [
+        "60 Minutes",
+        "3rd Rock from the Sun",
+        "Everybody Loves Raymond",
+        "King of the Hill",
+      ],
+    },
+    hint: "Name, Network, Y2K",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      'Name Includes "Boys"': [
+        "Beastie Boys",
+        "Backstreet Boys",
+        "Pet Shop Boys",
+        "Vengaboys",
+      ],
+      "Debuted in the 1980s": [
+        "Beastie Boys",
+        "Pet Shop Boys",
+        "Guns N' Roses",
+        "The Smiths",
+      ],
+      American: ["Beastie Boys", "Backstreet Boys", "Guns N' Roses", "NSYNC"],
+    },
+    hint: "Name, Decade, Nationality",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "Named Paul": [
+        "Paul Pierce",
+        "Paul Silas",
+        "Paul Millsap",
+        "Paul Arizin",
+      ],
+      "Played for the Celtics": [
+        "Paul Pierce",
+        "Paul Silas",
+        "Kendrick Perkins",
+        "John Havlicek",
+      ],
+      "Played in the 21st Century": [
+        "Paul Pierce",
+        "Paul Millsap",
+        "Kendrick Perkins",
+        "Carlos Boozer",
+      ],
+    },
+    hint: "Name, Team, Century",
+    title: "Basketball",
+  },
+];
+
 export let puzzles = demo.concat(
   week1,
   week2,
@@ -6565,4 +6701,5 @@ export let puzzles = demo.concat(
   week42,
   week43,
   week44,
+  week45,
 );
