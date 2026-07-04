@@ -6656,6 +6656,152 @@ let week45: Week = [
   },
 ];
 
+let week46: Week = [
+  {
+    groups: {
+      "In Asia": ["India", "Malaysia", "China", "Thailand"],
+      "Commonwealth Member": ["India", "Malaysia", "United Kingdom", "Canada"],
+      "Nuclear-Armed State": ["India", "China", "United Kingdom", "France"],
+    },
+    hint: "Continent, Commonwealth, Arsenal",
+    title: "Countries",
+  },
+  {
+    groups: {
+      "Appeared in Star Wars": [
+        "Andy Serkis",
+        "Oscar Isaac",
+        "Christopher Lee",
+        "Daisy Ridley",
+      ],
+      "Appeared in MCU": [
+        "Andy Serkis",
+        "Oscar Isaac",
+        "Martin Freeman",
+        "Florence Pugh",
+      ],
+      "Appeared in Hobbit/LOTR": [
+        "Andy Serkis",
+        "Christopher Lee",
+        "Martin Freeman",
+        "Elijah Wood",
+      ],
+    },
+    hint: "Lukas, Lee, Tolkien",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Title Starts With S": [
+        "Sweet Child o' Mine",
+        "She's Always a Woman",
+        "Smells Like Teen Spirit",
+        "Superstition",
+      ],
+      "Apostrophe(s) in Title": [
+        "Sweet Child o' Mine",
+        "She's Always a Woman",
+        "Don't Stop Believin'",
+        "Can't Help Falling in Love",
+      ],
+      "By a Band": [
+        "Sweet Child o' Mine",
+        "Smells Like Teen Spirit",
+        "Don't Stop Believin'",
+        "Bohemian Rhapsody",
+      ],
+    },
+    hint: "Initial, Punctuation, Group",
+    title: "Songs",
+  },
+  {
+    groups: {
+      Nocturnal: ["Sugar Glider", "Red Fox", "Tawny Frogmouth", "Kiwi"],
+      Mammal: ["Sugar Glider", "Red Fox", "Kangaroo", "Elephant"],
+      "Native to Australia": [
+        "Sugar Glider",
+        "Tawny Frogmouth",
+        "Kangaroo",
+        "Emu",
+      ],
+    },
+    hint: "Night, Class, Continent",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Two-Word Title": [
+        "Toy Story",
+        "National Treasure",
+        "Jurassic Park",
+        "Swept Away",
+      ],
+      "Released by Disney": [
+        "Toy Story",
+        "National Treasure",
+        "Fantasia",
+        "The Black Cauldron",
+      ],
+      "National Film Registry": [
+        "Toy Story",
+        "Jurassic Park",
+        "Fantasia",
+        "Titanic",
+      ],
+    },
+    hint: "Words, Studio, Preservation",
+    title: "Movies",
+  },
+  {
+    groups: {
+      "Born in Tennessee": [
+        "Dolly Parton",
+        "Chet Atkins",
+        "Aretha Franklin",
+        "Justin Timberlake",
+      ],
+      "Country Music Hall of Famer": [
+        "Dolly Parton",
+        "Chet Atkins",
+        "Willie Nelson",
+        "Hank Williams",
+      ],
+      "Kennedy Center Honoree": [
+        "Dolly Parton",
+        "Aretha Franklin",
+        "Willie Nelson",
+        "Stevie Wonder",
+      ],
+    },
+    hint: "State, HOF, Kennedy",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Heisman Trophy Winner": [
+        "Marcus Allen",
+        "Barry Sanders",
+        "Bo Jackson",
+        "Tim Tebow",
+      ],
+      "10,000 NFL Rushing Yards": [
+        "Marcus Allen",
+        "Barry Sanders",
+        "Marshawn Lynch",
+        "Curtis Martin",
+      ],
+      "Played for Raiders": [
+        "Marcus Allen",
+        "Bo Jackson",
+        "Marshawn Lynch",
+        "Rich Gannon",
+      ],
+    },
+    hint: "Trophy, Yardage, Team",
+    title: "Football",
+  },
+];
+
 export let puzzles = demo.concat(
   week1,
   week2,
@@ -6702,4 +6848,5 @@ export let puzzles = demo.concat(
   week43,
   week44,
   week45,
+  week46,
 );
