@@ -6802,6 +6802,152 @@ let week46: Week = [
   },
 ];
 
+let week47: Week = [
+  {
+    groups: {
+      "Named After a Roman Number": [
+        "September",
+        "December",
+        "November",
+        "October",
+      ],
+      "First Month of a Season": ["September", "December", "June", "March"],
+      "Has 30 Days": ["September", "November", "June", "April"],
+    },
+    hint: "Numeral, Season, Days",
+    title: "Months",
+  },
+  {
+    groups: {
+      "Appeared in Stranger Things": [
+        "Sadie Sink",
+        "Winona Ryder",
+        "Finn Wolfhard",
+        "David Harbour",
+      ],
+      Female: ["Sadie Sink", "Winona Ryder", "Jenna Ortega", "Amanda Seyfried"],
+      "Born in 21st Century": [
+        "Sadie Sink",
+        "Finn Wolfhard",
+        "Jenna Ortega",
+        "Louis Partridge",
+      ],
+    },
+    hint: "Duffers, Gender, Age",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Title is a Question": [
+        "What Was I Made For?",
+        "Where Did Our Love Go",
+        "Are You Gonna Be My Girl",
+        "Who Are You",
+      ],
+      "Female Vocalist": [
+        "What Was I Made For?",
+        "Where Did Our Love Go",
+        "Vampire",
+        "Edge of Seventeen",
+      ],
+      "Released in the 21st Century": [
+        "What Was I Made For?",
+        "Are You Gonna Be My Girl",
+        "Vampire",
+        "Someone You Loved",
+      ],
+    },
+    hint: "Title, Gender, Century",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Aquatic / Semi-Aquatic": [
+        "Oyster",
+        "Sea Snake",
+        "Sea Turtle",
+        "Asian Water Monitor",
+      ],
+      "No Legs": ["Oyster", "Sea Snake", "Common Garden Snail", "Inchworm"],
+      "Has Shell": ["Oyster", "Sea Turtle", "Common Garden Snail", "Armadillo"],
+    },
+    hint: "Water, Legs, Armour",
+    title: "Animals",
+  },
+  {
+    groups: {
+      'Name Includes "Show"': [
+        "The Andy Griffith Show",
+        "The Chris Isaak Show",
+        "That '70s Show",
+        "The Morning Show",
+      ],
+      "Named After Star": [
+        "The Andy Griffith Show",
+        "The Chris Isaak Show",
+        "Newhart",
+        "Reba",
+      ],
+      "Debuted in the 20th Century": [
+        "The Andy Griffith Show",
+        "That '70s Show",
+        "Newhart",
+        "The Twilight Zone",
+      ],
+    },
+    hint: "Show, Namesake, Century",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      'Name Includes "Band"': [
+        "The Steve Miller Band",
+        "Dave Matthews Band",
+        "The Band",
+        "Little River Band",
+      ],
+      "Named After a Member": [
+        "The Steve Miller Band",
+        "Dave Matthews Band",
+        "The Jimi Hendrix Experience",
+        "Sade",
+      ],
+      "Formed in the 1960s": [
+        "The Steve Miller Band",
+        "The Band",
+        "The Jimi Hendrix Experience",
+        "The Byrds",
+      ],
+    },
+    hint: "Band, Namesake, Decade",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "Rookie of the Year": [
+        "Ryan Howard",
+        "Ichiro Suzuki",
+        "Dontrelle Willis",
+        "Nomar Garciaparra",
+      ],
+      "Most Valuable Player": [
+        "Ryan Howard",
+        "Ichiro Suzuki",
+        "Jimmy Rollins",
+        "Joey Votto",
+      ],
+      "World Series Champion": [
+        "Ryan Howard",
+        "Dontrelle Willis",
+        "Jimmy Rollins",
+        "Chase Utley",
+      ],
+    },
+    hint: "ROY, MVP, WS",
+    title: "Baseball",
+  },
+];
+
 export let puzzles = demo.concat(
   week1,
   week2,
@@ -6849,4 +6995,5 @@ export let puzzles = demo.concat(
   week44,
   week45,
   week46,
+  week47,
 );
