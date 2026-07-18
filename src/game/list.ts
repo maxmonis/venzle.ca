@@ -6948,6 +6948,177 @@ let week47: Week = [
   },
 ];
 
+let week48: Week = [
+  {
+    groups: {
+      "Born in Poland": [
+        "Marie Curie",
+        "Kazimierz Fajans",
+        "Nicolaus Copernicus",
+        "Casimir Funk",
+      ],
+      "Studied Radioactivity": [
+        "Marie Curie",
+        "Kazimierz Fajans",
+        "Lise Meitner",
+        "Henri Becquerel",
+      ],
+      "Has an Element Named After Them": [
+        "Marie Curie",
+        "Nicolaus Copernicus",
+        "Lise Meitner",
+        "Dmitri Mendeleev",
+      ],
+    },
+    hint: "Country, Radiation, Element",
+    title: "Scientists",
+  },
+  {
+    groups: {
+      "Tony Award Winner": [
+        "Cynthia Nixon",
+        "Kristin Chenoweth",
+        "Idina Menzel",
+        "Denzel Washington",
+      ],
+      "Emmy Winner": [
+        "Cynthia Nixon",
+        "Kristin Chenoweth",
+        "Julia Louis-Dreyfus",
+        "Jon Hamm",
+      ],
+      "Born in New York City": [
+        "Cynthia Nixon",
+        "Idina Menzel",
+        "Julia Louis-Dreyfus",
+        "Timothée Chalamet",
+      ],
+    },
+    hint: "Broadway, Television, City",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "By The Rolling Stones": [
+        "Jumpin' Jack Flash",
+        "Angie",
+        "Gimme Shelter",
+        "Paint It Black",
+      ],
+      "Title Includes a Person's Name": [
+        "Jumpin' Jack Flash",
+        "Angie",
+        "Layla",
+        "Roxanne",
+      ],
+      "Featured in a Martin Scorsese Film": [
+        "Jumpin' Jack Flash",
+        "Gimme Shelter",
+        "Layla",
+        "Rags to Riches",
+      ],
+    },
+    hint: "Jagger, Name, Scorsese",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Name Includes a Color": [
+        "Blue Morpho",
+        "Golden Lion Tamarin",
+        "Purple Sea Urchin",
+        "Red Panda",
+      ],
+      "Found in South America": [
+        "Blue Morpho",
+        "Golden Lion Tamarin",
+        "Goliath Birdeater",
+        "Vicuña",
+      ],
+      Invertebrate: [
+        "Blue Morpho",
+        "Purple Sea Urchin",
+        "Goliath Birdeater",
+        "Giant Pacific Octopus",
+      ],
+    },
+    hint: "Color, Continent, Spine",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Directed by James Cameron": [
+        "Terminator 2: Judgment Day",
+        "Aliens",
+        "The Terminator",
+        "True Lies",
+      ],
+      "Won Best Visual Effects Oscar": [
+        "Terminator 2: Judgment Day",
+        "Aliens",
+        "Tenet",
+        "Gravity",
+      ],
+      "Features Time Travel": [
+        "Terminator 2: Judgment Day",
+        "The Terminator",
+        "Tenet",
+        "Back to the Future",
+      ],
+    },
+    hint: "Director, Effects, Time",
+    title: "Movies",
+  },
+  {
+    groups: {
+      "Born in New Orleans": [
+        "Louis Armstrong",
+        "Wynton Marsalis",
+        "Lil Wayne",
+        "Fats Domino",
+      ],
+      Trumpeter: [
+        "Louis Armstrong",
+        "Wynton Marsalis",
+        "Herb Alpert",
+        "Chris Botti",
+      ],
+      "Had Billboard Hot 100 #1 Hit(s)": [
+        "Louis Armstrong",
+        "Lil Wayne",
+        "Herb Alpert",
+        "Whitney Houston",
+      ],
+    },
+    hint: "City, Instrument, Billboard",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Played at UCLA": [
+        "Russell Westbrook",
+        "Zach LaVine",
+        "Baron Davis",
+        "Kareem Abdul-Jabbar",
+      ],
+      "Olympic Gold Medalist": [
+        "Russell Westbrook",
+        "Zach LaVine",
+        "Klay Thompson",
+        "LeBron James",
+      ],
+      "Born in California": [
+        "Russell Westbrook",
+        "Baron Davis",
+        "Klay Thompson",
+        "Paul Pierce",
+      ],
+    },
+    hint: "Bruins, Olympics, Birthplace",
+    title: "Basketball",
+  },
+];
+
 export let puzzles = demo.concat(
   week1,
   week2,
@@ -6996,4 +7167,5 @@ export let puzzles = demo.concat(
   week45,
   week46,
   week47,
+  week48,
 );
