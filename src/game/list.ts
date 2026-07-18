@@ -7119,6 +7119,152 @@ let week48: Week = [
   },
 ];
 
+let week49: Week = [
+  {
+    groups: {
+      "In Europe": ["Berlin", "Paris", "Brussels", "Vienna"],
+      "Hosted the Summer Olympics": ["Berlin", "Paris", "Beijing", "Tokyo"],
+      "Name Starts With B": ["Berlin", "Brussels", "Beijing", "Bangkok"],
+    },
+    hint: "Continent, Olympics, Name",
+    title: "Capitals",
+  },
+  {
+    groups: {
+      "Appeared in Film(s) Directed by Steven Spielberg": [
+        "Ben Kingsley",
+        "Richard Dreyfuss",
+        "Ralph Fiennes",
+        "Tom Hanks",
+      ],
+      "Born in the 1940s": [
+        "Ben Kingsley",
+        "Richard Dreyfuss",
+        "Lynn Redgrave",
+        "Robert De Niro",
+      ],
+      "Born in the UK": [
+        "Ben Kingsley",
+        "Ralph Fiennes",
+        "Lynn Redgrave",
+        "Hugh Grant",
+      ],
+    },
+    hint: "Director, Decade, Country",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Title Includes a Day of the Week": [
+        "Another Saturday Night",
+        "Monday, Monday",
+        "Saturday Night's Alright for Fighting",
+        "Sunday Bloody Sunday",
+      ],
+      "Released in the 1960s": [
+        "Another Saturday Night",
+        "Monday, Monday",
+        "Respect",
+        "Good Vibrations",
+      ],
+      "By a Solo Artist": [
+        "Another Saturday Night",
+        "Saturday Night's Alright for Fighting",
+        "Respect",
+        "Rolling in the Deep",
+      ],
+    },
+    hint: "Name, Decade, Solo",
+    title: "Songs",
+  },
+  {
+    groups: {
+      Extinct: ["Woolly Mammoth", "American Mastodon", "Bali Tiger", "Dodo"],
+      "Has Tusks": [
+        "Woolly Mammoth",
+        "American Mastodon",
+        "Babirusa",
+        "Warthog",
+      ],
+      "Native to Asia": [
+        "Woolly Mammoth",
+        "Bali Tiger",
+        "Babirusa",
+        "Snow Leopard",
+      ],
+    },
+    hint: "Status, Tusks, Continent",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Based on a Comic Book": [
+        "The Flash",
+        "The Walking Dead",
+        "Smallville",
+        "The Sandman",
+      ],
+      "Premiered in the 2010s": [
+        "The Flash",
+        "The Walking Dead",
+        "Jane the Virgin",
+        "Fleabag",
+      ],
+      "Aired on The CW": [
+        "The Flash",
+        "Smallville",
+        "Jane the Virgin",
+        "Supernatural",
+      ],
+    },
+    hint: "Comics, Decade, Network",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      "Performed at Woodstock": [
+        "Santana",
+        "Blood, Sweat & Tears",
+        "Grateful Dead",
+        "The Who",
+      ],
+      "Won Album of the Year Grammy": [
+        "Santana",
+        "Blood, Sweat & Tears",
+        "Toto",
+        "Fleetwood Mac",
+      ],
+      "Formed in California": ["Santana", "Grateful Dead", "Toto", "Weezer"],
+    },
+    hint: "Woodstock, Grammy, California",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "Played Tight End": [
+        "Travis Kelce",
+        "Tony Gonzalez",
+        "Kyle Rudolph",
+        "Jimmy Graham",
+      ],
+      "Played for the Chiefs": [
+        "Travis Kelce",
+        "Tony Gonzalez",
+        "Brady Quinn",
+        "Derrick Thomas",
+      ],
+      "Born in Ohio": [
+        "Travis Kelce",
+        "Kyle Rudolph",
+        "Brady Quinn",
+        "Jason Kelce",
+      ],
+    },
+    hint: "Position, Team, State",
+    title: "Football",
+  },
+];
+
 export let puzzles = demo.concat(
   week1,
   week2,
@@ -7168,4 +7314,5 @@ export let puzzles = demo.concat(
   week46,
   week47,
   week48,
+  week49,
 );
