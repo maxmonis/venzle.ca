@@ -7265,6 +7265,756 @@ let week49: Week = [
   },
 ];
 
+let week50: Week = [
+  {
+    groups: {
+      "String Instrument": ["Erhu", "Sitar", "Bass", "Violin"],
+      "Originated in Asia": ["Erhu", "Sitar", "Gong", "Bansuri"],
+      "Name Has Four Letters": ["Erhu", "Bass", "Gong", "Tuba"],
+    },
+    hint: "Strings, Continent, Name",
+    title: "Instruments",
+  },
+  {
+    groups: {
+      "Appeared in The Dark Knight Trilogy": [
+        "Cillian Murphy",
+        "Aidan Gillen",
+        "Christian Bale",
+        "Michael Caine",
+      ],
+      "Born in Ireland": [
+        "Cillian Murphy",
+        "Aidan Gillen",
+        "Colin Farrell",
+        "Pierce Brosnan",
+      ],
+      "Born in the 1970s": [
+        "Cillian Murphy",
+        "Christian Bale",
+        "Colin Farrell",
+        "Reese Witherspoon",
+      ],
+    },
+    hint: "Batman, Country, Decade",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Released in the 1980s": [
+        "Faith",
+        "Karma Chameleon",
+        "Thriller",
+        "Livin' on a Prayer",
+      ],
+      "By a British Artist": [
+        "Faith",
+        "Karma Chameleon",
+        "Yesterday",
+        "Common People",
+      ],
+      "One Word Title": ["Faith", "Yesterday", "Thriller", "Vogue"],
+    },
+    hint: "Decade, Nationality, Title",
+    title: "Songs",
+  },
+  {
+    groups: {
+      Bird: ["Ostrich", "African Grey Parrot", "Emperor Penguin", "Bald Eagle"],
+      "Native to Africa": [
+        "Ostrich",
+        "African Grey Parrot",
+        "Meerkat",
+        "Egyptian Fruit Bat",
+      ],
+      "Cannot Fly": ["Ostrich", "Emperor Penguin", "Meerkat", "Koala"],
+    },
+    hint: "Class, Continent, Flight",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Set in New York City": [
+        "Annie Hall",
+        "West Side Story",
+        "Taxi Driver",
+        "Ghostbusters",
+      ],
+      "Won Best Picture Oscar": [
+        "Annie Hall",
+        "West Side Story",
+        "Rocky",
+        "Gladiator",
+      ],
+      "Released in the 1970s": ["Annie Hall", "Taxi Driver", "Rocky", "Jaws"],
+    },
+    hint: "City, Academy, Decade",
+    title: "Movies",
+  },
+  {
+    groups: {
+      "Died at Age 27": [
+        "Jimi Hendrix",
+        "Janis Joplin",
+        "Brian Jones",
+        "Amy Winehouse",
+      ],
+      "Born in the United States": [
+        "Jimi Hendrix",
+        "Janis Joplin",
+        "Chuck Berry",
+        "Frank Sinatra",
+      ],
+      "Primarily a Guitarist": [
+        "Jimi Hendrix",
+        "Brian Jones",
+        "Chuck Berry",
+        "Eric Clapton",
+      ],
+    },
+    hint: "27 Club, Nationality, Instrument",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Hit 500+ Career Home Runs": [
+        "Manny Ramirez",
+        "Eddie Murray",
+        "David Ortiz",
+        "Mickey Mantle",
+      ],
+      "Played for the Dodgers": [
+        "Manny Ramirez",
+        "Eddie Murray",
+        "Pedro Martinez",
+        "Sandy Koufax",
+      ],
+      "Born in the Dominican Republic": [
+        "Manny Ramirez",
+        "David Ortiz",
+        "Pedro Martinez",
+        "Vladimir Guerrero Sr.",
+      ],
+    },
+    hint: "Power, Team, Nationality",
+    title: "Baseball",
+  },
+];
+
+let week51: Week = [
+  {
+    groups: {
+      "Atomic Number Is Even": ["Oxygen", "Carbon", "Helium", "Iron"],
+      "Symbol Has One Letter": ["Oxygen", "Carbon", "Hydrogen", "Phosphorus"],
+      "Gas at Room Temperature": ["Oxygen", "Helium", "Hydrogen", "Chlorine"],
+    },
+    hint: "Atomic Number, Symbol, State",
+    title: "Elements",
+  },
+  {
+    groups: {
+      "Appeared in Inglourious Basterds": [
+        "Til Schweiger",
+        "Diane Kruger",
+        "Brad Pitt",
+        "Daniel Brühl",
+      ],
+      "Born in Germany": [
+        "Til Schweiger",
+        "Diane Kruger",
+        "Thomas Kretschmann",
+        "Jürgen Prochnow",
+      ],
+      "Born in the 1960s": [
+        "Til Schweiger",
+        "Brad Pitt",
+        "Thomas Kretschmann",
+        "Nicolas Cage",
+      ],
+    },
+    hint: "Inglourious, Nationality, Decade",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "By a Canadian Artist": [
+        "One Week",
+        "Summer of '69",
+        "Ironic",
+        "Heart of Gold",
+      ],
+      "Title Includes a Number": [
+        "One Week",
+        "Summer of '69",
+        "1979",
+        "99 Luftballons",
+      ],
+      "Released in the 1990s": [
+        "One Week",
+        "Ironic",
+        "1979",
+        "Losing My Religion",
+      ],
+    },
+    hint: "Nationality, Name, Decade",
+    title: "Songs",
+  },
+  {
+    groups: {
+      Reptile: [
+        "Gila Monster",
+        "Puff Adder",
+        "Snapping Turtle",
+        "Galápagos Tortoise",
+      ],
+      Venomous: [
+        "Gila Monster",
+        "Puff Adder",
+        "Black Widow Spider",
+        "Blue-Ringed Octopus",
+      ],
+      "Native to North America": [
+        "Gila Monster",
+        "Snapping Turtle",
+        "Black Widow Spider",
+        "Pronghorn",
+      ],
+    },
+    hint: "Class, Venom, Continent",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Animated Series": [
+        "Spawn",
+        "The Ricky Gervais Show",
+        "Daria",
+        "BoJack Horseman",
+      ],
+      "Premiered on HBO": [
+        "Spawn",
+        "The Ricky Gervais Show",
+        "The Sopranos",
+        "Game of Thrones",
+      ],
+      "Premiered in the 1990s": [
+        "Spawn",
+        "Daria",
+        "The Sopranos",
+        "Twin Peaks",
+      ],
+    },
+    hint: "Cartoon, Network, Decade",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      "Formed in Australia": [
+        "Wolfmother",
+        "The Cat Empire",
+        "Empire of the Sun",
+        "INXS",
+      ],
+      "Name Includes an Animal": [
+        "Wolfmother",
+        "The Cat Empire",
+        "Cage the Elephant",
+        "Eagles",
+      ],
+      "Formed in the 2000s": [
+        "Wolfmother",
+        "Empire of the Sun",
+        "Cage the Elephant",
+        "The Killers",
+      ],
+    },
+    hint: "Nationality, Name, Decade",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "Played for the Lakers": [
+        "Vlade Divac",
+        "Luka Dončić",
+        "George Mikan",
+        "Michael Cooper",
+      ],
+      "Born in Europe": [
+        "Vlade Divac",
+        "Luka Dončić",
+        "Arvydas Sabonis",
+        "Tony Parker",
+      ],
+      "Played Center": [
+        "Vlade Divac",
+        "George Mikan",
+        "Arvydas Sabonis",
+        "Alonzo Mourning",
+      ],
+    },
+    hint: "Team, Continent, Position",
+    title: "Basketball",
+  },
+];
+
+let week52: Week = [
+  {
+    groups: {
+      "Odd Number": ["9", "25", "21", "7"],
+      "Perfect Square": ["9", "25", "36", "16"],
+      "Multiple of 3": ["9", "21", "36", "12"],
+    },
+    hint: "Parity, Squares, Divisibility",
+    title: "Numbers",
+  },
+  {
+    groups: {
+      "Appeared in The Grand Budapest Hotel": [
+        "F. Murray Abraham",
+        "Jeff Goldblum",
+        "Harvey Keitel",
+        "Tilda Swinton",
+      ],
+      "Born in Pennsylvania": [
+        "F. Murray Abraham",
+        "Jeff Goldblum",
+        "Shirley Jones",
+        "Kevin Bacon",
+      ],
+      "Born in the 1930s": [
+        "F. Murray Abraham",
+        "Harvey Keitel",
+        "Shirley Jones",
+        "Jack Nicholson",
+      ],
+    },
+    hint: "Budapest, State, Decade",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Title Includes a Food or Drink": [
+        "Candy Shop",
+        "Banana Pancakes",
+        "Gin and Juice",
+        "American Pie",
+      ],
+      "Released in the 2000s": [
+        "Candy Shop",
+        "Banana Pancakes",
+        "In Da Club",
+        "Chasing Cars",
+      ],
+      "By a Hip-Hop Artist": [
+        "Candy Shop",
+        "Gin and Juice",
+        "In Da Club",
+        "Rapper's Delight",
+      ],
+    },
+    hint: "Menu, Decade, Genre",
+    title: "Songs",
+  },
+  {
+    groups: {
+      Amphibian: [
+        "Fire Salamander",
+        "Common Frog",
+        "Axolotl",
+        "Poison Dart Frog",
+      ],
+      "Native to Europe": [
+        "Fire Salamander",
+        "Common Frog",
+        "Red Squirrel",
+        "European Honey Bee",
+      ],
+      "Has a Tail as an Adult": [
+        "Fire Salamander",
+        "Axolotl",
+        "Red Squirrel",
+        "Ring-Tailed Lemur",
+      ],
+    },
+    hint: "Class, Continent, Tail",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Directed by Alfred Hitchcock": [
+        "Strangers on a Train",
+        "Rear Window",
+        "Psycho",
+        "The Birds",
+      ],
+      "Released in the 1950s": [
+        "Strangers on a Train",
+        "Rear Window",
+        "12 Angry Men",
+        "Singin' in the Rain",
+      ],
+      "Black-and-White": [
+        "Strangers on a Train",
+        "Psycho",
+        "12 Angry Men",
+        "The Elephant Man",
+      ],
+    },
+    hint: "Director, Decade, Color",
+    title: "Movies",
+  },
+  {
+    groups: {
+      "Drums are Primary Instrument": [
+        "Ringo Starr",
+        "Phil Collins",
+        "Buddy Rich",
+        "Travis Barker",
+      ],
+      "Born in England": ["Ringo Starr", "Phil Collins", "Elton John", "Adele"],
+      "Born Before 1950": [
+        "Ringo Starr",
+        "Buddy Rich",
+        "Elton John",
+        "Bob Marley",
+      ],
+    },
+    hint: "Instrument, Nationality, Age",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Played Running Back": [
+        "Emmitt Smith",
+        "Tony Dorsett",
+        "Edgerrin James",
+        "Walter Payton",
+      ],
+      "Played for the Cowboys": [
+        "Emmitt Smith",
+        "Tony Dorsett",
+        "Michael Irvin",
+        "Troy Aikman",
+      ],
+      "Born in Florida": [
+        "Emmitt Smith",
+        "Edgerrin James",
+        "Michael Irvin",
+        "Warren Sapp",
+      ],
+    },
+    hint: "Position, Team, State",
+    title: "Football",
+  },
+];
+
+let week53: Week = [
+  {
+    groups: {
+      "In Africa": ["Mali", "Ethiopia", "Senegal", "Egypt"],
+      Landlocked: ["Mali", "Ethiopia", "Switzerland", "Nepal"],
+      "French Is an Official Language": [
+        "Mali",
+        "Senegal",
+        "Switzerland",
+        "Canada",
+      ],
+    },
+    hint: "Continent, Landlocked, Language",
+    title: "Countries",
+  },
+  {
+    groups: {
+      "Appeared in Beetlejuice Film(s)": [
+        "Michael Keaton",
+        "Catherine O'Hara",
+        "Winona Ryder",
+        "Monica Bellucci",
+      ],
+      "Born in the 1950s": [
+        "Michael Keaton",
+        "Catherine O'Hara",
+        "John Travolta",
+        "Gary Oldman",
+      ],
+      "Born in the United States": [
+        "Michael Keaton",
+        "Winona Ryder",
+        "John Travolta",
+        "Leonardo DiCaprio",
+      ],
+    },
+    hint: "Film, Decade, Country",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "By Elton John": [
+        "Goodbye Yellow Brick Road",
+        "Blue Eyes",
+        "Rocket Man",
+        "Sacrifice",
+      ],
+      "Title Includes a Color": [
+        "Goodbye Yellow Brick Road",
+        "Blue Eyes",
+        "Black Dog",
+        "Purple Rain",
+      ],
+      "Released in the 1970s": [
+        "Goodbye Yellow Brick Road",
+        "Rocket Man",
+        "Black Dog",
+        "Hotel California",
+      ],
+    },
+    hint: "Artist, Title, Decade",
+    title: "Songs",
+  },
+  {
+    groups: {
+      Fish: ["Great White Shark", "Clownfish", "Piranha", "Goldfish"],
+      "Lives in Saltwater": [
+        "Great White Shark",
+        "Clownfish",
+        "Box Jellyfish",
+        "Starfish",
+      ],
+      "Dangerous to Humans": [
+        "Great White Shark",
+        "Piranha",
+        "Box Jellyfish",
+        "Black Mamba",
+      ],
+    },
+    hint: "Class, Water, Danger",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Aired on ABC": ["Ugly Betty", "Lost", "Spin City", "Roseanne"],
+      "Premiered in the 2000s": ["Ugly Betty", "Lost", "Mad Men", "The Office"],
+      "Set in New York City": [
+        "Ugly Betty",
+        "Spin City",
+        "Mad Men",
+        "Seinfeld",
+      ],
+    },
+    hint: "Network, Decade, City",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      "Formed in England": ["Queen", "Oasis", "The Police", "The Beatles"],
+      "Has a One-Word Name": ["Queen", "Oasis", "Ramones", "Nirvana"],
+      "Formed in the 1970s": [
+        "Queen",
+        "The Police",
+        "Ramones",
+        "Talking Heads",
+      ],
+    },
+    hint: "Country, Name, Decade",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "Named World Series MVP": [
+        "Bob Gibson",
+        "Randy Johnson",
+        "David Eckstein",
+        "Reggie Jackson",
+      ],
+      "Primarily Played Pitcher": [
+        "Bob Gibson",
+        "Randy Johnson",
+        "Dizzy Dean",
+        "Nolan Ryan",
+      ],
+      "Played for the Cardinals": [
+        "Bob Gibson",
+        "David Eckstein",
+        "Dizzy Dean",
+        "Ozzie Smith",
+      ],
+    },
+    hint: "Award, Position, Team",
+    title: "Baseball",
+  },
+];
+
+let week54: Week = [
+  {
+    groups: {
+      "First Released in the 1980s": [
+        "Super Mario Bros.",
+        "Contra",
+        "Q*bert",
+        "Missile Command",
+      ],
+      "Developed in Japan": [
+        "Super Mario Bros.",
+        "Contra",
+        "Sonic the Hedgehog",
+        "Resident Evil",
+      ],
+      "Title Includes a Character's Name": [
+        "Super Mario Bros.",
+        "Q*bert",
+        "Sonic the Hedgehog",
+        "Max Payne",
+      ],
+    },
+    hint: "Decade, Country, Name",
+    title: "Video Games",
+  },
+  {
+    groups: {
+      "Appeared in No Country for Old Men": [
+        "Tommy Lee Jones",
+        "Woody Harrelson",
+        "Josh Brolin",
+        "Javier Bardem",
+      ],
+      "Born in Texas": [
+        "Tommy Lee Jones",
+        "Woody Harrelson",
+        "Rip Torn",
+        "Owen Wilson",
+      ],
+      "Appeared in Men in Black Film(s)": [
+        "Tommy Lee Jones",
+        "Josh Brolin",
+        "Rip Torn",
+        "Will Smith",
+      ],
+    },
+    hint: "Coens, State, Aliens",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Title Includes Body Part(s)": [
+        "Eye of the Tiger",
+        "Brown Eyed Girl",
+        "Heart-Shaped Box",
+        "Hips Don't Lie",
+      ],
+      "Released Before 1990": [
+        "Eye of the Tiger",
+        "Brown Eyed Girl",
+        "Sweet Home Alabama",
+        "Paint It Black",
+      ],
+      "By an American Band": [
+        "Eye of the Tiger",
+        "Heart-Shaped Box",
+        "Sweet Home Alabama",
+        "Mr. Brightside",
+      ],
+    },
+    hint: "Name, Era, Nationality",
+    title: "Songs",
+  },
+  {
+    groups: {
+      Insect: [
+        "Leafcutter Ant",
+        "Japanese Giant Hornet",
+        "Blue Morpho Butterfly",
+        "Japanese Beetle",
+      ],
+      "Lives in a Colony": [
+        "Leafcutter Ant",
+        "Japanese Giant Hornet",
+        "Vampire Bat",
+        "Naked Mole-Rat",
+      ],
+      "Native to South America": [
+        "Leafcutter Ant",
+        "Blue Morpho Butterfly",
+        "Vampire Bat",
+        "Jaguar",
+      ],
+    },
+    hint: "Class, Society, Continent",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Runs Over Three Hours": [
+        "Gone with the Wind",
+        "Lagaan",
+        "The Green Mile",
+        "Seven Samurai",
+      ],
+      "Set Primarily in the USA": [
+        "Gone with the Wind",
+        "The Green Mile",
+        "Django Unchained",
+        "The Shining",
+      ],
+      "Set in the 19th Century": [
+        "Gone with the Wind",
+        "Lagaan",
+        "Django Unchained",
+        "The Prestige",
+      ],
+    },
+    hint: "Runtime, Country, Century",
+    title: "Movies",
+  },
+  {
+    groups: {
+      "Bass is Primary Instrument": [
+        "Roger Waters",
+        "Mark Hoppus",
+        "John Paul Jones",
+        "Adam Clayton",
+      ],
+      "Sang Lead Vocals": [
+        "Roger Waters",
+        "Mark Hoppus",
+        "Robert Plant",
+        "Axl Rose",
+      ],
+      "Active in the 1960s": [
+        "Roger Waters",
+        "John Paul Jones",
+        "Robert Plant",
+        "Charlie Watts",
+      ],
+    },
+    hint: "Instrument, Vocals, Decade",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Played at UNC": [
+        "Vince Carter",
+        "Danny Green",
+        "Sam Perkins",
+        "Rasheed Wallace",
+      ],
+      "Played for the Raptors": [
+        "Vince Carter",
+        "Danny Green",
+        "Kyle Lowry",
+        "Antonio Davis",
+      ],
+      "Olympic Gold Medallist": [
+        "Vince Carter",
+        "Sam Perkins",
+        "Kyle Lowry",
+        "David Robinson",
+      ],
+    },
+    hint: "College, Team, Medal",
+    title: "Basketball",
+  },
+];
+
 export let puzzles = demo.concat(
   week1,
   week2,
@@ -7315,4 +8065,9 @@ export let puzzles = demo.concat(
   week47,
   week48,
   week49,
+  week50,
+  week51,
+  week52,
+  week53,
+  week54,
 );
