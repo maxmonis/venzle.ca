@@ -8015,6 +8015,489 @@ let week54: Week = [
   },
 ];
 
+let week55: Week = [
+  {
+    groups: {
+      "Played Before 1950": ["Monopoly", "Backgammon", "Scrabble", "Go"],
+      "Uses Dice": ["Monopoly", "Backgammon", "Trouble", "Settlers of Catan"],
+      "Invented in the USA": [
+        "Monopoly",
+        "Scrabble",
+        "Trouble",
+        "Connect Four",
+      ],
+    },
+    hint: "Age, Dice, Country",
+    title: "Board Games",
+  },
+  {
+    groups: {
+      "Appeared in Love Actually": [
+        "Alan Rickman",
+        "Bill Nighy",
+        "Chiwetel Ejiofor",
+        "Liam Neeson",
+      ],
+      "Appeared in Harry Potter Film(s)": [
+        "Alan Rickman",
+        "Bill Nighy",
+        "Helena Bonham Carter",
+        "Robbie Coltrane",
+      ],
+      "Born in London": [
+        "Alan Rickman",
+        "Chiwetel Ejiofor",
+        "Helena Bonham Carter",
+        "Naomie Harris",
+      ],
+    },
+    hint: "Christmas, Wizards, City",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Title Includes a Day of the Week": [
+        "Pleasant Valley Sunday",
+        "Ruby Tuesday",
+        "Manic Monday",
+        "Friday I'm in Love",
+      ],
+      "Released in the 1960s": [
+        "Pleasant Valley Sunday",
+        "Ruby Tuesday",
+        "Light My Fire",
+        "A Whiter Shade of Pale",
+      ],
+      "By a Band from Los Angeles": [
+        "Pleasant Valley Sunday",
+        "Manic Monday",
+        "Light My Fire",
+        "Californication",
+      ],
+    },
+    hint: "Day, Decade, City",
+    title: "Songs",
+  },
+  {
+    groups: {
+      Domesticated: ["Yak", "Domestic Goat", "Shire Horse", "Alpaca"],
+      "Has Horns": ["Yak", "Domestic Goat", "Cape Buffalo", "Bighorn Sheep"],
+      "Adults Weigh Over 200 kg": [
+        "Yak",
+        "Shire Horse",
+        "Cape Buffalo",
+        "Polar Bear",
+      ],
+    },
+    hint: "Farm, Headgear, Weight",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Premiered in the 1980s": [
+        "Family Matters",
+        "Perfect Strangers",
+        "Murder, She Wrote",
+        "Miami Vice",
+      ],
+      "Set in Chicago": [
+        "Family Matters",
+        "Perfect Strangers",
+        "Chicago Fire",
+        "Shameless (US)",
+      ],
+      "Ran for More Than 200 Episodes": [
+        "Family Matters",
+        "Murder, She Wrote",
+        "Chicago Fire",
+        "Gunsmoke",
+      ],
+    },
+    hint: "Decade, City, Longevity",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      "Formed in Canada": [
+        "Arcade Fire",
+        "Metric",
+        "Bachman-Turner Overdrive",
+        "Sum 41",
+      ],
+      "Has Had Female Member(s)": [
+        "Arcade Fire",
+        "Metric",
+        "The Corrs",
+        "Garbage",
+      ],
+      "Includes Siblings": [
+        "Arcade Fire",
+        "Bachman-Turner Overdrive",
+        "The Corrs",
+        "Bee Gees",
+      ],
+    },
+    hint: "Country, Members, Family",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "Played Linebacker": [
+        "Clay Matthews III",
+        "Ray Nitschke",
+        "Junior Seau",
+        "Dick Butkus",
+      ],
+      "Played for the Packers": [
+        "Clay Matthews III",
+        "Ray Nitschke",
+        "Willie Wood",
+        "Bart Starr",
+      ],
+      "Played College Football at USC": [
+        "Clay Matthews III",
+        "Junior Seau",
+        "Willie Wood",
+        "Ronnie Lott",
+      ],
+    },
+    hint: "Position, Team, College",
+    title: "Football",
+  },
+];
+
+let week56: Week = [
+  {
+    groups: {
+      "Located in a National Capital": [
+        "Washington Monument",
+        "Brandenburg Gate",
+        "Tokyo Tower",
+        "Lincoln Memorial",
+      ],
+      "Completed Before 1900": [
+        "Washington Monument",
+        "Brandenburg Gate",
+        "Cologne Cathedral",
+        "Leaning Tower of Pisa",
+      ],
+      "Taller Than 100 Meters": [
+        "Washington Monument",
+        "Tokyo Tower",
+        "Cologne Cathedral",
+        "Empire State Building",
+      ],
+    },
+    hint: "Capital, Age, Height",
+    title: "Landmarks",
+  },
+  {
+    groups: {
+      "Appeared in Ghostbusters (1984)": [
+        "Dan Aykroyd",
+        "Rick Moranis",
+        "Bill Murray",
+        "Sigourney Weaver",
+      ],
+      "Born in Canada": [
+        "Dan Aykroyd",
+        "Rick Moranis",
+        "Mike Myers",
+        "Michael J. Fox",
+      ],
+      "Former SNL Cast Member": [
+        "Dan Aykroyd",
+        "Bill Murray",
+        "Mike Myers",
+        "Eddie Murphy",
+      ],
+    },
+    hint: "Ghosts, Nationality, Sketch",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Title Includes a Weather Word": [
+        "Heat Waves",
+        "Snow on the Beach",
+        "Riders on the Storm",
+        "Ain't No Sunshine",
+      ],
+      "Released in the 2020s": [
+        "Heat Waves",
+        "Snow on the Beach",
+        "I Ain't Worried",
+        "As It Was",
+      ],
+      "By a Band": [
+        "Heat Waves",
+        "Riders on the Storm",
+        "I Ain't Worried",
+        "Africa",
+      ],
+    },
+    hint: "Weather, Decade, Group",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Native to Asia": [
+        "Giant Panda",
+        "Malayan Tapir",
+        "Clouded Leopard",
+        "Indian Rhinoceros",
+      ],
+      "Has Black-and-White Coloring": [
+        "Giant Panda",
+        "Malayan Tapir",
+        "Black-and-White Colobus",
+        "King Penguin",
+      ],
+      "Climbs Trees": [
+        "Giant Panda",
+        "Clouded Leopard",
+        "Black-and-White Colobus",
+        "Coati",
+      ],
+    },
+    hint: "Continent, Coloring, Trees",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Released in the 1980s": [
+        "Children of a Lesser God",
+        "Big",
+        "Rain Man",
+        "The Breakfast Club",
+      ],
+      "Directed by a Woman": [
+        "Children of a Lesser God",
+        "Big",
+        "Monster",
+        "Clueless",
+      ],
+      "Featured Oscar-Winning Performance(s)": [
+        "Children of a Lesser God",
+        "Rain Man",
+        "Monster",
+        "Forrest Gump",
+      ],
+    },
+    hint: "Decade, Director, Academy",
+    title: "Movies",
+  },
+  {
+    groups: {
+      "Recorded for Motown": [
+        "Smokey Robinson",
+        "Mary Wells",
+        "Gladys Knight",
+        "Marvin Gaye",
+      ],
+      "Born in Michigan": [
+        "Smokey Robinson",
+        "Mary Wells",
+        "Bob Seger",
+        "Madonna",
+      ],
+      "Namesake of Own Band": [
+        "Smokey Robinson",
+        "Gladys Knight",
+        "Bob Seger",
+        "Tom Petty",
+      ],
+    },
+    hint: "Label, State, Band",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Played in the Negro Leagues": [
+        "Larry Doby",
+        "Cool Papa Bell",
+        "Satchel Paige",
+        "Josh Gibson",
+      ],
+      "Played Center Field": [
+        "Larry Doby",
+        "Cool Papa Bell",
+        "Kenny Lofton",
+        "Duke Snider",
+      ],
+      "Played for the Cleveland Indians": [
+        "Larry Doby",
+        "Satchel Paige",
+        "Kenny Lofton",
+        "Bob Feller",
+      ],
+    },
+    hint: "League, Position, Team",
+    title: "Baseball",
+  },
+];
+
+let week57: Week = [
+  {
+    groups: {
+      Conifer: [
+        "Tamarack",
+        "Dawn Redwood",
+        "Eastern White Pine",
+        "Norway Spruce",
+      ],
+      Deciduous: ["Tamarack", "Dawn Redwood", "Sugar Maple", "English Oak"],
+      "Native to North America": [
+        "Tamarack",
+        "Eastern White Pine",
+        "Sugar Maple",
+        "Southern Magnolia",
+      ],
+    },
+    hint: "Cones, Leaves, Continent",
+    title: "Trees",
+  },
+  {
+    groups: {
+      "Appeared in Goodfellas": [
+        "Lorraine Bracco",
+        "Paul Sorvino",
+        "Michael Imperioli",
+        "Ray Liotta",
+      ],
+      "Born in Brooklyn": [
+        "Lorraine Bracco",
+        "Paul Sorvino",
+        "Steve Buscemi",
+        "Adam Sandler",
+      ],
+      "Appeared in The Sopranos": [
+        "Lorraine Bracco",
+        "Michael Imperioli",
+        "Steve Buscemi",
+        "James Gandolfini",
+      ],
+    },
+    hint: "Wiseguys, Borough, Tony",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Title Includes a Number": [
+        "2112",
+        "Revolution 9",
+        "Nine Lives",
+        "Seven Nation Army",
+      ],
+      "Runs Longer Than Five Minutes": [
+        "2112",
+        "Revolution 9",
+        "Wish You Were Here",
+        "November Rain",
+      ],
+      "Title Track of an Album": [
+        "2112",
+        "Nine Lives",
+        "Wish You Were Here",
+        "Back in Black",
+      ],
+    },
+    hint: "Name, Length, Album",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Has Webbed Feet": [
+        "Atlantic Puffin",
+        "Brown Pelican",
+        "Snow Goose",
+        "Mute Swan",
+      ],
+      "Eats Fish": [
+        "Atlantic Puffin",
+        "Brown Pelican",
+        "Beluga Whale",
+        "Common Kingfisher",
+      ],
+      "Lives in the Arctic": [
+        "Atlantic Puffin",
+        "Snow Goose",
+        "Beluga Whale",
+        "Musk Ox",
+      ],
+    },
+    hint: "Feet, Food, Habitat",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Set in Los Angeles": [
+        "Bosch",
+        "The Rockford Files",
+        "Transparent",
+        "The Fresh Prince of Bel-Air",
+      ],
+      "Main Character Is a Detective": [
+        "Bosch",
+        "The Rockford Files",
+        "Jessica Jones",
+        "Prime Suspect",
+      ],
+      "Premiered on a Streaming Service": [
+        "Bosch",
+        "Transparent",
+        "Jessica Jones",
+        "The Crown",
+      ],
+    },
+    hint: "City, Sleuth, Platform",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      "Formed in Scotland": [
+        "Texas",
+        "Wet Wet Wet",
+        "Bay City Rollers",
+        "Franz Ferdinand",
+      ],
+      "Formed in the 1980s": ["Texas", "Wet Wet Wet", "Asia", "R.E.M."],
+      "Name Includes a Place Name": [
+        "Texas",
+        "Bay City Rollers",
+        "Asia",
+        "Boston",
+      ],
+    },
+    hint: "Country, Decade, Name",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "Played in the ABA": [
+        "George Gervin",
+        "Artis Gilmore",
+        "Charlie Scott",
+        "Julius Erving",
+      ],
+      "Played for the Spurs": [
+        "George Gervin",
+        "Artis Gilmore",
+        "Avery Johnson",
+        "Sean Elliott",
+      ],
+      "Played Guard": [
+        "George Gervin",
+        "Charlie Scott",
+        "Avery Johnson",
+        "Reggie Miller",
+      ],
+    },
+    hint: "League, Team, Position",
+    title: "Basketball",
+  },
+];
+
 export let puzzles = demo.concat(
   week1,
   week2,
@@ -8070,4 +8553,7 @@ export let puzzles = demo.concat(
   week52,
   week53,
   week54,
+  week55,
+  week56,
+  week57,
 );
