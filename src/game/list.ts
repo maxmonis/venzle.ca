@@ -8498,6 +8498,781 @@ let week57: Week = [
   },
 ];
 
+let week58: Week = [
+  {
+    groups: {
+      "Borders the Pacific Ocean": ["Alaska", "Hawaii", "California", "Oregon"],
+      "Became a State After 1900": [
+        "Alaska",
+        "Hawaii",
+        "Arizona",
+        "New Mexico",
+      ],
+      "Name Ends with the Letter A": [
+        "Alaska",
+        "California",
+        "Arizona",
+        "Florida",
+      ],
+    },
+    hint: "Coast, Age, Spelling",
+    title: "States",
+  },
+  {
+    groups: {
+      "Appeared in Casino": [
+        "Robert De Niro",
+        "James Woods",
+        "Frank Vincent",
+        "Sharon Stone",
+      ],
+      "Born in the 1940s": [
+        "Robert De Niro",
+        "James Woods",
+        "Al Pacino",
+        "Harrison Ford",
+      ],
+      "Of Italian Descent": [
+        "Robert De Niro",
+        "Frank Vincent",
+        "Al Pacino",
+        "John Travolta",
+      ],
+    },
+    hint: "Film, Decade, Heritage",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Title Includes a Person's Name": [
+        "Gloria",
+        "Billie Jean",
+        "Jolene",
+        "Hey Jude",
+      ],
+      "Released in the 1980s": [
+        "Gloria",
+        "Billie Jean",
+        "Like a Virgin",
+        "Beat It",
+      ],
+      "Performed by a Woman": ["Gloria", "Jolene", "Like a Virgin", "Respect"],
+    },
+    hint: "Name, Decade, Gender",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Native to Africa": [
+        "African Fish Eagle",
+        "Lion",
+        "Egyptian Fruit Bat",
+        "Giraffe",
+      ],
+      "Is a Carnivore": [
+        "African Fish Eagle",
+        "Lion",
+        "Bald Eagle",
+        "Grey Wolf",
+      ],
+      "Can Fly": [
+        "African Fish Eagle",
+        "Egyptian Fruit Bat",
+        "Bald Eagle",
+        "Monarch Butterfly",
+      ],
+    },
+    hint: "Continent, Diet, Flight",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Directed by Martin Scorsese": [
+        "The Age of Innocence",
+        "Taxi Driver",
+        "Cape Fear",
+        "The Last Temptation of Christ",
+      ],
+      "Set in New York City": [
+        "The Age of Innocence",
+        "Taxi Driver",
+        "Men in Black",
+        "Breakfast at Tiffany's",
+      ],
+      "Released in the 1990s": [
+        "The Age of Innocence",
+        "Cape Fear",
+        "Men in Black",
+        "Jurassic Park",
+      ],
+    },
+    hint: "Director, City, Decade",
+    title: "Movies",
+  },
+  {
+    groups: {
+      "Born in the United Kingdom": [
+        "Marc Bolan",
+        "Eric Clapton",
+        "Dusty Springfield",
+        "Adele",
+      ],
+      "Plays Guitar": [
+        "Marc Bolan",
+        "Eric Clapton",
+        "Jimi Hendrix",
+        "Bruce Springsteen",
+      ],
+      "Died Before 2000": [
+        "Marc Bolan",
+        "Dusty Springfield",
+        "Jimi Hendrix",
+        "Frank Sinatra",
+      ],
+    },
+    hint: "Nationality, Instrument, Passing",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Played Quarterback": [
+        "Troy Aikman",
+        "Tony Romo",
+        "Joe Montana",
+        "Dan Marino",
+      ],
+      "Played for the Cowboys": [
+        "Troy Aikman",
+        "Tony Romo",
+        "Emmitt Smith",
+        "Dez Bryant",
+      ],
+      "NFL Champion": [
+        "Troy Aikman",
+        "Joe Montana",
+        "Emmitt Smith",
+        "Jerry Rice",
+      ],
+    },
+    hint: "Position, Team, Rings",
+    title: "Football",
+  },
+];
+
+let week59: Week = [
+  {
+    groups: {
+      "Grows on Trees": ["Avocado", "Date", "Black Cherry", "Peach"],
+      "Is a Berry (Botanically)": ["Avocado", "Date", "Blueberry", "Kiwifruit"],
+      "Native to the Americas": [
+        "Avocado",
+        "Black Cherry",
+        "Blueberry",
+        "Pineapple",
+      ],
+    },
+    hint: "Tree, Botany, Origin",
+    title: "Fruits",
+  },
+  {
+    groups: {
+      "Appeared in Pulp Fiction": [
+        "Ving Rhames",
+        "John Travolta",
+        "Christopher Walken",
+        "Samuel L. Jackson",
+      ],
+      "Born in the 1950s": [
+        "Ving Rhames",
+        "John Travolta",
+        "John Turturro",
+        "Tom Hanks",
+      ],
+      "Born in New York City": [
+        "Ving Rhames",
+        "Christopher Walken",
+        "John Turturro",
+        "Robert Downey Jr.",
+      ],
+    },
+    hint: "Film, Decade, City",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Title Includes a Color": [
+        "Brown Sugar",
+        "Black Water",
+        "Yellow",
+        "Purple Rain",
+      ],
+      "Released in the 1970s": [
+        "Brown Sugar",
+        "Black Water",
+        "Bohemian Rhapsody",
+        "Hotel California",
+      ],
+      "By a British Artist or Band": [
+        "Brown Sugar",
+        "Yellow",
+        "Bohemian Rhapsody",
+        "Wonderwall",
+      ],
+    },
+    hint: "Title, Decade, Nationality",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Native to Australia": [
+        "Tawny Frogmouth",
+        "Kookaburra",
+        "Sugar Glider",
+        "Frilled Lizard",
+      ],
+      "Is a Bird": [
+        "Tawny Frogmouth",
+        "Kookaburra",
+        "Great Horned Owl",
+        "American Robin",
+      ],
+      "Is Nocturnal": [
+        "Tawny Frogmouth",
+        "Sugar Glider",
+        "Great Horned Owl",
+        "Raccoon",
+      ],
+    },
+    hint: "Continent, Feathers, Night",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Premiered in the 1990s": [
+        "Will & Grace",
+        "Law & Order",
+        "Frasier",
+        "The X-Files",
+      ],
+      "Set in New York City": [
+        "Will & Grace",
+        "Law & Order",
+        "30 Rock",
+        "Mad Men",
+      ],
+      "Is a Sitcom": ["Will & Grace", "Frasier", "30 Rock", "Modern Family"],
+    },
+    hint: "Decade, City, Genre",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      "Formed in England": ["Traffic", "The Kinks", "Queen", "Depeche Mode"],
+      "Formed in the 1960s": [
+        "Traffic",
+        "The Kinks",
+        "Steppenwolf",
+        "The Beach Boys",
+      ],
+      "Has a One-Word Name": ["Traffic", "Queen", "Steppenwolf", "Nirvana"],
+    },
+    hint: "Country, Decade, Name",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "Played Shortstop": [
+        "Nomar Garciaparra",
+        "Johnny Pesky",
+        "Derek Jeter",
+        "Ozzie Smith",
+      ],
+      "Played for the Red Sox": [
+        "Nomar Garciaparra",
+        "Johnny Pesky",
+        "David Ortiz",
+        "Carl Yastrzemski",
+      ],
+      "Born in the 1970s": [
+        "Nomar Garciaparra",
+        "Derek Jeter",
+        "David Ortiz",
+        "Todd Helton",
+      ],
+    },
+    hint: "Position, Team, Decade",
+    title: "Baseball",
+  },
+];
+
+let week60: Week = [
+  {
+    groups: {
+      "In Africa": ["Congo", "Nile", "Orange River", "Zambezi"],
+      "Longer Than 4,000 km": ["Congo", "Nile", "Amazon", "Yangtze"],
+      "Empties into the Atlantic Ocean": [
+        "Congo",
+        "Orange River",
+        "Amazon",
+        "Rhine",
+      ],
+    },
+    hint: "Continent, Length, Mouth",
+    title: "Rivers",
+  },
+  {
+    groups: {
+      "Appeared in One Flew Over the Cuckoo's Nest": [
+        "Jack Nicholson",
+        "Danny DeVito",
+        "Christopher Lloyd",
+        "Brad Dourif",
+      ],
+      "Born in New Jersey": [
+        "Jack Nicholson",
+        "Danny DeVito",
+        "Robert Blake",
+        "Joe Pesci",
+      ],
+      "Born in the 1930s": [
+        "Jack Nicholson",
+        "Christopher Lloyd",
+        "Robert Blake",
+        "Clint Eastwood",
+      ],
+    },
+    hint: "Film, State, Decade",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Title Includes a Place Name": [
+        "Galveston",
+        "Viva Las Vegas",
+        "Africa",
+        "Hotel California",
+      ],
+      "Performed by a Solo Artist": [
+        "Galveston",
+        "Viva Las Vegas",
+        "Thriller",
+        "Bad Romance",
+      ],
+      "Title Is a Single Word": ["Galveston", "Africa", "Thriller", "Creep"],
+    },
+    hint: "Place, Solo, Length",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Is a Mammal": ["Manatee", "Bottlenose Dolphin", "Elephant", "Lion"],
+      "Lives in the Ocean": [
+        "Manatee",
+        "Bottlenose Dolphin",
+        "Green Sea Turtle",
+        "Great White Shark",
+      ],
+      "Is an Herbivore": [
+        "Manatee",
+        "Elephant",
+        "Green Sea Turtle",
+        "Galapagos Tortoise",
+      ],
+    },
+    hint: "Class, Habitat, Diet",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Directed by Steven Spielberg": [
+        "Jaws",
+        "Close Encounters of the Third Kind",
+        "Jurassic Park",
+        "E.T. the Extra-Terrestrial",
+      ],
+      "Released in the 1970s": [
+        "Jaws",
+        "Close Encounters of the Third Kind",
+        "The Godfather",
+        "Star Wars",
+      ],
+      "Based on a Novel": [
+        "Jaws",
+        "Jurassic Park",
+        "The Godfather",
+        "The Shining",
+      ],
+    },
+    hint: "Director, Decade, Source",
+    title: "Movies",
+  },
+  {
+    groups: {
+      "Plays the Piano": [
+        "Harry Connick Jr.",
+        "Billy Joel",
+        "Sarah McLachlan",
+        "Elton John",
+      ],
+      "Born in the United States": [
+        "Harry Connick Jr.",
+        "Billy Joel",
+        "Kurt Cobain",
+        "Jimi Hendrix",
+      ],
+      "Born in the 1960s": [
+        "Harry Connick Jr.",
+        "Sarah McLachlan",
+        "Kurt Cobain",
+        "Bono",
+      ],
+    },
+    hint: "Instrument, Nationality, Decade",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Played Center": [
+        "Bill Walton",
+        "Kareem Abdul-Jabbar",
+        "Robert Parish",
+        "Patrick Ewing",
+      ],
+      "Played at UCLA": [
+        "Bill Walton",
+        "Kareem Abdul-Jabbar",
+        "Sidney Wicks",
+        "Reggie Miller",
+      ],
+      "Played for the Celtics": [
+        "Bill Walton",
+        "Robert Parish",
+        "Sidney Wicks",
+        "Larry Bird",
+      ],
+    },
+    hint: "Position, College, Team",
+    title: "Basketball",
+  },
+];
+
+let week61: Week = [
+  {
+    groups: {
+      "Is a Volcano": [
+        "Mount Kenya",
+        "Mount Cameroon",
+        "Cotopaxi",
+        "Mount St. Helens",
+      ],
+      "In Africa": [
+        "Mount Kenya",
+        "Mount Cameroon",
+        "Mount Stanley",
+        "Table Mountain",
+      ],
+      "Over 5,000 m Tall": [
+        "Mount Kenya",
+        "Cotopaxi",
+        "Mount Stanley",
+        "Everest",
+      ],
+    },
+    hint: "Lava, Continent, Height",
+    title: "Mountains",
+  },
+  {
+    groups: {
+      "Appeared in The Dark Knight": [
+        "Michael Caine",
+        "Cillian Murphy",
+        "Gary Oldman",
+        "Aaron Eckhart",
+      ],
+      "Appeared in Inception": [
+        "Michael Caine",
+        "Cillian Murphy",
+        "Tom Hardy",
+        "Leonardo DiCaprio",
+      ],
+      "Born in England": [
+        "Michael Caine",
+        "Gary Oldman",
+        "Tom Hardy",
+        "Idris Elba",
+      ],
+    },
+    hint: "Wayne, Brain, Nationality",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Released in the 1990s": [
+        "I Don't Want to Miss a Thing",
+        "Waterfalls",
+        "My Heart Will Go On",
+        "Wonderwall",
+      ],
+      "By an American Artist": [
+        "I Don't Want to Miss a Thing",
+        "Waterfalls",
+        "Eye of the Tiger",
+        "Respect",
+      ],
+      "Written for a Movie": [
+        "I Don't Want to Miss a Thing",
+        "My Heart Will Go On",
+        "Eye of the Tiger",
+        "Skyfall",
+      ],
+    },
+    hint: "Decade, Nationality, Soundtrack",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Native to Africa": [
+        "Nile Crocodile",
+        "Leopard Tortoise",
+        "Hippopotamus",
+        "Giraffe",
+      ],
+      "Is a Reptile": [
+        "Nile Crocodile",
+        "Leopard Tortoise",
+        "Green Anaconda",
+        "Komodo Dragon",
+      ],
+      "Lives in Water": [
+        "Nile Crocodile",
+        "Hippopotamus",
+        "Green Anaconda",
+        "Sea Otter",
+      ],
+    },
+    hint: "Continent, Class, Habitat",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Fantasy or Sci-Fi Series": [
+        "Game of Thrones",
+        "The Witcher",
+        "Westworld",
+        "Stranger Things",
+      ],
+      "Based on a Book or Book Series": [
+        "Game of Thrones",
+        "The Witcher",
+        "Big Little Lies",
+        "Bridgerton",
+      ],
+      "Aired on HBO": [
+        "Game of Thrones",
+        "Westworld",
+        "Big Little Lies",
+        "The Sopranos",
+      ],
+    },
+    hint: "Genre, Source, Network",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      "Formed in England": [
+        "The Who",
+        "Herman's Hermits",
+        "Radiohead",
+        "Spice Girls",
+      ],
+      "Formed in the 1960s": [
+        "The Who",
+        "Herman's Hermits",
+        "The Doors",
+        "The Jackson 5",
+      ],
+      "Rock Band": ["The Who", "Radiohead", "The Doors", "Nirvana"],
+    },
+    hint: "Country, Decade, Genre",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "Played Quarterback": [
+        "Bart Starr",
+        "Lynn Dickey",
+        "Joe Namath",
+        "Dan Marino",
+      ],
+      "Played for the Packers": [
+        "Bart Starr",
+        "Lynn Dickey",
+        "Reggie White",
+        "Sterling Sharpe",
+      ],
+      "Super Bowl Champion": [
+        "Bart Starr",
+        "Joe Namath",
+        "Reggie White",
+        "Emmitt Smith",
+      ],
+    },
+    hint: "Position, Team, Ring",
+    title: "Football",
+  },
+];
+
+let week62: Week = [
+  {
+    groups: {
+      "Silicate Mineral": ["Emerald", "Jade", "Amethyst", "Tiger's Eye"],
+      "Green in Color": ["Emerald", "Jade", "Alexandrite", "Malachite"],
+      "Traditional Birthstone": [
+        "Emerald",
+        "Amethyst",
+        "Alexandrite",
+        "Diamond",
+      ],
+    },
+    hint: "Compound, Color, Month",
+    title: "Gemstones",
+  },
+  {
+    groups: {
+      "Appeared in Harry Potter Film(s)": [
+        "Daniel Radcliffe",
+        "Rupert Grint",
+        "Alan Rickman",
+        "Ralph Fiennes",
+      ],
+      "Born in the 1980s": [
+        "Daniel Radcliffe",
+        "Rupert Grint",
+        "Riz Ahmed",
+        "Chris Hemsworth",
+      ],
+      "Born in London": [
+        "Daniel Radcliffe",
+        "Alan Rickman",
+        "Riz Ahmed",
+        "Daniel Day-Lewis",
+      ],
+    },
+    hint: "Franchise, Decade, City",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Released in the 1960s": [
+        "My Girl",
+        "The Tracks of My Tears",
+        "I Want to Hold Your Hand",
+        "Gimme Shelter",
+      ],
+      "Recorded on the Motown Label": [
+        "My Girl",
+        "The Tracks of My Tears",
+        "I'll Be There",
+        "Cruisin'",
+      ],
+      "Billboard Hot 100 #1 Hit": [
+        "My Girl",
+        "I Want to Hold Your Hand",
+        "I'll Be There",
+        "Rolling in the Deep",
+      ],
+    },
+    hint: "Decade, Label, Chart",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Is a Rodent": ["Capybara", "Chinchilla", "Beaver", "Red Squirrel"],
+      "Native to South America": [
+        "Capybara",
+        "Chinchilla",
+        "Giant Otter",
+        "Llama",
+      ],
+      "Is Semi-Aquatic": ["Capybara", "Beaver", "Giant Otter", "Platypus"],
+    },
+    hint: "Order, Continent, Habitat",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Won Best Picture Oscar": [
+        "Braveheart",
+        "Forrest Gump",
+        "Argo",
+        "One Battle After Another",
+      ],
+      "Released in the 20th Century": [
+        "Braveheart",
+        "Forrest Gump",
+        "Apollo 13",
+        "The Matrix",
+      ],
+      "Based on a True Story": [
+        "Braveheart",
+        "Argo",
+        "Apollo 13",
+        "The Social Network",
+      ],
+    },
+    hint: "Academy, Century, Source",
+    title: "Movies",
+  },
+  {
+    groups: {
+      "Primarily a Country Artist": [
+        "Waylon Jennings",
+        "George Strait",
+        "Dolly Parton",
+        "Garth Brooks",
+      ],
+      "Born in Texas": [
+        "Waylon Jennings",
+        "George Strait",
+        "Janis Joplin",
+        "Beyoncé",
+      ],
+      "Released Debut Album Before 1980": [
+        "Waylon Jennings",
+        "Dolly Parton",
+        "Janis Joplin",
+        "Stevie Wonder",
+      ],
+    },
+    hint: "Genre, State, Debut",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Hit 500 or More Career Home Runs": [
+        "Mickey Mantle",
+        "Gary Sheffield",
+        "Willie Mays",
+        "Eddie Murray",
+      ],
+      "Played for the New York Yankees": [
+        "Mickey Mantle",
+        "Gary Sheffield",
+        "Don Mattingly",
+        "Bernie Williams",
+      ],
+      "Was Named League MVP": [
+        "Mickey Mantle",
+        "Willie Mays",
+        "Don Mattingly",
+        "Kirk Gibson",
+      ],
+    },
+    hint: "Power, Team, MVP",
+    title: "Baseball",
+  },
+];
+
 export let puzzles = demo.concat(
   week1,
   week2,
@@ -8556,4 +9331,9 @@ export let puzzles = demo.concat(
   week55,
   week56,
   week57,
+  week58,
+  week59,
+  week60,
+  week61,
+  week62,
 );
