@@ -567,6 +567,11 @@ export function mountHomePage(main: HTMLElement) {
 
     // save state
     localGames.set(games);
+
+    if (game.status != "pending") {
+      // refresh the select so completed puzzles show their pass/fail emoji
+      populatePreviousGameSelect();
+    }
   }
 
   /**
