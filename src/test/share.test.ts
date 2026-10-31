@@ -270,6 +270,36 @@ describe("root/share/app", () => {
     expect(document.querySelector("canvas")).toBeTruthy();
   });
 
+  it("draws wrapped title lines at separate heights", async () => {
+    let firstLine = "a".repeat(50);
+    let secondLine = "b".repeat(50);
+    seedSolvedGame(0, { title: `${firstLine} ${secondLine}` });
+    sessionStorage.setItem("index", "0");
+
+    let fillText = vi.fn();
+    let canvas = HTMLCanvasElement.prototype as unknown as {
+      getContext: () => object;
+    };
+    let { getContext } = canvas;
+    canvas.getContext = () => ({ ...getContext(), fillText });
+
+    try {
+      let navigate = vi.fn();
+      let { mountSharePage } = await import("share/app");
+      mountSharePage(document.querySelector("main")!, navigate);
+
+      await Promise.resolve();
+      await Promise.resolve();
+    } finally {
+      canvas.getContext = getContext;
+    }
+
+    let y = (text: string) =>
+      fillText.mock.calls.find(([drawn]) => drawn == text)?.[2];
+
+    expect(y(secondLine) - y(firstLine)).toBe(80);
+  });
+
   it("falls back to a 1x scale when devicePixelRatio is falsy", async () => {
     seedSolvedGame(0);
     sessionStorage.setItem("index", "0");

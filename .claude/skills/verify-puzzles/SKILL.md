@@ -1,15 +1,15 @@
 ---
 name: verify-puzzles
 description:
-  Fact-check a week of puzzles in src/game/list.ts after the initial draft has
+  Fact-check a block of puzzles in src/game/list.ts after the initial draft has
   been reviewed. Verifies every item belongs to each group it is listed in and
   does NOT belong to any group it is left out of, using neutral web searches.
-  Use when asked to verify, fact-check, or validate the accuracy of a week.
+  Use when asked to verify, fact-check, or validate the accuracy of a block.
 ---
 
 # Verify Puzzles
 
-Fact-check pass that runs **after** `create-puzzles` has drafted a week and the
+Fact-check pass that runs **after** `create-puzzles` has drafted a block and the
 user has reviewed it. Structure is checked by a script; facts are checked by web
 search.
 
@@ -19,7 +19,7 @@ search.
    shape, the 7-item overlap truth table, and label/item reuse. Never eyeball
    the truth table — the script exists because that check drifts. Fix any
    reported error before spending searches on facts.
-2. Read the target week from `src/game/list.ts`.
+2. Read the target block from `src/game/list.ts`.
 3. For every puzzle, check all 7 items in **both directions**:
    - **Inclusion** — the item genuinely satisfies each group it is listed in.
    - **Exclusion** — the item genuinely fails every group it is left out of.

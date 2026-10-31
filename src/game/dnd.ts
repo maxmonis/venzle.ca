@@ -282,7 +282,7 @@ export function createDndController({
           return;
         }
 
-        // create and append the new draggable element
+        // create a temporary element to use as the drag image
         let dragImage = document.createElement("div");
         dragImage.textContent = element.textContent;
         dragImage.setAttribute("draggable", "true");

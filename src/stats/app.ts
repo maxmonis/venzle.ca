@@ -169,7 +169,7 @@ export function mountStatsPage(main: HTMLElement) {
     }
   }
 
-  // update the stats if today's puzzle has been submitted as well
+  // update the streaks if today's puzzle has been solved or failed as well
   let todayResult = map.get(todayIndex);
   if (todayResult) {
     activePlayedStreak++;

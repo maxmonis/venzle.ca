@@ -221,5 +221,4 @@ describe("root/stats/app", () => {
       12,
     );
   });
-
 });

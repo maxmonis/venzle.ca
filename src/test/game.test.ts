@@ -446,7 +446,9 @@ describe("game/dnd (touch)", () => {
     let draggable = elements.draggables.querySelector<HTMLElement>("div")!;
     draggable.removeAttribute("draggable");
 
-    let touchStart = new Event("touchstart", { cancelable: true }) as TouchEvent;
+    let touchStart = new Event("touchstart", {
+      cancelable: true,
+    }) as TouchEvent;
     Object.defineProperty(touchStart, "touches", {
       value: [{ clientX: 5, clientY: 5 }],
     });

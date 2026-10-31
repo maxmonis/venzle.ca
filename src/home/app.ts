@@ -191,7 +191,7 @@ export function mountHomePage(main: HTMLElement) {
   /**
    * Checks whether a puzzle is solved, failed, or in progress
    * @param clicked whether the user has submitted this as a guess or we're just
-   * checking a puzzle which they've now resumed or commenced
+   * redisplaying a puzzle which has already been solved or failed
    */
   function checkGame(clicked: boolean) {
     toast.hide();
@@ -258,7 +258,7 @@ export function mountHomePage(main: HTMLElement) {
       elements.hintsContainer.remove();
 
       if (clicked) {
-        // check whether they've just clicked submit and won
+        // they've just clicked submit and won
 
         // log event(s)
         window.gtag("event", "puzzle_solve");
@@ -448,8 +448,8 @@ export function mountHomePage(main: HTMLElement) {
   }
 
   /**
-   * Loads a game using its index, checking for an in-progress state in local
-   * storage if it's the daily puzzle and session storage if it's not
+   * Loads a game using its index, restoring any saved state from local storage
+   * or otherwise starting a new game
    */
   function getGame(index: number): Game {
     if (index == todayIndex) {
@@ -519,7 +519,7 @@ export function mountHomePage(main: HTMLElement) {
   }
 
   /**
-   * Clears the game state, resetting the puzzle
+   * Clears the puzzle from the UI so another game can be displayed
    */
   function resetGame() {
     elements.pageSubtitle.remove();
@@ -627,7 +627,7 @@ export function mountHomePage(main: HTMLElement) {
    * Updates the UI to reflect the state of the puzzle
    */
   function updateGameState() {
-    // update the dropzones
+    // update the current guess from the dropzones
     for (let dropzone of elements.main.querySelectorAll(".dropzone")) {
       let id = dropzone.id.split("-")[1] as keyof typeof game.currentGuess;
 
@@ -672,7 +672,7 @@ export function mountHomePage(main: HTMLElement) {
       elements.gameControls.after(elements.resetButton);
     }
 
-    // save and update
+    // save and broadcast state
     saveGame();
     gameChannel.post(game);
   }

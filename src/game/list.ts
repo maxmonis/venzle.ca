@@ -10,6 +10,8 @@ type UnstructuredWeek = [
   Puzzle<string>,
 ];
 
+// Legacy authoring unit. week15..week62 predate the block format and keep their
+// fixed category slots. Do not add new weeks; author new content as blocks.
 type Week = [
   Puzzle<string>,
   Puzzle<"Actors">,
@@ -19,6 +21,11 @@ type Week = [
   Puzzle<"Bands" | "Musicians">,
   Puzzle<"Baseball" | "Basketball" | "Football">,
 ];
+
+// Current authoring unit: a block of 28 puzzles with no fixed category slots.
+// Diversity (title cap, anchor quota, domain spread) is checked by
+// scripts/validate-puzzles.ts, not by the type. See the create-puzzles skill.
+export type Block = [Puzzle<string>, ...Array<Puzzle<string>>];
 
 let demo: [Puzzle<string> | Puzzle<"Demo Puzzle">] = [
   {
@@ -9273,6 +9280,591 @@ let week62: Week = [
   },
 ];
 
+let block1: Block = [
+  {
+    groups: {
+      "In Europe": ["Vistula", "Volga", "Seine", "Po"],
+      "Longer Than 1,000 km": ["Vistula", "Volga", "Nile", "Amazon"],
+      "Flows Through National Capital(s)": [
+        "Vistula",
+        "Seine",
+        "Nile",
+        "Potomac",
+      ],
+    },
+    hint: "Continent, Length, Capital",
+    title: "Rivers",
+  },
+  {
+    groups: {
+      "In Africa": ["Kenya", "Uganda", "Mozambique", "Nigeria"],
+      "Touches Equator": ["Kenya", "Uganda", "Indonesia", "Ecuador"],
+      "Touches the Indian Ocean": [
+        "Kenya",
+        "Mozambique",
+        "Indonesia",
+        "Australia",
+      ],
+    },
+    hint: "Continent, Latitude, Ocean",
+    title: "Countries",
+  },
+  {
+    groups: {
+      Physicist: ["Max Planck", "Niels Bohr", "Heinrich Hertz", "Isaac Newton"],
+      "Nobel Prize Winner": [
+        "Max Planck",
+        "Niels Bohr",
+        "Otto Hahn",
+        "Alexander Fleming",
+      ],
+      German: [
+        "Max Planck",
+        "Heinrich Hertz",
+        "Otto Hahn",
+        "Justus von Liebig",
+      ],
+    },
+    hint: "Discipline, Prize, Nationality",
+    title: "Scientists",
+  },
+  {
+    groups: {
+      British: ["Iron Maiden", "The Police", "Black Sabbath", "The Beatles"],
+      "Formed in the 1970s": [
+        "Iron Maiden",
+        "The Police",
+        "Van Halen",
+        "The Ramones",
+      ],
+      "A Heavy Metal or Hard Rock Band": [
+        "Iron Maiden",
+        "Black Sabbath",
+        "Van Halen",
+        "Metallica",
+      ],
+    },
+    hint: "Nationality, Decade, Genre",
+    title: "Bands",
+  },
+  {
+    groups: {
+      "Released in the 1970s": [
+        "Dire Straits",
+        "The Dark Side of the Moon",
+        "Ramones",
+        "Hotel California",
+      ],
+      British: [
+        "Dire Straits",
+        "The Dark Side of the Moon",
+        "Definitely Maybe",
+        "OK Computer",
+      ],
+      "Debut Album": [
+        "Dire Straits",
+        "Ramones",
+        "Definitely Maybe",
+        "Appetite for Destruction",
+      ],
+    },
+    hint: "Decade, Nationality, Debut",
+    title: "Albums",
+  },
+  {
+    groups: {
+      Theropod: ["Tyrannosaurus", "Velociraptor", "Allosaurus", "Megalosaurus"],
+      "Lived in the Cretaceous": [
+        "Tyrannosaurus",
+        "Velociraptor",
+        "Triceratops",
+        "Protoceratops",
+      ],
+      "Found in North America": [
+        "Tyrannosaurus",
+        "Allosaurus",
+        "Triceratops",
+        "Stegosaurus",
+      ],
+    },
+    hint: "Biped, Period, Continent",
+    title: "Dinosaurs",
+  },
+  {
+    groups: {
+      "Served in the 20th Century": [
+        "Lyndon B. Johnson",
+        "Franklin D. Roosevelt",
+        "Richard Nixon",
+        "Ronald Reagan",
+      ],
+      Democrat: [
+        "Lyndon B. Johnson",
+        "Franklin D. Roosevelt",
+        "Martin Van Buren",
+        "Andrew Jackson",
+      ],
+      "Former Vice President": [
+        "Lyndon B. Johnson",
+        "Richard Nixon",
+        "Martin Van Buren",
+        "John Adams",
+      ],
+    },
+    hint: "Century, Party, VPOTUS",
+    title: "US Presidents",
+  },
+  {
+    groups: {
+      "Lays Eggs": ["Kookaburra", "Platypus", "Bald Eagle", "Ostrich"],
+      "Native to Australia": [
+        "Kookaburra",
+        "Platypus",
+        "Flying Fox",
+        "Kangaroo",
+      ],
+      "Can Fly": ["Kookaburra", "Bald Eagle", "Flying Fox", "Vampire Bat"],
+    },
+    hint: "Reproduction, Continent, Wings",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Primarily Played Center": [
+        "Marc Gasol",
+        "Shaquille O'Neal",
+        "Hakeem Olajuwon",
+        "David Robinson",
+      ],
+      "Played for the Lakers": [
+        "Marc Gasol",
+        "Shaquille O'Neal",
+        "Luka Doncic",
+        "Magic Johnson",
+      ],
+      "Born Outside the United States": [
+        "Marc Gasol",
+        "Hakeem Olajuwon",
+        "Luka Doncic",
+        "Dirk Nowitzki",
+      ],
+    },
+    hint: "Position, Team, Origin",
+    title: "Basketball",
+  },
+  {
+    groups: {
+      "Primarily Played Pitcher": [
+        "Cy Young",
+        "Walter Johnson",
+        "Pedro Martinez",
+        "Nolan Ryan",
+      ],
+      "Debuted Before 1930": [
+        "Cy Young",
+        "Walter Johnson",
+        "Tris Speaker",
+        "Ty Cobb",
+      ],
+      "Played for the Red Sox": [
+        "Cy Young",
+        "Pedro Martinez",
+        "Tris Speaker",
+        "David Ortiz",
+      ],
+    },
+    hint: "Position, Era, Team",
+    title: "Baseball",
+  },
+  {
+    groups: {
+      "Directed by Steven Spielberg": [
+        "Jurassic Park",
+        "Schindler's List",
+        "E.T. the Extra-Terrestrial",
+        "Jaws",
+      ],
+      "Released in the 1990s": [
+        "Jurassic Park",
+        "Schindler's List",
+        "The Matrix",
+        "Titanic",
+      ],
+      "Science Fiction": [
+        "Jurassic Park",
+        "E.T. the Extra-Terrestrial",
+        "The Matrix",
+        "Blade Runner",
+      ],
+    },
+    hint: "Director, Decade, Genre",
+    title: "Movies",
+  },
+  {
+    groups: {
+      "Born in England": [
+        "Warwick Davis",
+        "Maggie Smith",
+        "John Boyega",
+        "Laurence Olivier",
+      ],
+      "Appeared in Harry Potter Film(s)": [
+        "Warwick Davis",
+        "Maggie Smith",
+        "Domhnall Gleeson",
+        "Robbie Coltrane",
+      ],
+      "Appeared in Star Wars Film(s)": [
+        "Warwick Davis",
+        "John Boyega",
+        "Domhnall Gleeson",
+        "Mark Hamill",
+      ],
+    },
+    hint: "Nationality, Rowling, Lucas",
+    title: "Actors",
+  },
+  {
+    groups: {
+      Venomous: ["Copperhead", "King Cobra", "Gila Monster", "Komodo Dragon"],
+      "Is a Snake": ["Copperhead", "King Cobra", "Boa Constrictor", "Python"],
+      "Native to the Americas": [
+        "Copperhead",
+        "Gila Monster",
+        "Boa Constrictor",
+        "American Alligator",
+      ],
+    },
+    hint: "Poison, Serpent, Continent",
+    title: "Reptiles",
+  },
+  {
+    groups: {
+      English: [
+        "Charles Dickens",
+        "Alfred Lord Tennyson",
+        "George Orwell",
+        "William Shakespeare",
+      ],
+      "Active in the 19th Century": [
+        "Charles Dickens",
+        "Alfred Lord Tennyson",
+        "Leo Tolstoy",
+        "Emily Dickinson",
+      ],
+      Novelist: [
+        "Charles Dickens",
+        "George Orwell",
+        "Leo Tolstoy",
+        "Ernest Hemingway",
+      ],
+    },
+    hint: "Nationality, Century, Novels",
+    title: "Authors",
+  },
+  {
+    groups: {
+      "Won French Open Singles": [
+        "Roger Federer",
+        "Rafael Nadal",
+        "Ivan Lendl",
+        "Thomas Muster",
+      ],
+      "Won Wimbledon Singles": [
+        "Roger Federer",
+        "Rafael Nadal",
+        "Pete Sampras",
+        "John McEnroe",
+      ],
+      "Right-Handed Player": [
+        "Roger Federer",
+        "Ivan Lendl",
+        "Pete Sampras",
+        "Andy Roddick",
+      ],
+    },
+    hint: "Clay, Grass, Handedness",
+    title: "Tennis",
+  },
+  {
+    groups: {
+      "Released in the 1980s": [
+        "Like a Virgin",
+        "Girls Just Want to Have Fun",
+        "Billie Jean",
+        "Don't Stop Believin'",
+      ],
+      "By a Solo Female Artist": [
+        "Like a Virgin",
+        "Girls Just Want to Have Fun",
+        "Rolling in the Deep",
+        "Chandelier",
+      ],
+      "Billboard Hot 100 #1 Hit": [
+        "Like a Virgin",
+        "Billie Jean",
+        "Rolling in the Deep",
+        "Hey Jude",
+      ],
+    },
+    hint: "Decade, Artist, Chart",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Animated Series": [
+        "King of the Hill",
+        "Beavis and Butt-Head",
+        "The Simpsons",
+        "Rick and Morty",
+      ],
+      "Premiered in the 1990s": [
+        "King of the Hill",
+        "Beavis and Butt-Head",
+        "The X-Files",
+        "Friends",
+      ],
+      "Aired on Fox": [
+        "King of the Hill",
+        "The Simpsons",
+        "The X-Files",
+        "House",
+      ],
+    },
+    hint: "Animated, Decade, Network",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      "Cannot Fly": ["African Penguin", "Ostrich", "Emperor Penguin", "Emu"],
+      "Native to Africa": [
+        "African Penguin",
+        "Ostrich",
+        "Great White Pelican",
+        "African Grey Parrot",
+      ],
+      "Semi-Aquatic": [
+        "African Penguin",
+        "Emperor Penguin",
+        "Great White Pelican",
+        "Canada Goose",
+      ],
+    },
+    hint: "Grounded, Continent, Water",
+    title: "Birds",
+  },
+  {
+    groups: {
+      "Explored the Pacific Ocean": [
+        "James Cook",
+        "Francis Drake",
+        "Louis Antoine de Bougainville",
+        "Ferdinand Magellan",
+      ],
+      British: ["James Cook", "Francis Drake", "Mungo Park", "Walter Raleigh"],
+      "Lived in the 18th Century": [
+        "James Cook",
+        "Louis Antoine de Bougainville",
+        "Mungo Park",
+        "Daniel Boone",
+      ],
+    },
+    hint: "Ocean, Nationality, Century",
+    title: "Explorers",
+  },
+  {
+    groups: {
+      "In Asia": [
+        "Gobi Desert",
+        "Taklamakan Desert",
+        "Arabian Desert",
+        "Thar Desert",
+      ],
+      "Cold Desert": [
+        "Gobi Desert",
+        "Taklamakan Desert",
+        "Antarctic Polar Desert",
+        "Patagonian Desert",
+      ],
+      "Over 1 Million km2": [
+        "Gobi Desert",
+        "Arabian Desert",
+        "Antarctic Polar Desert",
+        "Sahara",
+      ],
+    },
+    hint: "Continent, Temperature, Size",
+    title: "Deserts",
+  },
+  {
+    groups: {
+      "Track & Field Athlete": [
+        "Jesse Owens",
+        "Carl Lewis",
+        "Emil Zatopek",
+        "Usain Bolt",
+      ],
+      American: ["Jesse Owens", "Carl Lewis", "Mark Spitz", "Michael Phelps"],
+      "Olympic Debut Before 1980": [
+        "Jesse Owens",
+        "Emil Zatopek",
+        "Mark Spitz",
+        "Nadia Comaneci",
+      ],
+    },
+    hint: "Track, Nationality, Era",
+    title: "Olympians",
+  },
+  {
+    groups: {
+      "Invented in the 19th Century": [
+        "Morse Code",
+        "Braille",
+        "Barbed Wire",
+        "Dynamite",
+      ],
+      "Used for Communication": [
+        "Morse Code",
+        "Braille",
+        "Email",
+        "World Wide Web",
+      ],
+      "American Inventor(s)": [
+        "Morse Code",
+        "Barbed Wire",
+        "Email",
+        "Airplane",
+      ],
+    },
+    hint: "Century, Purpose, Nationality",
+    title: "Inventions",
+  },
+  {
+    groups: {
+      "A Baroque Composer": [
+        "George Frideric Handel",
+        "Johann Sebastian Bach",
+        "Claudio Monteverdi",
+        "Arcangelo Corelli",
+      ],
+      "Born in Germany": [
+        "George Frideric Handel",
+        "Johann Sebastian Bach",
+        "Richard Wagner",
+        "Johannes Brahms",
+      ],
+      "Wrote Famous Operas": [
+        "George Frideric Handel",
+        "Claudio Monteverdi",
+        "Richard Wagner",
+        "Giuseppe Verdi",
+      ],
+    },
+    hint: "Genre, Nationality, Opera",
+    title: "Composers",
+  },
+  {
+    groups: {
+      Conifer: ["Pinyon Pine", "Coast Redwood", "Stone Pine", "Norway Spruce"],
+      "Native to North America": [
+        "Pinyon Pine",
+        "Coast Redwood",
+        "Black Walnut",
+        "American Sycamore",
+      ],
+      "Produces Edible Nuts or Fruit": [
+        "Pinyon Pine",
+        "Stone Pine",
+        "Black Walnut",
+        "Olive",
+      ],
+    },
+    hint: "Cones, Continent, Edible",
+    title: "Trees",
+  },
+  {
+    groups: {
+      "Published by Nintendo": [
+        "Super Mario Bros. 3",
+        "The Legend of Zelda",
+        "Super Mario Galaxy",
+        "Mario Kart",
+      ],
+      "First Released in the 1980s": [
+        "Super Mario Bros. 3",
+        "The Legend of Zelda",
+        "Mega Man",
+        "Pac-Man",
+      ],
+      "A Platformer": [
+        "Super Mario Bros. 3",
+        "Super Mario Galaxy",
+        "Mega Man",
+        "Sonic the Hedgehog",
+      ],
+    },
+    hint: "Company, Decade, Genre",
+    title: "Video Games",
+  },
+  {
+    groups: {
+      "In the Mediterranean Sea": ["Cyprus", "Sicily", "Malta", "Ibiza"],
+      "Larger Than 5,000 km2": ["Cyprus", "Sicily", "Sri Lanka", "Tasmania"],
+      "Island Nation": ["Cyprus", "Malta", "Sri Lanka", "Barbados"],
+    },
+    hint: "Sea, Size, Sovereignty",
+    title: "Islands",
+  },
+  {
+    groups: {
+      Dutch: [
+        "Rembrandt",
+        "Johannes Vermeer",
+        "Vincent van Gogh",
+        "Piet Mondrian",
+      ],
+      "Active in the 17th Century": [
+        "Rembrandt",
+        "Johannes Vermeer",
+        "Artemisia Gentileschi",
+        "Georges de La Tour",
+      ],
+      "Painted Famous Self-Portrait(s)": [
+        "Rembrandt",
+        "Vincent van Gogh",
+        "Artemisia Gentileschi",
+        "Frida Kahlo",
+      ],
+    },
+    hint: "Nationality, Century, Self-portrait",
+    title: "Painters",
+  },
+  {
+    groups: {
+      "Lived in Ancient Rome": [
+        "Julius Caesar",
+        "Scipio Africanus",
+        "Tiberius Gracchus",
+        "Virgil",
+      ],
+      "Military Commander": [
+        "Julius Caesar",
+        "Scipio Africanus",
+        "Philip II of Macedon",
+        "Napoleon",
+      ],
+      "Was Killed": [
+        "Julius Caesar",
+        "Tiberius Gracchus",
+        "Philip II of Macedon",
+        "Mahatma Gandhi",
+      ],
+    },
+    hint: "Rome, Commander, Death",
+    title: "Historical Figures",
+  },
+];
+
 export let puzzles = demo.concat(
   week1,
   week2,
@@ -9336,4 +9928,6 @@ export let puzzles = demo.concat(
   week60,
   week61,
   week62,
+  block1,
+  // Append new content here as blocks: block2, block3, ... (28 puzzles each).
 );

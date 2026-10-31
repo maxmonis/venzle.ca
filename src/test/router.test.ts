@@ -154,19 +154,17 @@ describe("root/main", () => {
     let addEventListener = document.addEventListener.bind(document);
     documentAddEventListenerSpy = vi
       .spyOn(document, "addEventListener")
-      .mockImplementation(
-        ((
-          type: string,
-          listener: EventListenerOrEventListenerObject,
-          options?: AddEventListenerOptions | boolean,
-        ) => {
-          if (type == "click") {
-            clickListener = listener as (event: MouseEvent) => void;
-          }
+      .mockImplementation(((
+        type: string,
+        listener: EventListenerOrEventListenerObject,
+        options?: AddEventListenerOptions | boolean,
+      ) => {
+        if (type == "click") {
+          clickListener = listener as (event: MouseEvent) => void;
+        }
 
-          return addEventListener(type, listener, options);
-        }) as typeof document.addEventListener,
-      );
+        return addEventListener(type, listener, options);
+      }) as typeof document.addEventListener);
 
     vi.spyOn(history, "pushState").mockImplementation(((...args) => {
       let url = args[2];

@@ -174,7 +174,7 @@ ${game.guesses
   };
 
   /**
-   * Adds the certificate to the UI
+   * Draws the certificate onto the canvas
    */
   async function appendCertificate(currentGame: Game) {
     await ensureFontsReady();
@@ -407,7 +407,7 @@ function wrapText(
     let { width } = ctx.measureText(test);
 
     if (width > maxWidth && i && word) {
-      ctx.fillText(line, x, y);
+      ctx.fillText(line, x, newY);
       newY += lineHeight;
       line = word;
     } else {
@@ -416,7 +416,7 @@ function wrapText(
   }
 
   if (line) {
-    ctx.fillText(line, x, y);
+    ctx.fillText(line, x, newY);
   }
 
   return newY;

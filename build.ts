@@ -25,7 +25,7 @@ let generatedHeader =
 
 export function extractPuzzleArrays(source: string): Array<GeneratedArray> {
   let arrayMatches = source.matchAll(
-    /let\s+(demo|week\d+)\s*(?::[\s\S]*?)?=\s*(\[[\s\S]*?\]);/g,
+    /let\s+(demo|week\d+|block\d+)\s*(?::[\s\S]*?)?=\s*(\[[\s\S]*?\]);/g,
   );
 
   return [...arrayMatches].map((match) => {
