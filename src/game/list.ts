@@ -9865,6 +9865,606 @@ let block1: Block = [
   },
 ];
 
+let block2: Block = [
+  {
+    groups: {
+      Stratovolcano: [
+        "Popocatépetl",
+        "Mount Rainier",
+        "Mount Vesuvius",
+        "Mount Elbrus",
+      ],
+      "In the Ring of Fire": [
+        "Popocatépetl",
+        "Mount Rainier",
+        "Parícutin",
+        "Taupō",
+      ],
+      "Erupted in the 20th Century": [
+        "Popocatépetl",
+        "Mount Vesuvius",
+        "Parícutin",
+        "Mauna Loa",
+      ],
+    },
+    hint: "Shape, Region, Century",
+    title: "Volcanoes",
+  },
+  {
+    groups: {
+      "Born in Canada": [
+        "Phil Hartman",
+        "Norm Macdonald",
+        "John Candy",
+        "Michael J. Fox",
+      ],
+      "Former SNL Cast Member": [
+        "Phil Hartman",
+        "Norm Macdonald",
+        "Chris Farley",
+        "Eddie Murphy",
+      ],
+      "Died Before 2000": [
+        "Phil Hartman",
+        "John Candy",
+        "Chris Farley",
+        "James Dean",
+      ],
+    },
+    hint: "Nationality, Sketch, Era",
+    title: "Actors",
+  },
+  {
+    groups: {
+      "Fought in World War II": [
+        "Battle of Midway",
+        "Battle of the River Plate",
+        "Battle of Iwo Jima",
+        "Battle of Stalingrad",
+      ],
+      "Naval Battle": [
+        "Battle of Midway",
+        "Battle of the River Plate",
+        "Battle of Tsushima",
+        "Battle of Trafalgar",
+      ],
+      "Involved Japan": [
+        "Battle of Midway",
+        "Battle of Iwo Jima",
+        "Battle of Tsushima",
+        "Battle of Sekigahara",
+      ],
+    },
+    hint: "War, Sea, Nation",
+    title: "Battles",
+  },
+  {
+    groups: {
+      "Title is a Question": [
+        "What Do You Mean?",
+        "Do You Really Want to Hurt Me",
+        "What's Going On",
+        "Where Is the Love?",
+      ],
+      'Title Contains "You"': [
+        "What Do You Mean?",
+        "Do You Really Want to Hurt Me",
+        "Shape of You",
+        "I Will Always Love You",
+      ],
+      "By a Male Solo Artist": [
+        "What Do You Mean?",
+        "What's Going On",
+        "Shape of You",
+        "Johnny B. Goode",
+      ],
+    },
+    hint: "Punctuation, Pronoun, Artist",
+    title: "Songs",
+  },
+  {
+    groups: {
+      "Depicts an Animal": ["Scorpius", "Cancer", "Cygnus", "Ursa Major"],
+      "Zodiac Constellation": ["Scorpius", "Cancer", "Gemini", "Libra"],
+      "Contains a First-Magnitude Star": [
+        "Scorpius",
+        "Cygnus",
+        "Gemini",
+        "Orion",
+      ],
+    },
+    hint: "Creature, Astrology, Brightness",
+    title: "Constellations",
+  },
+  {
+    groups: {
+      "Played for the Bulls": [
+        "Charles Oakley",
+        "Joakim Noah",
+        "Scottie Pippen",
+        "Luol Deng",
+      ],
+      "Played for the Knicks": [
+        "Charles Oakley",
+        "Joakim Noah",
+        "Mark Jackson",
+        "Carmelo Anthony",
+      ],
+      "Born in the 1960s": [
+        "Charles Oakley",
+        "Scottie Pippen",
+        "Mark Jackson",
+        "Karl Malone",
+      ],
+    },
+    hint: "Windy City, Big Apple, Decade",
+    title: "Basketball",
+  },
+  {
+    groups: {
+      Italian: [
+        "Mascarpone",
+        "Parmigiano-Reggiano",
+        "Buffalo Mozzarella",
+        "Pecorino Romano",
+      ],
+      "Made from Cow's Milk": [
+        "Mascarpone",
+        "Parmigiano-Reggiano",
+        "Brie",
+        "Gruyère",
+      ],
+      "Soft Cheese": ["Mascarpone", "Buffalo Mozzarella", "Brie", "Feta"],
+    },
+    hint: "Country, Animal, Texture",
+    title: "Cheeses",
+  },
+  {
+    groups: {
+      "Directed by Quentin Tarantino": [
+        "Once Upon a Time in Hollywood",
+        "Inglourious Basterds",
+        "Jackie Brown",
+        "Django Unchained",
+      ],
+      "Stars Brad Pitt": [
+        "Once Upon a Time in Hollywood",
+        "Inglourious Basterds",
+        "Babylon",
+        "Troy",
+      ],
+      "Set in Los Angeles": [
+        "Once Upon a Time in Hollywood",
+        "Jackie Brown",
+        "Babylon",
+        "La La Land",
+      ],
+    },
+    hint: "Director, Star, City",
+    title: "Movies",
+  },
+  {
+    groups: {
+      "In North America": [
+        "Lake Superior",
+        "Lake Michigan",
+        "Lake Ontario",
+        "Lake Tahoe",
+      ],
+      "Larger Than 20,000 km2": [
+        "Lake Superior",
+        "Lake Michigan",
+        "Lake Victoria",
+        "Lake Baikal",
+      ],
+      "Shared by Multiple Countries": [
+        "Lake Superior",
+        "Lake Ontario",
+        "Lake Victoria",
+        "Lake Titicaca",
+      ],
+    },
+    hint: "Continent, Size, Borders",
+    title: "Lakes",
+  },
+  {
+    groups: {
+      French: [
+        "Simone de Beauvoir",
+        "Michel Foucault",
+        "Émilie du Châtelet",
+        "Voltaire",
+      ],
+      "Born in the 20th Century": [
+        "Simone de Beauvoir",
+        "Michel Foucault",
+        "Hannah Arendt",
+        "Karl Popper",
+      ],
+      Female: [
+        "Simone de Beauvoir",
+        "Émilie du Châtelet",
+        "Hannah Arendt",
+        "Mary Wollstonecraft",
+      ],
+    },
+    hint: "Nationality, Century, Gender",
+    title: "Philosophers",
+  },
+  {
+    groups: {
+      "Released in the 1960s": [
+        "Aftermath",
+        "Let It Bleed",
+        "Revolver",
+        "Pet Sounds",
+      ],
+      "By The Rolling Stones": [
+        "Aftermath",
+        "Let It Bleed",
+        "Undercover",
+        "Exile on Main St.",
+      ],
+      "One-Word Title": ["Aftermath", "Revolver", "Undercover", "Thriller"],
+    },
+    hint: "Decade, Band, Name",
+    title: "Albums",
+  },
+  {
+    groups: {
+      "One of the Twelve Olympians": ["Athena", "Apollo", "Hera", "Poseidon"],
+      "Child of Zeus": ["Athena", "Apollo", "Persephone", "Heracles"],
+      Female: ["Athena", "Hera", "Persephone", "Gaia"],
+    },
+    hint: "Olympus, Parentage, Gender",
+    title: "Greek Mythology",
+  },
+  {
+    groups: {
+      "Played Wide Receiver": [
+        "JuJu Smith-Schuster",
+        "Hines Ward",
+        "Keyshawn Johnson",
+        "Calvin Johnson",
+      ],
+      "Pittsburgh Steeler": [
+        "JuJu Smith-Schuster",
+        "Hines Ward",
+        "Troy Polamalu",
+        "Joe Greene",
+      ],
+      "Born in California": [
+        "JuJu Smith-Schuster",
+        "Keyshawn Johnson",
+        "Troy Polamalu",
+        "Tom Brady",
+      ],
+    },
+    hint: "Position, Team, State",
+    title: "Football",
+  },
+  {
+    groups: {
+      Painting: [
+        "The Persistence of Memory",
+        "Guernica",
+        "The Starry Night",
+        "The Night Watch",
+      ],
+      "20th Century": [
+        "The Persistence of Memory",
+        "Guernica",
+        "Charging Bull",
+        "Christ the Redeemer",
+      ],
+      "Located in New York City": [
+        "The Persistence of Memory",
+        "The Starry Night",
+        "Charging Bull",
+        "Temple of Dendur",
+      ],
+    },
+    hint: "Medium, Century, City",
+    title: "Works of Art",
+  },
+  {
+    groups: {
+      Hibernates: [
+        "Brown Bear",
+        "American Black Bear",
+        "Greater Horseshoe Bat",
+        "Groundhog",
+      ],
+      Omnivore: [
+        "Brown Bear",
+        "American Black Bear",
+        "Wild Boar",
+        "Chimpanzee",
+      ],
+      "Native to Europe": [
+        "Brown Bear",
+        "Greater Horseshoe Bat",
+        "Wild Boar",
+        "Red Deer",
+      ],
+    },
+    hint: "Winter, Diet, Continent",
+    title: "Animals",
+  },
+  {
+    groups: {
+      "Former National Capital": [
+        "New York City",
+        "Alexandria",
+        "Philadelphia",
+        "Kyoto",
+      ],
+      "Named After a Person": [
+        "New York City",
+        "Alexandria",
+        "Vancouver",
+        "Adelaide",
+      ],
+      "In North America": [
+        "New York City",
+        "Philadelphia",
+        "Vancouver",
+        "Phoenix",
+      ],
+    },
+    hint: "Capital, Namesake, Continent",
+    title: "Cities",
+  },
+  {
+    groups: {
+      "Originally Aired on CBS": [
+        "The Jeffersons",
+        "M*A*S*H",
+        "NCIS",
+        "I Love Lucy",
+      ],
+      "Premiered in the 1970s": [
+        "The Jeffersons",
+        "M*A*S*H",
+        "Mork & Mindy",
+        "Taxi",
+      ],
+      Spinoff: ["The Jeffersons", "NCIS", "Mork & Mindy", "Better Call Saul"],
+    },
+    hint: "Network, Decade, Origin",
+    title: "TV Shows",
+  },
+  {
+    groups: {
+      Crewed: ["Apollo 11", "Vostok 1", "Apollo 13", "Shenzhou 5"],
+      "Launched in the 1960s": ["Apollo 11", "Vostok 1", "Mariner 4", "Luna 9"],
+      "Run by NASA": ["Apollo 11", "Apollo 13", "Mariner 4", "Voyager 1"],
+    },
+    hint: "Crew, Decade, Agency",
+    title: "Space Missions",
+  },
+  {
+    groups: {
+      Female: [
+        "Elizabeth I",
+        "Victoria",
+        "Mary, Queen of Scots",
+        "Catherine the Great",
+      ],
+      "Ruled England": [
+        "Elizabeth I",
+        "Victoria",
+        "Henry VIII",
+        "William the Conqueror",
+      ],
+      "16th Century": [
+        "Elizabeth I",
+        "Mary, Queen of Scots",
+        "Henry VIII",
+        "Ivan the Terrible",
+      ],
+    },
+    hint: "Gender, Country, Century",
+    title: "Monarchs",
+  },
+  {
+    groups: {
+      Brazilian: ["Kaká", "Roberto Carlos", "Cafu", "Zico"],
+      "Played for Real Madrid": [
+        "Kaká",
+        "Roberto Carlos",
+        "David Beckham",
+        "Zinedine Zidane",
+      ],
+      "Played for AC Milan": [
+        "Kaká",
+        "Cafu",
+        "David Beckham",
+        "Marco van Basten",
+      ],
+    },
+    hint: "Nationality, Los Blancos, Rossoneri",
+    title: "Soccer",
+  },
+  {
+    groups: {
+      "Written by a Woman": [
+        "The Testaments",
+        "Gone Girl",
+        "The Handmaid's Tale",
+        "Pride and Prejudice",
+      ],
+      "Published in the 21st Century": [
+        "The Testaments",
+        "Gone Girl",
+        "Never Let Me Go",
+        "The Da Vinci Code",
+      ],
+      Dystopian: [
+        "The Testaments",
+        "The Handmaid's Tale",
+        "Never Let Me Go",
+        "Brave New World",
+      ],
+    },
+    hint: "Author, Century, Genre",
+    title: "Books",
+  },
+  {
+    groups: {
+      "Born in the 1940s": [
+        "Roger Daltrey",
+        "Freddie Mercury",
+        "Cat Stevens",
+        "Aretha Franklin",
+      ],
+      "In Successful Band(s)": [
+        "Roger Daltrey",
+        "Freddie Mercury",
+        "Damon Albarn",
+        "Dave Grohl",
+      ],
+      "Born in London": [
+        "Roger Daltrey",
+        "Damon Albarn",
+        "Cat Stevens",
+        "Amy Winehouse",
+      ],
+    },
+    hint: "Decade, Group, City",
+    title: "Musicians",
+  },
+  {
+    groups: {
+      "Suspension Bridge": [
+        "Brooklyn Bridge",
+        "Golden Gate Bridge",
+        "Clifton Suspension Bridge",
+        "Akashi Kaikyō Bridge",
+      ],
+      "In the United States": [
+        "Brooklyn Bridge",
+        "Golden Gate Bridge",
+        "Eads Bridge",
+        "Sunshine Skyway Bridge",
+      ],
+      "Completed Before 1900": [
+        "Brooklyn Bridge",
+        "Clifton Suspension Bridge",
+        "Eads Bridge",
+        "Ponte Vecchio",
+      ],
+    },
+    hint: "Design, Country, Century",
+    title: "Bridges",
+  },
+  {
+    groups: {
+      "Originated in Germany": [
+        "Rottweiler",
+        "Doberman Pinscher",
+        "Weimaraner",
+        "Dachshund",
+      ],
+      "AKC Working Group": [
+        "Rottweiler",
+        "Doberman Pinscher",
+        "Bernese Mountain Dog",
+        "Mastiff",
+      ],
+      "Name Includes a Place Name": [
+        "Rottweiler",
+        "Weimaraner",
+        "Bernese Mountain Dog",
+        "Chihuahua",
+      ],
+    },
+    hint: "Country, Job, Geography",
+    title: "Dog Breeds",
+  },
+  {
+    groups: {
+      Catcher: [
+        "Bengie Molina",
+        "Yadier Molina",
+        "Buster Posey",
+        "Carlton Fisk",
+      ],
+      "Born in Puerto Rico": [
+        "Bengie Molina",
+        "Yadier Molina",
+        "Orlando Cepeda",
+        "Roberto Clemente",
+      ],
+      "Played for the Giants": [
+        "Bengie Molina",
+        "Buster Posey",
+        "Orlando Cepeda",
+        "Barry Bonds",
+      ],
+    },
+    hint: "Position, Island, Team",
+    title: "Baseball",
+  },
+  {
+    groups: {
+      French: [
+        "Blaise Pascal",
+        "Pierre de Fermat",
+        "René Descartes",
+        "Évariste Galois",
+      ],
+      "Born in the 17th Century": [
+        "Blaise Pascal",
+        "Pierre de Fermat",
+        "Gottfried Wilhelm Leibniz",
+        "Jacob Bernoulli",
+      ],
+      Philosopher: [
+        "Blaise Pascal",
+        "René Descartes",
+        "Gottfried Wilhelm Leibniz",
+        "Pythagoras",
+      ],
+    },
+    hint: "Nationality, Century, Philosophy",
+    title: "Mathematicians",
+  },
+  {
+    groups: {
+      Musical: [
+        "Rent",
+        "West Side Story",
+        "South Pacific",
+        "The Phantom of the Opera",
+      ],
+      "Set in New York City": [
+        "Rent",
+        "West Side Story",
+        "Angels in America",
+        "The Odd Couple",
+      ],
+      "Pulitzer Prize Winner": [
+        "Rent",
+        "South Pacific",
+        "Angels in America",
+        "A Streetcar Named Desire",
+      ],
+    },
+    hint: "Songs, City, Prize",
+    title: "Plays",
+  },
+  {
+    groups: {
+      "Lives in Freshwater": ["Catfish", "Tilapia", "Koi", "Goldfish"],
+      "Commonly Eaten": ["Catfish", "Tilapia", "Cod", "Tuna"],
+      "Has Barbels": ["Catfish", "Koi", "Cod", "Nurse Shark"],
+    },
+    hint: "Habitat, Food, Whiskers",
+    title: "Fish",
+  },
+];
+
 export let puzzles = demo.concat(
   week1,
   week2,
@@ -9929,5 +10529,6 @@ export let puzzles = demo.concat(
   week61,
   week62,
   block1,
+  block2,
   // Append new content here as blocks: block2, block3, ... (28 puzzles each).
 );
