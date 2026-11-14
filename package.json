@@ -28,5 +28,5 @@
     "validate": "tsx scripts/validate-puzzles.ts"
   },
   "type": "module",
-  "version": "2026.10.31"
+  "version": "2026.11.14"
 }
